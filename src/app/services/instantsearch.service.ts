@@ -28,6 +28,7 @@ export class InstantSearchService {
       stalledSearchDelay: 2000,
       routing: {
         router: history({
+          cleanUrlOnDispose: false,
           getLocation: () => {
             if (typeof window === 'undefined') {
               // no other way to get this in constructor
@@ -45,6 +46,7 @@ export class InstantSearchService {
       stalledSearchDelay: 2000,
       routing: {
         router: history({
+          cleanUrlOnDispose: false,
           getLocation: () => {
             if (typeof window === 'undefined') {
               // no other way to get this in constructor

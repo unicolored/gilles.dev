@@ -60,7 +60,7 @@ import { connectConfigure, connectHits } from 'instantsearch.js/es/connectors';
       </section>
     </main>
   `,
-  styleUrls: ['../pages.common.scss'],
+  styleUrls: [],
 })
 export class HomeComponent implements OnInit, PageInterface {
   pageId = PageIdSlugEnum.home;

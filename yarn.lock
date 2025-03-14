@@ -5560,13 +5560,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"daisyui@npm:^5.0.4":
-  version: 5.0.4
-  resolution: "daisyui@npm:5.0.4"
-  checksum: 10c0/182c76498f8d36c088b28e2f0de3e19053456394dab4c84103bcf3e0abe5cd7acc608c74d8d58820cc6cdadd88571658fd6f506c704ce4196dc6077e809b97ae
-  languageName: node
-  linkType: hard
-
 "date-format@npm:^4.0.14":
   version: 4.0.14
   resolution: "date-format@npm:4.0.14"
@@ -6701,7 +6694,6 @@ __metadata:
     algoliasearch: "npm:^5.21.0"
     angular-eslint: "npm:19.2.1"
     bootstrap: "npm:^5.3.3"
-    daisyui: "npm:^5.0.4"
     eslint: "npm:^9.22.0"
     express: "npm:^4.18.2"
     globals: "npm:^16.0.0"

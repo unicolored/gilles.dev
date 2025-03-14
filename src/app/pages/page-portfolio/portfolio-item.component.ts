@@ -18,7 +18,7 @@ import { PortfolioItemAttachmentsComponent } from '../../elements/portfolio/port
       </section>
     </main>
   `,
-  styleUrls: ['../pages.common.scss'],
+  styleUrls: [],
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioItemComponent {

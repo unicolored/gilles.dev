@@ -51,7 +51,7 @@ import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.
       </section>
     </main>
   `,
-  styleUrls: ['../pages.common.scss'],
+  styleUrls: [],
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioComponent implements OnInit {

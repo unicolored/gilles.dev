@@ -1,13 +1,8 @@
 @use 'sass:color';
-//@use '../../../styles.scss';
-//@use 'libs/styleguides/src/lib/colors/_gilles.styleguides.scss';
 
 @import 'tailwindcss';
 
 .navbar {
-  //backdrop-filter: blur(5px);
-  //box-shadow: var(--color-bkg) 0 10px 20px 0px;
-  //background: var(--color-bkg-a50);
   @apply fixed;
 }
 
@@ -16,12 +11,8 @@ nav.g-navbar {
 
   .items {
     @apply flex justify-between items-center;
-    //width: 23.3125rem;
-    //padding: 0.625rem 0.75rem;
 
     border-radius: 0.25rem;
-    //background: var(--color-primary-a5);
-    //backdrop-filter: blur(10px);
 
     a.item {
       @apply uppercase;
@@ -31,12 +22,7 @@ nav.g-navbar {
       //width: 5.125rem;
       margin: 0;
       padding: 0.625rem 1.5rem;
-      //justify-content: center;
-
       border-radius: 0.15rem;
-      //background: var(--sky, #274D74);
-      //background: var(--color-bkg);
-
       color: var(--color-primary);
       text-decoration: none;
 
@@ -64,9 +50,4 @@ nav.g-navbar {
   .actions {
     @apply content-center;
   }
-}
-
-.search form {
-  //background: var(--color-bkg-a50);
-  backdrop-filter: blur(2px);
 }

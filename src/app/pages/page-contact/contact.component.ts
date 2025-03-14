@@ -45,7 +45,7 @@ import {
       </section>
     </main>
   `,
-  styleUrls: ['../pages.common.scss', './contact.component.scss'],
+  styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit, PageInterface {
   pageId = PageIdSlugEnum.contact;

@@ -20,7 +20,7 @@ import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
       </section>
     </main>
   `,
-  styleUrls: ['../pages.common.scss'],
+  styleUrls: [],
 })
 export class NotFoundComponent implements OnInit, PageInterface {
   pageId = '404';
