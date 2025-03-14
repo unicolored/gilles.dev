@@ -1,0 +1,55 @@
+@use 'tailwindcss';
+
+h2,
+h2 span {
+  color: var(--color-primary);
+}
+p,
+p span {
+  color: var(--color-content);
+}
+
+.portfolio-items {
+  @apply grid gap-6 sm:grid-cols-2 xl:grid-cols-3;
+
+  .portfolio-item {
+    & {
+      background: var(--color-content);
+      cursor: pointer;
+
+      //background-color: var('solar.bg-secondary');
+      //background-position: center center;
+      //background-size: 100%;
+      @apply shadow-md transition-all ease-in;
+      @apply relative flex text-transparent aspect-video rounded overflow-hidden;
+      @apply justify-center align-middle text-center items-center;
+    }
+
+    &:hover {
+      @apply shadow-xl;
+      img {
+        border: 1px solid var(--color--content);
+      }
+    }
+
+    &.placeholder {
+      background: none;
+      opacity: 0.25;
+      border: 1px solid var(--color-primary);
+    }
+
+    img {
+      @apply m-0;
+      background: var(--color-content);
+      border: 1px solid var(--color--bkg);
+      height: 100%;
+    }
+  }
+}
+
+.portfolio-attachments {
+  @apply flex flex-col text-center justify-center items-center;
+  .attachment {
+    @apply flex;
+  }
+}

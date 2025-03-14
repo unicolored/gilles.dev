@@ -1,0 +1,5 @@
+files:
+  - source: /apps/Gilles/gilles.dev/src/locale/messages.xlf
+    translation: /apps/Gilles/gilles.dev/src/locale/messages.%two_letters_code%.xlf
+  - source: /apps/Vigilitate/vigilitate.org/src/locale/messages.xlf
+    translation: /apps/Vigilitate/vigilitate.org/src/locale/messages.%two_letters_code%.xlf

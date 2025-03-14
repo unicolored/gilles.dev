@@ -1,0 +1,56 @@
+<!--In this version, the <main> tag is used to wrap the main
+content of the page. The main section of the page is wrapped
+in a <section> tag, and the content within the section is wrapped
+in an <article> tag. The title of the page is marked with an <h1> tag,
+and the subheading is marked with an <h2> tag.-->
+
+<section class="main contact">
+  <div class="hero-title pt-2 pb-5">
+    <h1 class="text-center">
+      <span i18n>Call me</span>
+      ☎️
+    </h1>
+  </div>
+  <div class="pt-2 pb-5 content text-center">
+    <div class="myPhone">
+      <a href="tel:+33663078396">📱 +33 6 63 07 83 96</a>
+    </div>
+    <p class="mb-10">
+      <span i18n>Whether you have a creative venture or an everyday challenge, I would be happy to help.</span>
+    </p>
+    <h3 class="mt-2">
+      ||
+      <span i18n>Leave me a message</span>
+    </h3>
+    <div class="myEmail" #emailElement (click)="copyEmailToClipboard()">
+      <a>✉️ {{this.myEmail}}</a>
+      <span *ngIf="copySuccess" class="copy-success-tooltip" [class.show]="copySuccess" i18n>Copied!</span>
+    </div>
+
+    <div class="myEmail">
+      <a href="https://calendly.com/gilleshoarau/1h">🗓️ <span i18n>Book a call</span></a>
+    </div>
+    <!--<p>
+      Follow me on Github
+      Connect via Linkedin
+    </p>-->
+  </div>
+</section>
+
+<ng-container *ngIf="false">
+  <section class="main contact">
+    <div class="hero-title pt-2 pb-5">
+      <h1 class="text-center" i18n>I call you back ☎️</h1>
+    </div>
+    <div class="pt-2 pb-5 content text-center">
+      <p>Whether you have a creative venture or an everyday challenge, I would be happy to help.</p>
+      <h3>Leave me a message</h3>
+      <p>✉️ contact&#64;gilles.dev</p>
+      <h3>Or simply call me</h3>
+      <p>☎️ +33 6 63 07 83 96</p>
+      <!--<p>
+      Github & Linkedin
+    </p>-->
+    </div>
+  </section>
+</ng-container>

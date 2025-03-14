@@ -1,0 +1,66 @@
+//@use 'sass:meta';
+//@use 'sass:color';
+//@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as mixins;
+//@use '../../../styles/layout';
+
+@use 'tailwindcss';
+
+// Grid of three columns width
+main.about--container {
+  @apply grid gap-20;
+
+  @include mixins.media-min('tablet-down') {
+    grid-template-columns: 6fr 3fr;
+    grid-template-areas: 'presentation  sidebar';
+  }
+
+  @include mixins.media-max('tablet-down') {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      'presentation'
+      'sidebar';
+  }
+
+  // One column width
+  .sidebar {
+    display: grid;
+    grid-column: -1;
+    grid-area: sidebar;
+    justify-items: start;
+    align-content: start;
+  }
+
+  // Two columns width
+  .presentation {
+    display: grid;
+    grid-column: -1;
+    //grid-row: 2;
+    grid-area: presentation;
+    align-items: start;
+  }
+}
+
+section.sidebar {
+  .card {
+    @apply w-full relative mb-8;
+    background: var(--color-bkg-a50);
+    backdrop-filter: blur(5px);
+
+    .badge {
+      @apply uppercase absolute right-[10px] top-[-10px];
+    }
+  }
+
+  .card-title {
+    @apply text-base py-0 mb-0 mt-2;
+  }
+
+  .card-body {
+    @apply px-5 py-2;
+    p {
+      @apply pb-0 m-0 text-xs leading-relaxed;
+    }
+  }
+}

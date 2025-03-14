@@ -7,6 +7,29 @@
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
+    "paths": {
+      "js-enum": [
+        "./dist/js-enum"
+      ],
+      "js-helper": [
+        "./dist/js-helper"
+      ],
+      "js-interface": [
+        "./dist/js-interface"
+      ],
+      "ngx-components": [
+        "./dist/ngx-components"
+      ],
+      "ngx-services": [
+        "./dist/ngx-services"
+      ],
+      "shared-strapi": [
+        "./dist/shared-strapi"
+      ],
+      "shared-wordpress": [
+        "./dist/shared-wordpress"
+      ]
+    },
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,

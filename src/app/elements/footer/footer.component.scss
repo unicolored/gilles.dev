@@ -1,0 +1,56 @@
+@use '../../../styles/mixins' as mixins;
+
+@use 'tailwindcss';
+
+footer.footer {
+  & {
+    @apply grid gap-6 w-full;
+
+    grid-template-columns: 1fr;
+    grid-template-areas: 'social';
+    color: var(--color-content);
+    padding: 0 1rem;
+    margin-bottom: 8rem;
+
+    @include mixins.media-max('tablet-down') {
+      grid-template-columns: 1fr;
+
+      grid-template-areas: 'social';
+    }
+  }
+
+  a {
+    cursor: pointer;
+    border-bottom: 1px solid var(--color-bkg);
+
+    &:hover {
+      border-bottom: 1px solid var(--color-accent);
+      color: var(--color-accent);
+    }
+  }
+}
+
+.footer-grid-item {
+  @apply grid w-full min-h-[2rem];
+}
+
+.footer-grid-item.footer-social {
+  @apply flex flex-col;
+  @apply place-items-center text-center;
+  background: transparent;
+
+  ul {
+    @apply flex m-0 p-0;
+  }
+
+  ul li {
+    @apply m-0 p-0;
+  }
+
+  ul li a {
+    @apply p-4;
+    &:hover {
+      color: var(--color-accent) !important;
+    }
+  }
+}

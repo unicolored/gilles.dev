@@ -1,0 +1,28 @@
+@use 'sass:color';
+
+// Variables
+@use './_gilles.styleguides.scss' as gilles;
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;700&family=Merriweather:wght@700;900&display=block');
+
+$font-family-serif: 'Merriweather', serif;
+$font-family-sans: 'Merriweather Sans', sans-serif;
+
+@function rgb-components($color) {
+  @return color.channel($color, 'red', $space: rgb), color.channel($color, 'green', $space: rgb),
+    color.channel($color, 'blue', $space: rgb);
+}
+
+$BKG: rgb-components(gilles.$white);
+$FOOTER: rgb-components(gilles.$night);
+$CONTENT: rgb-components(gilles.$night);
+$CONTENT-secondary: rgb-components(gilles.$moon);
+$PRIMARY: rgb-components(gilles.$sky);
+$ACCENT: rgb-components(gilles.$sun);
+
+$darkBKG: rgb-components(gilles.$sky);
+$darkFOOTER: rgb-components(gilles.$night);
+$darkCONTENT: rgb-components(gilles.$moonLight);
+$darkCONTENT-secondary: rgb-components(gilles.$moonLight);
+$darkPRIMARY: rgb-components(gilles.$skyLight);
+$darkACCENT: rgb-components(gilles.$sun);

@@ -1,0 +1,63 @@
+@use '../styles/mixins' as mixins;
+
+.grid {
+  & {
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: 10% 1fr 1fr 1fr 10%;
+
+    grid-template-rows: 2px 100px auto auto;
+    height: 100vh;
+    grid-template-areas:
+      'loader loader loader loader loader'
+      '. header header header .'
+      '. content content content .'
+      '. footer footer footer .';
+  }
+
+  @include mixins.media-max('tablet-down') {
+    grid-template-columns: 20px 1fr 1fr 1fr 20px;
+  }
+
+  .grid-child {
+    display: grid;
+  }
+}
+
+.grid-loader {
+  grid-column: 1;
+  grid-row: 1;
+  grid-area: loader;
+}
+
+.grid-header {
+  grid-column: -1;
+  grid-row: 2;
+  grid-area: header;
+  align-content: center;
+  align-items: stretch;
+}
+
+.grid-content {
+  & {
+    display: grid;
+    flex-grow: 1;
+    grid-column: -1;
+    grid-row: 2 / 5;
+    grid-area: content;
+
+    align-content: start;
+    align-items: stretch;
+
+    padding-bottom: 3rem;
+  }
+}
+
+.grid-footer {
+  grid-column: -1;
+  grid-area: footer;
+  @apply text-center;
+
+  align-content: center;
+  align-items: stretch;
+}

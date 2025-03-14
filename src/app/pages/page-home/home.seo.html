@@ -1,0 +1,69 @@
+<!--In this version, the <main> tag is used to wrap the main content
+of the page. Each section of the page is wrapped in a <section> tag,
+and the content within each section is wrapped in an <article> tag.
+The title of each section is marked with an <h2> tag,
+as <h1> should only be used once per page for the main title.-->
+
+<main>
+  <section class="main home">
+    <header>
+      <h1 class="text-center" i18n>Hi, I'm Gilles<br />&thickapprox; a developer</h1>
+    </header>
+    <article class="pt-6 pb-10 w-10/12 m-auto">
+      <h2>
+        <span i18n
+          >I'm a self-taught web developer and designer with a constant thirst for new technologies and design
+          trends.</span
+        >
+      </h2>
+    </article>
+  </section>
+
+  <section class="second home">
+    <div class="second-grid">
+      <div class="second-image">
+        <div class="wrap-image">
+          <gilles-nx-image src="assets/developer-stack.jpeg" alt="My developer environment"></gilles-nx-image>
+        </div>
+      </div>
+      <article class="second-content">
+        <h2 i18n>My developer toolkit</h2>
+        <p i18n>
+          Throughout my career, I've tackled every stage of web development and deployment, from brewing the coffee ☕️
+          to scaling cloud infrastructure, writing tons of code, testing it thoroughly, building containers in CI/CD
+          pipelines, and celebrating successful launches.
+        </p>
+        <p i18n>
+          <strong>Front-end</strong>: NX, Angular, NestJS, Firebase
+          <br />
+          <strong>Back-end</strong>: Symfony, Docker, MongoDB, Redis
+          <br />
+          <strong>Bonus skill</strong>: Three.js
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="third home">
+    <div class="third-grid">
+      <article class="third-content">
+        <h2 i18n>Creative media design</h2>
+        <p i18n>
+          My creative journey began with traditional drawing and sketching. Soon, I was exploring the world of computer
+          graphics, playing with photo editing and 3D modeling. Later, I honed my skills in print design and branding
+          before diving headfirst into web design. Back then, smartphones hadn't even conquered the world yet.
+        </p>
+        <p i18n>
+          <strong>My design toolbox</strong>: Photoshop, Illustrator, Figma
+          <br />
+          <strong>Bonus tools</strong>: Blender and generative AI for image creation!
+        </p>
+      </article>
+      <div class="third-image">
+        <div class="wrap-image">
+          <gilles-nx-image src="assets/creative-design.jpeg" alt="My creative space"></gilles-nx-image>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

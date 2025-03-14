@@ -1,0 +1,37 @@
+<div class="grid">
+  <div class="grid-child grid-loader">
+    <div class="loading-progress" [classList]="loading ? '' : 'd-none'">
+      <div
+        class="progress-bar"
+        role="progressbar"
+        aria-valuenow="100"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        style="width: 100%"
+      ></div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="!environment.maintenance; else maintenance">
+    <div class="grid-child grid-header">
+      <gilles-nx-header [mode]="mode"></gilles-nx-header>
+    </div>
+
+    <div class="grid-child grid-content">
+      @defer (on timer(5s); prefetch on timer(3s)) {
+        <gilles-nx-three-card></gilles-nx-three-card>
+      }
+      <router-outlet></router-outlet>
+    </div>
+
+    <div class="grid-child grid-footer">
+      <gilles-nx-footer></gilles-nx-footer>
+    </div>
+  </ng-container>
+
+  <ng-template #maintenance>
+    <div class="grid-child grid-content">
+      <h1 i18n>👉 I will be back soon!</h1>
+    </div>
+  </ng-template>
+</div>

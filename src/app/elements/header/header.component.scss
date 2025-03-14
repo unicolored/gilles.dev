@@ -1,0 +1,53 @@
+@use 'sass:color';
+
+@use 'tailwindcss';
+
+.navbar {
+  @apply fixed;
+}
+
+nav.g-navbar {
+  @apply flex justify-between relative top-0 py-[18px] z-10;
+
+  .items {
+    @apply flex justify-between items-center;
+
+    border-radius: 0.25rem;
+
+    a.item {
+      @apply uppercase;
+      display: flex;
+      cursor: pointer;
+      font-weight: 700;
+      //width: 5.125rem;
+      margin: 0;
+      padding: 0.625rem 1.5rem;
+      border-radius: 0.15rem;
+      color: var(--color-primary);
+      text-decoration: none;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &.active {
+        background: var(--color-accent);
+        color: var(--color-bkg);
+
+        &:hover {
+          background: var(--color-accent);
+          color: var(--color-bkg);
+        }
+      }
+
+      &:hover {
+        background: var(--color-primary-a5);
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  .actions {
+    @apply content-center;
+  }
+}

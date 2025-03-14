@@ -1,0 +1,19 @@
+# Add files here to ignore them from prettier formatting
+/dist
+/coverage
+/.nx/cache
+.angular
+/tmp
+_dist
+/strapi
+/prisma
+/artifacts
+/tools
+/var
+/bin
+/.yarn
+/.github
+/node_modules
+
+/.nx/workspace-data
+/libs/shared-strapi/src

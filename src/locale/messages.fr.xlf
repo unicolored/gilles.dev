@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template" target-language="fr">
+    <body>
+      <trans-unit id="1966292667679829375" datatype="html" approved="yes">
+        <source>👉 I will be back soon!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/app.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <target state="final">👉 Bientôt de retour !</target>
+      </trans-unit>
+      <trans-unit id="3492007542396725315" datatype="html" approved="yes">
+        <source>Welcome</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/elements/header/header.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <target state="final">Bienvenue</target>
+      </trans-unit>
+      <trans-unit id="1726363342938046830" datatype="html" approved="yes">
+        <source>About</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/elements/header/header.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/pages.service.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <target state="final">A propos</target>
+      </trans-unit>
+      <trans-unit id="7922989125096435449" datatype="html" approved="yes">
+        <source>Contact</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/elements/header/header.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/pages.service.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <target state="final">Contact</target>
+      </trans-unit>
+      <trans-unit id="4915431133669985304" datatype="html">
+        <source>Profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/elements/header/header.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/auth/page-profile/profile.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <target state="needs-translation">Profile</target>
+      </trans-unit>
+      <trans-unit id="2454050363478003966" datatype="html">
+        <source>Login</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/auth/page-login/login.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <target state="needs-translation">Login</target>
+      </trans-unit>
+      <trans-unit id="4200317694838753109" datatype="html">
+        <source>Welcome back</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/auth/page-login/login.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <target state="needs-translation">Welcome back</target>
+      </trans-unit>
+      <trans-unit id="5702345504554965531" datatype="html">
+        <source>Your name: ...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/auth/page-profile/profile.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <target state="needs-translation">Your name: ...</target>
+      </trans-unit>
+      <trans-unit id="3797778920049399855" datatype="html">
+        <source>Logout</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/auth/page-profile/profile.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <target state="needs-translation">Logout</target>
+      </trans-unit>
+      <trans-unit id="3301086086650990787" datatype="html">
+        <source>Register</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/auth/page-register/register.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <target state="needs-translation">Register</target>
+      </trans-unit>
+      <trans-unit id="1551488409148706419" datatype="html">
+        <source>It&apos;s free!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/auth/page-register/register.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <target state="needs-translation">It's free!</target>
+      </trans-unit>
+      <trans-unit id="8209478959457874239" datatype="html" approved="yes">
+        <source> Home sweet Home </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/not-found/not-found.component.html</context>
+          <context context-type="linenumber">8,10</context>
+        </context-group>
+        <target state="final"> Bienvenue à la maison </target>
+      </trans-unit>
+      <trans-unit id="6511775104200647352" datatype="html" approved="yes">
+        <source>Hi! Salut ! Ciao!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <target state="final">Salut ! Hi! Ciao!</target>
+      </trans-unit>
+      <trans-unit id="9136759386775687930" datatype="html" approved="yes">
+        <source>I&apos;m Gilles Hoarau</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <target state="final">Je suis Gilles Hoarau</target>
+      </trans-unit>
+      <trans-unit id="692052841128905940" datatype="html">
+        <source>For <x id="INTERPOLATION" equiv-text="{{ this.year - 2006 }}"/> years now, I&apos;ve been working on various development and graphic design projects.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <target state="translated">Depuis <x id="INTERPOLATION" equiv-text="{{ this.year - 2006 }}"/> ans, je travaille sur des projets variés de développement et de graphisme.</target>
+      </trans-unit>
+      <trans-unit id="6829938509213821395" datatype="html" approved="yes">
+        <source>From creative brainstorming to final delivery, I continue to learn every day.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <target state="final">De l'idée à la livraison finale, je continue d'apprendre chaque jour.</target>
+      </trans-unit>
+      <trans-unit id="8818154650879880977" datatype="html">
+        <source>My adventure began with writing a book to teach photo manipulation, edited by MicroApplication, sold around 20,000 copies.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <target state="translated">Mon aventure a commencé par l'écriture d'un livre dédié à la manipulation de photos, édité par Micro Application, vendu à près de 20000 exemplaires.</target>
+      </trans-unit>
+      <trans-unit id="5252241333492447339" datatype="html">
+        <source>In 2006, I co-create an advertising agency, where I used my self-taught skills professionally to produce creative media.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <target state="translated">En 2006, je m'associais à une agence de communication, où j'ai pu utiliser professionnellement mes compétences d'autodidacte pour produire des supports de communication.</target>
+      </trans-unit>
+      <trans-unit id="6591864635918168185" datatype="html">
+        <source>In 2014, I joined Groupe PSA’s Digital Factory to facilitate Innovation committees
+and develop proof of concepts on new trends:
+Internet-Of-Things, Real-time 3D, Progressive Web Apps, Chatbots &amp; Vocal Assistants.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">46,48</context>
+        </context-group>
+        <target state="translated">En 2014, j'ai intégré la Digital Factory de Groupe PSA pour animer des comités Innovation et développer des démonstrations de faisabilité sur les nouvelles tendances : Internet des Objets, 3D en temps réel, Progressive Web Apps, Chatbots &amp; Assistants vocaux.</target>
+      </trans-unit>
+      <trans-unit id="6730904730533739056" datatype="html">
+        <source>My colleagues often refer to me as a “Jack of all trades”.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+        <target state="translated">Mes collègues m'ont alors surnommé "le couteau suisse".</target>
+      </trans-unit>
+      <trans-unit id="2058820259498429672" datatype="html" approved="yes">
+        <source> From 2021 to 2023, I led the development of 2 projects for the customers of Stellantis:
+an AI-driven vehicle Search Engine and an Order Tracking module connected with the supply chain management system. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">52,55</context>
+        </context-group>
+        <target state="final"> De 2021 à 2023, j'ai supervisé le développement de 2 projets pour les clients de Stellantis :
+un moteur de recherche de véhicule propulsé par l'IA et un module de suivi de commande connecté aux systèmes de la chaîne logistique. </target>
+      </trans-unit>
+      <trans-unit id="2125315204321484253" datatype="html">
+        <source>Overall, I appreciated working with teams from around the world,
+exposing me to a wealth of different cultures and perspectives.
+The inspiring leadership I experienced pushed me to grow and develop in ways I never imagined.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">57,59</context>
+        </context-group>
+        <target state="translated">J'ai apprécié collaborer avec des équipes du monde entier,
+ce qui m'a permis de découvrir une riche diversité de cultures et de points de vue.
+Le leadership inspirant dont j'ai bénéficié m'a permis de me dépasser et de m'épanouir de manière inattendue.</target>
+      </trans-unit>
+      <trans-unit id="694047503406224806" datatype="html" approved="yes">
+        <source>Starting in 2024</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+        <target state="final">À partir de 2024</target>
+      </trans-unit>
+      <trans-unit id="9171612701962622722" datatype="html">
+        <source>I&apos;m now focusing my development efforts
+specifically on web apps that leverage cutting-edge generative AI technologies.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">65,66</context>
+        </context-group>
+        <target state="translated">Je concentre mes efforts de développement vers les applications exploitant les dernières technologies d'IA générative.</target>
+      </trans-unit>
+      <trans-unit id="8893123674393509556" datatype="html">
+        <source>I&apos;m open to discuss web development projects.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+        <target state="translated">Je suis disponible pour discuter de projets de développement web.</target>
+      </trans-unit>
+      <trans-unit id="7407525752723886434" datatype="html" approved="yes">
+        <source>Drop me a line anytime, or book a call!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+        <target state="final">Laissez-moi un message, ou appelez-moi !</target>
+      </trans-unit>
+      <trans-unit id="5242666957552704871" datatype="html" approved="yes">
+        <source>Hobbies</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">79</context>
+        </context-group>
+        <target state="final">Loisirs</target>
+      </trans-unit>
+      <trans-unit id="1922887279351091663" datatype="html">
+        <source>I like to wake up early, learn every day, and think about what makes life beautiful</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+        <target state="translated">J'apprécie me lever tôt, apprendre chaque jour, ainsi que penser à ce qui rend la vie belle</target>
+      </trans-unit>
+      <trans-unit id="2857589760681117463" datatype="html">
+        <source>Surrounded by my 4 cats and 4 chickens, I relax by learning chess (<x id="START_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;em&gt;"/>where I aim to win!<x id="CLOSE_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;/em&gt;"/>), piano (<x id="START_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;em&gt;"/>molto piano!<x id="CLOSE_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;/em&gt;"/>), and Italian (<x id="START_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;em&gt;"/>Oggi, ho voglia mangiare un gelato<x id="CLOSE_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;/em&gt;"/> 🍦).</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">83</context>
+        </context-group>
+        <target state="translated">Entouré de mes 4 chats et 4 poules, je me détends en apprenant les échecs (<x id="START_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;em&gt;"/>où je vise la victoire !<x id="CLOSE_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;/em&gt;"/>), le piano (<x id="START_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;em&gt;"/>très doucement !<x id="CLOSE_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;/em&gt;"/>), et l'italien (<x id="START_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;em&gt;"/>Oggi, ho voglia mangiare un gelato<x id="CLOSE_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;/em&gt;"/> 🍦).</target>
+      </trans-unit>
+      <trans-unit id="4387390747024662815" datatype="html" approved="yes">
+        <source>Call me</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-contact/contact.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <target state="final">Appelez-moi</target>
+      </trans-unit>
+      <trans-unit id="8066135753849350297" datatype="html" approved="yes">
+        <source>Whether you have a creative venture or an everyday challenge, I would be happy to help.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-contact/contact.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <target state="final">Que vous ayez un projet créatif ou un défi quotidien, je serai heureux de vous aider.</target>
+      </trans-unit>
+      <trans-unit id="9091061931320459036" datatype="html" approved="yes">
+        <source>Book a call</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-contact/contact.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <target state="final">Planifiez un appel</target>
+      </trans-unit>
+      <trans-unit id="4250466713587922719" datatype="html" approved="yes">
+        <source>Leave me a message</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-contact/contact.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <target state="final">Laissez-moi un message</target>
+      </trans-unit>
+      <trans-unit id="5392341774767336507" datatype="html" approved="yes">
+        <source>Copied!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-contact/contact.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <target state="final">Copié !</target>
+      </trans-unit>
+      <trans-unit id="7288900425963034249" datatype="html">
+        <source>Hi, I&apos;m Gilles<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/>≈ a developer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-home/home.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <target state="translated">Gilles Hoarau<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/>≈ développeur</target>
+      </trans-unit>
+      <trans-unit id="1835575696744542546" datatype="html">
+        <source>I&apos;m a self-taught creator of web apps, imagery, and 3D experiences</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-home/home.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <target state="translated">Je suis un autodidacte, créateur d'applications web, d'images, et d'expériences 3D</target>
+      </trans-unit>
+      <trans-unit id="7369454916237775797" datatype="html" approved="yes">
+        <source>My developer toolkit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-home/home.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <target state="final">Mon kit développeur</target>
+      </trans-unit>
+      <trans-unit id="2847015294082821940" datatype="html">
+        <source>Throughout my career, I&apos;ve tackled every stage of web development and deployment, from brewing the coffee ☕️ to scaling cloud infrastructure, writing tons of code, testing it thoroughly, building containers in CI/CD pipelines, and celebrating successful launches.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-home/home.component.html</context>
+          <context context-type="linenumber">21,23</context>
+        </context-group>
+        <target state="translated">J'ai participé à toutes les étapes de développement et de déploiement de sites web tout au long de ma carrière.
+Ce qui comprend la préparation du café ☕️, la mise à l'échelle d'infrastructures cloud, beaucoup de code et des tests.
+Mais aussi la création de conteneurs sur des chaînes CI/CD et la célébration des lancements.</target>
+      </trans-unit>
+      <trans-unit id="5951288012144559122" datatype="html">
+        <source><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Front-end<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>: NX, Angular, NestJS, Firebase <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Back-end<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>: Symfony, Docker, MongoDB, Redis <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Bonus skill<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>: Three.js</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-home/home.component.html</context>
+          <context context-type="linenumber">24,28</context>
+        </context-group>
+        <target state="translated">Front-end: NX, Angular, NestJS, Firebase<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/>
+Back-end: Symfony, Docker, MongoDB, Redis<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/>
+Bonus: ThreeJS</target>
+      </trans-unit>
+      <trans-unit id="9031316117071836831" datatype="html" approved="yes">
+        <source>Creative media design</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-home/home.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <target state="final">Création graphique</target>
+      </trans-unit>
+      <trans-unit id="4716962325568798911" datatype="html">
+        <source>My creative journey began with traditional drawing and sketching. Soon, I was exploring the world of computer graphics, playing with photo editing and 3D modeling. Later, I honed my skills in print design and branding before diving headfirst into web design. Back then, smartphones hadn&apos;t even conquered the world yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-home/home.component.html</context>
+          <context context-type="linenumber">37,40</context>
+        </context-group>
+        <target state="translated">Mon aventure créative a commencé par le dessin traditionnel.
+J'ai vite été attiré par l'infographie, la retouche photo et la modélisation 3D.
+Puis je me suis concentré sur l'imprimerie et la création d'identité visuelle avant de me spécialiser en web design.
+C'était avant que les smartphones aient conquis le monde.</target>
+      </trans-unit>
+      <trans-unit id="5781423961257293079" datatype="html">
+        <source><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>My design toolbox<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>: Photoshop, Illustrator, Figma <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Bonus tools<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>: Blender and generative AI for image creation! </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-home/home.component.html</context>
+          <context context-type="linenumber">41,44</context>
+        </context-group>
+        <target state="translated">Ma boîte à outils : Photoshop, Illustrator, Figma.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/>
+Bonus : Blender et la génération d'image avec l'IA !</target>
+      </trans-unit>
+      <trans-unit id="4513704550431982162" datatype="html" approved="yes">
+        <source>Developer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/pages.service.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+        <target state="final">Développeur</target>
+      </trans-unit>
+      <trans-unit id="1320803293401849410" datatype="html">
+        <source>Meet Gilles, a self-taught creator of web apps, imagery, and 3D experiences. Discover his developer toolkit, creative media design skills, and more.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/pages.service.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+        <target state="translated">Rencontrez Gilles, un autodidacte créant des applications web, de l'imagerie et des expériences 3D. Découvrez ses outils de développement, ses compétences en design de médias créatifs, et bien plus encore.</target>
+      </trans-unit>
+      <trans-unit id="576476034536436467" datatype="html">
+        <source>Learn more about Gilles Hoarau, a self-taught web developer and designer with over 15 years of experience. Discover his journey from writing a book on photo manipulation to developing AI-driven web apps, his work in diverse development and graphic design projects, and his hobbies.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/pages.service.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <target state="translated">Découvrez Gilles Hoarau, un autodidacte spécialisé en développement web et design, avec plus de 15 ans d'expérience. Explorez son parcours, de l'écriture d'un livre sur la manipulation d'images à la création d'applications web alimentées par l'IA, en passant par des projets variés de développement et de design graphique, et ses loisirs.</target>
+      </trans-unit>
+      <trans-unit id="7580596952434112408" datatype="html">
+        <source>Get in touch with Gilles Hoarau, a seasoned web developer and designer. Call directly, send an email, or book a call to discuss creative ventures or everyday challenges. Gilles is ready to help with your project needs.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/pages.service.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <target state="translated">Contactez Gilles Hoarau, un développeur et designer web expérimenté. Appelez-le directement, envoyez-lui un email ou planifiez un appel pour discuter de projets créatifs ou de défis quotidiens. Gilles est prêt à vous aider dans vos projets.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
