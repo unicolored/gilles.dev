@@ -7,8 +7,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class AppService {
   private readonly wordpressService = inject(WordpressService);
 
+  blogUrl = 'https://www.wrkng.io' //'https://www.gilleshoarau.com';
+
   getPortfolioPostMedias(id: number): Observable<WordpressSelfSinglePostMedia[]> {
-    return this.wordpressService.fetchSinglePostMedias(id, 'https://www.gilleshoarau.com').pipe(
+    return this.wordpressService.fetchSinglePostMedias(id, this.blogUrl).pipe(
       map((res) => {
         if (!res) {
           throw new Error(`Invalid response from the App Service`);
@@ -20,7 +22,7 @@ export class AppService {
   }
 
   getPortfolioPosts(category: string): Observable<WordpressSelfSinglePost[]> {
-    return this.wordpressService.fetchPosts({ categories: category }, 'https://www.gilleshoarau.com').pipe(
+    return this.wordpressService.fetchPosts({ categories: category }, this.blogUrl).pipe(
       shareReplay(),
       catchError((err) => {
         const error = err as HttpErrorResponse;

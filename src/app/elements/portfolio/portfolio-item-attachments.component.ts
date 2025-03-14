@@ -1,5 +1,5 @@
 import { Component, computed, effect, inject, input, signal, Signal, ViewEncapsulation } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { PortfolioHit } from '../../services/search.interface';
 import { extractText } from '../../app.helpers';
 import { CarouselItem } from '../../services/carousel.interface';

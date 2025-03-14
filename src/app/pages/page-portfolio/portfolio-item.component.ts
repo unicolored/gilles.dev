@@ -1,8 +1,15 @@
-import { Component, computed, input, signal, Signal, ViewEncapsulation } from '@angular/core';
+import { Component, computed, input,
+  inject, signal, Signal, viewChild, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PortfolioHit } from '../../services/search.interface';
 import { CarouselItem } from '../../services/carousel.interface';
+import { ActivatedRoute } from '@angular/router';
 import { PortfolioItemAttachmentsComponent } from '../../elements/portfolio/portfolio-item-attachments.component';
+import { PageIdSlugEnum } from '../../app.global';
+import { Hit } from 'instantsearch.js/es/types/results';
+import { ModalComponent } from '../../elements/modal/modal.component';
+import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'gilles-nx-portfolio-item',
@@ -22,6 +29,16 @@ import { PortfolioItemAttachmentsComponent } from '../../elements/portfolio/port
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioItemComponent {
+  pageId = PageIdSlugEnum.portfolio;
+
+  private readonly route = inject(ActivatedRoute);
+  private readonly webPageService = inject(WebPageService);
+  private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
+
+  carouselModal: Signal<ModalComponent | undefined> = viewChild('#carouselModal');
+
+  portfolioHits = signal<Hit<PortfolioHit>[]>([]);
+
   category = signal<string | null>(null);
   categoryComputed = computed(() => {
     if (this.category() === 'web') {
@@ -80,27 +97,27 @@ export class PortfolioItemComponent {
     return carouselItems;
   });
 
-  // ngOnInit() {
-  //   if (this.webPageMetasMap.has(this.pageId)) {
-  //     this.webPageService.setMetas(this.webPageMetasMap.get(this.pageId), environment.endpoints?.['_self']);
-  //   }
-  //
-  //   const paramCategory = this.route.snapshot.paramMap.get('category');
-  //   const paramObjectId = this.route.snapshot.paramMap.get('objectId');
-  //   console.log('paramMap', paramCategory, paramObjectId);
-  //   this.category.set(paramCategory);
-  //
-  //   if (paramObjectId) {
-  //     this.objectId.set(paramObjectId);
-  //   }
-  //
-  //   this.route.paramMap.subscribe(() => {
-  //     // const paramCategory = params.get('category');
-  //     // const paramItem = params.get('item');
-  //
-  //     this.searchService.requests(this.facetFilter(), this.objectId()).then((res) => {
-  //       this.items.set(res.results[0].hits as Hit<PortfolioHit>[]);
-  //     });
-  //   });
-  // }
+  ngOnInit() {
+    if (this.webPageMetasMap.has(this.pageId)) {
+      this.webPageService.setMetas(this.webPageMetasMap.get(this.pageId), environment.endpoints?.['_self']);
+    }
+
+    const paramCategory = this.route.snapshot.paramMap.get('category');
+    const paramObjectId = this.route.snapshot.paramMap.get('objectId');
+    console.log('paramMap', paramCategory, paramObjectId);
+    this.category.set(paramCategory);
+
+    if (paramObjectId) {
+      this.objectId.set(paramObjectId);
+    }
+
+    // this.route.paramMap.subscribe(() => {
+    //   // const paramCategory = params.get('category');
+    //   // const paramItem = params.get('item');
+    //
+    //   this.searchService.requests(this.facetFilter(), this.objectId()).then((res) => {
+    //     this.items.set(res.results[0].hits as Hit<PortfolioHit>[]);
+    //   });
+    // });
+  }
 }

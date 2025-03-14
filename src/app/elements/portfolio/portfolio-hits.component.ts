@@ -4,11 +4,12 @@ import { PortfolioHit } from '../../services/search.interface';
 import { ModalComponent } from '../modal/modal.component';
 import { CarouselItem } from '../../services/carousel.interface';
 import { extractText } from '../../app.helpers';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'gilles-nx-portfolio-hits',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage, ModalComponent],
+  imports: [CommonModule, NgOptimizedImage, ModalComponent, RouterLink],
   template: `
     @if (title() || subtitle()) {
       <article class="prose mb-6">
@@ -28,7 +29,8 @@ import { extractText } from '../../app.helpers';
     @defer (on viewport; prefetch on timer(1s)) {
       <div class="portfolio-items">
         @for (item of itemsComputed(); track item.objectID) {
-          <div class="portfolio-item" (click)="carouselModal.showItem($index)">
+          <!--<div class="portfolio-item" (click)="carouselModal.showItem($index)">-->
+          <div class="portfolio-item" [routerLink]="['portfolio','item',item.objectID]">
             <img
               *ngIf="item.images.thumbnail?.url"
               [ngSrc]="item.images.thumbnail.url"
