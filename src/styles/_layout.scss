@@ -1,0 +1,134 @@
+@use 'sass:meta';
+@use 'sass:color';
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import 'libs/styleguides/src/lib/colors/_gilles.styleguides.scss';
+@import 'mixins';
+@import 'variables';
+//@use url('https://fonts.googleapis.com/css2?family=Smooch&display=swap');
+
+html {
+  --color-white: rgba(#{$white});
+  --color-black: rgba(#{$black});
+  --font-family-serif: #{meta.inspect($font-family-serif)};
+  --font-family-sans: #{meta.inspect($font-family-sans)};
+
+  &.light {
+    // MODE LIGHT
+    --color-bkg: rgb(#{$BKG});
+    --b1: var(--color-bkg);
+    --color-bkg-a50: rgba(#{$BKG}, 0.5);
+    --color-bkg-a75: rgba(#{$BKG}, 0.75);
+    --color-bkg-footer: rgba(#{$FOOTER});
+    --color-content: rgba(#{$CONTENT});
+    --color-content-secondary: rgba(#{$CONTENT-secondary});
+    --color-primary: rgba(#{$PRIMARY});
+    --color-primary-a5: rgba(#{$PRIMARY}, 0.05);
+    --color-accent: rgba(#{$ACCENT});
+  }
+  &.dark {
+    // MODE DARK
+    --color-bkg: rgb(#{$darkBKG});
+    --b1: rgba(#{$darkBKG});
+    --color-bkg-a50: rgba(#{$darkBKG}, 0.5);
+    --color-bkg-a75: rgba(#{$darkBKG}, 0.75);
+    --color-bkg-footer: rgba(#{$darkFOOTER});
+    --color-content: rgba(#{$darkCONTENT});
+    --color-content-secondary: rgba(#{$darkCONTENT-secondary});
+    --color-primary: rgba(#{$darkPRIMARY});
+    --color-primary-a5: rgba(#{$darkPRIMARY}, 0.05);
+    --color-accent: rgba(#{$darkACCENT});
+  }
+}
+
+body {
+  cursor: default;
+
+  font-family: var(--font-family-sans);
+
+  background: var(--color-bkg);
+  color: var(--color-content);
+  font-size: 1rem;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-family-serif);
+  font-weight: 900;
+  color: var(--color-primary);
+  font-style: normal;
+  //font-size: 3.3rem;
+  //line-height: 1.25;
+  //opacity: .9;
+}
+
+h2 {
+  //font-size: 1.5rem;
+}
+
+h3 {
+  //font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1em;
+
+  //line-height: 1.5;
+}
+
+h4 {
+  font-family: var(--font-family-sans);
+  //font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  //line-height: 1.5;
+}
+
+p {
+  margin-bottom: 1.4rem;
+  //line-height: 1.7rem;
+}
+
+small {
+  color: var(--color-content-secondary);
+}
+
+a {
+  text-decoration: underline;
+}
+
+.page-prose {
+  @apply prose max-w-none;
+  @apply prose-solar;
+  @apply dark:prose-invert;
+
+  z-index: 0;
+
+  @apply prose-headings:max-w-none;
+  @apply prose-h1:text-4xl;
+  @apply prose-h2:text-2xl;
+  @apply prose-h3:text-xl;
+  @apply prose-h4:text-lg;
+  @apply prose-h5:text-lg;
+  @apply prose-h6:text-base;
+
+  @apply prose-p:text-base;
+
+  @include media-min('desktop-up') {
+    @apply prose-headings:max-w-none;
+    @apply prose-h1:text-5xl;
+    @apply prose-h2:text-3xl;
+    @apply prose-h3:text-2xl;
+    @apply prose-h4:text-lg;
+    @apply prose-h5:text-lg;
+    @apply prose-h6:text-base;
+  }
+}
+
+a {
+  .ng-fa-icon {
+    margin: 0 0.2rem;
+  }
+}

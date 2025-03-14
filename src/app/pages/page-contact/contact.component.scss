@@ -1,0 +1,91 @@
+@use '../../../styles/variables' as *;
+
+section.main.contact {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  grid-template-areas:
+    'title'
+    'content';
+
+  .hero-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 120px;
+    padding-top: 60px;
+    grid-area: title;
+  }
+
+  .content {
+    text-align: center;
+    grid-area: content;
+  }
+}
+
+.myEmail {
+  position: relative;
+}
+
+.myPhone a,
+.myEmail a {
+  cursor: pointer;
+  border: 1px solid var(--color-primary);
+  background: var(--color-bkg);
+  //background:none;
+  color: var(--color-primary) !important;
+  //background: rgba(255, 255, 255, 0.5);
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  width: 100%;
+  margin: 0 auto 2rem;
+  border-radius: 33px;
+  position: relative;
+  z-index: 0;
+  text-align: left;
+  text-decoration: none !important;
+  font-size: 1.4rem;
+
+  &:hover {
+    border: 1px solid var(--color-accent);
+    .highlight {
+      color: var(--color-accent) !important;
+    }
+  }
+
+  &:active {
+    border: 1px solid $green;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.copy-success-tooltip {
+  z-index: 0;
+  position: absolute;
+  top: -1.5em;
+  left: 0;
+  font-size: 0.8em;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  width: 100%;
+  opacity: 0;
+  color: var(--color-accent) !important;
+
+  &.show {
+    animation: fadeOut 1000ms ease-in;
+  }
+}

@@ -1,0 +1,96 @@
+<!--In this version, the <main> tag is used to wrap the main content
+of the page. Each section of the page is wrapped in a <section> tag,
+and the content within each section is wrapped in an <article> tag.
+The title of each section is marked with an <h2> tag,
+as <h1> should only be used once per page for the main title.
+The <aside> tag is used for content that is related to the main content
+but can be read separately, such as a sidebar.-->
+
+<main>
+  <section class="main about">
+    <header>
+      <h1 class="text-left" i18n>Hi! Salut ! Ciao!</h1>
+      <h2 class="text-left" i18n>I'm Gilles Hoarau</h2>
+    </header>
+  </section>
+
+  <section class="second about text-left">
+    <article class="presentation">
+      <div class="pt-6 pb-0">
+        <p><span i18n>I like to wake up early, learn every day, and think about what makes life beautiful ☀️</span></p>
+        <h3 i18n>
+          In the past 15 years, I've worked on a diverse array of development and graphic design projects, covering
+          everything from creative brainstorming to final delivery.
+        </h3>
+      </div>
+    </article>
+    <aside class="sidebar">
+      <div class="pt-6 pb-10 avatar-wrapper">
+        <div class="wrap-image">
+          <gilles-nx-image src="assets/photo.png" alt="Me, in photo"></gilles-nx-image>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="third about text-left">
+    <article class="pt-2 pb-5">
+      <p>
+        <span i18n>My adventure began with writing a book to teach photo manipulation.</span>
+      </p>
+      <p>
+        <span i18n>In 2014, I joined Groupe PSA’s Digital Factory to facilitate tech scouting committees </span>
+      </p>
+      <p><span i18n> From 2021 to 2023, I led the development of 2 projects for the customers of Stellantis: </span></p>
+      <p>
+        <span i18n>Overall, I appreciated working with teams from around the world, </span>
+      </p>
+    </article>
+    <article class="pt-6 pb-0">
+      <h3 i18n>What's next?</h3>
+      <p>
+        <span i18n>Starting in 2024, I'm now focusing my development efforts </span>
+      </p>
+      <p>
+        <span i18n>While I'm open to listening to exciting opportunities, </span>
+      </p>
+      <p>
+        <span i18n><a routerLink="/contact">Drop me a line</a> if you have any questions or ideas.</span>
+      </p>
+    </article>
+  </section>
+
+  <section class="about photos text-left">
+    <article class="pt-6 pb-0">
+      <h3 i18n>Hobbies</h3>
+      <p>
+        <span i18n
+          >Surrounded by my 4 cats and 4 chickens, my moments of relaxation are dedicated to playing chess (where I aim
+          to win!), playing the piano, and learning Italian for my next vacation.</span
+        >
+      </p>
+    </article>
+    <div class="photos-grid">
+      <div class="photo portrait">
+        <figure>
+          <figcaption></figcaption>
+        </figure>
+      </div>
+      <div class="photo square1">
+        <figure>
+          <figcaption></figcaption>
+        </figure>
+      </div>
+      <div class="photo square2">
+        <figure>
+          <figcaption></figcaption>
+        </figure>
+      </div>
+      <div class="photo landscape">
+        <figure>
+          <figcaption></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+</main>

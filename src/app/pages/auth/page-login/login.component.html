@@ -1,0 +1,46 @@
+<main class="page-prose">
+  <div class="hero">
+    <div class="hero-content flex-col lg:flex-row-reverse">
+      <div class="text-center lg:text-left">
+        <h1 class="text-5xl font-bold" i18n>Login</h1>
+        <p class="py-6"><span i18n>Welcome back</span></p>
+      </div>
+      <div class="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <form class="card-body" (submit)="login()" [formGroup]="loginForm">
+          <div class="form-control">
+            <label class="input input-bordered flex items-center gap-2">
+              <fa-icon [icon]="['fas', 'envelope']" [fixedWidth]="true"></fa-icon>
+              <input type="text" class="grow border-0" placeholder="Email" formControlName="email" />
+            </label>
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Password</span>
+            </label>
+            <input
+              type="password"
+              placeholder="password"
+              class="input input-bordered"
+              formControlName="password"
+              required
+            />
+            <label class="label">
+              <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
+            </label>
+          </div>
+          <div class="form-control mt-6">
+            <button class="btn btn-primary">Login</button>
+          </div>
+          <div *ngIf="errorMessage" class="error-message">
+            <hr />
+            {{ errorMessage }}
+          </div>
+          <hr />
+          <button class="btn btn-primary" (click)="signInWithGoogle()">Sign with Google</button>
+          <br />
+          <a [routerLink]="'/auth/register'">Register</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>

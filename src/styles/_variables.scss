@@ -1,0 +1,23 @@
+@use 'sass:color';
+
+// Variables
+@import 'libs/styleguides/src/lib/colors/_gilles.styleguides.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;700&family=Merriweather:wght@700;900&display=block');
+
+$font-family-serif: 'Merriweather', serif;
+$font-family-sans: 'Merriweather Sans', sans-serif;
+
+$BKG: red($white), green($white), blue($white);
+$FOOTER: red($night), green($night), blue($night);
+$CONTENT: red($night), green($night), blue($night);
+$CONTENT-secondary: red($moon), green($moon), blue($moon);
+$PRIMARY: red($sky), green($sky), blue($sky);
+$ACCENT: red($sun), green($sun), blue($sun);
+
+$darkBKG: red($sky), green($sky), blue($sky);
+$darkFOOTER: red($night), green($night), blue($night);
+$darkCONTENT: red($moonLight), green($moonLight), blue($moonLight);
+$darkCONTENT-secondary: red($moonLight), green($moonLight), blue($moonLight);
+$darkPRIMARY: red($skyLight), green($skyLight), blue($skyLight);
+$darkACCENT: red($sun), green($sun), blue($sun);

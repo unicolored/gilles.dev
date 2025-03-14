@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- English Home Page -->
+  <url>
+    <loc>https://www.gilles.dev/en/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gilles.dev/fr/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gilles.dev/en/" />
+    <lastmod>2025-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- French Home Page -->
+  <url>
+    <loc>https://www.gilles.dev/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gilles.dev/en/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gilles.dev/fr/" />
+    <lastmod>2025-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- English About Page -->
+  <url>
+    <loc>https://www.gilles.dev/en/about</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gilles.dev/fr/about/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gilles.dev/en/about" />
+    <lastmod>2025-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- French About Page -->
+  <url>
+    <loc>https://www.gilles.dev/fr/about/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gilles.dev/en/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gilles.dev/fr/about/" />
+    <lastmod>2025-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- English Contact Page -->
+  <url>
+    <loc>https://www.gilles.dev/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gilles.dev/fr/contact/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gilles.dev/en/contact" />
+    <lastmod>2025-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- French Contact Page -->
+  <url>
+    <loc>https://www.gilles.dev/fr/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gilles.dev/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gilles.dev/fr/contact/" />
+    <lastmod>2025-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
