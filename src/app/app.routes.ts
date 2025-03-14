@@ -44,6 +44,7 @@ export const appRoutes: Route[] = [
     RouterModule.forRoot(appRoutes, {
       initialNavigation: 'enabledBlocking',
       onSameUrlNavigation: 'ignore',
+      enableViewTransitions: true,
     }),
   ],
   exports: [RouterModule],

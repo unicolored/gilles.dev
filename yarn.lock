@@ -693,20 +693,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/youtube-player@npm:^19.2.3":
-  version: 19.2.3
-  resolution: "@angular/youtube-player@npm:19.2.3"
-  dependencies:
-    "@types/youtube": "npm:^0.1.0"
-    tslib: "npm:^2.3.0"
-  peerDependencies:
-    "@angular/common": ^19.0.0 || ^20.0.0
-    "@angular/core": ^19.0.0 || ^20.0.0
-    rxjs: ^6.5.3 || ^7.4.0
-  checksum: 10c0/f208880a1bc17fef473f0399a565c5a9d0e97f1d51a40dd7c8e84b716b699ece45ec46a48aa48ae9bcd29580a83f6dd80c1471256b4f4c6804ee9a7cba14e39e
-  languageName: node
-  linkType: hard
-
 "@babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.26.2":
   version: 7.26.2
   resolution: "@babel/code-frame@npm:7.26.2"
@@ -2904,22 +2890,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ng-bootstrap/ng-bootstrap@npm:^18.0.0":
-  version: 18.0.0
-  resolution: "@ng-bootstrap/ng-bootstrap@npm:18.0.0"
-  dependencies:
-    tslib: "npm:^2.3.0"
-  peerDependencies:
-    "@angular/common": ^19.0.0
-    "@angular/core": ^19.0.0
-    "@angular/forms": ^19.0.0
-    "@angular/localize": ^19.0.0
-    "@popperjs/core": ^2.11.8
-    rxjs: ^6.5.3 || ^7.4.0
-  checksum: 10c0/289b6793116a69422b72d64950315f987db1f3e5b0059655853176cb2970748c9c4b575cc8856fee5acf6446372d52fbfa8fc928c98d5258c7515d3ee4503451
-  languageName: node
-  linkType: hard
-
 "@ngtools/webpack@npm:19.2.3":
   version: 19.2.3
   resolution: "@ngtools/webpack@npm:19.2.3"
@@ -3208,13 +3178,6 @@ __metadata:
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
   checksum: 10c0/5bd7576bb1b38a47a7fc7b51ac9f38748e772beebc56200450c4a817d712232b8f1d3ef70532c80840243c657d491cf6a6be1e3a214cff907645819fdc34aadd
-  languageName: node
-  linkType: hard
-
-"@popperjs/core@npm:^2.9.2":
-  version: 2.11.8
-  resolution: "@popperjs/core@npm:2.11.8"
-  checksum: 10c0/4681e682abc006d25eb380d0cf3efc7557043f53b6aea7a5057d0d1e7df849a00e281cd8ea79c902a35a414d7919621fc2ba293ecec05f413598e0b23d5a1e63
   languageName: node
   linkType: hard
 
@@ -3840,15 +3803,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/bootstrap@npm:^5":
-  version: 5.2.10
-  resolution: "@types/bootstrap@npm:5.2.10"
-  dependencies:
-    "@popperjs/core": "npm:^2.9.2"
-  checksum: 10c0/3e978855eb780df3907e8fe991371dc661c7a8c5b9852a10e33bcf6a909bc1481857aa8786d18b3aa828fb28660145fda0c8648265719e8a97a448b9f0158eae
-  languageName: node
-  linkType: hard
-
 "@types/connect-history-api-fallback@npm:^1.5.4":
   version: 1.5.4
   resolution: "@types/connect-history-api-fallback@npm:1.5.4"
@@ -4163,13 +4117,6 @@ __metadata:
   dependencies:
     "@types/node": "npm:*"
   checksum: 10c0/a56d2e0d1da7411a1f3548ce02b51a50cbe9e23f025677d03df48f87e4a3c72e1342fbf1d12e487d7eafa8dc670c605152b61bbf9165891ec0e9694b0d3ea8d4
-  languageName: node
-  linkType: hard
-
-"@types/youtube@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "@types/youtube@npm:0.1.0"
-  checksum: 10c0/2629187927d26699da6f9499cc73bb70fc3ccf8075c8428ca801a062e64c31d50b3baf188ef8514e294ca15455ee2e06903425535475eb0cb106a36a19a08aaf
   languageName: node
   linkType: hard
 
@@ -4980,15 +4927,6 @@ __metadata:
   version: 1.0.0
   resolution: "boolbase@npm:1.0.0"
   checksum: 10c0/e4b53deb4f2b85c52be0e21a273f2045c7b6a6ea002b0e139c744cb6f95e9ec044439a52883b0d74dedd1ff3da55ed140cfdddfed7fb0cccbed373de5dce1bcf
-  languageName: node
-  linkType: hard
-
-"bootstrap@npm:^5.3.3":
-  version: 5.3.3
-  resolution: "bootstrap@npm:5.3.3"
-  peerDependencies:
-    "@popperjs/core": ^2.11.8
-  checksum: 10c0/bb68ca7b763977b9cce40cb5b8c676ae19a716d2f5d15009fa7bdbcec9dea426968e3cb748fbed7592fbf10edd7c749aea841c2920996a7c1aa5e0a6e2d4c2ad
   languageName: node
   linkType: hard
 
@@ -6673,7 +6611,6 @@ __metadata:
     "@angular/platform-server": "npm:^19.2.0"
     "@angular/router": "npm:^19.2.0"
     "@angular/ssr": "npm:^19.2.2"
-    "@angular/youtube-player": "npm:^19.2.3"
     "@cloudinary/ng": "npm:^2.1.2"
     "@cloudinary/url-gen": "npm:^1.21.0"
     "@eslint/js": "npm:^9.22.0"
@@ -6684,16 +6621,13 @@ __metadata:
     "@fortawesome/free-solid-svg-icons": "npm:^6.7.1"
     "@fortawesome/sharp-duotone-solid-svg-icons": "npm:^6.7.1"
     "@fortawesome/sharp-duotone-thin-svg-icons": "npm:^6.7.2"
-    "@ng-bootstrap/ng-bootstrap": "npm:^18.0.0"
     "@tailwindcss/postcss": "npm:^4.0.14"
-    "@types/bootstrap": "npm:^5"
     "@types/express": "npm:^4.17.17"
     "@types/jasmine": "npm:~5.1.0"
     "@types/node": "npm:^18.18.0"
     "@types/three": "npm:^0"
     algoliasearch: "npm:^5.21.0"
     angular-eslint: "npm:19.2.1"
-    bootstrap: "npm:^5.3.3"
     eslint: "npm:^9.22.0"
     express: "npm:^4.18.2"
     globals: "npm:^16.0.0"
@@ -6704,7 +6638,6 @@ __metadata:
     karma-coverage: "npm:~2.2.0"
     karma-jasmine: "npm:~5.1.0"
     karma-jasmine-html-reporter: "npm:~2.1.0"
-    meilisearch: "npm:^0.49.0"
     ng-packagr: "npm:^19.2.0"
     rxjs: "npm:~7.8.0"
     schema-dts: "npm:^1.1.5"
@@ -8220,13 +8153,6 @@ __metadata:
   version: 0.3.0
   resolution: "media-typer@npm:0.3.0"
   checksum: 10c0/d160f31246907e79fed398470285f21bafb45a62869dc469b1c8877f3f064f5eabc4bcc122f9479b8b605bc5c76187d7871cf84c4ee3ecd3e487da1993279928
-  languageName: node
-  linkType: hard
-
-"meilisearch@npm:^0.49.0":
-  version: 0.49.0
-  resolution: "meilisearch@npm:0.49.0"
-  checksum: 10c0/54d49e12e5f1c13464cf1cf2489749ce817ac0aeafafd2e51ccf171dcf003a63aca018d02668a01c1c42090908e442248999347a13f9fdb96032c5f2dd28e118
   languageName: node
   linkType: hard
 

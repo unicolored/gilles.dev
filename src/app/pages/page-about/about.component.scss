@@ -1,21 +1,21 @@
-@use 'sass:meta';
-@use 'sass:color';
-@use '../../../styles/variables';
-@use '../../../styles/mixins' as *;
-@use '../../../styles/layout';
+//@use 'sass:meta';
+//@use 'sass:color';
+//@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as mixins;
+//@use '../../../styles/layout';
 
-@import 'tailwindcss';
+@use 'tailwindcss';
 
 // Grid of three columns width
 main.about--container {
   @apply grid gap-20;
 
-  @include media-min('tablet-down') {
+  @include mixins.media-min('tablet-down') {
     grid-template-columns: 6fr 3fr;
     grid-template-areas: 'presentation  sidebar';
   }
 
-  @include media-max('tablet-down') {
+  @include mixins.media-max('tablet-down') {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
     grid-template-areas:
@@ -30,7 +30,6 @@ main.about--container {
     grid-area: sidebar;
     justify-items: start;
     align-content: start;
-
   }
 
   // Two columns width

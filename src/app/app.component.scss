@@ -1,7 +1,4 @@
-@use 'sass:meta';
-@use 'sass:color';
-
-@import '../styles/layout';
+@use '../styles/mixins' as mixins;
 
 .grid {
   & {
@@ -18,7 +15,7 @@
       '. footer footer footer .';
   }
 
-  @include media-max('tablet-down') {
+  @include mixins.media-max('tablet-down') {
     grid-template-columns: 20px 1fr 1fr 1fr 20px;
   }
 

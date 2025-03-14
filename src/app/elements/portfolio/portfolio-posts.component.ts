@@ -1,14 +1,12 @@
 import { Component, computed, input, ViewEncapsulation } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { WordpressSelfSinglePost } from 'js-interface';
-import { CarouselLightboxComponent } from '../carousel/carousel-lightbox.component';
+import { WordpressSelfSinglePost } from 'ngx-services';
 
 @Component({
   selector: 'gilles-nx-portfolio-items',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage, CarouselLightboxComponent],
+  imports: [CommonModule, NgOptimizedImage],
   template: `
-    <!--      @defer (on timer(1s); prefetch on viewport) {-->
     @defer (on viewport; prefetch on idle) {
       <div class="portfolio-items">
         @for (item of itemsComputed(); track item.slug) {
@@ -21,8 +19,6 @@ import { CarouselLightboxComponent } from '../carousel/carousel-lightbox.compone
           }
         }
       </div>
-
-      <gilles-nx-carousel-lightbox [items]="itemsCarousel()"></gilles-nx-carousel-lightbox>
     } @placeholder (minimum 1s) {
       <div class="portfolio-items">
         @for (i of [1, 2, 3, 4, 5, 6]; track i) {
@@ -62,13 +58,6 @@ export class PortfolioPostsComponent {
       return item;
     }),
   );
-  itemsCarousel = computed(() => {
-    const carouselItems: { id: number; image: string }[] = [];
-    this.itemsComputed().forEach((c) => {
-      carouselItems.push({ id: c.id, image: c._embedded['wp:featuredmedia'][0].media_details.sizes.full.file });
-    });
-    return carouselItems;
-  });
 
   extractText(inputUrl: string): string | null {
     // const match = inputUrl.match(/^[^-]+(?:-[^-]+)*?(?=-\d+x\d+\.[a-z]{3,4}$)/i);

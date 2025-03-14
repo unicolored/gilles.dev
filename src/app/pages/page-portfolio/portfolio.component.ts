@@ -1,21 +1,9 @@
-import {
-  Component,
-  computed,
-  inject,
-  input,
-  OnInit,
-  signal,
-  Signal,
-  viewChild,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, computed, inject, input, OnInit, signal, ViewEncapsulation } from '@angular/core';
 import { PortfolioHit } from '../../services/search.interface';
-import { CarouselItem } from '../../services/carousel.interface';
 import { PageIdSlugEnum } from '../../app.global';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
 import { Hit } from 'instantsearch.js/es/types/results';
-import { ModalComponent } from '../../elements/modal/modal.component';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SharedNgComponentsModule } from '../shared-ng-components.module';
@@ -25,8 +13,6 @@ import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.
   standalone: true,
   imports: [CommonModule, RouterModule, SharedNgComponentsModule, PortfolioHitsComponent],
   template: `
-    <!--<gilles-nx-modal #carouselModal [opened]="true" [title]="title()" [name]="name()" [items]="itemsCarousel()"></gilles-nx-modal>-->
-
     <main class="page-prose">
       <div class="hero pt-8 pb-4">
         <div class="hero-content text-left w-full">
@@ -60,8 +46,6 @@ export class PortfolioComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
-
-  carouselModal: Signal<ModalComponent | undefined> = viewChild('#carouselModal');
 
   portfolioHits = signal<Hit<PortfolioHit>[]>([]);
 
@@ -97,21 +81,6 @@ export class PortfolioComponent implements OnInit {
       return item.images.thumbnail?.url;
     }),
   );
-  itemsCarousel: Signal<CarouselItem[]> = computed(() => {
-    const carouselItems: CarouselItem[] = [];
-    this.itemsComputed().forEach((c) => {
-      if (c.images.full?.url) {
-        carouselItems.push({
-          objectID: c.objectID,
-          id: c.post_id,
-          image: c.images.full.url,
-          title: c.post_title,
-          subtitle: c.taxonomies.post_tag?.join(', ') ?? '',
-        });
-      }
-    });
-    return carouselItems;
-  });
 
   ngOnInit() {
     if (this.webPageMetasMap.has(this.pageId)) {

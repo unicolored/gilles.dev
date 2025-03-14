@@ -1,15 +1,13 @@
-import { Component, computed, input, Signal, ViewEncapsulation } from '@angular/core';
+import { Component, computed, input, ViewEncapsulation } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { PortfolioHit } from '../../services/search.interface';
-import { ModalComponent } from '../modal/modal.component';
-import { CarouselItem } from '../../services/carousel.interface';
 import { extractText } from '../../app.helpers';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'gilles-nx-portfolio-hits',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage, ModalComponent, RouterLink],
+  imports: [CommonModule, NgOptimizedImage, RouterLink],
   template: `
     @if (title() || subtitle()) {
       <article class="prose mb-6">
@@ -29,8 +27,7 @@ import { RouterLink } from '@angular/router';
     @defer (on viewport; prefetch on timer(1s)) {
       <div class="portfolio-items">
         @for (item of itemsComputed(); track item.objectID) {
-          <!--<div class="portfolio-item" (click)="carouselModal.showItem($index)">-->
-          <div class="portfolio-item" [routerLink]="['portfolio','item',item.objectID]">
+          <div class="portfolio-item" [routerLink]="['portfolio', 'item', item.objectID]">
             <img
               *ngIf="item.images.thumbnail?.url"
               [ngSrc]="item.images.thumbnail.url"
@@ -62,14 +59,6 @@ import { RouterLink } from '@angular/router';
         }
       </div>
     }
-
-    <gilles-nx-modal
-      #carouselModal
-      [title]="title()"
-      [name]="name()"
-      [items]="itemsCarousel()"
-      [opened]="isOpen()"
-    ></gilles-nx-modal>
   `,
   styleUrls: ['./portfolio.component.scss'],
   encapsulation: ViewEncapsulation.None,
@@ -122,23 +111,4 @@ export class PortfolioHitsComponent {
       return item;
     }),
   );
-  itemsCarousel: Signal<CarouselItem[]> = computed(() => {
-    const carouselItems: CarouselItem[] = [];
-    this.itemsComputed().forEach((c) => {
-      if (c.images.full?.url) {
-        carouselItems.push({
-          objectID: c.objectID,
-          id: c.post_id,
-          image: c.images.full.url,
-          title: c.post_title,
-          subtitle: c.taxonomies.post_tag?.join(', ') ?? '',
-        });
-      }
-    });
-    return carouselItems;
-  });
-
-  isOpen() {
-    return this.itemId() !== null;
-  }
 }

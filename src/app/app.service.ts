@@ -7,7 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class AppService {
   private readonly wordpressService = inject(WordpressService);
 
-  blogUrl = 'https://www.wrkng.io' //'https://www.gilleshoarau.com';
+  blogUrl = 'https://www.wrkng.io'; //'https://www.gilleshoarau.com';
 
   getPortfolioPostMedias(id: number): Observable<WordpressSelfSinglePostMedia[]> {
     return this.wordpressService.fetchSinglePostMedias(id, this.blogUrl).pipe(

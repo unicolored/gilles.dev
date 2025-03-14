@@ -1,9 +1,7 @@
-import { Component, computed, effect, inject, input, signal, Signal, ViewEncapsulation } from '@angular/core';
+import { Component, computed, effect, inject, input, signal, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PortfolioHit } from '../../services/search.interface';
 import { extractText } from '../../app.helpers';
-import { CarouselItem } from '../../services/carousel.interface';
-import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { lastValueFrom } from 'rxjs';
 import { AppService } from '../../app.service';
 import { WordpressSelfSinglePostMedia, WordpressService } from 'ngx-services';
@@ -11,7 +9,7 @@ import { WordpressSelfSinglePostMedia, WordpressService } from 'ngx-services';
 @Component({
   selector: 'gilles-nx-portfolio-item-attachments',
   imports: [CommonModule],
-  providers: [NgbModal, NgbModalConfig, AppService, WordpressService],
+  providers: [AppService, WordpressService],
   template: `
     @if (title() || subtitle()) {
       <article class="prose mb-6">
@@ -92,21 +90,6 @@ export class PortfolioItemAttachmentsComponent {
       return item;
     }),
   );
-  itemsCarousel: Signal<CarouselItem[]> = computed(() => {
-    const carouselItems: CarouselItem[] = [];
-    this.itemsComputed().forEach((c) => {
-      if (c.images.full?.url) {
-        carouselItems.push({
-          objectID: c.objectID,
-          id: c.post_id,
-          image: c.images.full.url,
-          title: c.post_title,
-          subtitle: c.taxonomies.post_tag?.join(', ') ?? '',
-        });
-      }
-    });
-    return carouselItems;
-  });
 
   attachments = signal<WordpressSelfSinglePostMedia[]>([]);
 

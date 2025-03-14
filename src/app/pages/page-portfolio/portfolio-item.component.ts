@@ -1,13 +1,10 @@
-import { Component, computed, input,
-  inject, signal, Signal, viewChild, ViewEncapsulation } from '@angular/core';
+import { Component, computed, input, inject, signal, ViewEncapsulation, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PortfolioHit } from '../../services/search.interface';
-import { CarouselItem } from '../../services/carousel.interface';
 import { ActivatedRoute } from '@angular/router';
 import { PortfolioItemAttachmentsComponent } from '../../elements/portfolio/portfolio-item-attachments.component';
 import { PageIdSlugEnum } from '../../app.global';
 import { Hit } from 'instantsearch.js/es/types/results';
-import { ModalComponent } from '../../elements/modal/modal.component';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
 
@@ -28,14 +25,12 @@ import { environment } from '../../../environments/environment';
   styleUrls: [],
   encapsulation: ViewEncapsulation.None,
 })
-export class PortfolioItemComponent {
+export class PortfolioItemComponent implements OnInit {
   pageId = PageIdSlugEnum.portfolio;
 
   private readonly route = inject(ActivatedRoute);
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
-
-  carouselModal: Signal<ModalComponent | undefined> = viewChild('#carouselModal');
 
   portfolioHits = signal<Hit<PortfolioHit>[]>([]);
 
@@ -81,21 +76,6 @@ export class PortfolioItemComponent {
       return item.images.thumbnail?.url;
     }),
   );
-  itemsCarousel: Signal<CarouselItem[]> = computed(() => {
-    const carouselItems: CarouselItem[] = [];
-    this.itemsComputed().forEach((c) => {
-      if (c.images.full?.url) {
-        carouselItems.push({
-          objectID: c.objectID,
-          id: c.post_id,
-          image: c.images.full.url,
-          title: c.post_title,
-          subtitle: c.taxonomies.post_tag?.join(', ') ?? '',
-        });
-      }
-    });
-    return carouselItems;
-  });
 
   ngOnInit() {
     if (this.webPageMetasMap.has(this.pageId)) {

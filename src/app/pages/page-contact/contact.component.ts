@@ -24,16 +24,16 @@ import {
             ☎️
           </h1>
           <p class="mb-10" i18n>
-            Whether you have a creative&nbsp;venture or an everyday&nbsp;challenge, I&nbsp;would be happy to&nbsp;chat.
+            Whether you have a creative&nbsp;venture or an everyday&nbsp;challenge, I&nbsp;would be happy to&nbsp;discuss 😇
           </p>
         </div>
         <div class="pt-2 pb-5 content">
-          <div class="myPhone">
+          <!--<div class="myPhone">
             <a href="tel:+33663078396">
               <fa-icon [icon]="['fas', 'mobile-screen-button']" [fixedWidth]="true"></fa-icon>
               +33 6 63 07 83 96
             </a>
-          </div>
+          </div>-->
           <div class="myEmail" #emailElement (click)="copyEmailToClipboard()">
             <a>
               <fa-icon [icon]="['fas', 'envelope']" [fixedWidth]="true"></fa-icon>
@@ -49,7 +49,7 @@ import {
 })
 export class ContactComponent implements OnInit, PageInterface {
   pageId = PageIdSlugEnum.contact;
-  myEmail = 'chat@gilles.dev';
+  myEmail = 'contact@gilles.dev';
   @ViewChild('emailElement', { static: true }) emailElement!: ElementRef;
   copySuccess = false;
 

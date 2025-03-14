@@ -1,15 +1,12 @@
 @use 'sass:meta';
-@use 'sass:color';
 
-@import 'tailwindcss';
-
-@import './_gilles.styleguides.scss';
-@import 'mixins';
-@import 'variables';
+@use './_gilles.styleguides.scss' as gilles;
+@use 'variables' as *;
+@use './view-transition';
 
 html {
-  --color-white: rgba(#{$white});
-  --color-black: rgba(#{$black});
+  --color-white: rgba(#{gilles.$white});
+  --color-black: rgba(#{gilles.$black});
   --font-family-serif: #{meta.inspect($font-family-serif)};
   --font-family-sans: #{meta.inspect($font-family-sans)};
 
