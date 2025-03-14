@@ -2,15 +2,17 @@
   "name": "gilles.dev",
   "version": "0.0.0",
   "scripts": {
+    "i18n": "ng extract-i18n gilles.dev --format=xlf --out-file=src/locale/messages.xlf",
     "format": "npx prettier -w ./src ./projects",
-    "prod": "ng build --configuration production --base-href \"https://chessfield.live/\"",
+    "prod": "ng build --configuration production --base-href \"https://gilles.dev/\"",
     "deploy": "ngh --dir=dist/gilles.dev/browser",
     "ng": "ng",
     "start": "ng serve gilles.dev --hmr=false",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:gilles.dev": "node dist/gilles.dev/server/server.mjs"
+    "serve:ssr:gilles.dev": "node dist/gilles.dev/server/server.mjs",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -52,6 +54,7 @@
     "@angular/compiler-cli": "^19.2.0",
     "@cloudinary/ng": "^2.1.2",
     "@cloudinary/url-gen": "^1.21.0",
+    "@eslint/js": "^9.22.0",
     "@fortawesome/angular-fontawesome": "^1.0.0",
     "@fortawesome/fontawesome-svg-core": "^6.7.1",
     "@fortawesome/free-brands-svg-icons": "^6.7.1",
@@ -64,6 +67,9 @@
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.18.0",
     "@types/three": "^0",
+    "angular-eslint": "19.2.1",
+    "eslint": "^9.22.0",
+    "globals": "^16.0.0",
     "jasmine-core": "~5.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
@@ -71,6 +77,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^19.2.0",
-    "typescript": "~5.7.2"
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.26.1"
   }
 }
