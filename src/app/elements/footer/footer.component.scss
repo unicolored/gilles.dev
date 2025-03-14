@@ -5,9 +5,7 @@
 @use '../../../styles/mixins' as *;
 @use '../../../styles/layout';
 
-@use 'tailwindcss/base';
-@use 'tailwindcss/components';
-@use 'tailwindcss/utilities';
+@import 'tailwindcss';
 
 footer.footer {
   & {

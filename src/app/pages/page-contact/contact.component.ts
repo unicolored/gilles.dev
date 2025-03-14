@@ -1,7 +1,7 @@
 import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { PageInterface } from '../page.interface';
-import { WEB_PAGE_METAS_MAP, WebPageService } from '@homelib/shared-ng-services';
-import { WebPageMetas } from '@gilles.nx/shared-js-interface';
+import { WEB_PAGE_METAS_MAP, WebPageService } from 'ngx-services';
+import { WebPageMetas } from 'js-interface';
 import { environment } from '../../../environments/environment';
 import { PageIdSlugEnum } from '../../app.global';
 import { CommonModule } from '@angular/common';

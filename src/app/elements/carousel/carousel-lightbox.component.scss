@@ -1,6 +1,8 @@
 @use 'sass:color';
 @use 'sass:meta';
 
+@import 'tailwindcss';
+
 .mycarousel {
   & {
     @apply flex flex-col w-full h-full;
@@ -56,7 +58,7 @@
         .carousel-caption {
           grid-area: caption;
           background: none;
-          @apply relative text-center z-[1000] right-0 left-0 bottom-0 pb-1 pt-2 text-primary;
+          @apply relative text-center z-[1000] right-0 left-0 bottom-0 pb-1 pt-2;
         }
       }
     }

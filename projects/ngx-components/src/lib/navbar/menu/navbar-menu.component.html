@@ -1,0 +1,52 @@
+<ng-container *ngIf="navbarData && navbarData?.links">
+  <ng-container *ngIf="horizontal; else vertical">
+    <ul class="menu menu-horizontal px-1">
+      <ng-container *ngFor="let link of navbarData.links">
+        <ng-container *ngIf="link.child; else noChild">
+          <li>
+            <details>
+              <summary>
+                <a [routerLink]="link.href">{{ link.text }}</a>
+              </summary>
+              <ul class="p-2">
+                <ng-container *ngFor="let lk of link.child">
+                  <li>
+                    <a [routerLink]="lk.href">{{ lk.text }}</a>
+                  </li>
+                </ng-container>
+              </ul>
+            </details>
+          </li>
+        </ng-container>
+        <ng-template #noChild>
+          <li>
+            <a [routerLink]="link.href">{{ link.text }}</a>
+          </li>
+        </ng-template>
+      </ng-container>
+    </ul>
+  </ng-container>
+  <ng-template #vertical>
+    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+      <ng-container *ngFor="let link of navbarData.links">
+        <ng-container *ngIf="link.child; else noChild">
+          <li>
+            <a [routerLink]="link.href">{{ link.text }}</a>
+            <ul class="p-2">
+              <ng-container *ngFor="let lk of link.child">
+                <li>
+                  <a [routerLink]="lk.href">{{ lk.text }}</a>
+                </li>
+              </ng-container>
+            </ul>
+          </li>
+        </ng-container>
+        <ng-template #noChild>
+          <li>
+            <a [routerLink]="link.href">{{ link.text }}</a>
+          </li>
+        </ng-template>
+      </ng-container>
+    </ul>
+  </ng-template>
+</ng-container>

@@ -1,8 +1,7 @@
 import { GillesDevCorporation, GillesDevWebSite } from './schema';
-import { WebPageMetas } from '@gilles.nx/shared-js-interface';
+import { WebPageMetas } from 'js-interface';
 import { PageIdSlugEnum } from '../app/app.global';
 import { $localize } from '@angular/localize/init';
-
 export const GillesDevMetas: { [k: string]: WebPageMetas } = {
   [PageIdSlugEnum.home]: {
     isHome: true,

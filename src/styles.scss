@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'sass:meta';
+@use 'sass:color';
+
+@import 'tailwindcss';
+//@plugin "daisyui" {
+//  themes:
+//    light --default,
+//    dark --prefersdark,
+//    cupcake;
+//  root: ":root";
+//  /*include:;*/
+//  /*exclude:;*/
+//  /*prefix:;*/
+//  logs: true;
+//}
+
+@import 'styles/view-transition';
+
+//@import 'libs/styleguides/src/lib/colors/_gilles.styleguides.scss';
+//@import 'styles/variables';
+//@import 'styles/mixins';
+
+@import 'styles/layout';

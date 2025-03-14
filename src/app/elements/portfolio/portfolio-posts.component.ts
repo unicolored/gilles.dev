@@ -1,6 +1,6 @@
 import { Component, computed, input, ViewEncapsulation } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { WordpressSelfSinglePost } from '@gilles.nx/shared-js-interface';
+import { WordpressSelfSinglePost } from 'js-interface';
 import { CarouselLightboxComponent } from '../carousel/carousel-lightbox.component';
 
 @Component({

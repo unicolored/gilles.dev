@@ -12,8 +12,8 @@ import {
 import { PortfolioHit } from '../../services/search.interface';
 import { CarouselItem } from '../../services/carousel.interface';
 import { PageIdSlugEnum } from '../../app.global';
-import { WEB_PAGE_METAS_MAP, WebPageService } from '@homelib/shared-ng-services';
-import { WebPageMetas } from '@gilles.nx/shared-js-interface';
+import { WEB_PAGE_METAS_MAP, WebPageService } from 'ngx-services';
+import { WebPageMetas } from 'js-interface';
 import { environment } from '../../../environments/environment';
 import { Hit } from 'instantsearch.js/es/types/results';
 import { InstantSearchService } from '../../services/instantsearch.service';

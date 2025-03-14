@@ -9,14 +9,14 @@ import {
   viewChild,
   WritableSignal,
 } from '@angular/core';
-import '@angular/localize/init';
+// import '@angular/localize/init';
 import { ModeEnum } from '../../app.component';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { InstantSearchService } from '../../services/instantsearch.service';
 import { SearchQuery } from '../../services/search.interface';
 import { CommonModule } from '@angular/common';
-import { $localize } from '@angular/localize/init';
+// import { $localize } from '@angular/localize/init';
 
 export enum KEY_CODE {
   K = 'KeyK',

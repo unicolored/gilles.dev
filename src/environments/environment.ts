@@ -1,4 +1,4 @@
-import { WebPageMetas } from '@gilles.nx/shared-js-interface';
+import { WebPageMetas } from 'js-interface';
 import { PageIdSlugEnum } from '../app/app.global';
 import { GillesDevMetas } from './metas';
 

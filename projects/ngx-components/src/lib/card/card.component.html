@@ -1,0 +1,23 @@
+<div class="card">
+  <ng-container *ngIf="showFigure">
+    <figure class="relative">
+      <ng-content select="[figure]"></ng-content>
+    </figure>
+  </ng-container>
+
+  <div class="card-body">
+    <ng-container *ngIf="showTitle">
+      <h2 class="card-title">
+        <ng-content select="[title]"></ng-content>
+      </h2>
+    </ng-container>
+
+    <ng-content select="[body]"></ng-content>
+
+    <ng-container *ngIf="showActions">
+      <div class="card-actions justify-end">
+        <ng-content select="[actions]"></ng-content>
+      </div>
+    </ng-container>
+  </div>
+</div>

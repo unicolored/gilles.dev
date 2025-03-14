@@ -5,9 +5,9 @@ import { extractText } from '../../app.helpers';
 import { CarouselItem } from '../../services/carousel.interface';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { lastValueFrom } from 'rxjs';
-import { WordpressSelfSinglePostMedia } from '@gilles.nx/shared-js-interface';
+import { WordpressSelfSinglePostMedia } from 'js-interface';
 import { AppService } from '../../app.service';
-import { WordpressService } from '@homelib/shared-ng-services';
+import { WordpressService } from 'ngx-services';
 
 @Component({
   selector: 'gilles-nx-portfolio-item-attachments',

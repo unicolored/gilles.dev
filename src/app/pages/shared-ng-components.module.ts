@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ImageComponent } from '@gilles.nx/shared-ng-components';
+import { ImageComponent } from 'ngx-components';
 
 @NgModule({
   imports: [ImageComponent],

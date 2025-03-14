@@ -2,8 +2,8 @@ import { Component, computed, inject, input, signal, Signal, viewChild, ViewEnca
 import { CommonModule } from '@angular/common';
 import { PageIdSlugEnum } from '../../app.global';
 import { ActivatedRoute } from '@angular/router';
-import { WEB_PAGE_METAS_MAP, WebPageService } from '@homelib/shared-ng-services';
-import { WebPageMetas } from '@gilles.nx/shared-js-interface';
+import { WEB_PAGE_METAS_MAP, WebPageService } from 'ngx-services';
+import { WebPageMetas } from 'js-interface';
 import { InstantSearchService } from '../../services/instantsearch.service';
 import { ModalComponent } from '../../elements/modal/modal.component';
 import { Hit } from 'instantsearch.js/es/types/results';

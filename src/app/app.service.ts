@@ -1,9 +1,9 @@
 import { inject, Injectable } from '@angular/core';
-import { WordpressService } from '@homelib/shared-ng-services';
-import { WordpressSelfSinglePost } from '@gilles.nx/shared-js-interface';
+import { WordpressService } from 'ngx-services';
+import { WordpressSelfSinglePost } from 'js-interface';
 import { catchError, map, Observable, shareReplay } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { WordpressSelfSinglePostMedia } from '@gilles.nx/shared-js-interface';
+import { WordpressSelfSinglePostMedia } from 'js-interface';
 
 @Injectable()
 export class AppService {

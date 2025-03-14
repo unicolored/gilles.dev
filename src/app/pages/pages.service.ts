@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { $localize } from '@angular/localize/init';
+// import { $localize } from '@angular/localize/init';
 
 // Create a type for the titles object
 export type Titles = {
