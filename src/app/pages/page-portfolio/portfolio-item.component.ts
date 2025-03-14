@@ -45,7 +45,7 @@ import { extractText } from '../../app.helpers';
 
           <header class="flex justify-center mb-2">
             <h1 class="font-bold text-xl mb-1">
-              <span i18n [innerHTML]="item.post_title ?? 'Sans-titre'"></span>
+              <span i18n [innerHTML]="item.post_title"></span>
             </h1>
           </header>
 
