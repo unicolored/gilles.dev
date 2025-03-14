@@ -24,7 +24,8 @@ import {
             ☎️
           </h1>
           <p class="mb-10" i18n>
-            Whether you have a creative&nbsp;venture or an everyday&nbsp;challenge, I&nbsp;would be happy to&nbsp;discuss 😇
+            Whether you have a creative&nbsp;venture or an everyday&nbsp;challenge, I&nbsp;would be happy
+            to&nbsp;discuss 😇
           </p>
         </div>
         <div class="pt-2 pb-5 content">

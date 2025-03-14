@@ -1,7 +1,6 @@
 import { Component, computed, effect, inject, input, signal, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PortfolioHit } from '../../services/search.interface';
-import { extractText } from '../../app.helpers';
 import { lastValueFrom } from 'rxjs';
 import { AppService } from '../../app.service';
 import { WordpressSelfSinglePostMedia, WordpressService } from 'ngx-services';
@@ -11,27 +10,16 @@ import { WordpressSelfSinglePostMedia, WordpressService } from 'ngx-services';
   imports: [CommonModule],
   providers: [AppService, WordpressService],
   template: `
-    @if (title() || subtitle()) {
-      <article class="prose mb-6">
-        @if (title()) {
-          <h2 class="font-bold leading-snug mb-1">
-            <span i18n [innerHTML]="title()"></span>
-          </h2>
-        }
-        @if (subtitle()) {
-          <p class="uppercase">
-            <span i18n>{{ subtitle() }}</span>
-          </p>
-        }
-      </article>
-    }
-
-    @defer (on timer(200ms); prefetch on idle) {
+    @defer (on timer(100ms); prefetch on idle) {
       @if (attachments().length > 1) {
         <div class="portfolio-attachments">
           @for (media of attachments(); track media.id) {
-            <div class="attachment">
-              <img [src]="media.media_details.sizes.large.source_url" fill [alt]="media.alt_text" />
+            <div class="attachment my-1">
+              @if (media.media_details.sizes.large) {
+                <img [src]="media.media_details.sizes.large.source_url" fill [alt]="media.alt_text" />
+              } @else if (media.media_details.sizes.medium) {
+                <img [src]="media.media_details.sizes.medium.source_url" fill [alt]="media.alt_text" />
+              }
             </div>
           }
         </div>
@@ -53,43 +41,43 @@ export class PortfolioItemAttachmentsComponent {
   objectId = input<string | null>(null);
 
   items = input<PortfolioHit[]>([]);
-  itemsComputed = computed(() =>
-    this.items().map((item) => {
-      const currentUrl = item.images.thumbnail?.url;
-
-      if (!currentUrl) {
-        item.images.thumbnail = {
-          url: 'missing.jpg',
-          width: 430,
-          height: 215,
-        };
-      } else {
-        // const url = 'https://www.gilleshoarau.com/da/wp-content/uploads/2014/07/logo-velinea-200x200.png';
-
-        const publicId = extractText(currentUrl);
-
-        if (!publicId) {
-          item.images.thumbnail = {
-            url: 'missing.jpg',
-            width: 430,
-            height: 215,
-          };
-        } else {
-          item.images.thumbnail = {
-            // url: `f_webp,q_auto,w_430,h_242,c_fill,ar_16:9/${publicId}.webp`,
-            url: `f_webp,q_auto,w_600,c_fill,ar_16:9/${publicId}.webp`,
-            width: 2,
-            height: 1,
-          };
-          item.images.full = {
-            // url: `f_webp,q_auto,w_430,h_242,c_fill,ar_16:9/${publicId}.webp`,
-            url: `q_auto:best,w_1280,c_fit,ar_16:9/${publicId}.jpg`,
-          };
-        }
-      }
-      return item;
-    }),
-  );
+  // itemsComputed = computed(() =>
+  //   this.items().map((item) => {
+  //     const currentUrl = item.images.thumbnail?.url;
+  //
+  //     if (!currentUrl) {
+  //       item.images.thumbnail = {
+  //         url: 'missing.jpg',
+  //         width: 430,
+  //         height: 215,
+  //       };
+  //     } else {
+  //       // const url = 'https://www.gilleshoarau.com/da/wp-content/uploads/2014/07/logo-velinea-200x200.png';
+  //
+  //       const publicId = extractText(currentUrl);
+  //
+  //       if (!publicId) {
+  //         item.images.thumbnail = {
+  //           url: 'missing.jpg',
+  //           width: 430,
+  //           height: 215,
+  //         };
+  //       } else {
+  //         item.images.thumbnail = {
+  //           // url: `f_webp,q_auto,w_430,h_242,c_fill,ar_16:9/${publicId}.webp`,
+  //           url: `f_webp,q_auto,w_600,c_fill,ar_16:9/${publicId}.webp`,
+  //           width: 2,
+  //           height: 1,
+  //         };
+  //         item.images.full = {
+  //           // url: `f_webp,q_auto,w_430,h_242,c_fill,ar_16:9/${publicId}.webp`,
+  //           url: `q_auto:best,w_1280,c_fit,ar_16:9/${publicId}.jpg`,
+  //         };
+  //       }
+  //     }
+  //     return item;
+  //   }),
+  // );
 
   attachments = signal<WordpressSelfSinglePostMedia[]>([]);
 
