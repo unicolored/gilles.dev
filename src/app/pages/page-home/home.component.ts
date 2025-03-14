@@ -1,17 +1,15 @@
-import { AfterViewInit, Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { PageInterface } from '../page.interface';
-import { WebPageMetas } from 'js-interface';
-import { WEB_PAGE_METAS_MAP, WebPageService } from 'ngx-services';
+import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { PageIdSlugEnum } from '../../app.global';
 import { environment } from '../../../environments/environment';
 import { Hit } from 'instantsearch.js/es/types/results';
 import { PortfolioHit, SearchIndexes } from '../../services/search.interface';
-import { InstantSearchService } from '../../services/instantsearch.service';
-import connectConfigure from 'instantsearch.js/es/connectors/configure/connectConfigure';
-import connectHits from 'instantsearch.js/es/connectors/hits/connectHits';
 import { CommonModule } from '@angular/common';
 import { SharedNgComponentsModule } from '../shared-ng-components.module';
 import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.component';
+import { InstantSearchService } from '../../services/instantsearch.service';
+import { connectConfigure, connectHits } from 'instantsearch.js/es/connectors';
 
 @Component({
   standalone: true,
@@ -64,7 +62,7 @@ import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.
   `,
   styleUrls: ['../pages.common.scss'],
 })
-export class HomeComponent implements OnInit, PageInterface, AfterViewInit {
+export class HomeComponent implements OnInit, PageInterface {
   pageId = PageIdSlugEnum.home;
 
   portfolioDesignHits = signal<Hit<PortfolioHit>[]>([]);

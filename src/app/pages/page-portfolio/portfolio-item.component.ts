@@ -1,12 +1,5 @@
-import { Component, computed, inject, input, signal, Signal, viewChild, ViewEncapsulation } from '@angular/core';
+import { Component, computed, input, signal, Signal, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PageIdSlugEnum } from '../../app.global';
-import { ActivatedRoute } from '@angular/router';
-import { WEB_PAGE_METAS_MAP, WebPageService } from 'ngx-services';
-import { WebPageMetas } from 'js-interface';
-import { InstantSearchService } from '../../services/instantsearch.service';
-import { ModalComponent } from '../../elements/modal/modal.component';
-import { Hit } from 'instantsearch.js/es/types/results';
 import { PortfolioHit } from '../../services/search.interface';
 import { CarouselItem } from '../../services/carousel.interface';
 import { PortfolioItemAttachmentsComponent } from '../../elements/portfolio/portfolio-item-attachments.component';
@@ -29,18 +22,6 @@ import { PortfolioItemAttachmentsComponent } from '../../elements/portfolio/port
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioItemComponent {
-  pageId = PageIdSlugEnum.portfolio;
-
-  private readonly route = inject(ActivatedRoute);
-  private readonly webPageService = inject(WebPageService);
-  private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
-
-  public searchService = inject(InstantSearchService);
-
-  carouselModal: Signal<ModalComponent | undefined> = viewChild('#carouselModal');
-
-  portfolioHits = signal<Hit<PortfolioHit>[]>([]);
-
   category = signal<string | null>(null);
   categoryComputed = computed(() => {
     if (this.category() === 'web') {

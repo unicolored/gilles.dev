@@ -6,8 +6,9 @@ import { Router } from '@angular/router';
 import history from 'instantsearch.js/es/lib/routers/history';
 import { SearchIndexes } from './search.interface';
 import { BaseRecommendSearchParams, SearchPagination } from 'algoliasearch/dist/lite/node';
+import { environment } from '../../environments/environment';
 
-const searchClient = algoliasearch('SUXVC6B2YE', 'c6b499da6c9903652a2b4cc7a281d7b9');
+const searchClient = algoliasearch(environment.algolia.appId, environment.algolia.apiKey);
 
 @Injectable({
   providedIn: 'root',

@@ -1,345 +1,425 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="en" datatype="plaintext" original="ng2.template">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="ngb.alert.close" datatype="html">
+        <source>Close</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/alert/alert.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.carousel.slide-number" datatype="html">
+        <source> Slide <x id="INTERPOLATION"/> of <x id="INTERPOLATION_1"/> </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/carousel/carousel.ts</context>
+          <context context-type="linenumber">132</context>
+        </context-group>
+        <note priority="1" from="description">Currently selected slide number read by screen reader</note>
+      </trans-unit>
+      <trans-unit id="ngb.carousel.previous" datatype="html">
+        <source>Previous</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/carousel/carousel.ts</context>
+          <context context-type="linenumber">143</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.carousel.next" datatype="html">
+        <source>Next</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/carousel/carousel.ts</context>
+          <context context-type="linenumber">151,153</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.select-month" datatype="html">
+        <source>Select month</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/datepicker/datepicker-navigation-select.ts</context>
+          <context context-type="linenumber">92</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/datepicker/datepicker-navigation-select.ts</context>
+          <context context-type="linenumber">92</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.select-year" datatype="html">
+        <source>Select year</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/datepicker/datepicker-navigation-select.ts</context>
+          <context context-type="linenumber">92</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/datepicker/datepicker-navigation-select.ts</context>
+          <context context-type="linenumber">92</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.previous-month" datatype="html">
+        <source>Previous month</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/datepicker/datepicker-navigation.ts</context>
+          <context context-type="linenumber">77,79</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/datepicker/datepicker-navigation.ts</context>
+          <context context-type="linenumber">93,94</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.next-month" datatype="html">
+        <source>Next month</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/datepicker/datepicker-navigation.ts</context>
+          <context context-type="linenumber">102</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/datepicker/datepicker-navigation.ts</context>
+          <context context-type="linenumber">102</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.first" datatype="html">
+        <source>««</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/pagination/pagination.ts</context>
+          <context context-type="linenumber">290</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.previous" datatype="html">
+        <source>«</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/pagination/pagination.ts</context>
+          <context context-type="linenumber">305,306</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.next" datatype="html">
+        <source>»</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/pagination/pagination.ts</context>
+          <context context-type="linenumber">321,323</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.last" datatype="html">
+        <source>»»</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/pagination/pagination.ts</context>
+          <context context-type="linenumber">335,337</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.first-aria" datatype="html">
+        <source>First</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/pagination/pagination.ts</context>
+          <context context-type="linenumber">353,356</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.previous-aria" datatype="html">
+        <source>Previous</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/pagination/pagination.ts</context>
+          <context context-type="linenumber">374,377</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.next-aria" datatype="html">
+        <source>Next</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/pagination/pagination.ts</context>
+          <context context-type="linenumber">396,397</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.last-aria" datatype="html">
+        <source>Last</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/pagination/pagination.ts</context>
+          <context context-type="linenumber">407,409</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.progressbar.value" datatype="html">
+        <source><x id="INTERPOLATION"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/progressbar/progressbar.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.HH" datatype="html">
+        <source>HH</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">238</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.hours" datatype="html">
+        <source>Hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">259</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.MM" datatype="html">
+        <source>MM</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">279,280</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.minutes" datatype="html">
+        <source>Minutes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">296,297</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.increment-hours" datatype="html">
+        <source>Increment hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">310,311</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.decrement-hours" datatype="html">
+        <source>Decrement hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">333,334</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.increment-minutes" datatype="html">
+        <source>Increment minutes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">357,358</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.decrement-minutes" datatype="html">
+        <source>Decrement minutes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">376,378</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.SS" datatype="html">
+        <source>SS</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">397,398</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.seconds" datatype="html">
+        <source>Seconds</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">422</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.increment-seconds" datatype="html">
+        <source>Increment seconds</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">437,441</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.decrement-seconds" datatype="html">
+        <source>Decrement seconds</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">441</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.PM" datatype="html">
+        <source><x id="INTERPOLATION"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">441</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.toast.close-aria" datatype="html">
+        <source>Close</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/toast/toast.ts</context>
+          <context context-type="linenumber">95,96</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="1966292667679829375" datatype="html">
         <source>👉 I will be back soon!</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/app.component.html</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">34,35</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="3492007542396725315" datatype="html">
-        <source>Welcome</source>
+      <trans-unit id="5221938886751387620" datatype="html">
+        <source>Hello!</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/elements/header/header.component.ts</context>
-          <context context-type="linenumber">20</context>
+          <context context-type="sourcefile">src/app/elements/header/header.component.ts</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1726363342938046830" datatype="html">
         <source>About</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/elements/header/header.component.ts</context>
-          <context context-type="linenumber">24</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/pages.service.ts</context>
-          <context context-type="linenumber">36</context>
+          <context context-type="sourcefile">src/app/elements/header/header.component.ts</context>
+          <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7922989125096435449" datatype="html">
         <source>Contact</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/elements/header/header.component.ts</context>
-          <context context-type="linenumber">28</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/pages.service.ts</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="sourcefile">src/app/elements/header/header.component.ts</context>
+          <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4915431133669985304" datatype="html">
-        <source>Profile</source>
+      <trans-unit id="187187500641108332" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ subtitle() }}"/></source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/elements/header/header.component.ts</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="sourcefile">src/app/elements/portfolio/portfolio-hits.component.ts</context>
+          <context context-type="linenumber">22,23</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/auth/page-profile/profile.component.html</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2454050363478003966" datatype="html">
-        <source>Login</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/auth/page-login/login.component.html</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="4200317694838753109" datatype="html">
-        <source>Welcome back</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/auth/page-login/login.component.html</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5702345504554965531" datatype="html">
-        <source>Your name: ...</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/auth/page-profile/profile.component.html</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3797778920049399855" datatype="html">
-        <source>Logout</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/auth/page-profile/profile.component.html</context>
-          <context context-type="linenumber">15</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3301086086650990787" datatype="html">
-        <source>Register</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/auth/page-register/register.component.html</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1551488409148706419" datatype="html">
-        <source>It&apos;s free!</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/auth/page-register/register.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="sourcefile">src/app/elements/portfolio/portfolio-item-attachments.component.ts</context>
+          <context context-type="linenumber">26,27</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8209478959457874239" datatype="html">
         <source> Home sweet Home </source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/not-found/not-found.component.html</context>
-          <context context-type="linenumber">8,10</context>
+          <context context-type="sourcefile">src/app/pages/not-found/not-found.component.ts</context>
+          <context context-type="linenumber">19,20</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="6511775104200647352" datatype="html">
-        <source>Hi! Salut ! Ciao!</source>
+      <trans-unit id="4639374430660006721" datatype="html">
+        <source>With 18 years of experience serving clients and partners from small and large companies, both independently and as part of a team. <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>How can I assist you?<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="sourcefile">src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">8,11</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="9136759386775687930" datatype="html">
-        <source>I&apos;m Gilles Hoarau</source>
+      <trans-unit id="3578000722407465752" datatype="html">
+        <source>I&apos;m ready to take on any web development projects that come my way.</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="sourcefile">src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">20,21</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="692052841128905940" datatype="html">
-        <source>For <x id="INTERPOLATION" equiv-text="{{ this.year - 2006 }}"/> years now, I&apos;ve been working on various development and graphic design projects.</source>
+      <trans-unit id="6686332428649931927" datatype="html">
+        <source>From 2021 to 2024, I led the charge on 2 amazing projects for Stellantis&apos; customers: an AI-driven vehicle Search Engine and an Order Tracking module connected with the supply chain management system. I worked with teams from around the globe, exposing me to a world of different cultures and perspectives.</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="sourcefile">src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">24,26</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="6829938509213821395" datatype="html">
-        <source>From creative brainstorming to final delivery, I continue to learn every day.</source>
+      <trans-unit id="6448295581970757769" datatype="html">
+        <source> In 2015, I joined Groupe PSA’s Digital Factory and became a key player in facilitating Innovation committees and developing proof of concepts on the latest trends: Internet-Of-Things, Real-time 3D, Progressive Web Apps, Chatbots &amp; Vocal Assistants. </source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="sourcefile">src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">31,33</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="8818154650879880977" datatype="html">
-        <source>My adventure began with writing a book to teach photo manipulation, edited by MicroApplication, sold around 20,000 copies.</source>
+      <trans-unit id="5717090516433690522" datatype="html">
+        <source>Overall, I appreciated working with teams from around the world, exposing me to a wealth of different cultures and perspectives.</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="sourcefile">src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">38,39</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5252241333492447339" datatype="html">
-        <source>In 2006, I co-create an advertising agency, where I used my self-taught skills professionally to produce creative media.</source>
+      <trans-unit id="5457464625391871251" datatype="html">
+        <source>In 2006, I worked in an advertising agency that quickly became a powerhouse, thanks to a great creative director and some self-taught skills in producing media.</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="sourcefile">src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">45,46</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="6591864635918168185" datatype="html">
-        <source>In 2014, I joined Groupe PSA’s Digital Factory to facilitate Innovation committees
-and develop proof of concepts on new trends:
-Internet-Of-Things, Real-time 3D, Progressive Web Apps, Chatbots &amp; Vocal Assistants.</source>
+      <trans-unit id="7915491376563695311" datatype="html">
+        <source>My journey began with writing a book on photo manipulation, edited by MicroApplication, which became a best-seller and sold around 20,000 copies.</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
-          <context context-type="linenumber">46,48</context>
+          <context context-type="sourcefile">src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">51,52</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="6730904730533739056" datatype="html">
-        <source>My colleagues often refer to me as a “Jack of all trades”.</source>
+      <trans-unit id="1998035904482617496" datatype="html">
+        <source>I give a special thanks to God ♥️ for blessing me with opportunities to excel in my career.</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
-          <context context-type="linenumber">50</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2058820259498429672" datatype="html">
-        <source> From 2021 to 2023, I led the development of 2 projects for the customers of Stellantis:
-an AI-driven vehicle Search Engine and an Order Tracking module connected with the supply chain management system. </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
-          <context context-type="linenumber">52,55</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2125315204321484253" datatype="html">
-        <source>Overall, I appreciated working with teams from around the world,
-exposing me to a wealth of different cultures and perspectives.
-The inspiring leadership I experienced pushed me to grow and develop in ways I never imagined.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
-          <context context-type="linenumber">57,59</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="694047503406224806" datatype="html">
-        <source>Starting in 2024</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
-          <context context-type="linenumber">63</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="9171612701962622722" datatype="html">
-        <source>I&apos;m now focusing my development efforts
-specifically on web apps that leverage cutting-edge generative AI technologies.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
-          <context context-type="linenumber">65,66</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8893123674393509556" datatype="html">
-        <source>I&apos;m open to discuss web development projects.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
-          <context context-type="linenumber">69</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="7407525752723886434" datatype="html">
-        <source>Drop me a line anytime, or book a call!</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
-          <context context-type="linenumber">72</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5242666957552704871" datatype="html">
-        <source>Hobbies</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
-          <context context-type="linenumber">79</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1922887279351091663" datatype="html">
-        <source>I like to wake up early, learn every day, and think about what makes life beautiful</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
-          <context context-type="linenumber">81</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2857589760681117463" datatype="html">
-        <source>Surrounded by my 4 cats and 4 chickens, I relax by learning chess (<x id="START_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;em&gt;"/>where I aim to win!<x id="CLOSE_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;/em&gt;"/>), piano (<x id="START_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;em&gt;"/>molto piano!<x id="CLOSE_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;/em&gt;"/>), and Italian (<x id="START_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;em&gt;"/>Oggi, ho voglia mangiare un gelato<x id="CLOSE_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;/em&gt;"/> 🍦).</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/Gilles/gilles.dev/src/app/pages/page-about/about.component.html</context>
-          <context context-type="linenumber">83</context>
+          <context context-type="sourcefile">src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">61,62</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4387390747024662815" datatype="html">
         <source>Call me</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-contact/contact.component.html</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="sourcefile">src/app/pages/page-contact/contact.component.ts</context>
+          <context context-type="linenumber">24,25</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="8066135753849350297" datatype="html">
-        <source>Whether you have a creative venture or an everyday challenge, I would be happy to help.</source>
+      <trans-unit id="2048871888296876302" datatype="html">
+        <source> Whether you have a creative venture or an everyday challenge, I would be happy to chat. </source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-contact/contact.component.html</context>
-          <context context-type="linenumber">14</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="9091061931320459036" datatype="html">
-        <source>Book a call</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-contact/contact.component.html</context>
-          <context context-type="linenumber">17</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="4250466713587922719" datatype="html">
-        <source>Leave me a message</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-contact/contact.component.html</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="sourcefile">src/app/pages/page-contact/contact.component.ts</context>
+          <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5392341774767336507" datatype="html">
         <source>Copied!</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-contact/contact.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="sourcefile">src/app/pages/page-contact/contact.component.ts</context>
+          <context context-type="linenumber">43,44</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7288900425963034249" datatype="html">
-        <source>Hi, I&apos;m Gilles<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/>≈ a developer</source>
+      <trans-unit id="1494957374102837840" datatype="html">
+        <source> Graphic Designer &amp; Web Developer </source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-home/home.component.html</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="sourcefile">src/app/pages/page-home/home.component.ts</context>
+          <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="1835575696744542546" datatype="html">
-        <source>I&apos;m a self-taught creator of web apps, imagery, and 3D experiences</source>
+      <trans-unit id="4729906163039970996" datatype="html">
+        <source>I&apos;ve been working on creative projects for many many years 🙏</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-home/home.component.html</context>
+          <context context-type="sourcefile">src/app/pages/page-home/home.component.ts</context>
+          <context context-type="linenumber">30,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9209127732877384280" datatype="html">
+        <source> I became expert in every steps, including graphic designs, websites and web apps, online payment, performant hosting. May I help you? </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/page-home/home.component.ts</context>
+          <context context-type="linenumber">34,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="655256529988102109" datatype="html">
+        <source>Freelance | Graphic Designer &amp; Developer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/environments/metas.ts</context>
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7369454916237775797" datatype="html">
-        <source>My developer toolkit</source>
+      <trans-unit id="1957046526874154773" datatype="html">
+        <source>Meet Gilles, a maker of web apps, imagery, and 3D experiences. Discover his developer toolkit, creative media design skills, and more.</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-home/home.component.html</context>
-          <context context-type="linenumber">20</context>
+          <context context-type="sourcefile">src/environments/metas.ts</context>
+          <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="2847015294082821940" datatype="html">
-        <source>Throughout my career, I&apos;ve tackled every stage of web development and deployment, from brewing the coffee ☕️ to scaling cloud infrastructure, writing tons of code, testing it thoroughly, building containers in CI/CD pipelines, and celebrating successful launches.</source>
+      <trans-unit id="2391668266844271969" datatype="html">
+        <source>About Gilles Hoarau ∼ Developer</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-home/home.component.html</context>
-          <context context-type="linenumber">21,23</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5951288012144559122" datatype="html">
-        <source><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Front-end<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>: NX, Angular, NestJS, Firebase <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Back-end<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>: Symfony, Docker, MongoDB, Redis <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Bonus skill<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>: Three.js</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-home/home.component.html</context>
-          <context context-type="linenumber">24,28</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="9031316117071836831" datatype="html">
-        <source>Creative media design</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-home/home.component.html</context>
-          <context context-type="linenumber">36</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="4716962325568798911" datatype="html">
-        <source>My creative journey began with traditional drawing and sketching. Soon, I was exploring the world of computer graphics, playing with photo editing and 3D modeling. Later, I honed my skills in print design and branding before diving headfirst into web design. Back then, smartphones hadn&apos;t even conquered the world yet.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-home/home.component.html</context>
-          <context context-type="linenumber">37,40</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5781423961257293079" datatype="html">
-        <source><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>My design toolbox<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>: Photoshop, Illustrator, Figma <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Bonus tools<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>: Blender and generative AI for image creation! </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/page-home/home.component.html</context>
-          <context context-type="linenumber">41,44</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="4513704550431982162" datatype="html">
-        <source>Developer</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/pages.service.ts</context>
-          <context context-type="linenumber">30</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1320803293401849410" datatype="html">
-        <source>Meet Gilles, a self-taught creator of web apps, imagery, and 3D experiences. Discover his developer toolkit, creative media design skills, and more.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/pages.service.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="sourcefile">src/environments/metas.ts</context>
+          <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="576476034536436467" datatype="html">
         <source>Learn more about Gilles Hoarau, a self-taught web developer and designer with over 15 years of experience. Discover his journey from writing a book on photo manipulation to developing AI-driven web apps, his work in diverse development and graphic design projects, and his hobbies.</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/pages.service.ts</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="sourcefile">src/environments/metas.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1861189900778757863" datatype="html">
+        <source>Contact Gilles Hoarau ∼ Developer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/environments/metas.ts</context>
+          <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7580596952434112408" datatype="html">
         <source>Get in touch with Gilles Hoarau, a seasoned web developer and designer. Call directly, send an email, or book a call to discuss creative ventures or everyday challenges. Gilles is ready to help with your project needs.</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/gilles.dev/src/app/pages/pages.service.ts</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="sourcefile">src/environments/metas.ts</context>
+          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
     </body>

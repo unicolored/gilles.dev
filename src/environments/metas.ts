@@ -1,6 +1,6 @@
 import { GillesDevCorporation, GillesDevWebSite } from './schema';
-import { WebPageMetas } from 'js-interface';
 import { PageIdSlugEnum } from '../app/app.global';
+import { WebPageMetas } from 'ngx-services';
 
 export const GillesDevMetas: { [k: string]: WebPageMetas } = {
   [PageIdSlugEnum.home]: {

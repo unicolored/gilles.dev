@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ImageComponent } from 'ngx-components';
+import { ImageComponent } from '../elements/image/image.component';
 
 @NgModule({
   imports: [ImageComponent],

@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, OnDestroy, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import * as THREE from 'three';
+import { isPlatformBrowser } from '@angular/common';
 
 let camera: THREE.PerspectiveCamera, scene: THREE.Scene, renderer: THREE.WebGLRenderer;
 let mesh: THREE.Mesh;
@@ -58,13 +59,17 @@ function onWindowResize() {
 export class ThreeCardComponent implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild('canvas') canvas!: ElementRef;
 
+  platformID = inject(PLATFORM_ID);
+
   ngOnInit(): void {
     window.addEventListener('resize', onWindowResize, false);
   }
 
   ngAfterViewInit(): void {
-    init(this.canvas.nativeElement);
-    animate();
+    if (isPlatformBrowser(this.platformID)) {
+      init(this.canvas.nativeElement);
+      animate();
+    }
   }
 
   ngOnDestroy(): void {

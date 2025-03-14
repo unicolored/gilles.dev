@@ -12,11 +12,9 @@ import {
 import { PortfolioHit } from '../../services/search.interface';
 import { CarouselItem } from '../../services/carousel.interface';
 import { PageIdSlugEnum } from '../../app.global';
-import { WEB_PAGE_METAS_MAP, WebPageService } from 'ngx-services';
-import { WebPageMetas } from 'js-interface';
+import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
 import { Hit } from 'instantsearch.js/es/types/results';
-import { InstantSearchService } from '../../services/instantsearch.service';
 import { ModalComponent } from '../../elements/modal/modal.component';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -62,8 +60,6 @@ export class PortfolioComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
-
-  public searchService = inject(InstantSearchService);
 
   carouselModal: Signal<ModalComponent | undefined> = viewChild('#carouselModal');
 
@@ -128,14 +124,5 @@ export class PortfolioComponent implements OnInit {
     this.category.set(paramCategory);
 
     this.itemId.set(paramItem);
-
-    this.route.paramMap.subscribe(() => {
-      // const paramCategory = params.get('category');
-      // const paramItem = params.get('item');
-
-      this.searchService.requests(this.facetFilter(), this.itemId()).then((res) => {
-        this.items.set(res.results[0].hits as Hit<PortfolioHit>[]);
-      });
-    });
   }
 }

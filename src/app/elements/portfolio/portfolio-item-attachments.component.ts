@@ -5,13 +5,12 @@ import { extractText } from '../../app.helpers';
 import { CarouselItem } from '../../services/carousel.interface';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { lastValueFrom } from 'rxjs';
-import { WordpressSelfSinglePostMedia } from 'js-interface';
 import { AppService } from '../../app.service';
-import { WordpressService } from 'ngx-services';
+import { WordpressSelfSinglePostMedia, WordpressService } from 'ngx-services';
 
 @Component({
   selector: 'gilles-nx-portfolio-item-attachments',
-  imports: [CommonModule, NgOptimizedImage],
+  imports: [CommonModule],
   providers: [NgbModal, NgbModalConfig, AppService, WordpressService],
   template: `
     @if (title() || subtitle()) {

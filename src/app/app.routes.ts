@@ -16,11 +16,6 @@ export const appRoutes: Route[] = [
     path: 'contact',
     loadComponent: () => import('./pages/page-contact/contact.component').then((m) => m.ContactComponent),
   },
-
-  {
-    path: 'search',
-    loadComponent: () => import('./pages/page-search/search.component').then((m) => m.SearchComponent),
-  },
   {
     path: 'portfolio',
     pathMatch: 'full',
@@ -37,11 +32,6 @@ export const appRoutes: Route[] = [
     loadComponent: () =>
       import('./pages/page-portfolio/portfolio-item.component').then((m) => m.PortfolioItemComponent),
   },
-
-  // { path: 'auth', pathMatch: 'prefix', loadChildren: () => PagesAuthModule },
-  // {path: 'articles', pathMatch: 'full', component: ArticlesComponent, resolve: {articles: ArticlesResolver}},
-  // {path: 'articles/:slug', pathMatch: 'full', component: ArticleComponent, resolve: {article: ArticleResolver}},
-  // { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
   {
     path: '**',

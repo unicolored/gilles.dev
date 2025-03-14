@@ -1,7 +1,3 @@
-export interface SearchQuery {
-  query: string;
-}
-
 export enum SearchIndexes {
   posts = 'GHCOMsearchable_posts',
   medias = 'GHCOMposts_attachment',
