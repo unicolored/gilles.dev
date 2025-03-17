@@ -3,7 +3,7 @@
 set -e
 
 # Check if current git branch is "develop"
-if [[ $(git rev-parse --abbrev-ref HEAD) != "develop" ]]; then
+if [[ $(git rev-parse --abbrev-ref HEAD) != "next" ]]; then
   echo "⚠️ You must be on the develop branch to run this script."
   exit 1
 fi
