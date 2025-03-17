@@ -8,6 +8,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      FONTAWESOME_PACKAGE_TOKEN: ${{ secrets.FONTAWESOME_PACKAGE_TOKEN }}
 
     steps:
       # Step 1: Checkout the code
@@ -28,8 +30,6 @@ jobs:
 
       # Step 4: Install dependencies
       - name: Install Dependencies
-        env:
-          FONTAWESOME_PACKAGE_TOKEN: ${{ secrets.FONTAWESOME_PACKAGE_TOKEN }}
         run: yarn install
 
       # Step 5: Build the Angular app
