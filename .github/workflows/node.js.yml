@@ -14,24 +14,30 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Step 2: Set up Node.js with Corepack
+      # Step 2: Set up Node.js with Corepack (using Node 22)
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '22' # Updated to Node 22
           cache: 'yarn'
 
-      # Step 3: Enable Corepack and install dependencies
+      # Step 3: Enable and prepare Corepack
       - name: Enable Corepack
-        run: corepack enable
+        run: |
+          corepack enable
+          corepack prepare yarn@stable --activate
+      - name: Verify Yarn Version
+        run: yarn --version
+
+      # Step 4: Install dependencies
       - name: Install Dependencies
         run: yarn install
 
-      # Step 4: Build the Angular app using your prod script
+      # Step 5: Build the Angular app
       - name: Build
         run: yarn prod
 
-      # Step 5: Deploy to GitHub Pages
+      # Step 6: Deploy to GitHub Pages
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
