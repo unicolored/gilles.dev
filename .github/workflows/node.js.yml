@@ -19,7 +19,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '22' # Updated to Node 22
-          cache: 'yarn'
 
       # Step 3: Enable and prepare Corepack
       - name: Enable Corepack
