@@ -1,4 +1,4 @@
-import { WebPageMetas } from 'js-interface';
+import { WebPageMetas } from 'ngx-services';
 import { PageIdSlugEnum } from '../app/app.global';
 import { GillesDevMetas } from './metas';
 
