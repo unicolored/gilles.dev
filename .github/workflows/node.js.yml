@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FONTAWESOME_PACKAGE_TOKEN: ${{ secrets.FONTAWESOME_PACKAGE_TOKEN }}
+    permissions:
+      contents: write
 
     steps:
       # Step 1: Checkout the code
@@ -40,8 +42,6 @@ jobs:
       # Step 6: Deploy to GitHub Pages
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
-        permissions:
-          contents: write
         with:
           folder: dist/gilles.dev/browser
           branch: gh-pages
