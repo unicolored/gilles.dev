@@ -45,7 +45,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/gilles.dev",
+            "outputPath": "dist/app",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["@angular/localize/init"],
