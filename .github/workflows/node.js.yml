@@ -7,6 +7,7 @@ on:
 
 jobs:
   build-and-deploy:
+    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
     env:
       FONTAWESOME_PACKAGE_TOKEN: ${{ secrets.FONTAWESOME_PACKAGE_TOKEN }}
@@ -39,8 +40,8 @@ jobs:
       # Step 6: Deploy to GitHub Pages
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
-        env:
-          - GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        permissions:
+          contents: write
         with:
           folder: dist/gilles.dev/browser
           branch: gh-pages
