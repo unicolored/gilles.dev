@@ -39,6 +39,8 @@ jobs:
       # Step 6: Deploy to GitHub Pages
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
+        env:
+          - GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           folder: dist/gilles.dev/browser
           branch: gh-pages
