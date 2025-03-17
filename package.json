@@ -5,7 +5,7 @@
     "i18n": "ng extract-i18n gilles.dev --format=xlf --out-file=src/locale/messages.xlf",
     "eslint": "eslint src && eslint projects",
     "format": "npx prettier -w ./src ./projects",
-    "prod": "ng build --configuration production --base-href \"/\"",
+    "prod": "ng build ngx-services && ng build --configuration production --base-href \"/\"",
     "deploy": "ngh --dir=dist/gilles.dev/browser",
     "ng": "ng",
     "start": "ng serve gilles.dev --hmr=false",
