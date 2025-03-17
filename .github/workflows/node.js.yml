@@ -30,6 +30,8 @@ jobs:
 
       # Step 4: Install dependencies
       - name: Install Dependencies
+        env:
+          FONTAWESOME_PACKAGE_TOKEN: ${{ secrets.FONTAWESOME_PACKAGE_TOKEN }}
         run: yarn install
 
       # Step 5: Build the Angular app
