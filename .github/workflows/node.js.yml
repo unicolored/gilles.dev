@@ -35,6 +35,12 @@ jobs:
       - name: Install Dependencies
         run: yarn install
 
+      # Step 4.5: Tests
+      - name: Eslint
+        run: yarn eslint
+      - name: Prettier check
+        run: yarn check
+
       # Step 5: Build the Angular app
       - name: Build
         run: yarn prod
