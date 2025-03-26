@@ -41,7 +41,7 @@ jobs:
 
       # Step 5: Build the Angular app
       - name: Build
-        run: yarn prod
+        run: sh script/cibuild.sh
 
       # Step 6: Deploy to GitHub Pages
       - name: Deploy
