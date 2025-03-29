@@ -1,6 +1,6 @@
 {
   "name": "gilles.dev",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "scripts": {
     "i18n": "ng extract-i18n gilles.dev --format=xlf --out-file=src/locale/messages.xlf",
     "eslint": "eslint src && eslint projects",
@@ -66,5 +66,5 @@
     "typescript": "~5.7.2",
     "typescript-eslint": "8.26.0"
   },
-  "packageManager": "yarn@4.7.0"
+  "packageManager": "yarn@4.8.0"
 }
