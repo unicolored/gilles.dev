@@ -30,7 +30,7 @@ import { environment } from '../../../environments/environment';
           </li>
         </ul>
         <br />
-        <p class="w-full text-center mt-2">
+        <p class="w-full text-center mt-10">
           <a [routerLink]="'/'" [href]="homepage" class="cursor-default no-underline">Gilles. Developer.</a>
         </p>
       </div>
