@@ -12,12 +12,10 @@ import {
   faXmarkLarge,
   faPhoneRotary,
   faEnvelope,
-  faFaceAwesome,
   faCommentSmile,
   faHandWave,
   faUserCowboy,
   faLaptopCode,
-  faStarAndCrescent,
   faStarChristmas,
   faHeart,
 } from '@awesome.me/kit-19be47d78a/icons/sharp-duotone/solid';
