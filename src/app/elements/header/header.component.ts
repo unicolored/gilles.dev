@@ -42,9 +42,9 @@ export class HeaderComponent {
       name: $localize`About`,
       route: '/about',
     },
-    {
-      name: $localize`Contact`,
-      route: '/contact',
-    },
+    // {
+    //   name: $localize`Contact`,
+    //   route: '/contact',
+    // },
   ];
 }

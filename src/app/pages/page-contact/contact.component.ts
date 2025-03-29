@@ -4,28 +4,22 @@ import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
 import { PageIdSlugEnum } from '../../app.global';
 import { CommonModule } from '@angular/common';
-import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  faArrowUpRightFromSquare as fasArrowUpRightFromSquare,
-  faCalendar as fasCalendar,
-  faEnvelope as fasEnvelope,
-  faMobileScreenButton as fasMobileScreenButton,
-} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   standalone: true,
   imports: [CommonModule, FontAwesomeModule],
   template: `
-    <main class="page-prose">
+    <main class="page-prose prose lg:prose-lg">
       <section class="main contact">
         <div class="hero-title pt-2 pb-5">
           <h1>
-            <span i18n>Call me</span>
-            ☎️
+            <fa-icon [icon]="['fasds', 'phone-rotary']" [fixedWidth]="true"></fa-icon>
+            &nbsp; <span i18n>Call me</span>
           </h1>
           <p class="mb-10" i18n>
             Whether you have a creative&nbsp;venture or an everyday&nbsp;challenge, I&nbsp;would be happy
-            to&nbsp;discuss 😇
+            to&nbsp;discuss <fa-icon [icon]="['fasds', 'comment-smile']" [fixedWidth]="true" size="2x"></fa-icon>
           </p>
         </div>
         <div class="pt-2 pb-5 content">
@@ -37,7 +31,7 @@ import {
           </div>-->
           <div class="myEmail" #emailElement (click)="copyEmailToClipboard()">
             <a>
-              <fa-icon [icon]="['fas', 'envelope']" [fixedWidth]="true"></fa-icon>
+              <fa-icon [icon]="['fasds', 'envelope']" [fixedWidth]="true"></fa-icon>
               <span>{{ this.myEmail }}</span>
             </a>
             <span *ngIf="copySuccess" class="copy-success-tooltip" [class.show]="copySuccess" i18n>Copied!</span>
@@ -57,11 +51,12 @@ export class ContactComponent implements OnInit, PageInterface {
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
 
-  library = inject(FaIconLibrary);
+  // library = inject(FaIconLibrary);
+  // protected readonly faPhoneRotary = faPhoneRotary;
 
   ngOnInit(): void {
     // Add multiple icons to the library
-    this.library.addIcons(fasCalendar, fasMobileScreenButton, fasArrowUpRightFromSquare, fasEnvelope);
+    // this.library.addIcons(fasCalendar, fasMobileScreenButton, fasArrowUpRightFromSquare, fasEnvelope);
 
     if (this.webPageMetasMap.has(this.pageId)) {
       this.webPageService.setMetas(this.webPageMetasMap.get(this.pageId), environment.endpoints?.['_self']);

@@ -12,10 +12,10 @@ import { FaDuotoneIconComponent } from '@fortawesome/angular-fontawesome';
 @Component({
   standalone: true,
   imports: [CommonModule, CloudinaryModule, FaDuotoneIconComponent],
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss'],
+  templateUrl: './xp.component.html',
+  styleUrls: ['./xp.component.scss'],
 })
-export class AboutComponent implements OnInit, PageInterface {
+export class XpComponent implements OnInit, PageInterface {
   pageId = PageIdSlugEnum.about;
   // myImage =  new CloudinaryImage('photo500_2024_067133a99d', {cloudName: 'unicolored'}).resize(fill().width(100).height(150));
   myPhoto = new CloudinaryImage('photo500_2024_067133a99d', { cloudName: 'unicolored' }).resize(

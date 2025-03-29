@@ -1,1 +1,15 @@
 @use 'styles/layout';
+
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@tailwind utilities;
+
+@theme {
+  --breakpoint-xs: 30rem;
+  --breakpoint-2xl: 100rem;
+  --breakpoint-3xl: 120rem;
+  --color-blue-500: #3b82f7;
+  --font-family-sans: 'Inter', sans-serif;
+  --color-white: #fff;
+}

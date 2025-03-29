@@ -33,13 +33,13 @@ main.about--container {
   }
 
   // Two columns width
-  //.presentation {
-  //  display: grid;
-  //  grid-column: -1;
-  //  //grid-row: 2;
-  //  grid-area: presentation;
-  //  align-items: start;
-  //}
+  .presentation {
+    display: grid;
+    grid-column: -1;
+    //grid-row: 2;
+    grid-area: presentation;
+    align-items: start;
+  }
 }
 
 section.sidebar {
@@ -63,4 +63,13 @@ section.sidebar {
       @apply pb-0 m-0 text-xs leading-relaxed;
     }
   }
+}
+
+.badge {
+  @apply uppercase border-1 rounded-full px-2 py-1 text-xs text-blue-500;
+}
+
+.contact-btn {
+  @apply font-bold text-white bg-blue-500 hover:bg-blue-600 rounded-full p-4 text-center block m-auto w-full;
+  text-decoration: none;
 }
