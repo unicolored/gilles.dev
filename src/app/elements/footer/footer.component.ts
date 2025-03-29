@@ -14,6 +14,11 @@ import { environment } from '../../../environments/environment';
       <div class="footer-grid-item footer-social justify-center">
         <ul>
           <li>
+            <a rel="me" target="_blank" href="https://unicolo.red" title="Red Journey">
+              <fa-icon [icon]="['fak', 'unicolored']" [fixedWidth]="true" size="2x"></fa-icon>
+            </a>
+          </li>
+          <li>
             <a rel="me" target="_blank" href="https://github.com/unicolored" title="GitHub Profile">
               <fa-icon [icon]="['fab', 'github-alt']" [fixedWidth]="true" size="2x"></fa-icon>
             </a>
@@ -26,7 +31,7 @@ import { environment } from '../../../environments/environment';
         </ul>
         <br />
         <p class="w-full text-center mt-2">
-          <a [routerLink]="'/'" [href]="homepage" class="cursor-default no-underline">Gilles Hoarau. Freelance.</a>
+          <a [routerLink]="'/'" [href]="homepage" class="cursor-default no-underline">Gilles. Developer.</a>
         </p>
       </div>
 
