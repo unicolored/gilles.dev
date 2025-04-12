@@ -70,6 +70,5 @@ section.sidebar {
 }
 
 .contact-btn {
-  @apply font-bold text-white bg-blue-500 hover:bg-blue-600 rounded-full p-4 text-center block m-auto w-full;
-  text-decoration: none;
+  @apply font-bold text-white bg-blue-500 hover:bg-blue-600 rounded-full p-4 text-center block m-auto w-full no-underline;
 }
