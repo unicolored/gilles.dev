@@ -7,6 +7,7 @@ export const environment = {
   endpoints: {
     _self: 'https://www.gilles.dev/',
   },
+  unicoloredBaseUrl: 'https://unicolo.red',
   algolia: {
     appId: 'SUXVC6B2YE',
     apiKey: 'c6b499da6c9903652a2b4cc7a281d7b9',

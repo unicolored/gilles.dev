@@ -26,6 +26,11 @@ export const appRoutes: Route[] = [
     loadComponent: () => import('./pages/page-portfolio/portfolio.component').then((m) => m.PortfolioComponent),
   },
   {
+    path: 'projects',
+    pathMatch: 'full',
+    loadComponent: () => import('./pages/page-projects/projects.component').then((m) => m.ProjectsComponent),
+  },
+  {
     path: 'portfolio/category/:category',
     pathMatch: 'full',
     loadComponent: () => import('./pages/page-portfolio/portfolio.component').then((m) => m.PortfolioComponent),

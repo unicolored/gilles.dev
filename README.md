@@ -15,7 +15,16 @@ ng serve
 To build and deploy the project for production in Github pages:
 
 ```bash
-yarn prod && yarn deploy
+
+# Build ngx-services
+ng build ngx-services
+
+# Build src app
+# yarn prod && yarn deploy
+
+# Upgrade pkg.version, then trigger the github workflow:
+sh script/release.sh 
 ```
 
 Project is live: [Gilles.dev](https://gilles.dev)
+
