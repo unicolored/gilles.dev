@@ -5,6 +5,7 @@ import { Observable, retry, shareReplay, throwError } from 'rxjs';
 
 const handleError = (e: unknown) => {
   const error = e as { error: string; status: number };
+  console.log(error);
   if (error.status === 0) {
     // A client-side or network error occurred. Handle it accordingly.
     console.error('🚨 An error occurred:', error.error);
