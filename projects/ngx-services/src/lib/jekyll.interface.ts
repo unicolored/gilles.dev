@@ -8,7 +8,7 @@ export interface JekyllPost {
   excerpt: string;
   thumbnail?: string;
   description?: string;
-  tags: any[];
+  tags: string[];
   title: string;
   categories: string[];
   output: null;
