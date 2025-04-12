@@ -6,6 +6,8 @@ export interface JekyllPost {
   date: string;
   id: string;
   excerpt: string;
+  thumbnail?: string;
+  description?: string;
   tags: any[];
   title: string;
   categories: string[];
