@@ -2,31 +2,35 @@ import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { HttpService, JekyllPost, UnicoloredService } from 'ngx-services';
 import { tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-projects-page',
   template: `
     @for (post of postsComputed(); track post.id) {
-      <div>
+      <div class="m-8">
         <h2>{{ post.title }}</h2>
-        <p>⭐️ {{ post.id }} // {{post.thumbnail}}</p>
         @if (post.thumbnail) {
-<!--          <img width="100" height="100" [ngSrc]="post.thumbnail" [alt]="'IMAGE'"/>-->
-          <img width="100" height="100" [src]="environment.unicoloredBaseUrl+post.thumbnail" [alt]="'IMAGE'"/>
+          <img
+            priority
+            class="img-thumbnail"
+            [width]="400"
+            [height]="300"
+            [ngSrc]="post.thumbnail.replace('/assets', 'Unicolo.red')"
+            [alt]="post.title"
+          />
         }
-<!--        <div [innerHTML]="post.excerpt">-->
-<!--        </div>-->
+        <!--        <div [innerHTML]="post.excerpt">-->
+        <!--        </div>-->
       </div>
-      <hr>
+      <hr />
     } @empty {
       <p>There are no items.</p>
     }
   `,
   styles: ``,
   providers: [HttpService, UnicoloredService],
-  imports: [
-    // NgOptimizedImage
-  ]
+  imports: [NgOptimizedImage],
 })
 export class ProjectsComponent implements OnInit {
   unicoloredService = inject(UnicoloredService);
@@ -34,14 +38,13 @@ export class ProjectsComponent implements OnInit {
   posts = signal<JekyllPost[]>([]);
   postsComputed = computed(() => {
     return this.posts();
-  })
+  });
 
   ngOnInit() {
     this.unicoloredService
       .getAll('projects-gilles.json')
-      .pipe(tap((data) => this.posts.set( data as JekyllPost[])))
+      .pipe(tap((data) => this.posts.set(data as JekyllPost[])))
       .subscribe();
-
   }
 
   protected readonly environment = environment;
