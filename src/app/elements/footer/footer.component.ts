@@ -23,11 +23,11 @@ import { environment } from '../../../environments/environment';
               <fa-icon [icon]="['fab', 'github-alt']" [fixedWidth]="true" size="2x"></fa-icon>
             </a>
           </li>
-<!--          <li>-->
-<!--            <a rel="me" target="_blank" href="https://x.com/GillesHoarau" title="X Profile">-->
-<!--              <fa-icon [icon]="['fab', 'x-twitter']" [fixedWidth]="true" size="2x"></fa-icon>-->
-<!--            </a>-->
-<!--          </li>-->
+          <!--          <li>-->
+          <!--            <a rel="me" target="_blank" href="https://x.com/GillesHoarau" title="X Profile">-->
+          <!--              <fa-icon [icon]="['fab', 'x-twitter']" [fixedWidth]="true" size="2x"></fa-icon>-->
+          <!--            </a>-->
+          <!--          </li>-->
         </ul>
         <br />
         <p class="w-full text-center mt-10">
