@@ -4,11 +4,10 @@ import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
 import { PageIdSlugEnum } from '../../app.global';
 import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule],
   template: `
     <main class="page-prose prose lg:prose-lg">
       <section class="main contact">

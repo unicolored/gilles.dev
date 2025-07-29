@@ -2,12 +2,11 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { environment } from '../../../environments/environment';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, FaIconComponent],
+  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
   selector: 'gilles-nx-footer',
   template: `
     <footer class="footer not-prose">
@@ -15,19 +14,14 @@ import { environment } from '../../../environments/environment';
         <ul>
           <li>
             <a rel="me" target="_blank" href="https://unicolo.red" title="Red Journey">
-              <fa-icon [icon]="['fak', 'unicolored']" [fixedWidth]="true" size="2x"></fa-icon>
+              unicolored
             </a>
           </li>
           <li>
             <a rel="me" target="_blank" href="https://github.com/unicolored" title="GitHub Profile">
-              <fa-icon [icon]="['fab', 'github-alt']" [fixedWidth]="true" size="2x"></fa-icon>
+              github
             </a>
           </li>
-          <!--          <li>-->
-          <!--            <a rel="me" target="_blank" href="https://x.com/GillesHoarau" title="X Profile">-->
-          <!--              <fa-icon [icon]="['fab', 'x-twitter']" [fixedWidth]="true" size="2x"></fa-icon>-->
-          <!--            </a>-->
-          <!--          </li>-->
         </ul>
         <br />
         <p class="w-full text-center mt-10">
