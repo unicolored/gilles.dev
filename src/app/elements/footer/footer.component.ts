@@ -13,14 +13,10 @@ import { environment } from '../../../environments/environment';
       <div class="footer-grid-item footer-social justify-center">
         <ul>
           <li>
-            <a rel="me" target="_blank" href="https://unicolo.red" title="Red Journey">
-              unicolored
-            </a>
+            <a rel="me" target="_blank" href="https://unicolo.red" title="Red Journey"> unicolored </a>
           </li>
           <li>
-            <a rel="me" target="_blank" href="https://github.com/unicolored" title="GitHub Profile">
-              github
-            </a>
+            <a rel="me" target="_blank" href="https://github.com/unicolored" title="GitHub Profile"> github </a>
           </li>
         </ul>
         <br />

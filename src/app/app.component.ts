@@ -31,7 +31,6 @@ export class AppComponent implements OnInit {
   platformID = inject(PLATFORM_ID);
 
   constructor(private renderer: Renderer2) {
-
     effect(() => {
       this.setHtmlClass(this.mode());
     });
