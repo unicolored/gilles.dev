@@ -2,8 +2,9 @@
 
 set -e
 
-yarn eslint
+#yarn eslint
+yarn lint
 
-yarn check
+yarn check # use yarn format if needed
 
 echo "✅ Tests completed"
