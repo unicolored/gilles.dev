@@ -7,11 +7,10 @@ import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
 import { CommonModule } from '@angular/common';
 import { CloudinaryModule } from '@cloudinary/ng/dist';
-import { FaDuotoneIconComponent } from '@fortawesome/angular-fontawesome';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, CloudinaryModule, FaDuotoneIconComponent],
+  imports: [CommonModule, CloudinaryModule],
   templateUrl: './xp.component.html',
   styleUrls: ['./xp.component.scss'],
 })
