@@ -1,5 +1,3 @@
-//@use '../../../styles/variables' as *;
-@use '../../../styles/_gilles.styleguides.scss' as gilles;
 
 section.main.contact {
   display: grid;

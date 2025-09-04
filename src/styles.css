@@ -1,6 +1,7 @@
 @use 'styles/layout';
 
-@import 'tailwindcss';
+@import "tailwindcss";
+@tailwind utilities;
 @plugin '@tailwindcss/typography';
 
 @tailwind utilities;
@@ -12,4 +13,8 @@
   --color-blue-500: #3b82f7;
   --font-family-sans: 'Inter', sans-serif;
   --color-white: #fff;
+}
+
+body {
+  @apply bg-white;
 }

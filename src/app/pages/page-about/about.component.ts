@@ -12,7 +12,7 @@ import { CloudinaryModule } from '@cloudinary/ng/dist';
   standalone: true,
   imports: [CommonModule, CloudinaryModule],
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss'],
+  //styleUrls: ['./about.component.css'],
 })
 export class AboutComponent implements OnInit, PageInterface {
   pageId = PageIdSlugEnum.about;

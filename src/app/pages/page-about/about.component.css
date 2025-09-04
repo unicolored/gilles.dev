@@ -1,14 +1,10 @@
-//@use 'sass:meta';
-//@use 'sass:color';
-//@use '../../../styles/variables' as *;
-@use '../../../styles/mixins' as mixins;
-//@use '../../../styles/layout';
 
-@use 'tailwindcss';
+@import "tailwindcss/preflight"
+@tailwind utilities;
+@plugin '@tailwindcss/typography';
 
-// Grid of three columns width
 main.about--container {
-  @apply grid gap-20;
+  @apply grid;
 
   @include mixins.media-min('tablet-down') {
     grid-template-columns: 6fr 3fr;
@@ -23,7 +19,6 @@ main.about--container {
       'sidebar';
   }
 
-  // One column width
   .sidebar {
     display: grid;
     grid-column: -1;
@@ -31,15 +26,6 @@ main.about--container {
     justify-items: start;
     align-content: start;
   }
-
-  // Two columns width
-  //.presentation {
-  //  display: grid;
-  //  grid-column: -1;
-  //  //grid-row: 2;
-  //  grid-area: presentation;
-  //  align-items: start;
-  //}
 }
 
 section.sidebar {

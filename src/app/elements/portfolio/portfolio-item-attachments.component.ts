@@ -26,7 +26,7 @@ import { WordpressSelfSinglePostMedia, WordpressService } from 'ngx-services';
       }
     }
   `,
-  styleUrls: ['./portfolio.component.scss'],
+  //styleUrls: ['./portfolio.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioItemAttachmentsComponent {

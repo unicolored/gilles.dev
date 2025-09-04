@@ -60,7 +60,7 @@ import { RouterLink } from '@angular/router';
       </div>
     }
   `,
-  styleUrls: ['./portfolio.component.scss'],
+  //styleUrls: ['./portfolio.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioHitsComponent {

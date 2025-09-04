@@ -1,8 +1,3 @@
-@use 'sass:meta';
-
-@use './_gilles.styleguides.scss' as gilles;
-@use 'variables' as *;
-@use './view-transition';
 
 html {
   --color-white: rgba(#{gilles.$white});

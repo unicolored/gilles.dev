@@ -1,13 +1,13 @@
-@use 'sass:color';
-
-@use 'tailwindcss';
+@import "tailwindcss/preflight"
+@tailwind utilities;
+@plugin '@tailwindcss/typography';
 
 .navbar {
   @apply fixed;
 }
 
 nav.g-navbar {
-  @apply flex justify-between relative top-0 py-[18px] z-10;
+  @apply flex justify-between relative py-[18px] z-10;
 
   .items {
     @apply flex justify-between items-center;
@@ -19,7 +19,6 @@ nav.g-navbar {
       display: flex;
       cursor: pointer;
       font-weight: 700;
-      //width: 5.125rem;
       margin: 0;
       padding: 0.625rem 1.5rem;
       border-radius: 0.15rem;

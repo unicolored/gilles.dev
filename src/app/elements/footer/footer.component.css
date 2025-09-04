@@ -1,6 +1,6 @@
-@use '../../../styles/mixins' as mixins;
-
-@use 'tailwindcss';
+@import "tailwindcss/preflight"
+@tailwind utilities;
+@plugin '@tailwindcss/typography';
 
 footer.footer {
   & {
