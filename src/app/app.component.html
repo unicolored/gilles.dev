@@ -12,7 +12,7 @@
     </div>
   </div>
 
-  <ng-container *ngIf="!environment.maintenance; else maintenance">
+  @if (!environment.maintenance) {
     <div class="grid-child grid-header">
       <gilles-nx-header [mode]="mode"></gilles-nx-header>
     </div>
@@ -27,11 +27,9 @@
     <div class="grid-child grid-footer">
       <gilles-nx-footer></gilles-nx-footer>
     </div>
-  </ng-container>
-
-  <ng-template #maintenance>
+  } @else {
     <div class="grid-child grid-content">
       <h1 i18n>👉 I will be back soon!</h1>
     </div>
-  </ng-template>
+  }
 </div>
