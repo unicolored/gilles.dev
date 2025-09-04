@@ -1,5 +1,4 @@
-
-@import "tailwindcss";
+@import 'tailwindcss';
 @tailwind utilities;
 @plugin '@tailwindcss/typography';
 
@@ -23,22 +22,23 @@
   --color-sun: #c49620;
   --color-mars: #e23033;
 
-  --color-bkg: var(--color-white );
-  --color-footer: var(--color-night );
-  --color-content: var(--color-night );
-  --color-content-secondary: var(--color-moon );
-  --color-primary: var(--color-sky );
-  --color-accent: var(--color-sun );
-  --color-dark-bkg: var(--color-sky );
-  --color-dark-footer: var(--color-night );
-  --color-dark-content: var(--color-moonLight );
-  --color-dark-content-secondary: var(--color-moonLight );
-  --color-dark-primary: var(--color-skyLight );
-  --color-dark-accent: var(--color-sun );
+  --color-bkg: var(--color-white);
+  --color-footer: var(--color-night);
+  --color-content: var(--color-night);
+  --color-content-secondary: var(--color-moon);
+  --color-primary: var(--color-sky);
+  --color-accent: var(--color-sun);
+  --color-dark-bkg: var(--color-sky);
+  --color-dark-footer: var(--color-night);
+  --color-dark-content: var(--color-moonLight);
+  --color-dark-content-secondary: var(--color-moonLight);
+  --color-dark-primary: var(--color-skyLight);
+  --color-dark-accent: var(--color-sun);
 
-  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-sans:
+    ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
 
 body {
@@ -93,4 +93,3 @@ a {
     margin: 0 0.2rem;
   }
 }
-
