@@ -14,7 +14,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:gilles.dev": "node dist/gilles.dev/server/server.mjs",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "explore": "ng build --source-map && source-map-explorer dist/app/browser/main* --no-border-checks"
   },
   "private": true,
   "dependencies": {
