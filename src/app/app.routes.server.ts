@@ -12,8 +12,8 @@ export const serverRoutes: ServerRoute[] = [
   //     return slugs;
   //   },
   // },
-  // {
-  //   path: '**',
-  //   renderMode: RenderMode.Prerender,
-  // },
+  {
+    path: '**',
+    renderMode: RenderMode.Prerender,
+  },
 ];
