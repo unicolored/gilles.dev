@@ -39,7 +39,7 @@ import { CommonModule } from '@angular/common';
       </section>
     </main>
   `,
-  styleUrls: ['./contact.component.scss'],
+  //styleUrls: ['./contact.component.css'],
 })
 export class ContactComponent implements OnInit, PageInterface {
   pageId = PageIdSlugEnum.contact;

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="1966292667679829375" datatype="html">
+        <source>👉 I will be back soon!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">34,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5221938886751387620" datatype="html">
+        <source>Hello!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/elements/header/header.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1726363342938046830" datatype="html">
+        <source>About</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/elements/header/header.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="187187500641108332" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ subtitle() }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/elements/portfolio/portfolio-hits.component.ts</context>
+          <context context-type="linenumber">21,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8209478959457874239" datatype="html">
+        <source> Home sweet Home </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/not-found/not-found.component.ts</context>
+          <context context-type="linenumber">18,19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6599063890493188634" datatype="html">
+        <source><x id="START_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;h1&gt;"/>They called me <x id="START_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;em&gt;"/>Jack<x id="CLOSE_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;/em&gt;"/><x id="CLOSE_HEADING_LEVEL1" ctype="x-h1" equiv-text="&lt;/h1&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/page-about/about.component.html</context>
+          <context context-type="linenumber">17,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1494957374102837840" datatype="html">
+        <source> Graphic Designer &amp; Web Developer </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/page-home/home.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4729906163039970996" datatype="html">
+        <source>I&apos;ve been working on creative projects for many many years 🙏</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/page-home/home.component.ts</context>
+          <context context-type="linenumber">31,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9209127732877384280" datatype="html">
+        <source> I became expert in every steps, including graphic designs, websites and web apps, online payment, performant hosting. May I help you? </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/page-home/home.component.ts</context>
+          <context context-type="linenumber">35,36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3132049421725382901" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>From 2021 to 2024<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>, I led the charge on 2 amazing projects for Stellantis&apos; customers: an AI-driven vehicle Search Engine and an Order Tracking module for e-commerce platforms. I worked with teams from around the globe, connecting me with diverse cultures and perspectives. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/page-xp/xp.component.html</context>
+          <context context-type="linenumber">7,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9186381778593243603" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>In 2015<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>, I joined Groupe PSA’s Digital Factory and became a key player in facilitating Innovation committees and developing proof of concepts on the latest trends: Internet-Of-Things, Real-time 3D, Progressive Web Apps, Chatbots &amp; Vocal Assistants. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/page-xp/xp.component.html</context>
+          <context context-type="linenumber">12,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3074134105445792932" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>In 2006<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>, I worked in an advertising agency that quickly became a powerhouse, thanks to a great creative director and self-taught skills in producing media. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/page-xp/xp.component.html</context>
+          <context context-type="linenumber">18,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8701704660471138281" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>My first big win?<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> Writing <x id="START_UNDERLINED_TEXT" ctype="x-u" equiv-text="&lt;u&gt;"/>Scan &amp; Retouche d&apos;Images<x id="CLOSE_UNDERLINED_TEXT" ctype="x-u" equiv-text="&lt;/u&gt;"/>, a book on photo manipulation for MicroApplication that sold ~20,000 copies. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/page-xp/xp.component.html</context>
+          <context context-type="linenumber">22,25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2656204159956128617" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Before that<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>, I studied academic drawings, video montage and art history (but that&apos;s old news now). </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/page-xp/xp.component.html</context>
+          <context context-type="linenumber">26,28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7686867708848672838" datatype="html">
+        <source>Special thanks to God without who nothing&apos;s possible!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/page-xp/xp.component.html</context>
+          <context context-type="linenumber">33,34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="655256529988102109" datatype="html">
+        <source>Freelance | Graphic Designer &amp; Developer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/environments/metas.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1957046526874154773" datatype="html">
+        <source>Meet Gilles, a maker of web apps, imagery, and 3D experiences. Discover his developer toolkit, creative media design skills, and more.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/environments/metas.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2391668266844271969" datatype="html">
+        <source>About Gilles Hoarau ∼ Developer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/environments/metas.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="576476034536436467" datatype="html">
+        <source>Learn more about Gilles Hoarau, a self-taught web developer and designer with over 15 years of experience. Discover his journey from writing a book on photo manipulation to developing AI-driven web apps, his work in diverse development and graphic design projects, and his hobbies.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/environments/metas.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1861189900778757863" datatype="html">
+        <source>Contact Gilles Hoarau ∼ Developer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/environments/metas.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7580596952434112408" datatype="html">
+        <source>Get in touch with Gilles Hoarau, a seasoned web developer and designer. Call directly, send an email, or book a call to discuss creative ventures or everyday challenges. Gilles is ready to help with your project needs.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/environments/metas.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

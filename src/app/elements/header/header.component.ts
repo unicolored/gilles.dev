@@ -1,7 +1,7 @@
-import { Component, inject, Input, WritableSignal } from '@angular/core';
+import { Component, Input, WritableSignal } from '@angular/core';
 import { ModeEnum } from '../../app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -27,23 +27,22 @@ import { CommonModule } from '@angular/common';
       <div class="actions"></div>
     </nav>
   `,
-  styleUrls: ['./header.component.scss'],
+  //styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
   @Input() mode!: WritableSignal<ModeEnum>;
-  private router = inject(Router);
 
   navItems = [
     {
-      name: $localize`Hello!`,
+      name: `Hello!`,
       route: '/',
     },
     {
-      name: $localize`About`,
+      name: `About`,
       route: '/about',
     },
     // {
-    //   name: $localize`Contact`,
+    //   name: `Contact`,
     //   route: '/contact',
     // },
   ];

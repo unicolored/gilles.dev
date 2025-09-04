@@ -1,29 +1,9 @@
-//@use 'sass:meta';
-//@use 'sass:color';
-//@use '../../../styles/variables' as *;
-@use '../../../styles/mixins' as mixins;
-//@use '../../../styles/layout';
+@import 'tailwindcss/preflight' @tailwind utilities;
+@plugin '@tailwindcss/typography';
 
-@use 'tailwindcss';
-
-// Grid of three columns width
 main.about--container {
-  @apply grid gap-20;
+  @apply grid;
 
-  @include mixins.media-min('tablet-down') {
-    grid-template-columns: 6fr 3fr;
-    grid-template-areas: 'presentation  sidebar';
-  }
-
-  @include mixins.media-max('tablet-down') {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    grid-template-areas:
-      'presentation'
-      'sidebar';
-  }
-
-  // One column width
   .sidebar {
     display: grid;
     grid-column: -1;
@@ -32,11 +12,9 @@ main.about--container {
     align-content: start;
   }
 
-  // Two columns width
   .presentation {
     display: grid;
     grid-column: -1;
-    //grid-row: 2;
     grid-area: presentation;
     align-items: start;
   }

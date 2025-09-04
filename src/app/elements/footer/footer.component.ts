@@ -36,7 +36,7 @@ import { environment } from '../../../environments/environment';
       <!--&lt;!&ndash;  </button>&ndash;&gt;-->
     </footer>
   `,
-  styleUrls: ['./footer.component.scss'],
+  //styleUrls: ['./footer.component.css'],
 })
 export class FooterComponent {
   homepage = environment.endpoints._self;

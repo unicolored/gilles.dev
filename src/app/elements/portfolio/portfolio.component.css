@@ -1,4 +1,5 @@
-@use 'tailwindcss';
+@import 'tailwindcss/preflight' @tailwind utilities;
+@plugin '@tailwindcss/typography';
 
 h2,
 h2 span {
@@ -10,16 +11,12 @@ p span {
 }
 
 .portfolio-items {
-  @apply grid gap-6 sm:grid-cols-2 xl:grid-cols-3;
+  @apply grid;
 
   .portfolio-item {
     & {
       background: var(--color-content);
       cursor: pointer;
-
-      //background-color: var('solar.bg-secondary');
-      //background-position: center center;
-      //background-size: 100%;
       @apply shadow-md transition-all ease-in;
       @apply relative flex text-transparent aspect-video rounded overflow-hidden;
       @apply justify-center align-middle text-center items-center;
