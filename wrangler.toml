@@ -1,0 +1,19 @@
+name = "www-gilles-dev"
+compatibility_date = "2022-07-12"
+
+workers_dev = true
+preview_urls = false
+
+routes = [
+    { pattern = "www.gilles.dev", custom_domain = true }
+]
+
+[assets]
+directory = "dist/app/browser"
+not_found_handling = "404-page"
+
+[build]
+command = "sh script/cibuild.sh"
+cwd = "./"
+watch_dir = "*"
+
