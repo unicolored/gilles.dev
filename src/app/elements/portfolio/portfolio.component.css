@@ -1,6 +1,3 @@
-@import 'tailwindcss';
-@plugin '@tailwindcss/typography';
-
 h2,
 h2 span {
   color: var(--color-primary);

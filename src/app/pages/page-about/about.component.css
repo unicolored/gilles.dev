@@ -1,6 +1,3 @@
-@import 'tailwindcss';
-@plugin '@tailwindcss/typography';
-
 main.about--container {
   @apply grid;
   grid-template-columns: 6fr 3fr;
