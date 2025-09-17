@@ -41,7 +41,7 @@ export const appRoutes: Route[] = [
     loadComponent: () =>
       import('./pages/page-portfolio/portfolio-item.component').then((m) => m.PortfolioItemComponent),
   },
-  { path: '**', component: NotFoundComponent },
+  //{ path: '**', component: NotFoundComponent },
   {
     path: '**',
     loadComponent: () => import('./pages/not-found/not-found.component').then((m) => m.NotFoundComponent),
@@ -58,4 +58,4 @@ export const appRoutes: Route[] = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
