@@ -34,7 +34,8 @@
             "outputMode": "server",
             "ssr": {
               "entry": "src/server.ts"
-            }
+            },
+            "allowedCommonJsDependencies": ["qs", "algoliasearch-helper", "@algolia/events"]
           },
           "configurations": {
             "production": {
