@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
     @if (title() || subtitle()) {
       <article class="prose mb-6">
         @if (title()) {
-          <h2 class="font-bold leading-snug mb-1">
+          <h2 class="mb-1 leading-snug font-bold">
             <span i18n [innerHTML]="title()"></span>
           </h2>
         }

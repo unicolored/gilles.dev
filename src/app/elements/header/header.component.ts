@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   template: `
     <nav class="g-navbar">
       <div class="items">
-          @for (item of navItems; track item.name) {
+        @for (item of navItems; track item.name) {
           <a
             class="item"
             [routerLink]="item.route"

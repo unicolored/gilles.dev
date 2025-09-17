@@ -15,10 +15,10 @@ import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.
   template: `
     <main class="page-prose">
       <div class="hero pt-8 pb-4">
-        <div class="hero-content text-left w-full">
+        <div class="hero-content w-full text-left">
           <section class="w-full">
             <header class="not-prose text-center">
-              <h1 class="font-bold text-4xl leading-snug uppercase">Portfolio</h1>
+              <h1 class="text-4xl leading-snug font-bold uppercase">Portfolio</h1>
             </header>
           </section>
         </div>

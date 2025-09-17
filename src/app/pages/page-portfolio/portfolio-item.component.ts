@@ -43,8 +43,8 @@ import { InstantSearchService } from '../../services/instantsearch.service';
             }
           </figure>
 
-          <header class="flex justify-center mb-2">
-            <h1 class="font-bold text-xl mb-1">
+          <header class="mb-2 flex justify-center">
+            <h1 class="mb-1 text-xl font-bold">
               <span i18n [innerHTML]="item.post_title"></span>
             </h1>
           </header>
@@ -58,7 +58,7 @@ import { InstantSearchService } from '../../services/instantsearch.service';
             }
           </div>
 
-          <main class="flex p-4 w-full ">
+          <main class="flex w-full p-4">
             @if (item.content) {
               <!--            <p class="uppercase">-->
               <!--              <span i18n>{{ subtitle() }}</span>-->

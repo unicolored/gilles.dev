@@ -17,17 +17,17 @@ import { connectConfigure, connectHits } from 'instantsearch.js/es/connectors';
   template: `
     <main class="page-prose">
       <div class="hero pt-8 pb-4">
-        <div class="hero-content text-left w-full">
+        <div class="hero-content w-full text-left">
           <section class="w-full">
             <header class="not-prose text-center">
-              <h1 class="font-bold text-5xl leading-snug">Gilles HOARAU</h1>
-              <h2 class="font-bold font-mono text-xl leading-snug text-accent" i18n>
+              <h1 class="text-5xl leading-snug font-bold">Gilles HOARAU</h1>
+              <h2 class="text-accent font-mono text-xl leading-snug font-bold" i18n>
                 Graphic Designer &amp;&nbsp;Web&nbsp;Developer
               </h2>
             </header>
 
             <article class="hidden">
-              <h3 class="font-bold leading-snug">
+              <h3 class="leading-snug font-bold">
                 <span i18n>I've been working on creative projects for many many years 🙏</span>
               </h3>
               <p>
