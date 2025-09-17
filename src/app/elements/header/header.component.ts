@@ -27,7 +27,10 @@ import { CommonModule } from '@angular/common';
       <div class="actions"></div>
     </nav>
   `,
-  styleUrls: ['./header.component.css'],
+  styleUrls: [
+    //'./header.component.css',
+    '../header-footer.css',
+  ],
 })
 export class HeaderComponent {
   @Input() mode!: WritableSignal<ModeEnum>;

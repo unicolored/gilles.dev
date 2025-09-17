@@ -1,4 +1,4 @@
-import { Component, effect, inject, OnInit, PLATFORM_ID, Renderer2, signal } from '@angular/core';
+import { Component, effect, inject, OnInit, PLATFORM_ID, Renderer2, signal, ViewEncapsulation } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule, isPlatformBrowser, PRECONNECT_CHECK_BLOCKLIST, provideImgixLoader } from '@angular/common';
 import { environment } from '../environments/environment';
@@ -23,7 +23,8 @@ export type ModeEnum = 'light' | 'dark' | null;
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  // styleUrl: './app.component.css',
+  // encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
   mode = signal<ModeEnum>(null);

@@ -1,11 +1,14 @@
+@import 'tailwindcss';
+@import '../../../styles/theme.css';
+
 h2,
 h2 span {
-  color: var(--color-primary);
+  @apply text-primary dark:text-dark-primary;
 }
 
 p,
 p span {
-  color: var(--color-content);
+  @apply text-content dark:text-dark-content;
 }
 
 .portfolio-items {

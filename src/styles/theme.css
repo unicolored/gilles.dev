@@ -1,0 +1,36 @@
+@theme {
+  --breakpoint-xs: 30rem;
+  --breakpoint-2xl: 100rem;
+  --breakpoint-3xl: 120rem;
+  --color-blue-500: #3b82f7;
+  --font-family-sans: 'Inter', sans-serif;
+
+  --color-white: #fefefe;
+  --color-black: #010101;
+  --color-moon: #939598;
+  --color-moonLight: #adbecf;
+  --color-night: #2a3035;
+  --color-space: #151515;
+  --color-sky: #274d74;
+  --color-skyLight: #0dcaf0;
+  --color-sun: #c49620;
+  --color-mars: #e23033;
+
+  --color-bkg: var(--color-white);
+  --color-footer: var(--color-night);
+  --color-content: var(--color-night);
+  --color-content-secondary: var(--color-moon);
+  --color-primary: var(--color-sky);
+  --color-accent: var(--color-sun);
+  --color-dark-bkg: var(--color-sky);
+  --color-dark-footer: var(--color-night);
+  --color-dark-content: var(--color-moonLight);
+  --color-dark-content-secondary: var(--color-moonLight);
+  --color-dark-primary: var(--color-skyLight);
+  --color-dark-accent: var(--color-sun);
+
+  --font-sans:
+    ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
