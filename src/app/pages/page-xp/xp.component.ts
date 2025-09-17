@@ -12,7 +12,7 @@ import { CloudinaryModule } from '@cloudinary/ng/dist';
   standalone: true,
   imports: [CommonModule, CloudinaryModule],
   templateUrl: './xp.component.html',
-  // styleUrls: ['./xp.component.css'],
+  styleUrls: ['./xp.component.css'],
 })
 export class XpComponent implements OnInit, PageInterface {
   pageId = PageIdSlugEnum.about;

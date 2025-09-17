@@ -1,9 +1,9 @@
-@import 'tailwindcss/preflight' @tailwind utilities;
+@import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
 footer.footer {
   & {
-    @apply grid gap-6 w-full;
+    @apply grid w-full gap-6;
 
     grid-template-columns: 1fr;
     grid-template-areas: 'social';
@@ -30,7 +30,7 @@ footer.footer {
 }
 
 .footer-grid-item {
-  @apply grid w-full min-h-[2rem];
+  @apply grid min-h-[2rem] w-full;
 }
 
 .footer-grid-item.footer-social {
@@ -39,7 +39,7 @@ footer.footer {
   background: transparent;
 
   ul {
-    @apply flex m-0 p-0;
+    @apply m-0 flex p-0;
   }
 
   ul li {
@@ -48,8 +48,14 @@ footer.footer {
 
   ul li a {
     @apply p-4;
+
     &:hover {
       color: var(--color-accent) !important;
+    }
+
+    &.footer-icon {
+      @apply relative m-2 inline-block h-24 w-24;
+      @apply fill-(--color-content) fill-current dark:fill-(--color-dark-content);
     }
   }
 }

@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './image.component.html',
-  //styleUrl: './image.component.css',
+  styleUrl: './image.component.css',
 })
 export class ImageComponent implements AfterViewInit {
   @Input() src!: string;

@@ -27,17 +27,18 @@ import { RouterLink } from '@angular/router';
     @defer (on viewport; prefetch on timer(1s)) {
       <div class="portfolio-items">
         @for (item of itemsComputed(); track item.objectID) {
-          <div class="portfolio-item" [routerLink]="['portfolio', 'item', item.objectID]">
-            <img
-              *ngIf="item.images.thumbnail?.url"
-              [ngSrc]="item.images.thumbnail.url"
-              fill
-              priority
-              class="img-thumbnail"
-              [alt]="item.post_title"
-              [title]="item.post_title"
-            />
-          </div>
+          @if (item.images.thumbnail.url) {
+            <div class="portfolio-item" [routerLink]="['portfolio', 'item', item.objectID]">
+              <img
+                [ngSrc]="item.images.thumbnail.url"
+                fill
+                priority
+                class="img-thumbnail"
+                [alt]="item.post_title"
+                [title]="item.post_title"
+              />
+            </div>
+          }
         }
       </div>
     } @placeholder (minimum 1s) {
@@ -60,7 +61,7 @@ import { RouterLink } from '@angular/router';
       </div>
     }
   `,
-  //styleUrls: ['./portfolio.component.css'],
+  styleUrls: ['./portfolio.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioHitsComponent {

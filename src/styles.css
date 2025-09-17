@@ -1,8 +1,5 @@
 @import 'tailwindcss';
-@tailwind utilities;
 @plugin '@tailwindcss/typography';
-
-@tailwind utilities;
 
 @theme {
   --breakpoint-xs: 30rem;
@@ -45,7 +42,7 @@ body {
   cursor: default;
 
   @apply font-sans;
-  @apply bg-white text-content;
+  @apply text-content bg-white;
   @apply dark:bg-sky dark:text-dark-content;
   font-size: 1rem;
 }

@@ -1,15 +1,14 @@
-@import 'tailwindcss/preflight' @tailwind utilities;
-@plugin '@tailwindcss/typography';
+@import 'tailwindcss';
 
 .navbar {
   @apply fixed;
 }
 
 nav.g-navbar {
-  @apply flex justify-between relative py-[18px] z-10;
+  @apply relative z-10 flex justify-between py-[18px];
 
   .items {
-    @apply flex justify-between items-center;
+    @apply flex items-center justify-between;
 
     border-radius: 0.25rem;
 
