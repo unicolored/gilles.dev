@@ -37,12 +37,20 @@ export class HeaderComponent {
 
   navItems = [
     {
-      name: `Hello!`,
+      name: `Hello`,
       route: '/',
     },
     {
-      name: `About`,
-      route: '/about',
+      name: `Resume`,
+      route: '/resume',
+    },
+    {
+      name: `Portfolio`,
+      route: '/portfolio',
+    },
+    {
+      name: `Blog`,
+      route: '/blog',
     },
     // {
     //   name: `Contact`,

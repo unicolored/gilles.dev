@@ -12,7 +12,7 @@ import { environment } from '../../../environments/environment';
     <footer class="footer not-prose">
       <div class="footer-grid-item footer-social justify-center">
         <ul>
-          <li>
+          <!--<li>
             <a rel="me" target="_blank" href="https://unicolo.red" title="Red Journey" class="footer-icon">
               <svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="-0.25 -1.5 20 20">
                 <path
@@ -29,7 +29,7 @@ import { environment } from '../../../environments/environment';
                 />
               </svg>
             </a>
-          </li>
+          </li>-->
           <li>
             <a rel="me" target="_blank" href="https://github.com/unicolored" title="GitHub Profile" class="footer-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">

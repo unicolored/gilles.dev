@@ -1,5 +1,5 @@
 import { Component, computed, inject, input, OnInit, signal, ViewEncapsulation } from '@angular/core';
-import { PortfolioHit } from '../../services/search.interface';
+import { PortfolioHit, SearchIndexes } from '../../services/search.interface';
 import { PageIdSlugEnum } from '../../app.global';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
@@ -8,6 +8,9 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SharedNgComponentsModule } from '../shared-ng-components.module';
 import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.component';
+import { InstantSearchService } from '../../services/instantsearch.service';
+import connectConfigure from 'instantsearch.js/es/connectors/configure/connectConfigure';
+import connectHits from 'instantsearch.js/es/connectors/hits/connectHits';
 
 @Component({
   standalone: true,
@@ -24,17 +27,24 @@ import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.
         </div>
       </div>
 
-      <div class="text-center">
-        <div class="join">
-          <button class="btn join-item" [routerLink]="['/portfolio']">All</button>
-          <button class="btn join-item" [routerLink]="['/portfolio', 'category', 'design']">Design</button>
-          <button class="btn join-item" [routerLink]="['/portfolio', 'category', 'web']">Web</button>
-        </div>
-      </div>
+      <section class="mt-12">
+        <gilles-nx-portfolio-hits
+          title="Full-stack Development | PHP / JS / API |&nbsp;Devops"
+          subtitle="Symfony, Angular, Kubernetes, Ansible, Neovim"
+          [items]="portfolioDevHits()"
+        >
+        </gilles-nx-portfolio-hits>
+      </section>
 
       <section class="mt-6">
-        <gilles-nx-portfolio-hits [items]="itemsComputed()" [itemId]="itemId()"></gilles-nx-portfolio-hits>
+        <gilles-nx-portfolio-hits
+          title="Visual Identity |&nbsp;UX&nbsp;Design"
+          subtitle="Photoshop, Illustrator, Figma, Blender&nbsp;3D"
+          [items]="portfolioDesignHits()"
+        >
+        </gilles-nx-portfolio-hits>
       </section>
+
     </main>
   `,
   styleUrls: [],
@@ -47,7 +57,10 @@ export class PortfolioComponent implements OnInit {
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
 
+  public searchService = inject(InstantSearchService);
   portfolioHits = signal<Hit<PortfolioHit>[]>([]);
+  portfolioDesignHits = signal<Hit<PortfolioHit>[]>([]);
+  portfolioDevHits = signal<Hit<PortfolioHit>[]>([]);
 
   category = signal<string | null>(null);
   categoryComputed = computed(() => {
@@ -76,11 +89,6 @@ export class PortfolioComponent implements OnInit {
   });
   subtitle = input<string>();
   items = signal<PortfolioHit[]>([]);
-  itemsComputed = computed(() =>
-    this.items().filter((item) => {
-      return item.images.thumbnail?.url;
-    }),
-  );
 
   ngOnInit() {
     if (this.webPageMetasMap.has(this.pageId)) {
@@ -93,5 +101,42 @@ export class PortfolioComponent implements OnInit {
     this.category.set(paramCategory);
 
     this.itemId.set(paramItem);
+
+    const renderConfigure = (renderOptions: unknown, isFirstRender: boolean) => { };
+
+
+    const searchDesignInstance = this.searchService.createInstance(SearchIndexes.posts);
+    searchDesignInstance
+      .addWidgets([
+        connectConfigure(renderConfigure)({
+          searchParameters: {
+            hitsPerPage: 6,
+            facetsRefinements: {
+              'taxonomies.category': ['design'],
+            },
+          },
+        }),
+        connectHits(({ hits }) => {
+          this.portfolioDesignHits.set(hits as Hit<PortfolioHit>[]);
+        })({}),
+      ])
+      .start();
+    const searchDevInstance = this.searchService.createInstance(SearchIndexes.posts);
+    searchDevInstance
+      .addWidgets([
+        connectConfigure(renderConfigure)({
+          searchParameters: {
+            hitsPerPage: 6,
+            facetsRefinements: {
+              'taxonomies.category': ['dev'],
+            },
+          },
+        }),
+        connectHits(({ hits }) => {
+          this.portfolioDevHits.set(hits as Hit<PortfolioHit>[]);
+        })({}),
+      ])
+      .start();
+
   }
 }

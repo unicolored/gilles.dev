@@ -6,14 +6,15 @@ export const appRoutes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    loadComponent: () => import('./pages/page-home/home.component').then((m) => m.HomeComponent),
-  },
-  {
-    path: 'about',
+    //loadComponent: () => import('./pages/page-home/home.component').then((m) => m.HomeComponent),
     loadComponent: () => import('./pages/page-about/about.component').then((m) => m.AboutComponent),
   },
+  // {
+  //   path: 'about',
+  //   loadComponent: () => import('./pages/page-about/about.component').then((m) => m.AboutComponent),
+  // },
   {
-    path: 'career',
+    path: 'resume',
     loadComponent: () => import('./pages/page-xp/xp.component').then((m) => m.XpComponent),
   },
   // {
@@ -58,4 +59,4 @@ export const appRoutes: Route[] = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
