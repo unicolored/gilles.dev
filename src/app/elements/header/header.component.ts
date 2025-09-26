@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   template: `
     <nav class="g-navbar">
       <div class="items">
-        <ng-container *ngFor="let item of navItems">
+        @for (item of navItems; track item.name) {
           <a
             class="item"
             [routerLink]="item.route"
@@ -21,25 +21,36 @@ import { CommonModule } from '@angular/common';
           >
             {{ item.name }}
           </a>
-        </ng-container>
+        }
       </div>
 
       <div class="actions"></div>
     </nav>
   `,
-  //styleUrls: ['./header.component.css'],
+  styleUrls: [
+    //'./header.component.css',
+    '../header-footer.css',
+  ],
 })
 export class HeaderComponent {
   @Input() mode!: WritableSignal<ModeEnum>;
 
   navItems = [
     {
-      name: `Hello!`,
+      name: `Hello`,
       route: '/',
     },
     {
-      name: `About`,
-      route: '/about',
+      name: `Resume`,
+      route: '/resume',
+    },
+    {
+      name: `Portfolio`,
+      route: '/portfolio',
+    },
+    {
+      name: `Blog`,
+      route: '/blog',
     },
     // {
     //   name: `Contact`,

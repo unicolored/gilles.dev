@@ -21,7 +21,7 @@ import { CommonModule } from '@angular/common';
             to&nbsp;discuss <fa-icon [icon]="['fasds', 'comment-smile']" [fixedWidth]="true" size="2x"></fa-icon>
           </p>
         </div>
-        <div class="pt-2 pb-5 content">
+        <div class="content pt-2 pb-5">
           <!--<div class="myPhone">
             <a href="tel:+33663078396">
               <fa-icon [icon]="['fas', 'mobile-screen-button']" [fixedWidth]="true"></fa-icon>
@@ -39,7 +39,7 @@ import { CommonModule } from '@angular/common';
       </section>
     </main>
   `,
-  //styleUrls: ['./contact.component.css'],
+  styleUrls: ['./contact.component.css'],
 })
 export class ContactComponent implements OnInit, PageInterface {
   pageId = PageIdSlugEnum.contact;

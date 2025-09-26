@@ -1,8 +1,7 @@
-@import 'tailwindcss/preflight' @tailwind utilities;
-@plugin '@tailwindcss/typography';
-
 main.about--container {
   @apply grid;
+  grid-template-columns: 6fr 3fr;
+  grid-template-areas: 'presentation  sidebar';
 
   @include mixins.media-min('tablet-down') {
     grid-template-columns: 6fr 3fr;
@@ -28,23 +27,24 @@ main.about--container {
 
 section.sidebar {
   .card {
-    @apply w-full relative mb-8;
+    @apply relative mb-8 w-full;
     background: var(--color-bkg-a50);
     backdrop-filter: blur(5px);
 
     .badge {
-      @apply uppercase absolute right-[10px] top-[-10px];
+      @apply absolute top-[-10px] right-[10px] uppercase;
     }
   }
 
   .card-title {
-    @apply text-base py-0 mb-0 mt-2;
+    @apply mt-2 mb-0 py-0 text-base;
   }
 
   .card-body {
     @apply px-5 py-2;
+
     p {
-      @apply pb-0 m-0 text-xs leading-relaxed;
+      @apply m-0 pb-0 text-xs leading-relaxed;
     }
   }
 }

@@ -1,19 +1,19 @@
 import { Route, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const appRoutes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    loadComponent: () => import('./pages/page-home/home.component').then((m) => m.HomeComponent),
-  },
-  {
-    path: 'about',
+    //loadComponent: () => import('./pages/page-home/home.component').then((m) => m.HomeComponent),
     loadComponent: () => import('./pages/page-about/about.component').then((m) => m.AboutComponent),
   },
+  // {
+  //   path: 'about',
+  //   loadComponent: () => import('./pages/page-about/about.component').then((m) => m.AboutComponent),
+  // },
   {
-    path: 'career',
+    path: 'resume',
     loadComponent: () => import('./pages/page-xp/xp.component').then((m) => m.XpComponent),
   },
   // {
@@ -41,7 +41,6 @@ export const appRoutes: Route[] = [
     loadComponent: () =>
       import('./pages/page-portfolio/portfolio-item.component').then((m) => m.PortfolioItemComponent),
   },
-  { path: '**', component: NotFoundComponent },
   {
     path: '**',
     loadComponent: () => import('./pages/not-found/not-found.component').then((m) => m.NotFoundComponent),

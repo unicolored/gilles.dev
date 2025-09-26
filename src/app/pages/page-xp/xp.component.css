@@ -1,52 +1,45 @@
-@import 'tailwindcss/preflight' @tailwind utilities;
-@plugin '@tailwindcss/typography';
-
 main.about--container {
-  @apply grid;
+  @apply grid grid-cols-9;
 
   .sidebar {
-    display: grid;
-    grid-column: -1;
-    grid-area: sidebar;
-    justify-items: start;
+    @apply col-span-3;
     align-content: start;
   }
 
   .presentation {
-    display: grid;
-    grid-column: -1;
-    grid-area: presentation;
+    @apply col-span-6;
     align-items: start;
   }
 }
 
 section.sidebar {
   .card {
-    @apply w-full relative mb-8;
+    @apply relative mb-8 w-full p-4;
     background: var(--color-bkg-a50);
     backdrop-filter: blur(5px);
 
     .badge {
-      @apply uppercase absolute right-[10px] top-[-10px];
+      @apply absolute top-[-10px] right-[10px] uppercase;
     }
   }
 
   .card-title {
-    @apply text-base py-0 mb-0 mt-2;
+    @apply mt-2 mb-0 py-0 text-base;
   }
 
   .card-body {
     @apply px-5 py-2;
+
     p {
-      @apply pb-0 m-0 text-xs leading-relaxed;
+      @apply m-0 pb-0 text-xs leading-relaxed;
     }
   }
 }
 
 .badge {
-  @apply uppercase border-1 rounded-full px-2 py-1 text-xs text-blue-500;
+  @apply rounded-full border-1 px-2 py-1 text-xs text-blue-500 uppercase;
 }
 
 .contact-btn {
-  @apply font-bold text-white bg-blue-500 hover:bg-blue-600 rounded-full p-4 text-center block m-auto w-full no-underline;
+  @apply m-auto block w-full rounded-full bg-blue-500 p-4 text-center font-bold text-white no-underline hover:bg-blue-600;
 }

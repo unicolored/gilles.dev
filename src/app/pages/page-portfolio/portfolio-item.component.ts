@@ -4,11 +4,11 @@ import { PortfolioHit } from '../../services/search.interface';
 import { ActivatedRoute } from '@angular/router';
 import { PortfolioItemAttachmentsComponent } from '../../elements/portfolio/portfolio-item-attachments.component';
 import { PageIdSlugEnum } from '../../app.global';
-import { Hit } from 'instantsearch.js/es/types/results';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
-import { InstantSearchService } from '../../services/instantsearch.service';
 import { extractText } from '../../app.helpers';
+import { Hit } from 'instantsearch.js/es/types/results';
+import { InstantSearchService } from '../../services/instantsearch.service';
 
 @Component({
   selector: 'gilles-nx-portfolio-item',
@@ -43,8 +43,8 @@ import { extractText } from '../../app.helpers';
             }
           </figure>
 
-          <header class="flex justify-center mb-2">
-            <h1 class="font-bold text-xl mb-1">
+          <header class="mb-2 flex justify-center">
+            <h1 class="mb-1 text-xl font-bold">
               <span i18n [innerHTML]="item.post_title"></span>
             </h1>
           </header>
@@ -58,7 +58,7 @@ import { extractText } from '../../app.helpers';
             }
           </div>
 
-          <main class="flex p-4 w-full ">
+          <main class="flex w-full p-4">
             @if (item.content) {
               <!--            <p class="uppercase">-->
               <!--              <span i18n>{{ subtitle() }}</span>-->
@@ -190,9 +190,6 @@ export class PortfolioItemComponent implements OnInit {
     }
 
     this.route.paramMap.subscribe(() => {
-      // const paramCategory = params.get('category');
-      // const paramItem = params.get('item');
-
       this.searchService.requests(this.facetFilter(), this.objectId()).then((res) => {
         this.items.set(res.results[0].hits as Hit<PortfolioHit>[]);
       });
