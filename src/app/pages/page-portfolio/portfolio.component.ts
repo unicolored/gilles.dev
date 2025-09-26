@@ -102,7 +102,8 @@ export class PortfolioComponent implements OnInit {
 
     this.itemId.set(paramItem);
 
-    const renderConfigure = (renderOptions: unknown, isFirstRender: boolean) => { };
+    // const renderConfigure = (renderOptions: unknown, isFirstRender: boolean) => { };
+    const renderConfigure = () => { };
 
 
     const searchDesignInstance = this.searchService.createInstance(SearchIndexes.posts);

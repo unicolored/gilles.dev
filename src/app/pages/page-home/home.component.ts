@@ -1,19 +1,15 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { PageInterface } from '../page.interface';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { PageIdSlugEnum } from '../../app.global';
 import { environment } from '../../../environments/environment';
-import { Hit } from 'instantsearch.js/es/types/results';
-import { PortfolioHit, SearchIndexes } from '../../services/search.interface';
 import { CommonModule } from '@angular/common';
 import { SharedNgComponentsModule } from '../shared-ng-components.module';
-import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.component';
 import { InstantSearchService } from '../../services/instantsearch.service';
-import { connectConfigure, connectHits } from 'instantsearch.js/es/connectors';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, SharedNgComponentsModule, PortfolioHitsComponent],
+  imports: [CommonModule, SharedNgComponentsModule],
   template: `
     <main class="page-prose">
       <div class="hero pt-8 pb-4">

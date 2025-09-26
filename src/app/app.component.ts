@@ -1,4 +1,4 @@
-import { Component, effect, inject, OnInit, PLATFORM_ID, Renderer2, signal, ViewEncapsulation } from '@angular/core';
+import { Component, effect, inject, OnInit, PLATFORM_ID, Renderer2, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule, isPlatformBrowser, PRECONNECT_CHECK_BLOCKLIST, provideImgixLoader } from '@angular/common';
 import { environment } from '../environments/environment';

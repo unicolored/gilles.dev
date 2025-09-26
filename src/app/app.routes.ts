@@ -1,6 +1,5 @@
 import { Route, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const appRoutes: Route[] = [
   {
@@ -42,7 +41,6 @@ export const appRoutes: Route[] = [
     loadComponent: () =>
       import('./pages/page-portfolio/portfolio-item.component').then((m) => m.PortfolioItemComponent),
   },
-  //{ path: '**', component: NotFoundComponent },
   {
     path: '**',
     loadComponent: () => import('./pages/not-found/not-found.component').then((m) => m.NotFoundComponent),
