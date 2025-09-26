@@ -44,7 +44,6 @@ import connectHits from 'instantsearch.js/es/connectors/hits/connectHits';
         >
         </gilles-nx-portfolio-hits>
       </section>
-
     </main>
   `,
   styleUrls: [],
@@ -103,8 +102,7 @@ export class PortfolioComponent implements OnInit {
     this.itemId.set(paramItem);
 
     // const renderConfigure = (renderOptions: unknown, isFirstRender: boolean) => { };
-    const renderConfigure = () => { };
-
+    const renderConfigure = () => {};
 
     const searchDesignInstance = this.searchService.createInstance(SearchIndexes.posts);
     searchDesignInstance
@@ -138,6 +136,5 @@ export class PortfolioComponent implements OnInit {
         })({}),
       ])
       .start();
-
   }
 }

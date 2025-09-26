@@ -17,9 +17,7 @@ import { InstantSearchService } from '../../services/instantsearch.service';
           <section class="w-full">
             <header class="not-prose text-center">
               <h1 class="text-5xl leading-snug font-bold">Gilles HOARAU</h1>
-              <h2 class="text-accent font-mono text-xl leading-snug font-bold" i18n>
-                Creative Full-Stack Developer
-              </h2>
+              <h2 class="text-accent font-mono text-xl leading-snug font-bold" i18n>Creative Full-Stack Developer</h2>
             </header>
 
             <article class="hidden">
@@ -36,14 +34,12 @@ import { InstantSearchService } from '../../services/instantsearch.service';
           </section>
         </div>
       </div>
-
     </main>
   `,
   styleUrls: [],
 })
 export class HomeComponent implements OnInit, PageInterface {
   pageId = PageIdSlugEnum.home;
-
 
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
