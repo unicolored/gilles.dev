@@ -22,8 +22,8 @@ export class ApiService {
     const lists = ['gilles-dev-development', 'gilles-dev-visual-identity'];
     const slugs: Record<string, string>[] = [];
     lists.forEach((l: string) => {
-      this.getList(l).subscribe(list => {
-        list.items.forEach(i => {
+      this.getList(l).subscribe((list) => {
+        list.items.forEach((i) => {
           slugs.push({ slug: i.post.slug });
         });
       });

@@ -15,20 +15,20 @@ import { Post } from '../../interfaces/post';
     <main class="page-prose">
       @if (postComputed(); as post) {
         <article class="mb-6">
-          <figure class="p-4 text-center w-full flex justify-around">
+          <figure class="flex w-full justify-around p-4 text-center">
             @if (post.cloudinaryId) {
-                <img
-                  [ngSrc]="post.cloudinaryId"
-                  width="960"
-                  height="500"
-                  priority
-                  placeholder
-                  class="img-thumbnail"
-                  sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
-                  [alt]="post.title"
-                  [title]="post.title"
-                  style="object-fit: cover;"
-                />
+              <img
+                [ngSrc]="post.cloudinaryId"
+                width="960"
+                height="500"
+                priority
+                placeholder
+                class="img-thumbnail"
+                sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
+                [alt]="post.title"
+                [title]="post.title"
+                style="object-fit: cover;"
+              />
             }
           </figure>
 

@@ -4,7 +4,7 @@ export interface ApiItem {
 }
 
 export interface Slug {
-  slug: string
+  slug: string;
 }
 
 export type Slugs = Slug[];

@@ -27,7 +27,11 @@ import { PostListItem } from '../../interfaces/post';
       <div class="portfolio-items">
         @for (item of itemsComputed(); track item['@id']) {
           @if (item.post.cloudinaryId) {
-            <a class="portfolio-item" [href]="['/portfolio', 'item', item.post.slug]" [routerLink]="['/portfolio', 'item', item.post.slug]">
+            <a
+              class="portfolio-item"
+              [href]="['/portfolio', 'item', item.post.slug]"
+              [routerLink]="['/portfolio', 'item', item.post.slug]"
+            >
               <img
                 [ngSrc]="item.post.cloudinaryId"
                 width="700"
