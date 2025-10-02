@@ -1,12 +1,15 @@
+import * as fs from 'fs';
+import * as colors from 'colors';
+import * as dotenv from 'dotenv';
+import * as pkg from '../../package.json';
+
 const setEnv = () => {
-  const fs = require('fs');
   const writeFile = fs.writeFile;
   // Configure Angular `environment.ts` file path
   const targetPath = './src/environments/environment.production.ts';
   // Load node modules
-  const colors = require('colors');
-  const appVersion = require('../../package.json').version;
-  require('dotenv').config({
+  const appVersion = pkg.version;
+  dotenv.config({
     path: 'src/environments/.env.prod',
   });
   // `environment.ts` file structure
