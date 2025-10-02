@@ -16,7 +16,7 @@ h2,
 h3 {
   @apply font-serif;
   @apply text-primary;
-  @apply dark:text-dark-primary;
+  @apply dark:text-moonLight;
   font-weight: 900;
   font-style: normal;
 }
@@ -55,6 +55,11 @@ a {
   .ng-fa-icon {
     margin: 0 0.2rem;
   }
+}
+
+b,
+strong {
+  @apply text-accent dark:text-dark-accent;
 }
 
 .grid {
@@ -152,8 +157,7 @@ nav.g-navbar {
       }
 
       &:hover {
-        background: var(--color-primary-a5);
-        color: var(--color-primary);
+        @apply text-accent dark:text-dark-accent;
       }
     }
   }
@@ -165,7 +169,7 @@ nav.g-navbar {
 
 footer.footer {
   & {
-    @apply grid w-full gap-6;
+    @apply grid w-full gap-1;
 
     grid-template-columns: 1fr;
     grid-template-areas: 'social';
@@ -209,15 +213,12 @@ footer.footer {
   }
 
   ul li a {
-    @apply p-4;
-
-    &:hover {
-      color: var(--color-accent) !important;
-    }
+    @apply border-0 p-2 no-underline;
 
     &.footer-icon {
       @apply relative m-2 inline-block h-24 w-24;
       @apply fill-(--color-content) fill-current dark:fill-(--color-dark-content);
+      @apply hover:fill-accent;
     }
   }
 }

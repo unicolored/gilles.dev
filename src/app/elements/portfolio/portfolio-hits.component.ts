@@ -27,7 +27,11 @@ import { PostListItem } from '../../interfaces/post';
       <div class="portfolio-items">
         @for (item of itemsComputed(); track item['@id']) {
           @if (item.post.cloudinaryId) {
-            <div class="portfolio-item" [routerLink]="['portfolio', 'item', item['@id']]">
+            <a
+              class="portfolio-item"
+              [href]="['/portfolio', 'item', item.post.slug]"
+              [routerLink]="['/portfolio', 'item', item.post.slug]"
+            >
               <img
                 [ngSrc]="item.post.cloudinaryId"
                 width="700"
@@ -35,14 +39,12 @@ import { PostListItem } from '../../interfaces/post';
                 priority
                 placeholder
                 class="img-thumbnail"
-                sizes="(min-width: 66em) 33vw,
-  (min-width: 44em) 50vw,
-  100vw"
+                sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
                 [alt]="item.post.title"
                 [title]="item.post.title"
                 style="object-fit: cover;"
               />
-            </div>
+            </a>
           }
         }
       </div>

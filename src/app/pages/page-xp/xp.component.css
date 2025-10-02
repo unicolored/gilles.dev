@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-main.about--container {
+/* main.about--container {
   @apply grid grid-cols-9;
 
   .sidebar {
@@ -12,7 +12,7 @@ main.about--container {
     @apply col-span-6;
     align-items: start;
   }
-}
+} */
 
 section.sidebar {
   .card {

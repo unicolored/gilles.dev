@@ -8,6 +8,7 @@ import { HeaderComponent } from './elements/header/header.component';
 import { FooterComponent } from './elements/footer/footer.component';
 import { HttpService, WEB_PAGE_METAS_MAP } from 'ngx-services';
 import { webPageMetasMap } from '../environments/metas';
+import { ApiService } from './services/api.service';
 
 export type ModeEnum = 'light' | 'dark' | null;
 
@@ -15,6 +16,7 @@ export type ModeEnum = 'light' | 'dark' | null;
   imports: [CommonModule, RouterModule, ThreeCardComponent, CloudinaryModule, HeaderComponent, FooterComponent],
   providers: [
     HttpService,
+    ApiService,
     {
       provide: WEB_PAGE_METAS_MAP,
       useValue: webPageMetasMap,

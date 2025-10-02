@@ -9,6 +9,7 @@ export interface Category extends ApiItem {
 export interface Post extends ApiItem {
   title: string;
   status: string;
+  slug: string;
   cloudinaryId: string;
   mainCategory: Category;
 }

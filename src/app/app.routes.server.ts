@@ -14,10 +14,41 @@ export const serverRoutes: ServerRoute[] = [
     },
   },
   {
-    path: 'portfolio/item/:objectId',
+    path: 'portfolio/item/:slug',
     renderMode: RenderMode.Prerender,
     getPrerenderParams: async () => {
-      return [{ objectId: '...' }];
+      //const apiService = inject(ApiService);
+      //const slugs = await apiService.loadPortfolioItemSlugs();
+      return [
+        {
+          slug: 'bibliotheque-saint-laurent',
+        },
+        {
+          slug: 'la-compagnie-du-loup-bleu',
+        },
+        {
+          slug: 'regina-caeli',
+        },
+        {
+          slug: 'champagne-y-laval',
+        },
+        {
+          slug: 'm-d-france',
+        },
+        {
+          slug: 'champagne-bernard-robert',
+        },
+        {
+          slug: 'on-the-move',
+        },
+        {
+          slug: 'unicolored',
+        },
+        {
+          slug: 'studio-grappe-champagne-et-vin',
+        },
+      ];
+      // return [{ slug: 'regina-caeli' }];
     },
   },
   {

@@ -38,7 +38,6 @@ import { PostListItem } from '../../interfaces/post';
     </main>
   `,
   styleUrls: [],
-  providers: [ApiService],
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioComponent implements OnInit {
@@ -98,6 +97,8 @@ export class PortfolioComponent implements OnInit {
       this.portfolioDesignTitle = res.description;
       this.portfolioDesignHits.set(res.items);
     });
+
+    this.apiService.loadPortfolioItemSlugs();
 
     const paramCategory = this.route.snapshot.paramMap.get('category');
     const paramItem = this.route.snapshot.paramMap.get('item');

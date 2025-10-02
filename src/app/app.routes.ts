@@ -36,7 +36,7 @@ export const appRoutes: Route[] = [
     loadComponent: () => import('./pages/page-portfolio/portfolio.component').then((m) => m.PortfolioComponent),
   },
   {
-    path: 'portfolio/item/:objectId',
+    path: 'portfolio/item/:slug',
     pathMatch: 'full',
     loadComponent: () =>
       import('./pages/page-portfolio/portfolio-item.component').then((m) => m.PortfolioItemComponent),

@@ -10,6 +10,11 @@ import { environment } from '../../../environments/environment';
   selector: 'gilles-nx-footer',
   template: `
     <footer class="footer not-prose">
+      <p class="mb-0 text-left font-serif text-xl">Gilles Hoarau.</p>
+      <p class="mt-0 text-left">
+        Check <a href="/resume">my resume</a>.<br />
+        👋 <a href="mailto:hello@gilles.dev">hello&#64;gilles.dev</a>.
+      </p>
       <div class="footer-grid-item footer-social justify-center">
         <ul>
           <!--<li>
@@ -41,10 +46,6 @@ import { environment } from '../../../environments/environment';
             </a>
           </li>
         </ul>
-        <br />
-        <p class="mt-10 w-full text-center">
-          <a [routerLink]="'/'" [href]="homepage" class="cursor-default no-underline">Gilles. Developer.</a>
-        </p>
       </div>
 
       <!--&lt;!&ndash;    <span> CURRENT MODE:: {{this.mode()}}</span>&ndash;&gt;-->
