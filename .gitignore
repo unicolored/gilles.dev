@@ -1,7 +1,7 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
 .env.prod
-.environment.production.ts
+environment.production.ts
 
 # Compiled output
 /dist
