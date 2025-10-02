@@ -54,7 +54,7 @@ function onWindowResize() {
   standalone: true,
   selector: 'gilles-nx-three-card',
   template: ` <div class="canvas" #canvas></div> `,
-  //styleUrls: ['./three-card.component.css'],
+  styleUrls: ['./three-card.component.css'],
 })
 export class ThreeCardComponent implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild('canvas') canvas!: ElementRef;

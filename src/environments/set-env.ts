@@ -7,7 +7,7 @@ const setEnv = () => {
   const colors = require('colors');
   const appVersion = require('../../package.json').version;
   require('dotenv').config({
-    path: 'src/environments/.env.prod'
+    path: 'src/environments/.env.prod',
   });
   // `environment.ts` file structure
   const envConfigFile = `export const environment = {
