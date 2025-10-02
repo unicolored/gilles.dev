@@ -98,6 +98,8 @@ export class PortfolioComponent implements OnInit {
       this.portfolioDesignHits.set(res.items);
     });
 
+    this.apiService.loadPortfolioItemSlugs();
+
     const paramCategory = this.route.snapshot.paramMap.get('category');
     const paramItem = this.route.snapshot.paramMap.get('item');
     console.log('paramMap', paramCategory, paramItem);
