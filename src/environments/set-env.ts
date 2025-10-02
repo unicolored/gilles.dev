@@ -1,14 +1,14 @@
 import * as fs from 'fs';
-import * as colors from 'colors';
 import * as dotenv from 'dotenv';
-import * as pkg from '../../package.json';
+import * as p from '../../package.json' with { type: 'json' };
+import colors from 'colors/safe.js';
 
 const setEnv = () => {
   const writeFile = fs.writeFile;
   // Configure Angular `environment.ts` file path
   const targetPath = './src/environments/environment.production.ts';
   // Load node modules
-  const appVersion = pkg.version;
+  const appVersion = p.version;
   dotenv.config({
     path: 'src/environments/.env.prod',
   });
@@ -25,10 +25,6 @@ const setEnv = () => {
     appId: '${process.env['ALGOLIA_APPID']}',
     apiKey: '${process.env['ALGOLIA_APIKEY']}',
   },
-  webPageMetasMap: new Map<PageIdSlugEnum, WebPageMetas>()
-    .set(PageIdSlugEnum.home, GillesDevMetas[PageIdSlugEnum.home])
-    .set(PageIdSlugEnum.about, GillesDevMetas[PageIdSlugEnum.about])
-    .set(PageIdSlugEnum.contact, GillesDevMetas[PageIdSlugEnum.contact]),
 };
 `;
   console.log(colors.magenta('The file `environment.ts` will be written with the following content: \n'));
