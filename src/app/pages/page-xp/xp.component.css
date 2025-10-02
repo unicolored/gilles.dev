@@ -1,3 +1,5 @@
+@import 'tailwindcss';
+
 main.about--container {
   @apply grid grid-cols-9;
 
