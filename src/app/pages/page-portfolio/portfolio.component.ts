@@ -38,7 +38,6 @@ import { PostListItem } from '../../interfaces/post';
     </main>
   `,
   styleUrls: [],
-  providers: [ApiService],
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioComponent implements OnInit {

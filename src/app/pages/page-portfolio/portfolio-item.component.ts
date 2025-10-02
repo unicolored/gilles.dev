@@ -1,81 +1,58 @@
 import { Component, computed, inject, signal, ViewEncapsulation, OnInit } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { PortfolioHit } from '../../services/search.interface';
 import { ActivatedRoute } from '@angular/router';
 import { PortfolioItemAttachmentsComponent } from '../../elements/portfolio/portfolio-item-attachments.component';
 import { PageIdSlugEnum } from '../../app.global';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
-import { extractText } from '../../app.helpers';
-import { Hit } from 'instantsearch.js/es/types/results';
-import { InstantSearchService } from '../../services/instantsearch.service';
+import { ApiService } from '../../services/api.service';
+import { Post } from '../../interfaces/post';
 
 @Component({
   selector: 'gilles-nx-portfolio-item',
   imports: [CommonModule, PortfolioItemAttachmentsComponent, NgOptimizedImage],
   template: `
     <main class="page-prose">
-      <article class="mb-6">
-        @for (item of items(); track item.objectID) {
-          <figure class="p-4">
-            @if (item.images.full) {
-              <img
-                *ngIf="item.images.full?.url"
-                [ngSrc]="item.images.full.url"
-                priority
-                width="600"
-                height="300"
-                class="img-thumbnail m-auto"
-                [alt]="item.post_title"
-                [title]="item.post_title"
-              />
-            } @else if (item.images.thumbnail) {
-              <img
-                *ngIf="item.images.thumbnail?.url"
-                [ngSrc]="item.images.thumbnail.url"
-                priority
-                width="600"
-                height="300"
-                class="img-thumbnail m-auto"
-                [alt]="item.post_title"
-                [title]="item.post_title"
-              />
+      @if (postComputed(); as post) {
+        <article class="mb-6">
+          <figure class="p-4 text-center w-full flex justify-around">
+            @if (post.cloudinaryId) {
+                <img
+                  [ngSrc]="post.cloudinaryId"
+                  width="960"
+                  height="500"
+                  priority
+                  placeholder
+                  class="img-thumbnail"
+                  sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
+                  [alt]="post.title"
+                  [title]="post.title"
+                  style="object-fit: cover;"
+                />
             }
           </figure>
 
           <header class="mb-2 flex justify-center">
             <h1 class="mb-1 text-xl font-bold">
-              <span i18n [innerHTML]="item.post_title"></span>
+              <span i18n [innerHTML]="post.title"></span>
             </h1>
           </header>
 
-          <div class="flex justify-between">
-            @if (item.taxonomies.post_tag) {
-              <div class="uppercase">{{ item.taxonomies.post_tag.join(', ') }}</div>
+          <!-- <main class="flex w-full p-4">
+            @if (post.content) {
+              <div class="prose" [innerHTML]="post.content"></div>
             }
-            @if (item.taxonomies.category) {
-              <div class="text-center uppercase">{{ item.taxonomies.category.join(' | ') }}</div>
-            }
-          </div>
+          </main> -->
 
-          <main class="flex w-full p-4">
-            @if (item.content) {
-              <!--            <p class="uppercase">-->
-              <!--              <span i18n>{{ subtitle() }}</span>-->
-              <!--            </p>-->
-              <div class="prose" [innerHTML]="item.content"></div>
-            }
-          </main>
-        }
-
-        <section>
-          <gilles-nx-portfolio-item-attachments
-            [items]="itemsComputed()"
-            [itemId]="itemId()"
-            [objectId]="objectId()"
-          ></gilles-nx-portfolio-item-attachments>
-        </section>
-      </article>
+          <section>
+            <!-- <gilles-nx-portfolio-item-attachments
+              [items]="itemsComputed()"
+              [itemId]="itemId()"
+              [objectId]="slug()"
+            ></gilles-nx-portfolio-item-attachments> -->
+          </section>
+        </article>
+      }
     </main>
   `,
   styleUrls: [],
@@ -88,22 +65,11 @@ export class PortfolioItemComponent implements OnInit {
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
 
-  portfolioHits = signal<Hit<PortfolioHit>[]>([]);
-
-  category = signal<string | null>(null);
-  categoryComputed = computed(() => {
-    if (this.category() === 'web') {
-      return 'dev';
-    }
-
-    return this.category();
-  });
-
-  objectId = signal<string | null>(null);
+  slug = signal<string | null>(null);
   itemId = computed<number | null>(() => {
-    const objectId = this.objectId();
-    if (objectId) {
-      const itemId = objectId.split('-').shift();
+    const slug = this.slug();
+    if (slug) {
+      const itemId = slug.split('-').shift();
       if (itemId) {
         return parseInt(itemId);
       }
@@ -111,69 +77,12 @@ export class PortfolioItemComponent implements OnInit {
     return null;
   });
 
-  facetFilter = computed(() => {
-    const category = this.categoryComputed();
-    if (category) {
-      return `taxonomies.category:${category}`;
-    }
-
-    return [['taxonomies.category:dev', 'taxonomies.category:design']];
+  post = signal<Post | null>(null);
+  postComputed = computed(() => {
+    return this.post();
   });
 
-  title = signal<string>('');
-  titleComputed = computed(() => this.title());
-
-  // name = computed(() => {
-  //   const name = this.title();
-  //   return name ? name.toLocaleLowerCase().replace(/ /g, '-') : Math.random().toString(36);
-  // });
-  subtitle = signal<string>('');
-  subtitleComputed = computed(() => this.subtitle());
-
-  items = signal<PortfolioHit[]>([]);
-  itemsComputed = computed(() => {
-    return this.items()
-      .map((item) => {
-        const currentUrl = item.images.thumbnail?.url;
-
-        if (!currentUrl) {
-          item.images.thumbnail = {
-            url: 'missing.jpg',
-            width: 430,
-            height: 215,
-          };
-        } else {
-          // const url = 'https://www.gilleshoarau.com/da/wp-content/uploads/2014/07/logo-velinea-200x200.png';
-
-          const publicId = extractText(currentUrl);
-
-          if (!publicId) {
-            item.images.thumbnail = {
-              url: 'missing.jpg',
-              width: 430,
-              height: 215,
-            };
-          } else {
-            item.images.thumbnail = {
-              // url: `f_webp,q_auto,w_430,h_242,c_fill,ar_16:9/${publicId}.webp`,
-              url: `f_webp,q_auto,w_600,c_fill,ar_16:9/${publicId}.webp`,
-              width: 2,
-              height: 1,
-            };
-            item.images.full = {
-              // url: `f_webp,q_auto,w_430,h_242,c_fill,ar_16:9/${publicId}.webp`,
-              url: `q_auto:best,w_1280,c_fit,ar_16:9/${publicId}.jpg`,
-            };
-          }
-        }
-        return item;
-      })
-      .filter((item) => {
-        return item.images.thumbnail?.url;
-      });
-  });
-
-  public searchService = inject(InstantSearchService);
+  public apiService = inject(ApiService);
 
   ngOnInit() {
     if (this.webPageMetasMap.has(this.pageId)) {
@@ -181,18 +90,22 @@ export class PortfolioItemComponent implements OnInit {
     }
 
     const paramCategory = this.route.snapshot.paramMap.get('category');
-    const paramObjectId = this.route.snapshot.paramMap.get('objectId');
-    console.log('paramMap', paramCategory, paramObjectId);
-    this.category.set(paramCategory);
+    const paramSlug = this.route.snapshot.paramMap.get('slug');
+    console.log('paramMap', paramCategory, paramSlug);
 
-    if (paramObjectId) {
-      this.objectId.set(paramObjectId);
+    if (paramSlug) {
+      this.slug.set(paramSlug);
     }
 
     this.route.paramMap.subscribe(() => {
-      this.searchService.requests(this.facetFilter(), this.objectId()).then((res) => {
-        this.items.set(res.results[0].hits as Hit<PortfolioHit>[]);
-      });
+      const slug = this.slug();
+      if (slug) {
+        this.apiService.getItem(slug).subscribe((res) => {
+          //this.items.set(res.results[0].hits as Hit<PortfolioHit>[]);
+          console.log('⭐️the RES', res);
+          this.post.set(res);
+        });
+      }
     });
   }
 }
