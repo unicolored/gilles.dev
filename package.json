@@ -1,6 +1,6 @@
 {
   "name": "gilles.dev",
-  "version": "0.9.3",
+  "version": "0.10.0",
   "type": "module",
   "scripts": {
     "i18n": "ng extract-i18n gilles.dev --format=xlf --out-file=src/locale/messages.xlf",
