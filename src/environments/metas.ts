@@ -34,3 +34,8 @@ export const GillesDevMetas: { [k: string]: WebPageMetas } = {
     },
   },
 };
+
+export const webPageMetasMap = new Map<PageIdSlugEnum, WebPageMetas>()
+  .set(PageIdSlugEnum.home, GillesDevMetas[PageIdSlugEnum.home])
+  .set(PageIdSlugEnum.about, GillesDevMetas[PageIdSlugEnum.about])
+  .set(PageIdSlugEnum.contact, GillesDevMetas[PageIdSlugEnum.contact]);

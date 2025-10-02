@@ -7,6 +7,7 @@ import { CloudinaryModule } from '@cloudinary/ng/dist';
 import { HeaderComponent } from './elements/header/header.component';
 import { FooterComponent } from './elements/footer/footer.component';
 import { HttpService, WEB_PAGE_METAS_MAP } from 'ngx-services';
+import { webPageMetasMap } from '../environments/metas';
 
 export type ModeEnum = 'light' | 'dark' | null;
 
@@ -16,15 +17,13 @@ export type ModeEnum = 'light' | 'dark' | null;
     HttpService,
     {
       provide: WEB_PAGE_METAS_MAP,
-      useValue: environment.webPageMetasMap,
+      useValue: webPageMetasMap,
     },
     { provide: PRECONNECT_CHECK_BLOCKLIST, useValue: 'https://www.gilles.dev' },
     provideImgixLoader('https://res.cloudinary.com/unicolored'),
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
-  // styleUrl: './app.component.css',
-  // encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
   mode = signal<ModeEnum>(null);
