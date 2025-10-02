@@ -18,7 +18,7 @@ export type ModeEnum = 'light' | 'dark' | null;
       provide: WEB_PAGE_METAS_MAP,
       useValue: environment.webPageMetasMap,
     },
-    { provide: PRECONNECT_CHECK_BLOCKLIST, useValue: 'https://www.gilleshoarau.com' },
+    { provide: PRECONNECT_CHECK_BLOCKLIST, useValue: 'https://www.gilles.dev' },
     provideImgixLoader('https://res.cloudinary.com/unicolored'),
   ],
   selector: 'app-root',

@@ -6,6 +6,7 @@ export const environment = {
   maintenance: false,
   endpoints: {
     _self: 'http://localhost:4242',
+    api: 'https://localhost:8000/api',
   },
   unicoloredBaseUrl: 'http://localhost:4125',
   algolia: {

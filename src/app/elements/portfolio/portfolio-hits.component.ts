@@ -1,8 +1,7 @@
 import { Component, computed, input, ViewEncapsulation } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { PortfolioHit } from '../../services/search.interface';
-import { extractText } from '../../app.helpers';
 import { RouterLink } from '@angular/router';
+import { PostListItem } from '../../interfaces/post';
 
 @Component({
   selector: 'gilles-nx-portfolio-hits',
@@ -26,16 +25,22 @@ import { RouterLink } from '@angular/router';
 
     @defer (on viewport; prefetch on timer(1s)) {
       <div class="portfolio-items">
-        @for (item of itemsComputed(); track item.objectID) {
-          @if (item.images.thumbnail.url) {
-            <div class="portfolio-item" [routerLink]="['portfolio', 'item', item.objectID]">
+        @for (item of itemsComputed(); track item['@id']) {
+          @if (item.post.cloudinaryId) {
+            <div class="portfolio-item" [routerLink]="['portfolio', 'item', item['@id']]">
               <img
-                [ngSrc]="item.images.thumbnail.url"
-                fill
+                [ngSrc]="item.post.cloudinaryId"
+                width="700"
+                height="400"
                 priority
+                placeholder
                 class="img-thumbnail"
-                [alt]="item.post_title"
-                [title]="item.post_title"
+                sizes="(min-width: 66em) 33vw,
+  (min-width: 44em) 50vw,
+  100vw"
+                [alt]="item.post.title"
+                [title]="item.post.title"
+                style="object-fit: cover;"
               />
             </div>
           }
@@ -74,42 +79,7 @@ export class PortfolioHitsComponent {
 
   itemId = input<string | null>(null);
 
-  items = input<PortfolioHit[]>([]);
-  itemsComputed = computed(() =>
-    this.items().map((item) => {
-      const currentUrl = item.images.thumbnail?.url;
-
-      if (!currentUrl) {
-        item.images.thumbnail = {
-          url: 'missing.jpg',
-          width: 430,
-          height: 215,
-        };
-      } else {
-        // const url = 'https://www.gilleshoarau.com/da/wp-content/uploads/2014/07/logo-velinea-200x200.png';
-
-        const publicId = extractText(currentUrl);
-
-        if (!publicId) {
-          item.images.thumbnail = {
-            url: 'missing.jpg',
-            width: 430,
-            height: 215,
-          };
-        } else {
-          item.images.thumbnail = {
-            // url: `f_webp,q_auto,w_430,h_242,c_fill,ar_16:9/${publicId}.webp`,
-            url: `f_webp,q_auto,w_600,c_fill,ar_16:9/${publicId}.webp`,
-            width: 2,
-            height: 1,
-          };
-          item.images.full = {
-            // url: `f_webp,q_auto,w_430,h_242,c_fill,ar_16:9/${publicId}.webp`,
-            url: `q_auto:best,w_1280,c_fit,ar_16:9/${publicId}.jpg`,
-          };
-        }
-      }
-      return item;
-    }),
-  );
+  items = input<PostListItem[]>([]);
+  //       url: `f_webp,q_auto,w_600,c_fill,ar_16:9/${publicId}.webp`,
+  itemsComputed = computed(() => this.items());
 }
