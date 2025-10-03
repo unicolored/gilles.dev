@@ -6,11 +6,7 @@ import { ApiService } from './services/api.service';
 import { HttpService } from 'ngx-services';
 
 const serverConfig: ApplicationConfig = {
-  providers: [
-    provideServerRendering(withRoutes(serverRoutes)),
-    HttpService,
-    ApiService
-  ],
+  providers: [provideServerRendering(withRoutes(serverRoutes)), HttpService, ApiService],
 };
 
 export const config = mergeApplicationConfig(appConfig, serverConfig);

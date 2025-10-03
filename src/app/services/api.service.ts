@@ -25,7 +25,7 @@ export class ApiService {
     // Combine the two observables using forkJoin
     const combined$ = forkJoin([
       this.getList('gilles-dev-development'),
-      this.getList('gilles-dev-visual-identity')
+      this.getList('gilles-dev-visual-identity'),
     ]).pipe(
       map(([list1, list2]) => {
         // Process first list
@@ -37,7 +37,7 @@ export class ApiService {
           slugs.push({ slug: i.post.slug });
         });
         return slugs;
-      })
+      }),
     );
 
     // Convert observable to promise and await it
