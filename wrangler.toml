@@ -5,7 +5,7 @@ workers_dev = true
 preview_urls = false
 
 routes = [
-    { pattern = "www.gilles.dev", custom_domain = true }
+    { pattern = "gilles.dev", custom_domain = true }
 ]
 
 [assets]
