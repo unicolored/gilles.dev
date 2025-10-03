@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - none
 
 jobs:
   build-and-deploy:
@@ -23,7 +23,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22' # Updated to Node 22
+          node-version: "22" # Updated to Node 22
 
       # Step 3: Enable and prepare Corepack
       - name: Enable Corepack
