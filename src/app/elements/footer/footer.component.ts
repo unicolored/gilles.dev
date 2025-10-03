@@ -12,7 +12,7 @@ import { environment } from '../../../environments/environment';
     <footer class="footer not-prose">
       <p class="mb-0 text-left font-serif text-xl">Gilles Hoarau.</p>
       <p class="mt-0 text-left">
-        Check <a href="/resume">my resume</a>.<br />
+        Check <a href="/cv">my resume</a>.<br />
         👋 <a href="mailto:hello@gilles.dev">hello&#64;gilles.dev</a>
       </p>
       <div class="footer-grid-item footer-social justify-center">
