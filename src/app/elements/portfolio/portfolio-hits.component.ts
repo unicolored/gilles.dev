@@ -23,30 +23,30 @@ import { PostListItem } from '../../interfaces/post';
       </article>
     }
 
-      <div class="portfolio-items">
-        @for (item of itemsComputed(); track item['@id']) {
-          @if (item.post.cloudinaryId) {
-            <a
-              class="portfolio-item"
-              [href]="['/portfolio', 'item', item.post.slug]"
-              [routerLink]="['/portfolio', 'item', item.post.slug]"
-            >
-              <img
-                [ngSrc]="item.post.cloudinaryId"
-                width="700"
-                height="400"
-                priority
-                placeholder
-                class="img-thumbnail"
-                sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
-                [alt]="item.post.title"
-                [title]="item.post.title"
-                style="object-fit: cover;"
-              />
-            </a>
-          }
+    <div class="portfolio-items">
+      @for (item of itemsComputed(); track item['@id']) {
+        @if (item.post.cloudinaryId) {
+          <a
+            class="portfolio-item"
+            [href]="['/portfolio', 'item', item.post.slug]"
+            [routerLink]="['/portfolio', 'item', item.post.slug]"
+          >
+            <img
+              [ngSrc]="item.post.cloudinaryId"
+              width="700"
+              height="400"
+              priority
+              placeholder
+              class="img-thumbnail"
+              sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
+              [alt]="item.post.title"
+              [title]="item.post.title"
+              style="object-fit: cover;"
+            />
+          </a>
         }
-      </div>
+      }
+    </div>
   `,
   styleUrls: ['./portfolio.component.css'],
   encapsulation: ViewEncapsulation.None,
