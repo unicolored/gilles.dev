@@ -41,8 +41,8 @@ export class HeaderComponent {
       route: '/',
     },
     {
-      name: `Resume`,
-      route: '/resume',
+      name: `Curriculum Vitae`,
+      route: '/cv',
     },
     {
       name: `Portfolio`,

@@ -13,7 +13,7 @@ export const appRoutes: Route[] = [
   //   loadComponent: () => import('./pages/page-about/about.component').then((m) => m.AboutComponent),
   // },
   {
-    path: 'resume',
+    path: 'cv',
     loadComponent: () => import('./pages/page-xp/xp.component').then((m) => m.XpComponent),
   },
   // {

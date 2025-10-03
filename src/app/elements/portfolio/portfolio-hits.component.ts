@@ -23,50 +23,30 @@ import { PostListItem } from '../../interfaces/post';
       </article>
     }
 
-    @defer (on viewport; prefetch on timer(1s)) {
-      <div class="portfolio-items">
-        @for (item of itemsComputed(); track item['@id']) {
-          @if (item.post.cloudinaryId) {
-            <a
-              class="portfolio-item"
-              [href]="['/portfolio', 'item', item.post.slug]"
-              [routerLink]="['/portfolio', 'item', item.post.slug]"
-            >
-              <img
-                [ngSrc]="item.post.cloudinaryId"
-                width="700"
-                height="400"
-                priority
-                placeholder
-                class="img-thumbnail"
-                sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
-                [alt]="item.post.title"
-                [title]="item.post.title"
-                style="object-fit: cover;"
-              />
-            </a>
-          }
+    <div class="portfolio-items">
+      @for (item of itemsComputed(); track item['@id']) {
+        @if (item.post.cloudinaryId) {
+          <a
+            class="portfolio-item"
+            [href]="['/portfolio', 'item', item.post.slug]"
+            [routerLink]="['/portfolio', 'item', item.post.slug]"
+          >
+            <img
+              [ngSrc]="item.post.cloudinaryId"
+              width="700"
+              height="400"
+              priority
+              placeholder
+              class="img-thumbnail"
+              sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
+              [alt]="item.post.title"
+              [title]="item.post.title"
+              style="object-fit: cover;"
+            />
+          </a>
         }
-      </div>
-    } @placeholder (minimum 1s) {
-      <div class="portfolio-items">
-        @for (i of [1, 2, 3, 4, 5, 6]; track i) {
-          <div class="portfolio-item placeholder">
-            <span class="loading loading-ring loading-lg"></span>
-            <div class="skeleton h-430 w-242"></div>
-          </div>
-        }
-      </div>
-    } @error {
-      <div class="portfolio-items">
-        @for (i of [1, 2, 3, 4, 5, 6]; track i) {
-          <div class="portfolio-item placeholder">
-            <span class="loading loading-ring loading-lg"></span>
-            <div class="skeleton h-430 w-242"></div>
-          </div>
-        }
-      </div>
-    }
+      }
+    </div>
   `,
   styleUrls: ['./portfolio.component.css'],
   encapsulation: ViewEncapsulation.None,
