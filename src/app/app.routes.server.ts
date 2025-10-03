@@ -1,4 +1,6 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
+import { ApiService } from './services/api.service';
+import { inject } from '@angular/core';
 
 export const serverRoutes: ServerRoute[] = [
   {
@@ -17,8 +19,8 @@ export const serverRoutes: ServerRoute[] = [
     path: 'portfolio/item/:slug',
     renderMode: RenderMode.Prerender,
     getPrerenderParams: async () => {
-      //const apiService = inject(ApiService);
-      //const slugs = await apiService.loadPortfolioItemSlugs();
+      // const apiService = inject(ApiService);
+      // return await apiService.loadPortfolioItemSlugs();
       return [
         {
           slug: 'bibliotheque-saint-laurent',
@@ -48,7 +50,7 @@ export const serverRoutes: ServerRoute[] = [
           slug: 'studio-grappe-champagne-et-vin',
         },
       ];
-      // return [{ slug: 'regina-caeli' }];
+      //return [{ slug: 'regina-caeli' }];
     },
   },
   {
