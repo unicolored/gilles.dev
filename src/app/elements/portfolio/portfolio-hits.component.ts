@@ -23,7 +23,6 @@ import { PostListItem } from '../../interfaces/post';
       </article>
     }
 
-    @defer (on viewport; prefetch on timer(1s)) {
       <div class="portfolio-items">
         @for (item of itemsComputed(); track item['@id']) {
           @if (item.post.cloudinaryId) {
@@ -48,25 +47,6 @@ import { PostListItem } from '../../interfaces/post';
           }
         }
       </div>
-    } @placeholder (minimum 1s) {
-      <div class="portfolio-items">
-        @for (i of [1, 2, 3, 4, 5, 6]; track i) {
-          <div class="portfolio-item placeholder">
-            <span class="loading loading-ring loading-lg"></span>
-            <div class="skeleton h-430 w-242"></div>
-          </div>
-        }
-      </div>
-    } @error {
-      <div class="portfolio-items">
-        @for (i of [1, 2, 3, 4, 5, 6]; track i) {
-          <div class="portfolio-item placeholder">
-            <span class="loading loading-ring loading-lg"></span>
-            <div class="skeleton h-430 w-242"></div>
-          </div>
-        }
-      </div>
-    }
   `,
   styleUrls: ['./portfolio.component.css'],
   encapsulation: ViewEncapsulation.None,
