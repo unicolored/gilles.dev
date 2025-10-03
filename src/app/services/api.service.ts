@@ -3,6 +3,7 @@ import { HttpService } from 'ngx-services';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { Post, PostList } from '../interfaces/post';
+import { forkJoin, lastValueFrom, map } from 'rxjs';
 
 @Injectable()
 export class ApiService {
@@ -19,20 +20,29 @@ export class ApiService {
   }
 
   public async loadPortfolioItemSlugs(): Promise<Record<string, string>[]> {
-    // const lists = ['gilles-dev-development', 'gilles-dev-visual-identity'];
     const slugs: Record<string, string>[] = [];
-    console.log('empty slugs', slugs);
-    this.getList('gilles-dev-development').subscribe((list) => {
-      list.items.forEach((i) => {
-        slugs.push({ slug: i.post.slug });
-      });
-    });
-    this.getList('gilles-dev-visual-identity').subscribe((list) => {
-      list.items.forEach((i) => {
-        slugs.push({ slug: i.post.slug });
-      });
-    });
-    console.log('slugs completed', slugs);
-    return slugs;
+
+    // Combine the two observables using forkJoin
+    const combined$ = forkJoin([
+      this.getList('gilles-dev-development'),
+      this.getList('gilles-dev-visual-identity')
+    ]).pipe(
+      map(([list1, list2]) => {
+        // Process first list
+        list1.items.forEach((i) => {
+          slugs.push({ slug: i.post.slug });
+        });
+        // Process second list
+        list2.items.forEach((i) => {
+          slugs.push({ slug: i.post.slug });
+        });
+        return slugs;
+      })
+    );
+
+    // Convert observable to promise and await it
+    const result = await lastValueFrom(combined$);
+    console.log('slugs completed', result);
+    return result ?? [];
   }
 }
