@@ -31,6 +31,7 @@ import { PostListItem } from '../../interfaces/post';
             [href]="['/portfolio', 'item', item.post.slug]"
             [routerLink]="['/portfolio', 'item', item.post.slug]"
           >
+            {{ item.post.cloudinaryId }}
             <img
               [ngSrc]="item.post.cloudinaryId"
               width="700"

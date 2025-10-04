@@ -3,12 +3,10 @@ import { PortfolioHit } from '../../services/search.interface';
 import { PageIdSlugEnum } from '../../app.global';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
-import { Hit } from 'instantsearch.js/es/types/results';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SharedNgComponentsModule } from '../shared-ng-components.module';
 import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.component';
-import { InstantSearchService } from '../../services/instantsearch.service';
 import { ApiService } from '../../services/api.service';
 import { PostListItem } from '../../interfaces/post';
 
@@ -47,12 +45,10 @@ export class PortfolioComponent implements OnInit {
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
 
-  public searchService = inject(InstantSearchService);
-  portfolioHits = signal<Hit<PortfolioHit>[]>([]);
-  portfolioDesignTitle = '';
-  portfolioDesignHits = signal<PostListItem[]>([]);
   portfolioDevTitle = '';
   portfolioDevHits = signal<PostListItem[]>([]);
+  portfolioDesignTitle = '';
+  portfolioDesignHits = signal<PostListItem[]>([]);
 
   category = signal<string | null>(null);
   categoryComputed = computed(() => {
