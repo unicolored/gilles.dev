@@ -37,7 +37,7 @@ export class HeaderComponent {
 
   navItems = [
     {
-      name: `Hello`,
+      name: `👋`,
       route: '/',
     },
     {

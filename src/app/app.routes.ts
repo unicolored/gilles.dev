@@ -21,6 +21,21 @@ export const appRoutes: Route[] = [
   //   loadComponent: () => import('./pages/page-contact/contact.component').then((m) => m.ContactComponent),
   // },
   {
+    path: 'blog/page/:page',
+    pathMatch: 'full',
+    loadComponent: () => import('./pages/page-blog/blog.component').then((m) => m.BlogComponent),
+  },
+  {
+    path: 'blog/:slug',
+    pathMatch: 'full',
+    loadComponent: () => import('./pages/page-blog/post.component').then((m) => m.BlogPostComponent),
+  },
+  {
+    path: 'blog',
+    pathMatch: 'full',
+    loadComponent: () => import('./pages/page-blog/blog.component').then((m) => m.BlogComponent),
+  },
+  {
     path: 'portfolio',
     pathMatch: 'full',
     loadComponent: () => import('./pages/page-portfolio/portfolio.component').then((m) => m.PortfolioComponent),

@@ -5,7 +5,6 @@ import { PageIdSlugEnum } from '../../app.global';
 import { environment } from '../../../environments/environment';
 import { CommonModule } from '@angular/common';
 import { SharedNgComponentsModule } from '../shared-ng-components.module';
-import { InstantSearchService } from '../../services/instantsearch.service';
 
 @Component({
   standalone: true,
@@ -43,7 +42,6 @@ export class HomeComponent implements OnInit, PageInterface {
 
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
-  public searchService = inject(InstantSearchService);
 
   ngOnInit() {
     if (this.webPageMetasMap.has(this.pageId)) {
