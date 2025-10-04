@@ -2,8 +2,9 @@ import { inject, Injectable } from '@angular/core';
 import { HttpService } from 'ngx-services';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
-import { Post, PostList } from '../interfaces/post';
+import { Post, PostCollection, PostList } from '../interfaces/post';
 import { forkJoin, lastValueFrom, map } from 'rxjs';
+import { PortfolioListSlug } from '../app.global';
 
 @Injectable()
 export class ApiService {
@@ -22,27 +23,74 @@ export class ApiService {
   public async loadPortfolioItemSlugs(): Promise<Record<string, string>[]> {
     const slugs: Record<string, string>[] = [];
 
-    // Combine the two observables using forkJoin
-    const combined$ = forkJoin([
-      this.getList('gilles-dev-development'),
-      this.getList('gilles-dev-visual-identity'),
-    ]).pipe(
-      map(([list1, list2]) => {
-        // Process first list
-        list1.items.forEach((i) => {
-          slugs.push({ slug: i.post.slug });
-        });
-        // Process second list
-        list2.items.forEach((i) => {
-          slugs.push({ slug: i.post.slug });
-        });
-        return slugs;
-      }),
-    );
+    const portfolioSlugs = Object.values(PortfolioListSlug);
+    const listRequests = portfolioSlugs.map(slug => this.getList(slug));
+    const combined$ =
+      forkJoin(listRequests).pipe(
+        map(lists => {
+          lists.forEach(list => {
+            list.items.forEach(item => {
+              slugs.push({ slug: item.post.slug });
+            });
+          });
+          return slugs;
+        })
+      );
 
     // Convert observable to promise and await it
     const result = await lastValueFrom(combined$);
     console.log('slugs completed', result);
     return result ?? [];
+  }
+
+  public getBlogPosts(page: number, itemsPerPage: number, slug: string = "blog"): Observable<PostCollection> {
+    const endpoint = environment.endpoints.api;
+    return this.http.get<PostCollection>(
+      `${endpoint}/posts?page=${page}&itemsPerPage=${itemsPerPage}&mainCategory.slug=${slug}&status=publish`
+    );
+  }
+
+  public async loadPageNumbers(): Promise<Record<string, string>[]> {
+    const itemsPerPage = 3;
+    try {
+      const response = await lastValueFrom(
+        this.getBlogPosts(1, itemsPerPage)
+      );
+      const totalPages = Math.ceil(response.totalItems / itemsPerPage);
+      return Array.from({ length: totalPages }, (_, index) => ({
+        page: `${index + 1}`,
+      }));
+    } catch (error) {
+      console.error('Error fetching total pages for blog:', error);
+      return [{ page: '1' }]; // Fallback to page 1 in case of error
+    }
+  }
+
+  public async loadBlogPostSlugs(): Promise<{ slug: string }[]> {
+    const itemsPerPage = 3;
+    const slugs: { slug: string }[] = [];
+    try {
+      // Fetch first page to get totalItems
+      const firstResponse = await lastValueFrom(
+        this.getBlogPosts(1, itemsPerPage)
+      );
+      const totalPages = Math.ceil(firstResponse.totalItems / itemsPerPage);
+      slugs.push(...firstResponse.member.map(post => ({ slug: post.slug })));
+
+      // Fetch remaining pages if necessary
+      if (totalPages > 1) {
+        const pageRequests = Array.from({ length: totalPages - 1 }, (_, index) =>
+          this.getBlogPosts(index + 2, itemsPerPage)
+        );
+        const responses = await lastValueFrom(forkJoin(pageRequests));
+        responses.forEach(response => {
+          slugs.push(...response.member.map(post => ({ slug: post.slug })));
+        });
+      }
+      return slugs;
+    } catch (error) {
+      console.error('Error fetching blog post slugs:', error);
+      return [{ slug: 'default' }]; // Fallback to a default slug
+    }
   }
 }

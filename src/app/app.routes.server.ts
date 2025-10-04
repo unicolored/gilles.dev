@@ -24,6 +24,22 @@ export const serverRoutes: ServerRoute[] = [
     },
   },
   {
+    path: 'blog/page/:page',
+    renderMode: RenderMode.Prerender,
+    getPrerenderParams: async () => {
+      const apiService = inject(ApiService);
+      return await apiService.loadPageNumbers();
+    },
+  },
+  {
+    path: 'blog/:slug',
+    renderMode: RenderMode.Prerender,
+    getPrerenderParams: async () => {
+      const apiService = inject(ApiService);
+      return await apiService.loadBlogPostSlugs();
+    },
+  },
+  {
     path: '**',
     renderMode: RenderMode.Prerender,
   },

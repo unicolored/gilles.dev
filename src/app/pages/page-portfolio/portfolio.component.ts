@@ -1,6 +1,6 @@
 import { Component, computed, inject, input, OnInit, signal, ViewEncapsulation } from '@angular/core';
 import { PortfolioHit } from '../../services/search.interface';
-import { PageIdSlugEnum } from '../../app.global';
+import { PageIdSlugEnum, PortfolioListSlug } from '../../app.global';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -8,7 +8,8 @@ import { CommonModule } from '@angular/common';
 import { SharedNgComponentsModule } from '../shared-ng-components.module';
 import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.component';
 import { ApiService } from '../../services/api.service';
-import { PostListItem } from '../../interfaces/post';
+import { PostList } from '../../interfaces/post';
+import { forkJoin, lastValueFrom } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -25,14 +26,13 @@ import { PostListItem } from '../../interfaces/post';
         </div>
       </div>
 
-      <section class="mt-12">
-        <gilles-nx-portfolio-hits [title]="portfolioDevTitle" [items]="portfolioDevHits()"> </gilles-nx-portfolio-hits>
-      </section>
-
+      @if (lists) {
+        @for (list of lists; track list.name) {
       <section class="mt-6">
-        <gilles-nx-portfolio-hits [title]="portfolioDesignTitle" [items]="portfolioDesignHits()">
-        </gilles-nx-portfolio-hits>
+        <gilles-nx-portfolio-hits [title]="list.description" [items]="list.items"> </gilles-nx-portfolio-hits>
       </section>
+      }
+      }
     </main>
   `,
   styleUrls: [],
@@ -45,30 +45,7 @@ export class PortfolioComponent implements OnInit {
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
 
-  portfolioDevTitle = '';
-  portfolioDevHits = signal<PostListItem[]>([]);
-  portfolioDesignTitle = '';
-  portfolioDesignHits = signal<PostListItem[]>([]);
-
-  category = signal<string | null>(null);
-  categoryComputed = computed(() => {
-    if (this.category() === 'web') {
-      return 'dev';
-    }
-
-    return this.category();
-  });
-
   itemId = signal<string | null>(null);
-
-  facetFilter = computed(() => {
-    const category = this.categoryComputed();
-    if (category) {
-      return `taxonomies.category:${category}`;
-    }
-
-    return [['taxonomies.category:dev', 'taxonomies.category:design']];
-  });
 
   title = input<string>();
   name = computed(() => {
@@ -78,65 +55,23 @@ export class PortfolioComponent implements OnInit {
   subtitle = input<string>();
   items = signal<PortfolioHit[]>([]);
   private apiService = inject(ApiService);
+  lists: PostList[] = [];
 
-  ngOnInit() {
+  async ngOnInit() {
     if (this.webPageMetasMap.has(this.pageId)) {
       this.webPageService.setMetas(this.webPageMetasMap.get(this.pageId), environment.endpoints?.['_self']);
     }
 
-    this.apiService.getList('gilles-dev-development').subscribe((res) => {
-      this.portfolioDevTitle = res.description;
-      this.portfolioDevHits.set(res.items);
-    });
+    const portfolioSlugs = Object.values(PortfolioListSlug);
+    const listRequests = portfolioSlugs.map(slug => this.apiService.getList(slug));
+    const combined$ = forkJoin(listRequests);
 
-    this.apiService.getList('gilles-dev-visual-identity').subscribe((res) => {
-      this.portfolioDesignTitle = res.description;
-      this.portfolioDesignHits.set(res.items);
-    });
+    // Convert observable to promise and await it
+    this.lists = await lastValueFrom(combined$);
 
-    // this.apiService.loadPortfolioItemSlugs();
-
-    const paramCategory = this.route.snapshot.paramMap.get('category');
     const paramItem = this.route.snapshot.paramMap.get('item');
-    console.log('paramMap', paramCategory, paramItem);
-    this.category.set(paramCategory);
 
     this.itemId.set(paramItem);
 
-    // // const renderConfigure = (renderOptions: unknown, isFirstRender: boolean) => { };
-    // const renderConfigure = () => { };
-    //
-    // const searchDesignInstance = this.searchService.createInstance(SearchIndexes.posts);
-    // searchDesignInstance
-    //   .addWidgets([
-    //     connectConfigure(renderConfigure)({
-    //       searchParameters: {
-    //         hitsPerPage: 6,
-    //         facetsRefinements: {
-    //           'taxonomies.category': ['design'],
-    //         },
-    //       },
-    //     }),
-    //     connectHits(({ hits }) => {
-    //       this.portfolioDesignHits.set(hits as Hit<PortfolioHit>[]);
-    //     })({}),
-    //   ])
-    //   .start();
-    // const searchDevInstance = this.searchService.createInstance(SearchIndexes.posts);
-    // searchDevInstance
-    //   .addWidgets([
-    //     connectConfigure(renderConfigure)({
-    //       searchParameters: {
-    //         hitsPerPage: 6,
-    //         facetsRefinements: {
-    //           'taxonomies.category': ['dev'],
-    //         },
-    //       },
-    //     }),
-    //     connectHits(({ hits }) => {
-    //       this.portfolioDevHits.set(hits as Hit<PortfolioHit>[]);
-    //     })({}),
-    //   ])
-    //   .start();
   }
 }
