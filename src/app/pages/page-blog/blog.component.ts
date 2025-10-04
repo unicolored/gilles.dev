@@ -9,72 +9,68 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
   selector: 'app-blog-component',
   imports: [CommonModule, RouterModule, NgOptimizedImage],
   template: `
-    <main class="p-4 gap-6 flex flex-col">
-        @for (post of posts(); track post.slug) {
-          <article>
-            <div class="shadow-md p-4 overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <!-- Image -->
-              @if (post.cloudinaryId) {
-                <img
-                  [ngSrc]="post.cloudinaryId"
-                  width="700"
-                  height="400"
-                  priority
-                  placeholder
-                  class="w-full h-64 object-cover"
-                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                  [alt]="post.title"
-                  [title]="post.title"
-                />
-              }
-              <!-- Card Content -->
-              <div class="p-4">
+    <main class="flex flex-col gap-6 p-4">
+      @for (post of posts(); track post.slug) {
+        <article>
+          <div class="overflow-hidden p-4 shadow-md transition-shadow duration-300 hover:shadow-lg">
+            <!-- Image -->
+            @if (post.cloudinaryId) {
+              <img
+                [ngSrc]="post.cloudinaryId"
+                width="700"
+                height="400"
+                priority
+                placeholder
+                class="h-64 w-full object-cover"
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                [alt]="post.title"
+                [title]="post.title"
+              />
+            }
+            <!-- Card Content -->
+            <div class="p-4">
               <h2>
-                <a [routerLink]="['/blog', post.slug]" class="text-xl font-semibold mb-2 hover:underline">
+                <a [routerLink]="['/blog', post.slug]" class="mb-2 text-xl font-semibold hover:underline">
                   {{ post.title }}
                 </a>
-                </h2>
-                @if (post.createdAt) {
-                  <p class="text-gray-500 text-sm mb-2">
-                    {{ post.createdAt | date: 'medium' }}
-                  </p>
-                }
-                @if (post.listItems.length > 0) {
-                  <div class="mt-2">
-                    <p class="text-sm font-medium text-gray-700">Appears in:</p>
-                    <ul class="list-disc list-inside text-sm text-gray-500">
-                      @for (item of post.listItems; track item['@id']) {
-                        <li>{{ item.postList.name }} ({{ item.postList.slug }})</li>
-                      }
-                    </ul>
-                  </div>
-                }
-              </div>
+              </h2>
+              @if (post.createdAt) {
+                <p class="mb-2 text-sm text-gray-500">
+                  {{ post.createdAt | date: 'medium' }}
+                </p>
+              }
+              @if (post.listItems.length > 0) {
+                <div class="mt-2">
+                  <p class="text-sm font-medium text-gray-700">Appears in:</p>
+                  <ul class="list-inside list-disc text-sm text-gray-500">
+                    @for (item of post.listItems; track item['@id']) {
+                      <li>{{ item.postList.name }} ({{ item.postList.slug }})</li>
+                    }
+                  </ul>
+                </div>
+              }
             </div>
-          </article>
-        }
-        @if (posts().length === 0) {
-          <div class="text-center text-gray-500 col-span-full">
-            No posts found.
           </div>
-        }
+        </article>
+      }
+      @if (posts().length === 0) {
+        <div class="col-span-full text-center text-gray-500">No posts found.</div>
+      }
       <!-- Pagination -->
       @if (totalPages() > 1) {
-        <div class="mt-8 flex justify-center items-center space-x-4">
+        <div class="mt-8 flex items-center justify-center space-x-4">
           <button
             [disabled]="currentPage() === 1"
             [routerLink]="['/blog/page', currentPage() - 1]"
-            class="px-4 py-2 bg-blue-600 text-white rounded disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-blue-700 transition-colors"
+            class="rounded bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-300"
           >
             Previous
           </button>
-          <span class="px-4 py-2 text-gray-700">
-            Page {{ currentPage() }} of {{ totalPages() }}
-          </span>
+          <span class="px-4 py-2 text-gray-700"> Page {{ currentPage() }} of {{ totalPages() }} </span>
           <button
             [disabled]="currentPage() === totalPages()"
             [routerLink]="['/blog/page', currentPage() + 1]"
-            class="px-4 py-2 bg-blue-600 text-white rounded disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-blue-700 transition-colors"
+            class="rounded bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-300"
           >
             Next
           </button>
@@ -82,7 +78,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
       }
     </main>
   `,
-  styles: ``
+  styles: ``,
 })
 export class BlogComponent {
   posts = signal<Post[]>([]);
@@ -94,25 +90,28 @@ export class BlogComponent {
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) {
-    effect(() => {
-      this.route.paramMap.subscribe(params => {
-        if (!params.get('page')) {
-          this.currentPage.set(1);
-          this.loadPosts();
-        } else {
-          const page = parseInt(params.get('page') || '1', 10);
-          console.log('page =', page);
-          const newPage = isNaN(page) || page < 1 ? 1 : page;
-          console.log(newPage, this.currentPage());
-          if (newPage !== this.currentPage()) {
-            this.currentPage.set(newPage);
+    effect(
+      () => {
+        this.route.paramMap.subscribe((params) => {
+          if (!params.get('page')) {
+            this.currentPage.set(1);
             this.loadPosts();
+          } else {
+            const page = parseInt(params.get('page') || '1', 10);
+            console.log('page =', page);
+            const newPage = isNaN(page) || page < 1 ? 1 : page;
+            console.log(newPage, this.currentPage());
+            if (newPage !== this.currentPage()) {
+              this.currentPage.set(newPage);
+              this.loadPosts();
+            }
           }
-        }
-      });
-    }, { allowSignalWrites: true });
+        });
+      },
+      { allowSignalWrites: true },
+    );
   }
 
   loadPosts(): void {
@@ -129,7 +128,7 @@ export class BlogComponent {
       },
       error: (error) => {
         console.error('Error fetching posts:', error);
-      }
+      },
     });
   }
 }

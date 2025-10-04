@@ -28,10 +28,10 @@ import { forkJoin, lastValueFrom } from 'rxjs';
 
       @if (lists) {
         @for (list of lists; track list.name) {
-      <section class="mt-6">
-        <gilles-nx-portfolio-hits [title]="list.description" [items]="list.items"> </gilles-nx-portfolio-hits>
-      </section>
-      }
+          <section class="mt-6">
+            <gilles-nx-portfolio-hits [title]="list.description" [items]="list.items"> </gilles-nx-portfolio-hits>
+          </section>
+        }
       }
     </main>
   `,
@@ -63,7 +63,7 @@ export class PortfolioComponent implements OnInit {
     }
 
     const portfolioSlugs = Object.values(PortfolioListSlug);
-    const listRequests = portfolioSlugs.map(slug => this.apiService.getList(slug));
+    const listRequests = portfolioSlugs.map((slug) => this.apiService.getList(slug));
     const combined$ = forkJoin(listRequests);
 
     // Convert observable to promise and await it
@@ -72,6 +72,5 @@ export class PortfolioComponent implements OnInit {
     const paramItem = this.route.snapshot.paramMap.get('item');
 
     this.itemId.set(paramItem);
-
   }
 }
