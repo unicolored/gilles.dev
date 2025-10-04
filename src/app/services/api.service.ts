@@ -3,7 +3,7 @@ import { HttpService } from 'ngx-services';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { Post, PostCollection, PostList } from '../interfaces/post';
-import { forkJoin, lastValueFrom, map } from 'rxjs';
+import { catchError, of, forkJoin, lastValueFrom, map } from 'rxjs';
 import { PortfolioListSlug } from '../app.global';
 
 @Injectable()
@@ -24,7 +24,14 @@ export class ApiService {
     const slugs: Record<string, string>[] = [];
 
     const portfolioSlugs = Object.values(PortfolioListSlug);
-    const listRequests = portfolioSlugs.map((slug) => this.getList(slug));
+    const listRequests = portfolioSlugs.map((slug) =>
+      this.getList(slug).pipe(
+        catchError((error) => {
+          console.error(`Error fetching list for slug ${slug}:`, error);
+          return of({ items: [] }); // Return empty items array on error
+        }),
+      ),
+    );
     const combined$ = forkJoin(listRequests).pipe(
       map((lists) => {
         lists.forEach((list) => {
