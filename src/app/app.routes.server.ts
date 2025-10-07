@@ -32,7 +32,7 @@ export const serverRoutes: ServerRoute[] = [
     },
   },
   {
-    path: 'blog/:slug',
+    path: 'blog/post/:slug',
     renderMode: RenderMode.Prerender,
     getPrerenderParams: async () => {
       const apiService = inject(ApiService);

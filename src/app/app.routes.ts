@@ -1,9 +1,9 @@
 import { Route, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { RenderMode } from '@angular/ssr';
 import { portfolioResolver } from './pages/page-portfolio/portfolio.resolver';
 import { ApiService } from './services/api.service';
 import { HttpService } from 'ngx-services';
+import { blogResolver } from './pages/page-blog/blog.resolver';
 
 export const appRoutes: Route[] = [
   {
@@ -25,18 +25,22 @@ export const appRoutes: Route[] = [
   //   loadComponent: () => import('./pages/page-contact/contact.component').then((m) => m.ContactComponent),
   // },
   {
-    path: 'blog/page/:page',
-    pathMatch: 'full',
-    loadComponent: () => import('./pages/page-blog/blog.component').then((m) => m.BlogComponent),
-  },
-  {
-    path: 'blog/:slug',
+    path: 'blog/post/:slug',
     pathMatch: 'full',
     loadComponent: () => import('./pages/page-blog/post.component').then((m) => m.BlogPostComponent),
   },
   {
+    path: 'blog/page/:page',
+    pathMatch: 'full',
+    resolve: { blogData: blogResolver }, // Prefetch data here
+    providers: [ApiService, HttpService],
+    loadComponent: () => import('./pages/page-blog/blog.component').then((m) => m.BlogComponent),
+  },
+  {
     path: 'blog',
     pathMatch: 'full',
+    resolve: { blogData: blogResolver }, // Prefetch data here
+    providers: [ApiService, HttpService],
     loadComponent: () => import('./pages/page-blog/blog.component').then((m) => m.BlogComponent),
   },
   {
