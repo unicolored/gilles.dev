@@ -10,9 +10,14 @@ import { PortfolioListSlug } from '../app.global';
 export class ApiService {
   private http = inject(HttpService);
 
-  public getList(slug: string): Observable<PostList> {
+  public getList(slug: string): Observable<Partial<PostList>> {
     const endpoint = environment.endpoints.api;
-    return this.http.get<PostList>(`${endpoint}/post_lists/${slug}`);
+    return this.http.get<PostList>(`${endpoint}/post_lists/${slug}`).pipe(
+      catchError((error) => {
+        console.error(`Error fetching list for slug ${slug}:`, error);
+        return of({ items: [] }); // Return empty items array on error
+      }),
+    );
   }
 
   public getItem(slug: string): Observable<Post> {
@@ -24,18 +29,11 @@ export class ApiService {
     const slugs: Record<string, string>[] = [];
 
     const portfolioSlugs = Object.values(PortfolioListSlug);
-    const listRequests = portfolioSlugs.map((slug) =>
-      this.getList(slug).pipe(
-        catchError((error) => {
-          console.error(`Error fetching list for slug ${slug}:`, error);
-          return of({ items: [] }); // Return empty items array on error
-        }),
-      ),
-    );
+    const listRequests = portfolioSlugs.map((slug) => this.getList(slug));
     const combined$ = forkJoin(listRequests).pipe(
       map((lists) => {
         lists.forEach((list) => {
-          list.items.forEach((item) => {
+          list.items?.forEach((item) => {
             slugs.push({ slug: item.post.slug });
           });
         });

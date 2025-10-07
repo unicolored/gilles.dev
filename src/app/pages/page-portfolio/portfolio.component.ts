@@ -1,5 +1,4 @@
 import { Component, computed, inject, input, OnInit, signal, ViewEncapsulation } from '@angular/core';
-import { PortfolioHit } from '../../services/search.interface';
 import { PageIdSlugEnum, PortfolioListSlug } from '../../app.global';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
@@ -53,9 +52,8 @@ export class PortfolioComponent implements OnInit {
     return name ? name.toLocaleLowerCase().replace(/ /g, '-') : Math.random().toString(36);
   });
   subtitle = input<string>();
-  items = signal<PortfolioHit[]>([]);
   private apiService = inject(ApiService);
-  lists: PostList[] = [];
+  lists: Partial<PostList>[] = [];
 
   async ngOnInit() {
     if (this.webPageMetasMap.has(this.pageId)) {
@@ -68,6 +66,7 @@ export class PortfolioComponent implements OnInit {
 
     // Convert observable to promise and await it
     this.lists = await lastValueFrom(combined$);
+    console.log(this.lists);
 
     const paramItem = this.route.snapshot.paramMap.get('item');
 
