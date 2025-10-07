@@ -3,6 +3,8 @@
 .env.prod
 environment.production.ts
 
+/.wrangler
+
 # Compiled output
 /dist
 /tmp
