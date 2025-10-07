@@ -9,7 +9,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
   imports: [CommonModule, RouterModule, NgOptimizedImage],
   template: `
     <main class="flex flex-col gap-6 p-4">
-      @for (post of posts(); track post.slug) {
+      @for (post of posts; track post.slug) {
         <article>
           <div class="overflow-hidden p-4 shadow-md transition-shadow duration-300 hover:shadow-lg">
             <!-- Image -->
@@ -52,7 +52,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
           </div>
         </article>
       }
-      @if (posts().length === 0) {
+      @if (posts.length === 0) {
         <div class="col-span-full text-center text-gray-500">No posts found.</div>
       }
       <!-- Pagination -->
@@ -89,7 +89,7 @@ export class BlogComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // Get resolved data (available immediately, even in prerender)
