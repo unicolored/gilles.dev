@@ -25,7 +25,7 @@ import { forkJoin, lastValueFrom } from 'rxjs';
         </div>
       </div>
 
-      @if (lists) {
+      @if (lists(); as lists) {
         @for (list of lists; track list.name) {
           <section class="mt-6">
             <gilles-nx-portfolio-hits [title]="list.description" [items]="list.items"> </gilles-nx-portfolio-hits>
@@ -43,17 +43,11 @@ export class PortfolioComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
-
-  itemId = signal<string | null>(null);
-
-  title = input<string>();
-  name = computed(() => {
-    const name = this.title();
-    return name ? name.toLocaleLowerCase().replace(/ /g, '-') : Math.random().toString(36);
-  });
-  subtitle = input<string>();
   private apiService = inject(ApiService);
-  lists: Partial<PostList>[] = [];
+
+  //lists: Partial<PostList>[] = [];
+  lists = signal<Partial<PostList>[]>([]);
+  listsComputed = computed(() => this.lists());
 
   async ngOnInit() {
     if (this.webPageMetasMap.has(this.pageId)) {
@@ -65,11 +59,6 @@ export class PortfolioComponent implements OnInit {
     const combined$ = forkJoin(listRequests);
 
     // Convert observable to promise and await it
-    this.lists = await lastValueFrom(combined$);
-    console.log(this.lists);
-
-    const paramItem = this.route.snapshot.paramMap.get('item');
-
-    this.itemId.set(paramItem);
+    this.lists.set(await lastValueFrom(combined$));
   }
 }
