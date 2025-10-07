@@ -1,14 +1,12 @@
-import { Component, computed, inject, OnInit, signal, ViewEncapsulation } from '@angular/core';
-import { PageIdSlugEnum, PortfolioListSlug } from '../../app.global';
+import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { PageIdSlugEnum } from '../../app.global';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SharedNgComponentsModule } from '../shared-ng-components.module';
 import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.component';
-import { ApiService } from '../../services/api.service';
 import { PostList } from '../../interfaces/post';
-import { forkJoin, lastValueFrom } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -25,7 +23,6 @@ import { forkJoin, lastValueFrom } from 'rxjs';
         </div>
       </div>
 
-      BEFORE
       @if (lists) {
         @for (list of lists; track list.name) {
           <section class="mt-6">
@@ -46,15 +43,12 @@ export class PortfolioComponent implements OnInit {
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
 
   lists: Partial<PostList>[] = [];
-  //lists = signal<Partial<PostList>[]>([]);
-  //listsComputed = computed(() => this.lists());
 
   async ngOnInit() {
     if (this.webPageMetasMap.has(this.pageId)) {
       this.webPageService.setMetas(this.webPageMetasMap.get(this.pageId), environment.endpoints?.['_self']);
     }
 
-    //this.lists.set(this.route.snapshot.data['lists']);
     this.lists = this.route.snapshot.data['lists'];
   }
 }
