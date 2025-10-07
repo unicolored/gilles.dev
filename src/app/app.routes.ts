@@ -1,5 +1,9 @@
 import { Route, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { RenderMode } from '@angular/ssr';
+import { portfolioResolver } from './pages/page-portfolio/portfolio.resolver';
+import { ApiService } from './services/api.service';
+import { HttpService } from 'ngx-services';
 
 export const appRoutes: Route[] = [
   {
@@ -38,6 +42,9 @@ export const appRoutes: Route[] = [
   {
     path: 'portfolio',
     pathMatch: 'full',
+    resolve: { lists: portfolioResolver }, // Prefetch data here
+    providers: [ApiService, HttpService],
+    //data: { renderMode: RenderMode.Prerender },
     loadComponent: () => import('./pages/page-portfolio/portfolio.component').then((m) => m.PortfolioComponent),
   },
   {

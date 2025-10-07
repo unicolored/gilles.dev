@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, OnInit, signal, ViewEncapsulation } from '@angular/core';
+import { Component, computed, inject, OnInit, signal, ViewEncapsulation } from '@angular/core';
 import { PageIdSlugEnum, PortfolioListSlug } from '../../app.global';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
@@ -25,7 +25,8 @@ import { forkJoin, lastValueFrom } from 'rxjs';
         </div>
       </div>
 
-      @if (lists(); as lists) {
+      BEFORE
+      @if (lists) {
         @for (list of lists; track list.name) {
           <section class="mt-6">
             <gilles-nx-portfolio-hits [title]="list.description" [items]="list.items"> </gilles-nx-portfolio-hits>
@@ -43,22 +44,17 @@ export class PortfolioComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
-  private apiService = inject(ApiService);
 
-  //lists: Partial<PostList>[] = [];
-  lists = signal<Partial<PostList>[]>([]);
-  listsComputed = computed(() => this.lists());
+  lists: Partial<PostList>[] = [];
+  //lists = signal<Partial<PostList>[]>([]);
+  //listsComputed = computed(() => this.lists());
 
   async ngOnInit() {
     if (this.webPageMetasMap.has(this.pageId)) {
       this.webPageService.setMetas(this.webPageMetasMap.get(this.pageId), environment.endpoints?.['_self']);
     }
 
-    const portfolioSlugs = Object.values(PortfolioListSlug);
-    const listRequests = portfolioSlugs.map((slug) => this.apiService.getList(slug));
-    const combined$ = forkJoin(listRequests);
-
-    // Convert observable to promise and await it
-    this.lists.set(await lastValueFrom(combined$));
+    //this.lists.set(this.route.snapshot.data['lists']);
+    this.lists = this.route.snapshot.data['lists'];
   }
 }
