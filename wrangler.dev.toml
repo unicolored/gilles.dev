@@ -13,7 +13,7 @@ directory = "dist/app/browser"
 not_found_handling = "404-page"
 
 [build]
-command = "sh script/cibuild.sh"
+command = "sh script/build.sh"
 cwd = "./"
-watch_dir = "./src/*"
+watch_dir = "./src/**/*"
 
