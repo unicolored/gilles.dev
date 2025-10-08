@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { ApiService } from './services/api.service';
 import { HttpService } from 'ngx-services';
 import { blogResolver } from './pages/page-blog/blog.resolver';
-import { RenderMode } from '@angular/ssr';
 
 export const appRoutes: Route[] = [
   {

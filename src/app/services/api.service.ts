@@ -28,7 +28,7 @@ export class ApiService {
     return this.http.get<PostList>(`${endpoint}/post_lists/${slug}`).pipe(
       catchError((error) => {
         //console.error(`Error fetching list for slug ${slug}:`, error);
-        console.error(`Error fetching list for slug ${slug}`);
+        console.error(`Error fetching list for slug ${slug}`, error);
         return of({ items: [] }); // Return empty items array on error
       }),
     );

@@ -34,8 +34,8 @@ async function generatePortfolioData(): Promise<void> {
           throw new Error(`HTTP ${response.status}: Failed to fetch data for slug: ${slug}`);
         }
         return response.json() as Promise<Partial<PostList>>;
-      } catch (error: any) {
-        console.warn(`Error fetching slug: ${slug}`, error.message);
+      } catch (error: unknown) {
+        console.warn(`Error fetching slug: ${slug}`, error);
         return { name: slug, description: `Fallback for ${slug}`, items: [] };
       }
     });
@@ -45,7 +45,7 @@ async function generatePortfolioData(): Promise<void> {
     // Write data to JSON file
     await writeFile(OUTPUT_PATH, JSON.stringify(portfolioData, null, 2), 'utf-8');
     console.log(`Successfully wrote portfolio data to ${OUTPUT_PATH}`);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error generating portfolio-data.json:', error);
     process.exit(1); // Exit with error code to fail the build
   }
