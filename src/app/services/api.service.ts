@@ -1,20 +1,34 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { HttpService } from 'ngx-services';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { Post, PostCollection, PostList } from '../interfaces/post';
 import { catchError, of, forkJoin, lastValueFrom, map } from 'rxjs';
 import { PortfolioListSlug } from '../app.global';
+import { isPlatformServer } from '@angular/common';
 
 @Injectable()
 export class ApiService {
   private http = inject(HttpService);
+  private platformId = inject(PLATFORM_ID);
 
   public getList(slug: string): Observable<Partial<PostList>> {
+    const emptyList = { slug: slug, description: '', items: [] };
+    if (isPlatformServer(this.platformId)) {
+      // Load static data during prerendering
+      return this.http
+        .get<Partial<PostList>[]>('/assets/portfolio-data.json')
+        .pipe(map((lists) => lists.find((list) => list.slug === slug) || emptyList));
+    }
+    return of(emptyList);
+  }
+
+  public getListApi(slug: string): Observable<Partial<PostList>> {
     const endpoint = environment.endpoints.api;
     return this.http.get<PostList>(`${endpoint}/post_lists/${slug}`).pipe(
       catchError((error) => {
-        console.error(`Error fetching list for slug ${slug}:`, error);
+        //console.error(`Error fetching list for slug ${slug}:`, error);
+        console.error(`Error fetching list for slug ${slug}`);
         return of({ items: [] }); // Return empty items array on error
       }),
     );
@@ -43,7 +57,6 @@ export class ApiService {
 
     // Convert observable to promise and await it
     const result = await lastValueFrom(combined$);
-    console.log('slugs completed', result);
     return result ?? [];
   }
 
