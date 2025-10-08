@@ -1,9 +1,9 @@
 import { Route, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { portfolioResolver } from './pages/page-portfolio/portfolio.resolver';
 import { ApiService } from './services/api.service';
 import { HttpService } from 'ngx-services';
 import { blogResolver } from './pages/page-blog/blog.resolver';
+import { RenderMode } from '@angular/ssr';
 
 export const appRoutes: Route[] = [
   {
@@ -44,14 +44,6 @@ export const appRoutes: Route[] = [
     loadComponent: () => import('./pages/page-blog/blog.component').then((m) => m.BlogComponent),
   },
   {
-    path: 'portfolio',
-    pathMatch: 'full',
-    resolve: { lists: portfolioResolver }, // Prefetch data here
-    providers: [ApiService, HttpService],
-    //data: { renderMode: RenderMode.Prerender },
-    loadComponent: () => import('./pages/page-portfolio/portfolio.component').then((m) => m.PortfolioComponent),
-  },
-  {
     path: 'projects',
     pathMatch: 'full',
     loadComponent: () => import('./pages/page-projects/projects.component').then((m) => m.ProjectsComponent),
@@ -66,6 +58,12 @@ export const appRoutes: Route[] = [
     pathMatch: 'full',
     loadComponent: () =>
       import('./pages/page-portfolio/portfolio-item.component').then((m) => m.PortfolioItemComponent),
+  },
+  {
+    //data: { renderMode: RenderMode.Prerender },
+    path: 'portfolio',
+    pathMatch: 'full',
+    loadComponent: () => import('./pages/page-portfolio/portfolio.component').then((m) => m.PortfolioComponent),
   },
   {
     path: '**',
