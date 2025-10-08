@@ -2,12 +2,12 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, signal, effect } from '@angular/core';
 import { Post } from '../../interfaces/post'; // Adjust path as needed
 import { ApiService } from '../../services/api.service'; // Adjust path as needed
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'app-blog-post',
-  imports: [CommonModule, NgOptimizedImage, RouterLink],
+  imports: [CommonModule, NgOptimizedImage],
   template: `
     <main class="page-prose">
       @if (post(); as post) {
