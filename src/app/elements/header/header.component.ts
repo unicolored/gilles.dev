@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
         @for (item of navItems; track item.name) {
           <a
             class="item"
-            [href]="item.route"
+            [routerLink]="item.route"
             [routerLinkActive]="'active'"
             [routerLinkActiveOptions]="{ exact: true }"
             [title]="item.name"
