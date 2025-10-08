@@ -1,4 +1,5 @@
 import { writeFile, mkdir } from 'node:fs/promises';
+import { PortfolioListSlug } from '../src/app/app.global.ts';
 
 // Define the PostList interface to match your Angular project's structure
 interface PostList {
@@ -9,7 +10,8 @@ interface PostList {
 
 // Configuration
 const API_BASE_URL: string = process.env['API_BASE_URL'] || 'https://myadmin.unicolo.red/api';
-const PORTFOLIO_SLUGS: string[] = ['gilles-dev-visual-identity', 'gilles-dev-development'];
+//const PORTFOLIO_SLUGS: string[] = ['gilles-dev-visual-identity', 'gilles-dev-development'];
+const PORTFOLIO_SLUGS: string[] = Object.values(PortfolioListSlug);
 const OUTPUT_PATH: string = './public/assets/portfolio-data.json';
 
 // Log configuration for debugging
