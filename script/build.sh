@@ -2,6 +2,7 @@
 
 set -e
 
-yarn prebuild
+# skip prebuild
 
 yarn build
+

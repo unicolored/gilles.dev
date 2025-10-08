@@ -1,5 +1,4 @@
-import { Component, computed, inject, input, OnInit, signal, ViewEncapsulation } from '@angular/core';
-import { PortfolioHit } from '../../services/search.interface';
+import { Component, inject, OnInit, signal, ViewEncapsulation } from '@angular/core';
 import { PageIdSlugEnum, PortfolioListSlug } from '../../app.global';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
@@ -7,9 +6,9 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SharedNgComponentsModule } from '../shared-ng-components.module';
 import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.component';
-import { ApiService } from '../../services/api.service';
 import { PostList } from '../../interfaces/post';
-import { forkJoin, lastValueFrom } from 'rxjs';
+import { ApiService } from '../../services/api.service';
+import { lastValueFrom, forkJoin } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -26,11 +25,13 @@ import { forkJoin, lastValueFrom } from 'rxjs';
         </div>
       </div>
 
-      @if (lists) {
+      @if (lists(); as lists) {
         @for (list of lists; track list.name) {
           <section class="mt-6">
             <gilles-nx-portfolio-hits [title]="list.description" [items]="list.items"> </gilles-nx-portfolio-hits>
           </section>
+        } @empty {
+          <p>No lists found.</p>
         }
       }
     </main>
@@ -44,33 +45,25 @@ export class PortfolioComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
-
-  itemId = signal<string | null>(null);
-
-  title = input<string>();
-  name = computed(() => {
-    const name = this.title();
-    return name ? name.toLocaleLowerCase().replace(/ /g, '-') : Math.random().toString(36);
-  });
-  subtitle = input<string>();
-  items = signal<PortfolioHit[]>([]);
   private apiService = inject(ApiService);
-  lists: PostList[] = [];
+
+  lists = signal<Partial<PostList>[]>([]);
+
+  constructor() {
+    const portfolioSlugs = Object.values(PortfolioListSlug);
+    const listRequests = portfolioSlugs.map((slug) => this.apiService.getList(slug));
+    const combined$ = forkJoin(listRequests);
+
+    // Fetch the data
+    lastValueFrom(combined$).then((lists) => {
+      this.lists.set(lists);
+    });
+    console.log('Lists', this.lists);
+  }
 
   async ngOnInit() {
     if (this.webPageMetasMap.has(this.pageId)) {
       this.webPageService.setMetas(this.webPageMetasMap.get(this.pageId), environment.endpoints?.['_self']);
     }
-
-    const portfolioSlugs = Object.values(PortfolioListSlug);
-    const listRequests = portfolioSlugs.map((slug) => this.apiService.getList(slug));
-    const combined$ = forkJoin(listRequests);
-
-    // Convert observable to promise and await it
-    this.lists = await lastValueFrom(combined$);
-
-    const paramItem = this.route.snapshot.paramMap.get('item');
-
-    this.itemId.set(paramItem);
   }
 }

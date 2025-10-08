@@ -1,5 +1,8 @@
 import { Route, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { ApiService } from './services/api.service';
+import { HttpService } from 'ngx-services';
+import { blogResolver } from './pages/page-blog/blog.resolver';
 
 export const appRoutes: Route[] = [
   {
@@ -21,24 +24,23 @@ export const appRoutes: Route[] = [
   //   loadComponent: () => import('./pages/page-contact/contact.component').then((m) => m.ContactComponent),
   // },
   {
-    path: 'blog/page/:page',
-    pathMatch: 'full',
-    loadComponent: () => import('./pages/page-blog/blog.component').then((m) => m.BlogComponent),
-  },
-  {
-    path: 'blog/:slug',
+    path: 'blog/post/:slug',
     pathMatch: 'full',
     loadComponent: () => import('./pages/page-blog/post.component').then((m) => m.BlogPostComponent),
   },
   {
-    path: 'blog',
+    path: 'blog/page/:page',
     pathMatch: 'full',
+    resolve: { blogData: blogResolver }, // Prefetch data here
+    providers: [ApiService, HttpService],
     loadComponent: () => import('./pages/page-blog/blog.component').then((m) => m.BlogComponent),
   },
   {
-    path: 'portfolio',
+    path: 'blog',
     pathMatch: 'full',
-    loadComponent: () => import('./pages/page-portfolio/portfolio.component').then((m) => m.PortfolioComponent),
+    resolve: { blogData: blogResolver }, // Prefetch data here
+    providers: [ApiService, HttpService],
+    loadComponent: () => import('./pages/page-blog/blog.component').then((m) => m.BlogComponent),
   },
   {
     path: 'projects',
@@ -55,6 +57,12 @@ export const appRoutes: Route[] = [
     pathMatch: 'full',
     loadComponent: () =>
       import('./pages/page-portfolio/portfolio-item.component').then((m) => m.PortfolioItemComponent),
+  },
+  {
+    //data: { renderMode: RenderMode.Prerender },
+    path: 'portfolio',
+    pathMatch: 'full',
+    loadComponent: () => import('./pages/page-portfolio/portfolio.component').then((m) => m.PortfolioComponent),
   },
   {
     path: '**',

@@ -1,7 +1,6 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { Component, signal, effect } from '@angular/core';
+import { Component, signal, OnInit } from '@angular/core'; // Add OnInit
 import { Post, PostCollection } from '../../interfaces/post';
-import { ApiService } from '../../services/api.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
@@ -10,7 +9,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
   imports: [CommonModule, RouterModule, NgOptimizedImage],
   template: `
     <main class="flex flex-col gap-6 p-4">
-      @for (post of posts(); track post.slug) {
+      @for (post of posts; track post.slug) {
         <article>
           <div class="overflow-hidden p-4 shadow-md transition-shadow duration-300 hover:shadow-lg">
             <!-- Image -->
@@ -30,7 +29,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
             <!-- Card Content -->
             <div class="p-4">
               <h2>
-                <a [routerLink]="['/blog', post.slug]" class="mb-2 text-xl font-semibold hover:underline">
+                <a [routerLink]="['/blog/post', post.slug]" class="mb-2 text-xl font-semibold hover:underline">
                   {{ post.title }}
                 </a>
               </h2>
@@ -52,8 +51,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
             </div>
           </div>
         </article>
-      }
-      @if (posts().length === 0) {
+      } @empty {
         <div class="col-span-full text-center text-gray-500">No posts found.</div>
       }
       <!-- Pagination -->
@@ -80,55 +78,37 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
   `,
   styles: ``,
 })
-export class BlogComponent {
-  posts = signal<Post[]>([]);
+export class BlogComponent implements OnInit {
+  posts: Post[] = [];
   currentPage = signal<number>(1);
   itemsPerPage = signal<number>(3);
   totalItems = signal<number>(0);
   totalPages = signal<number>(0);
 
   constructor(
-    private apiService: ApiService,
     private route: ActivatedRoute,
     private router: Router,
-  ) {
-    effect(
-      () => {
-        this.route.paramMap.subscribe((params) => {
-          if (!params.get('page')) {
-            this.currentPage.set(1);
-            this.loadPosts();
-          } else {
-            const page = parseInt(params.get('page') || '1', 10);
-            console.log('page =', page);
-            const newPage = isNaN(page) || page < 1 ? 1 : page;
-            console.log(newPage, this.currentPage());
-            if (newPage !== this.currentPage()) {
-              this.currentPage.set(newPage);
-              this.loadPosts();
-            }
-          }
-        });
-      },
-      { allowSignalWrites: true },
-    );
-  }
+  ) {}
 
-  loadPosts(): void {
-    console.log('load posts...');
-    this.apiService.getBlogPosts(this.currentPage(), this.itemsPerPage()).subscribe({
-      next: (response: PostCollection) => {
-        console.log(response);
-        this.posts.set(response.member);
-        this.totalItems.set(response.totalItems);
-        this.totalPages.set(Math.ceil(response.totalItems / this.itemsPerPage()));
-        if ((this.currentPage() > this.totalPages() && this.totalPages() > 0) || this.totalItems() === 0) {
-          this.router.navigate(['/blog/page', 1]);
-        }
-      },
-      error: (error) => {
-        console.error('Error fetching posts:', error);
-      },
-    });
+  ngOnInit(): void {
+    // Get resolved data (available immediately, even in prerender)
+    const resolvedData: PostCollection = this.route.snapshot.data['blogData'];
+
+    if (resolvedData) {
+      this.posts = resolvedData.member;
+    }
+    this.totalItems.set(resolvedData.totalItems);
+    this.totalPages.set(Math.ceil(resolvedData.totalItems / this.itemsPerPage()));
+
+    // Set current page from params (for consistency)
+    const pageStr = this.route.snapshot.paramMap.get('page') || '1';
+    const page = parseInt(pageStr, 10);
+    const current = isNaN(page) || page < 1 ? 1 : page;
+    this.currentPage.set(current);
+
+    // Redirect if invalid page (e.g., beyond total or empty results)
+    if ((current > this.totalPages() && this.totalPages() > 0) || this.totalItems() === 0) {
+      this.router.navigate(['/blog/page', 1]);
+    }
   }
 }

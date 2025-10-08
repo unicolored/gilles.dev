@@ -89,9 +89,7 @@ export class PortfolioItemComponent implements OnInit {
       this.webPageService.setMetas(this.webPageMetasMap.get(this.pageId), environment.endpoints?.['_self']);
     }
 
-    const paramCategory = this.route.snapshot.paramMap.get('category');
     const paramSlug = this.route.snapshot.paramMap.get('slug');
-    console.log('paramMap', paramCategory, paramSlug);
 
     if (paramSlug) {
       this.slug.set(paramSlug);
@@ -102,7 +100,7 @@ export class PortfolioItemComponent implements OnInit {
       if (slug) {
         this.apiService.getItem(slug).subscribe((res) => {
           //this.items.set(res.results[0].hits as Hit<PortfolioHit>[]);
-          console.log('⭐️the RES', res);
+          //console.log('⭐️the RES', res);
           this.post.set(res);
         });
       }

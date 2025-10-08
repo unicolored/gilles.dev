@@ -57,7 +57,7 @@ export class PortfolioHitsComponent {
   title = input<string>();
   subtitle = input<string>();
 
-  items = input<PostListItem[]>([]);
+  items = input<PostListItem[] | undefined>([]);
   //       url: `f_webp,q_auto,w_600,c_fill,ar_16:9/${publicId}.webp`,
   itemsComputed = computed(() => {
     return this.items();

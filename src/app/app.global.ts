@@ -7,9 +7,9 @@ export enum PageIdSlugEnum {
 }
 
 export enum PortfolioListSlug {
-  ecommerce = 'gilles-dev-online-store',
-  development = 'gilles-dev-development',
   logo = 'gilles-dev-logo-design',
   visual = 'gilles-dev-visual-identity',
+  ecommerce = 'gilles-dev-online-store',
+  development = 'gilles-dev-development',
   threed = 'gilles-dev-3d-stuff',
 }
