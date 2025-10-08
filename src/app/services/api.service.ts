@@ -5,7 +5,6 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Post, PostCollection, PostList } from '../interfaces/post';
 import { catchError, of, forkJoin, lastValueFrom, map } from 'rxjs';
 import { PortfolioListSlug } from '../app.global';
-import { isPlatformServer } from '@angular/common';
 
 @Injectable()
 export class ApiService {
@@ -14,13 +13,10 @@ export class ApiService {
 
   public getList(slug: string): Observable<Partial<PostList>> {
     const emptyList = { slug: slug, description: '', items: [] };
-    if (isPlatformServer(this.platformId)) {
-      // Load static data during prerendering
-      return this.http
-        .get<Partial<PostList>[]>('/assets/portfolio-data.json')
-        .pipe(map((lists) => lists.find((list) => list.slug === slug) || emptyList));
-    }
-    return of(emptyList);
+    // Load static data during prerendering
+    return this.http
+      .get<Partial<PostList>[]>('/assets/portfolio-data.json')
+      .pipe(map((lists) => lists.find((list) => list.slug === slug) || emptyList));
   }
 
   public getListApi(slug: string): Observable<Partial<PostList>> {
