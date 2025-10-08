@@ -9,7 +9,6 @@ import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.
 import { PostList } from '../../interfaces/post';
 import { ApiService } from '../../services/api.service';
 import { lastValueFrom, forkJoin } from 'rxjs';
-import { isPlatformServer } from '@angular/common';
 
 @Component({
   standalone: true,
@@ -27,9 +26,10 @@ import { isPlatformServer } from '@angular/common';
       </div>
 
       @if (lists(); as lists) {
-        @for (list of lists; track list.slug) {
+        @for (list of lists; track list.slug; let i = $index) {
           <section class="mt-6">
-            <gilles-nx-portfolio-hits [title]="list.description" [items]="list.items"> </gilles-nx-portfolio-hits>
+            <gilles-nx-portfolio-hits [title]="list.description" [items]="list.items" [priority]="i === 0">
+            </gilles-nx-portfolio-hits>
           </section>
         } @empty {
           <p>No lists found.</p>
@@ -65,7 +65,6 @@ export class PortfolioComponent implements OnInit {
     // Fetch the data
     const lists = await lastValueFrom(combined$);
     if (lists) {
-      console.log('get lists', lists);
       this.lists.set(lists.filter((l) => l.items?.length && l.items.length > 0));
     }
   }

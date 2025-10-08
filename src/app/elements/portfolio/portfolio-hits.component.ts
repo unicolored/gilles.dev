@@ -36,7 +36,7 @@ import { PostListItem } from '../../interfaces/post';
                 [ngSrc]="item.post.cloudinaryId"
                 width="700"
                 height="400"
-                priority
+                [priority]="priority()"
                 placeholder
                 class="img-thumbnail"
                 sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
@@ -56,6 +56,7 @@ import { PostListItem } from '../../interfaces/post';
 export class PortfolioHitsComponent {
   title = input<string>();
   subtitle = input<string>();
+  priority = input<boolean>(false);
 
   items = input<PostListItem[] | undefined>([]);
   //       url: `f_webp,q_auto,w_600,c_fill,ar_16:9/${publicId}.webp`,
