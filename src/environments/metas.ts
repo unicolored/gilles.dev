@@ -1,5 +1,5 @@
 import { GillesDevCorporation, GillesDevWebSite } from './schema';
-import { PageIdSlugEnum } from '../app/app.global';
+import { PageIdSlugEnum, PageIdSlugKeys } from '../app/app.global';
 import { WebPageMetas } from 'ngx-services';
 
 export const GillesDevMetas: { [k: string]: WebPageMetas } = {
@@ -35,7 +35,7 @@ export const GillesDevMetas: { [k: string]: WebPageMetas } = {
   },
 };
 
-export const webPageMetasMap = new Map<PageIdSlugEnum, WebPageMetas>()
+export const webPageMetasMap = new Map<PageIdSlugKeys, WebPageMetas>()
   .set(PageIdSlugEnum.home, GillesDevMetas[PageIdSlugEnum.home])
   .set(PageIdSlugEnum.about, GillesDevMetas[PageIdSlugEnum.about])
   .set(PageIdSlugEnum.contact, GillesDevMetas[PageIdSlugEnum.contact]);

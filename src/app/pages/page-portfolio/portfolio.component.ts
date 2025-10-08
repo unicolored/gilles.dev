@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal, ViewEncapsulation } from '@angular/core';
+import { Component, inject, OnInit, PLATFORM_ID, signal, ViewEncapsulation } from '@angular/core';
 import { PageIdSlugEnum, PortfolioListSlug } from '../../app.global';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
@@ -26,9 +26,10 @@ import { lastValueFrom, forkJoin } from 'rxjs';
       </div>
 
       @if (lists(); as lists) {
-        @for (list of lists; track list.name) {
+        @for (list of lists; track list.slug; let i = $index) {
           <section class="mt-6">
-            <gilles-nx-portfolio-hits [title]="list.description" [items]="list.items"> </gilles-nx-portfolio-hits>
+            <gilles-nx-portfolio-hits [title]="list.description" [items]="list.items" [priority]="i === 0">
+            </gilles-nx-portfolio-hits>
           </section>
         } @empty {
           <p>No lists found.</p>
@@ -46,24 +47,25 @@ export class PortfolioComponent implements OnInit {
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
   private apiService = inject(ApiService);
+  private platformId = inject(PLATFORM_ID);
 
   lists = signal<Partial<PostList>[]>([]);
-
-  constructor() {
-    const portfolioSlugs = Object.values(PortfolioListSlug);
-    const listRequests = portfolioSlugs.map((slug) => this.apiService.getList(slug));
-    const combined$ = forkJoin(listRequests);
-
-    // Fetch the data
-    lastValueFrom(combined$).then((lists) => {
-      this.lists.set(lists);
-    });
-    console.log('Lists', this.lists);
-  }
 
   async ngOnInit() {
     if (this.webPageMetasMap.has(this.pageId)) {
       this.webPageService.setMetas(this.webPageMetasMap.get(this.pageId), environment.endpoints?.['_self']);
+    }
+
+    const portfolioSlugs = Object.values(PortfolioListSlug);
+    const listRequests = portfolioSlugs.map((slug) => this.apiService.getList(slug));
+    const combined$ = forkJoin(listRequests);
+
+    console.log(this.platformId);
+
+    // Fetch the data
+    const lists = await lastValueFrom(combined$);
+    if (lists) {
+      this.lists.set(lists.filter((l) => l.items?.length && l.items.length > 0));
     }
   }
 }

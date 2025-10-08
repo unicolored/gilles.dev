@@ -1,11 +1,40 @@
 [
   {
     "@context": "/api/contexts/PostList",
+    "@id": "/api/post_lists/gilles-dev-logo-design",
+    "@type": "PostList",
+    "name": "Gilles.dev - Logo design",
+    "slug": "gilles-dev-logo-design",
+    "description": "Logo & Brand Design",
+    "items": [
+      {
+        "@id": "/api/post_list_items/11",
+        "@type": "PostListItem",
+        "post": {
+          "@id": "/api/posts/unicolored",
+          "@type": "Post",
+          "title": "Unicolored",
+          "slug": "unicolored",
+          "status": "publish",
+          "mainCategory": {
+            "@id": "/api/categories/portfolio",
+            "@type": "Category",
+            "name": "Portfolio",
+            "slug": "portfolio"
+          },
+          "createdAt": "2015-11-08T04:22:41+01:00",
+          "cloudinaryId": "logo-unicolored.png"
+        }
+      }
+    ]
+  },
+  {
+    "@context": "/api/contexts/PostList",
     "@id": "/api/post_lists/gilles-dev-visual-identity",
     "@type": "PostList",
     "name": "Gilles.dev - Visual Identity",
     "slug": "gilles-dev-visual-identity",
-    "description": "Visual Identity | UX Design",
+    "description": "Visual Identity / Print Design",
     "items": [
       {
         "@id": "/api/post_list_items/7",
@@ -62,6 +91,35 @@
           },
           "createdAt": "2015-07-05T14:13:26+02:00",
           "cloudinaryId": "studio-grappe-champagne-et-vin-3.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "@context": "/api/contexts/PostList",
+    "@id": "/api/post_lists/gilles-dev-online-store",
+    "@type": "PostList",
+    "name": "Gilles.dev - Online store",
+    "slug": "gilles-dev-online-store",
+    "description": "Online Store / E-Commerce",
+    "items": [
+      {
+        "@id": "/api/post_list_items/13",
+        "@type": "PostListItem",
+        "post": {
+          "@id": "/api/posts/champagne-bernard-robert",
+          "@type": "Post",
+          "title": "Champagne Bernard Robert",
+          "slug": "champagne-bernard-robert",
+          "status": "publish",
+          "mainCategory": {
+            "@id": "/api/categories/portfolio",
+            "@type": "Category",
+            "name": "Portfolio",
+            "slug": "portfolio"
+          },
+          "createdAt": "2015-09-04T10:39:35+02:00",
+          "cloudinaryId": "site-ecommerce-champagne-bernard-robert.jpg"
         }
       }
     ]
@@ -186,6 +244,35 @@
           },
           "createdAt": "2015-09-04T10:39:35+02:00",
           "cloudinaryId": "site-ecommerce-champagne-bernard-robert.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "@context": "/api/contexts/PostList",
+    "@id": "/api/post_lists/gilles-dev-3d-stuff",
+    "@type": "PostList",
+    "name": "Gilles.dev - 3D Stuff",
+    "slug": "gilles-dev-3d-stuff",
+    "description": "3D Graphics",
+    "items": [
+      {
+        "@id": "/api/post_list_items/12",
+        "@type": "PostListItem",
+        "post": {
+          "@id": "/api/posts/studio-grappe-champagne-et-vin",
+          "@type": "Post",
+          "title": "Studio Grappe, Champagne et Vin",
+          "slug": "studio-grappe-champagne-et-vin",
+          "status": "publish",
+          "mainCategory": {
+            "@id": "/api/categories/portfolio",
+            "@type": "Category",
+            "name": "Portfolio",
+            "slug": "portfolio"
+          },
+          "createdAt": "2015-07-05T14:13:26+02:00",
+          "cloudinaryId": "studio-grappe-champagne-et-vin-3.jpg"
         }
       }
     ]
