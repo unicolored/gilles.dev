@@ -31,11 +31,11 @@
             "styles": ["src/styles.css"],
             "scripts": [],
             "server": "src/main.server.ts",
-            "outputMode": "server",
+            "outputMode": "static",
             "ssr": {
               "entry": "src/server.ts"
             },
-            "allowedCommonJsDependencies": ["qs", "algoliasearch-helper", "@algolia/events"]
+            "allowedCommonJsDependencies": []
           },
           "configurations": {
             "production": {
@@ -103,14 +103,6 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/assets"
-              },
-              {
-                "glob": "**/*",
-                "input": "assets"
               }
             ],
             "styles": ["src/styles.css"],
