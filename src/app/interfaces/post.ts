@@ -32,6 +32,7 @@ export interface PostListItemRef extends ApiItem {
 export interface PostList extends ApiItem {
   '@context': string;
   name: string;
+  slug: string;
   description: string;
   items: PostListItem[];
 }
