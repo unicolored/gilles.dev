@@ -51,8 +51,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
             </div>
           </div>
         </article>
-      }
-      @if (posts.length === 0) {
+      } @empty {
         <div class="col-span-full text-center text-gray-500">No posts found.</div>
       }
       <!-- Pagination -->
@@ -89,7 +88,7 @@ export class BlogComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     // Get resolved data (available immediately, even in prerender)
