@@ -8,47 +8,51 @@ import { PostListItem } from '../../interfaces/post';
   standalone: true,
   imports: [CommonModule, NgOptimizedImage, RouterLink],
   template: `
-    @if (title() || subtitle()) {
-      <article class="prose mb-6">
-        @if (title()) {
-          <h2 class="mb-1 leading-snug font-bold">
-            <span i18n [innerHTML]="title()"></span>
-          </h2>
-        }
-        @if (subtitle()) {
-          <p class="uppercase">
-            <span i18n>{{ subtitle() }}</span>
-          </p>
-        }
-      </article>
-    }
+    <article class="mb-6">
+      @if (title() || subtitle()) {
+        <header class="prose max-w-none">
+          @if (title()) {
+            <h2 class="mb-1 leading-snug font-bold">
+              <span i18n [innerHTML]="title()"></span>
+            </h2>
+          }
+          @if (subtitle()) {
+            <p class="uppercase">
+              <span i18n>{{ subtitle() }}</span>
+            </p>
+          }
+        </header>
+      }
 
-    <div class="portfolio-items">
-      @if (itemsComputed(); as items) {
-        @for (item of items; track item.post.slug) {
-          @if (item.post.cloudinaryId) {
-            <a
-              class="portfolio-item"
-              [href]="['/portfolio', 'item', item.post.slug]"
-              [routerLink]="['/portfolio', 'item', item.post.slug]"
-            >
-              <img
-                [ngSrc]="item.post.cloudinaryId"
-                width="700"
-                height="400"
-                [priority]="priority()"
-                placeholder
-                class="img-thumbnail"
-                sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
-                [alt]="item.post.title"
-                [title]="item.post.title"
-                style="object-fit: cover;"
-              />
-            </a>
+      <div class="portfolio-items">
+        @if (itemsComputed(); as items) {
+          @for (item of items; track item.post.slug) {
+            @if (item.post.cloudinaryId) {
+              <a
+                class="card"
+                [href]="['/portfolio', 'item', item.post.slug]"
+                [routerLink]="['/portfolio', 'item', item.post.slug]"
+              >
+                <span class="card-body">
+                  <img
+                    [ngSrc]="item.post.cloudinaryId"
+                    width="700"
+                    height="400"
+                    [priority]="priority()"
+                    placeholder
+                    class="img-thumbnail"
+                    sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
+                    [alt]="item.post.title"
+                    [title]="item.post.title"
+                    style="object-fit: cover;"
+                  />
+                </span>
+              </a>
+            }
           }
         }
-      }
-    </div>
+      </div>
+    </article>
   `,
   styleUrls: ['./portfolio.component.css'],
   encapsulation: ViewEncapsulation.None,

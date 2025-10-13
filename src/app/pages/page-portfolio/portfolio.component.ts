@@ -14,16 +14,8 @@ import { lastValueFrom, forkJoin } from 'rxjs';
   standalone: true,
   imports: [CommonModule, RouterModule, SharedNgComponentsModule, PortfolioHitsComponent],
   template: `
-    <main class="page-prose">
-      <div class="hero pt-8 pb-4">
-        <div class="hero-content w-full text-left">
-          <section class="w-full">
-            <header class="not-prose text-center">
-              <h1 class="text-4xl leading-snug font-bold uppercase">Portfolio</h1>
-            </header>
-          </section>
-        </div>
-      </div>
+    <main class="page-prose portfolio--container prose lg:prose-xl max-w-none pt-2 pb-5">
+      <h1>Portfolio</h1>
 
       @if (lists(); as lists) {
         @for (list of lists; track list.slug; let i = $index) {

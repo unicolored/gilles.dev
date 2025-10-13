@@ -21,6 +21,10 @@ h3 {
   font-style: normal;
 }
 
+h2 {
+  @apply text-primary dark:text-dark-primary;
+}
+
 h3 {
   font-weight: 700;
   margin-bottom: 1em;
@@ -37,7 +41,10 @@ p {
 }
 
 p,
-p span {
+p span,
+ul,
+ul li,
+ul ol {
   @apply text-content dark:text-dark-content;
 }
 
@@ -223,26 +230,19 @@ footer.footer {
   }
 }
 
-section.sidebar {
-  .card {
-    @apply relative mb-8 w-full p-4;
-    background: var(--color-bkg-a50);
-    backdrop-filter: blur(5px);
+.mycard {
+  @apply relative mb-2 w-full p-4;
+  background: var(--color-bkg-a50);
+  backdrop-filter: blur(5px);
+  @apply flex items-end;
+}
 
-    .badge {
-      @apply absolute top-[-10px] right-[10px] uppercase;
-    }
+.mycard-body {
+  p {
+    @apply leading-relaxed;
   }
+}
 
-  .card-title {
-    @apply mt-2 mb-0 py-0 text-base;
-  }
-
-  .card-body {
-    @apply px-5 py-2;
-
-    p {
-      @apply m-0 pb-0 text-xs leading-relaxed;
-    }
-  }
+.img-thumbnail {
+  @apply bg-bkg/50 rounded-tr-4xl p-1 shadow;
 }

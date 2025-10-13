@@ -6,7 +6,7 @@ import { PageIdSlugEnum } from '../../app.global';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
 import { ApiService } from '../../services/api.service';
-import { Post } from '../../interfaces/post';
+import { Attachment, Post } from '../../interfaces/post';
 
 @Component({
   selector: 'gilles-nx-portfolio-item',
@@ -32,25 +32,28 @@ import { Post } from '../../interfaces/post';
             }
           </figure>
 
-          <header class="mb-2 flex justify-center">
-            <h1 class="mb-1 text-xl font-bold">
-              <span i18n [innerHTML]="post.title"></span>
-            </h1>
-          </header>
+          <div class="p-8">
+            <header class="mb-2 flex">
+              <h1 class="mb-1 text-xl font-bold">
+                <span i18n [innerHTML]="post.title"></span>
+              </h1>
+            </header>
 
-          <!-- <main class="flex w-full p-4">
-            @if (post.content) {
-              <div class="prose" [innerHTML]="post.content"></div>
-            }
-          </main> -->
+            <main class="flex w-full">
+              @if (post.description) {
+                <div class="prose" [innerHTML]="post.description"></div>
+              }
+              @if (post.content) {
+                <div class="prose" [innerHTML]="post.content"></div>
+              }
+            </main>
+          </div>
 
-          <section>
-            <!-- <gilles-nx-portfolio-item-attachments
-              [items]="itemsComputed()"
-              [itemId]="itemId()"
-              [objectId]="slug()"
-            ></gilles-nx-portfolio-item-attachments> -->
-          </section>
+          @if (attachmentsComputed(); as attachments) {
+            <section>
+              <gilles-nx-portfolio-item-attachments [attachments]="attachments"></gilles-nx-portfolio-item-attachments>
+            </section>
+          }
         </article>
       }
     </main>
@@ -80,6 +83,12 @@ export class PortfolioItemComponent implements OnInit {
   post = signal<Post | null>(null);
   postComputed = computed(() => {
     return this.post();
+  });
+  attachmentsComputed = computed<Attachment[] | undefined>(() => {
+    const post = this.post();
+    const featured = post?.cloudinaryId;
+
+    return post?.attachments.filter((a) => a.cloudinaryId !== featured);
   });
 
   public apiService = inject(ApiService);

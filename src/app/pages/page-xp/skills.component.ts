@@ -8,11 +8,12 @@ import { CommonModule } from '@angular/common';
 @Component({
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './xp.component.html',
+  templateUrl: './skills.component.html',
   styleUrls: ['./xp.component.css'],
 })
-export class XpComponent implements OnInit, PageInterface {
+export class SkillsComponent implements OnInit, PageInterface {
   pageId = PageIdSlugEnum.about;
+  year: number = new Date().getFullYear();
 
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
