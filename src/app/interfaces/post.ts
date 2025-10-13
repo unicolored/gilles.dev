@@ -6,14 +6,23 @@ export interface Category extends ApiItem {
   slug: string;
 }
 
+export interface Attachment extends ApiItem {
+  cloudinaryId: string;
+  name: string;
+  slug: string;
+}
+
 export interface Post extends ApiItem {
   title: string;
   status: string;
   slug: string;
+  description: string;
+  content: string;
   cloudinaryId?: string;
   mainCategory: Category;
   listItems: PostListItemRef[];
   createdAt: string;
+  attachments: Attachment[];
 }
 
 export interface PostListItem extends ApiItem {

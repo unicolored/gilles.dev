@@ -19,6 +19,10 @@ export const appRoutes: Route[] = [
     path: 'cv',
     loadComponent: () => import('./pages/page-xp/xp.component').then((m) => m.XpComponent),
   },
+  {
+    path: 'skills',
+    loadComponent: () => import('./pages/page-xp/skills.component').then((m) => m.SkillsComponent),
+  },
   // {
   //   path: 'contact',
   //   loadComponent: () => import('./pages/page-contact/contact.component').then((m) => m.ContactComponent),
