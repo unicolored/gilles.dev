@@ -45,13 +45,17 @@ export class HeaderComponent {
       route: '/cv',
     },
     {
+      name: `Skills`,
+      route: '/skills',
+    },
+    {
       name: `Portfolio`,
       route: '/portfolio',
     },
-    {
-      name: `Blog`,
-      route: '/blog',
-    },
+    // {
+    //   name: `Blog`,
+    //   route: '/blog',
+    // },
     // {
     //   name: `Contact`,
     //   route: '/contact',
