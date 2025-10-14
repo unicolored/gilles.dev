@@ -22,7 +22,7 @@ export type ModeEnum = 'light' | 'dark' | null;
       useValue: webPageMetasMap,
     },
     { provide: PRECONNECT_CHECK_BLOCKLIST, useValue: 'https://www.gilles.dev' },
-    provideImgixLoader('https://res.cloudinary.com/unicolored'),
+    provideImgixLoader('https://res.cloudinary.com/unicolored/cloud-coelis/prod/'),
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
