@@ -11,8 +11,6 @@
         "@id": "/api/post_list_items/13",
         "@type": "PostListItem",
         "post": {
-          "@id": "/api/posts/champagne-bernard-robert",
-          "@type": "Post",
           "title": "Champagne Bernard Robert",
           "slug": "champagne-bernard-robert",
           "status": "publish",
@@ -22,38 +20,40 @@
             "name": "Portfolio",
             "slug": "portfolio"
           },
+          "description": "<p>Publication d’un site eCommerce pour la maison Champagne Bernard Robert.</p>",
+          "contentMarkdown": "",
           "attachments": [
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/57450b7f49d355a58f68",
+              "@id": "/api/.well-known/genid/c1973daa5b049c714a37",
               "cloudinaryId": "site-web-champagne-bernard-robert.jpg",
               "name": "Boutique Champagne Bernard Robert",
               "slug": "boutique-champagne-bernard-robert"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/e78e77d0b82aa8752910",
+              "@id": "/api/.well-known/genid/3cf19a05feb481a352a2",
               "cloudinaryId": "site-ecommerce-voigny.jpg",
               "name": "La boutique Champagne Bernard Robert",
               "slug": "la-boutique-champagne-bernard-robert"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/76a43553c8ae4e36f144",
+              "@id": "/api/.well-known/genid/542eae557d9f39f0024f",
               "cloudinaryId": "site-ecommerce-responsive-mobile.jpg",
               "name": "La boutique Champagne Bernard Robert 1",
               "slug": "la-boutique-champagne-bernard-robert-1"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/056747e16dfd0814ccd4",
+              "@id": "/api/.well-known/genid/11f3607b6fcbbede4d65",
               "cloudinaryId": "site-ecommerce-panier-paiement.jpg",
               "name": "La boutique Champagne Bernard Robert 2",
               "slug": "la-boutique-champagne-bernard-robert-2"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/c79c1c7e4c82c0e268e6",
+              "@id": "/api/.well-known/genid/aba1853b41bf58dd2e2c",
               "cloudinaryId": "site-ecommerce-champagne-bernard-robert.jpg",
               "name": "La boutique Champagne Bernard Robert 3",
               "slug": "la-boutique-champagne-bernard-robert-3"
@@ -67,8 +67,6 @@
         "@id": "/api/post_list_items/19",
         "@type": "PostListItem",
         "post": {
-          "@id": "/api/posts/m-d-france",
-          "@type": "Post",
           "title": "M&D France",
           "slug": "m-d-france",
           "status": "publish",
@@ -78,17 +76,19 @@
             "name": "Portfolio",
             "slug": "portfolio"
           },
+          "description": "<p>Maintenance évolutive et corrective des sites de ventes en ligne, filiale France.Catalogue de +50000 références.</p>",
+          "contentMarkdown": "",
           "attachments": [
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/1eba08871fed10642d6d",
+              "@id": "/api/.well-known/genid/39ad7e04ebc7d104e085",
               "cloudinaryId": "md-group.png",
               "name": "md-group",
               "slug": "md-group"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/9755e4f0ec937ddfd04c",
+              "@id": "/api/.well-known/genid/2a5b0b6238a7ef044fb2",
               "cloudinaryId": "site-web-meat-doria.png",
               "name": "site-web-meat-doria",
               "slug": "site-web-meat-doria"
@@ -102,8 +102,6 @@
         "@id": "/api/post_list_items/20",
         "@type": "PostListItem",
         "post": {
-          "@id": "/api/posts/champagne-y-laval",
-          "@type": "Post",
           "title": "Champagne Y. Laval",
           "slug": "champagne-y-laval",
           "status": "publish",
@@ -113,10 +111,12 @@
             "name": "Portfolio",
             "slug": "portfolio"
           },
+          "description": "",
+          "contentMarkdown": "",
           "attachments": [
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/775accce4f734aeeb858",
+              "@id": "/api/.well-known/genid/1434d36516b3f8c83770",
               "cloudinaryId": "champagne-y-laval.png",
               "name": "champagne-y-laval",
               "slug": "champagne-y-laval"
@@ -140,8 +140,6 @@
         "@id": "/api/post_list_items/1",
         "@type": "PostListItem",
         "post": {
-          "@id": "/api/posts/bibliotheque-saint-laurent",
-          "@type": "Post",
           "title": "Bibliothèque Saint Laurent",
           "slug": "bibliotheque-saint-laurent",
           "status": "publish",
@@ -151,10 +149,12 @@
             "name": "Portfolio",
             "slug": "portfolio"
           },
+          "description": "",
+          "contentMarkdown": "",
           "attachments": [
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/e727f5bc6a15dbb089ae",
+              "@id": "/api/.well-known/genid/6c6eaf09feeb67091ac6",
               "cloudinaryId": "bibliotheque-saint-laurent.png",
               "name": "bibliotheque-saint-laurent",
               "slug": "bibliotheque-saint-laurent"
@@ -168,8 +168,6 @@
         "@id": "/api/post_list_items/3",
         "@type": "PostListItem",
         "post": {
-          "@id": "/api/posts/regina-caeli",
-          "@type": "Post",
           "title": "Regina caeli",
           "slug": "regina-caeli",
           "status": "publish",
@@ -179,10 +177,12 @@
             "name": "Portfolio",
             "slug": "portfolio"
           },
+          "description": "",
+          "contentMarkdown": "",
           "attachments": [
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/b6145f79aa439a05cd60",
+              "@id": "/api/.well-known/genid/39a37ae53878758c40f6",
               "cloudinaryId": "regina-caeli.png",
               "name": "regina-caeli",
               "slug": "regina-caeli"
@@ -196,8 +196,6 @@
         "@id": "/api/post_list_items/16",
         "@type": "PostListItem",
         "post": {
-          "@id": "/api/posts/on-the-move",
-          "@type": "Post",
           "title": "On The Move",
           "slug": "on-the-move",
           "status": "publish",
@@ -207,10 +205,12 @@
             "name": "Portfolio",
             "slug": "portfolio"
           },
+          "description": "",
+          "contentMarkdown": "",
           "attachments": [
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/6a0b3a353182af618c15",
+              "@id": "/api/.well-known/genid/e333a8ae5023075efe92",
               "cloudinaryId": "onthemove-figma.png",
               "name": "onthemove-figma",
               "slug": "onthemove-figma"
@@ -218,6 +218,47 @@
           ],
           "createdAt": "2022-07-12T07:24:00+02:00",
           "cloudinaryId": "onthemove-figma.png"
+        }
+      },
+      {
+        "@id": "/api/post_list_items/25",
+        "@type": "PostListItem",
+        "post": {
+          "title": "Chessfield",
+          "slug": "chessfield",
+          "status": "publish",
+          "description": "<div>3D Chessboard library. Open source.</div>",
+          "contentMarkdown": "<h1>The board</h1>\n<div id=\"board\"></div>\n<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/chessfield@1.0.1/dist/chessfield.css\">\n<script src=\"https://cdn.jsdelivr.net/npm/chessfield@1.0.1/dist/chessfield.umd.js\"></script>\n<script>\n    const container = document.getElementById('board');\n    const chessfield = new Chessfield(container, { orientation: 'white' });\n</script>\n<p>Do you see it??</p>\n",
+          "attachments": [
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/fd96dc1643e9b14f0505",
+              "cloudinaryId": "chessfield-68eebd8ad9ec5821427611.jpg",
+              "name": "Chessfield preview",
+              "slug": "chessfield-preview"
+            }
+          ],
+          "createdAt": "2025-10-14T22:49:00+02:00",
+          "cloudinaryId": "chessfield-68eebd8ad9ec5821427611.jpg"
+        }
+      },
+      {
+        "@id": "/api/post_list_items/26",
+        "@type": "PostListItem",
+        "post": {
+          "title": "Chesspop.live",
+          "slug": "chesspop-live",
+          "status": "publish",
+          "mainCategory": {
+            "@id": "/api/categories/portfolio",
+            "@type": "Category",
+            "name": "Portfolio",
+            "slug": "portfolio"
+          },
+          "contentMarkdown": "<p>ChessPop is designed to display live chess games in a spectator interactive 3D mode. Take a snack, enjoy!</p>\n<p>I hope it will help online players like me to keep a real perception and analysis of the chess games. Chessfield is connected to live stream data (like lichess.org/tv).</p>\n<p>Behind ChessPop, there is the open-source library chessfield.</p>\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/XHihX55wdUo?si=avdk7qTxzgnR02Oe\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\n<p><strong>Souvenir en vidéo !</strong></p>\n<div id=\"haha\"></div>\n<script>document.getElementById(\"haha\").innerHtml(\"<em>Haha l'italique!</em>\")</script>\n",
+          "attachments": [],
+          "createdAt": "2025-03-17T10:12:00+01:00",
+          "cloudinaryId": "project-chesspop-68eeb694d441c863930101.jpg"
         }
       }
     ]
@@ -234,8 +275,6 @@
         "@id": "/api/post_list_items/10",
         "@type": "PostListItem",
         "post": {
-          "@id": "/api/posts/champignol-lez-mondeville",
-          "@type": "Post",
           "title": "Champignol-lez-Mondeville",
           "slug": "champignol-lez-mondeville",
           "status": "publish",
@@ -254,8 +293,6 @@
         "@id": "/api/post_list_items/11",
         "@type": "PostListItem",
         "post": {
-          "@id": "/api/posts/unicolored",
-          "@type": "Post",
           "title": "Unicolored",
           "slug": "unicolored",
           "status": "publish",
@@ -265,45 +302,47 @@
             "name": "Portfolio",
             "slug": "portfolio"
           },
+          "description": "",
+          "contentMarkdown": "",
           "attachments": [
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/a9a7de9053b10d7a1236",
+              "@id": "/api/.well-known/genid/c231ecde29809987f361",
               "cloudinaryId": "logo-unicolored.png",
               "name": "Unicolored",
               "slug": "unicolored"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/f1b55b7a24cff761edbe",
+              "@id": "/api/.well-known/genid/e7b1332784608f47119b",
               "cloudinaryId": "dites-le-avec-le-sourire-6.png",
               "name": "Slogan et baseline positif",
               "slug": "slogan-et-baseline-positif"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/4fe808234fac8e12d5e7",
+              "@id": "/api/.well-known/genid/fd0d345a6ea2d3fa1068",
               "cloudinaryId": "dites-le-avec-le-sourire-5.png",
               "name": "Slogan et baseline",
               "slug": "slogan-et-baseline"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/b5dd45cf20cabd0b54dd",
+              "@id": "/api/.well-known/genid/646734be135dcf0d6895",
               "cloudinaryId": "dites-le-avec-le-sourire-4.png",
               "name": "Concept logo et slogan",
               "slug": "concept-logo-et-slogan"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/dd7e1cf682dbb7fdc5c5",
+              "@id": "/api/.well-known/genid/5e8fe0ba5ef6d01fde8d",
               "cloudinaryId": "dites-le-avec-le-sourire-3.png",
               "name": "Création de logo",
               "slug": "creation-de-logo"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/9c506e43a1822eaab381",
+              "@id": "/api/.well-known/genid/20eb53adbedc2aab58f3",
               "cloudinaryId": "dites-le-avec-le-sourire.png",
               "name": "Charte graphique inspiration",
               "slug": "charte-graphique-inspiration"
@@ -317,15 +356,15 @@
         "@id": "/api/post_list_items/22",
         "@type": "PostListItem",
         "post": {
-          "@id": "/api/posts/global-street-development",
-          "@type": "Post",
           "title": "Global Street Development",
           "slug": "global-street-development",
           "status": "publish",
+          "description": "<p>Logo d’un investisseur immobilier.</p>",
+          "contentMarkdown": "",
           "attachments": [
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/e3430148b7c53b60c5c4",
+              "@id": "/api/.well-known/genid/69a0bb9240ed52f3d414",
               "cloudinaryId": "logo-global-street-developement.png",
               "name": "Global Street Development",
               "slug": "global-street-development"
@@ -349,8 +388,6 @@
         "@id": "/api/post_list_items/12",
         "@type": "PostListItem",
         "post": {
-          "@id": "/api/posts/studio-grappe-champagne-et-vin",
-          "@type": "Post",
           "title": "Studio Grappe, Champagne et Vin",
           "slug": "studio-grappe-champagne-et-vin",
           "status": "publish",
@@ -360,52 +397,54 @@
             "name": "Portfolio",
             "slug": "portfolio"
           },
+          "description": "<p>Modélisation en 3D de bouteilles Vin et Champagne.</p>",
+          "contentMarkdown": "",
           "attachments": [
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/b69880d45fd7cc0ccd75",
+              "@id": "/api/.well-known/genid/8556fa2190647b21a4f7",
               "cloudinaryId": "studio-grappe-champagne-et-vin-4.jpg",
               "name": "Studio Grappe – Champagne et Vin 3",
               "slug": "studio-grappe-champagne-et-vin-3"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/764e1d98b0c16c741392",
+              "@id": "/api/.well-known/genid/29351a09bab78ce53dd9",
               "cloudinaryId": "studio-grappe-champagne-et-vin-3.jpg",
               "name": "Studio Grappe – Champagne et Vin 2",
               "slug": "studio-grappe-champagne-et-vin-2"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/5d5ccc352f68ade03ba6",
+              "@id": "/api/.well-known/genid/726194c6bd684c6e6a22",
               "cloudinaryId": "studio-grappe-champagne-et-vin-2.jpg",
               "name": "Studio Grappe – Champagne et Vin 1",
               "slug": "studio-grappe-champagne-et-vin-1"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/0424e2e1e46548c7b170",
+              "@id": "/api/.well-known/genid/65e064de24a8879608e8",
               "cloudinaryId": "studio-grappe-champagne-et-vin.jpg",
               "name": "Studio Grappe – Champagne et Vin",
               "slug": "studio-grappe-champagne-et-vin"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/b65ea42e21fb60bbe50f",
+              "@id": "/api/.well-known/genid/2f3922952cc4c95dc0cd",
               "cloudinaryId": "studio-grappe-4.jpg",
               "name": "Etiquettes bouteilles Champagne",
               "slug": "etiquettes-bouteilles-champagne"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/5d99bb29b59112315fc3",
+              "@id": "/api/.well-known/genid/5b43ffbc9b32879c40ce",
               "cloudinaryId": "studio-grappe-3.jpg",
               "name": "Bouteilles Couleurs 3D",
               "slug": "bouteilles-couleurs-3d"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/165698dce62c7c33b120",
+              "@id": "/api/.well-known/genid/595157ce1777feab5b34",
               "cloudinaryId": "studio-grappe-2.jpg",
               "name": "Bouteilles Champagne 3D",
               "slug": "bouteilles-champagne-3d"
@@ -419,8 +458,6 @@
         "@id": "/api/post_list_items/14",
         "@type": "PostListItem",
         "post": {
-          "@id": "/api/posts/bonne-annee-2016",
-          "@type": "Post",
           "title": "Bonne année 2016",
           "slug": "bonne-annee-2016",
           "status": "publish",
@@ -430,10 +467,12 @@
             "name": "Portfolio",
             "slug": "portfolio"
           },
+          "description": "<p>Je vous souhaite une année pleine de succès et de joie ! Pour réussir ses projets,�il n’est jamais trop star 🙂    </p>",
+          "contentMarkdown": "",
           "attachments": [
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/769fb4a18303b1edeb38",
+              "@id": "/api/.well-known/genid/0964bdc6c1a750834d33",
               "cloudinaryId": "carte-de-voeux-20163d.jpg",
               "name": "Bonne année 2016 1",
               "slug": "bonne-annee-2016-1"
@@ -447,8 +486,6 @@
         "@id": "/api/post_list_items/18",
         "@type": "PostListItem",
         "post": {
-          "@id": "/api/posts/captain-3d",
-          "@type": "Post",
           "title": "Captain 3D",
           "slug": "captain-3d",
           "status": "publish",
@@ -458,6 +495,8 @@
             "name": "Freebies",
             "slug": "freebies"
           },
+          "description": "<p>Petit exercice de modélisation 3D sous Blender : Captain America ! En téléchargement sur Sketchfab. [sketchfab id=”9475e0d9004247e79a4076d030fbffa8″ start=”1″ spin=”1″ controls=”1″]</p>",
+          "contentMarkdown": "",
           "attachments": [],
           "createdAt": "2015-09-27T00:33:35+02:00",
           "cloudinaryId": "frame1.jpg"
@@ -477,8 +516,6 @@
         "@id": "/api/post_list_items/15",
         "@type": "PostListItem",
         "post": {
-          "@id": "/api/posts/je-peux-bien-faire-cela-pour-vous",
-          "@type": "Post",
           "title": "Je peux bien faire cela pour vous",
           "slug": "je-peux-bien-faire-cela-pour-vous",
           "status": "publish",
@@ -488,31 +525,33 @@
             "name": "Portfolio",
             "slug": "portfolio"
           },
+          "description": "<p>Mise à jour de ma charte graphique pour une nouvelle année étoilée.</p>",
+          "contentMarkdown": "",
           "attachments": [
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/b5df6b9c4c10c50bcbdc",
+              "@id": "/api/.well-known/genid/f755161a687d087d3c86",
               "cloudinaryId": "tasses-motivation-cafe.jpg",
               "name": "Tasses Mug personnalisés",
               "slug": "tasses-mug-personnalises"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/62649c2eebaad6c679d3",
+              "@id": "/api/.well-known/genid/9982d97b53781b8013cf",
               "cloudinaryId": "couleurs-typographies.png",
               "name": "Couleurs et Typographies",
               "slug": "couleurs-et-typographies"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/fde25805746d2b57bf12",
+              "@id": "/api/.well-known/genid/1cec3d36fe501b95fd3f",
               "cloudinaryId": "tshirts-gilles.jpg",
               "name": "T-Shirts Personnalisés",
               "slug": "t-shirts-personnalises"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/fd36f5e0949014bff585",
+              "@id": "/api/.well-known/genid/430c9ec37ed6508b7bd2",
               "cloudinaryId": "affichage-public.jpg",
               "name": "Affichage Public",
               "slug": "affichage-public"
@@ -526,8 +565,6 @@
         "@id": "/api/post_list_items/17",
         "@type": "PostListItem",
         "post": {
-          "@id": "/api/posts/communiquer-avec-le-sourire",
-          "@type": "Post",
           "title": "Communiquer avec le sourire",
           "slug": "communiquer-avec-le-sourire",
           "status": "publish",
@@ -537,66 +574,68 @@
             "name": "Portfolio",
             "slug": "portfolio"
           },
+          "description": "<p>Identité visuelle + Web.</p>",
+          "contentMarkdown": "",
           "attachments": [
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/9fb5dcb73a6587cfad80",
+              "@id": "/api/.well-known/genid/6f074a3f111ba79985d2",
               "cloudinaryId": "dites-le-avec-le-sourire-16.png",
               "name": "Webdesign responsive",
               "slug": "webdesign-responsive"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/d14d472696323ad9196c",
+              "@id": "/api/.well-known/genid/a4af756ea47ffe5d058f",
               "cloudinaryId": "dites-le-avec-le-sourire-15.jpg",
               "name": "Stand Salon Evenementiel",
               "slug": "stand-salon-evenementiel"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/b1714503dc1b34dd82f7",
+              "@id": "/api/.well-known/genid/75af5b78d9c053887339",
               "cloudinaryId": "dites-le-avec-le-sourire-14.png",
               "name": "Merci unicolored",
               "slug": "merci-unicolored"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/9b924f84045bd754d3ff",
+              "@id": "/api/.well-known/genid/90772e5b8a1b7424b34f",
               "cloudinaryId": "dites-le-avec-le-sourire-13.png",
               "name": "Tableau cadre art",
               "slug": "tableau-cadre-art"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/6dc81aeba1259b606bd7",
+              "@id": "/api/.well-known/genid/aaa730b4bdd0e57c035c",
               "cloudinaryId": "dites-le-avec-le-sourire-11.jpg",
               "name": "Tshirts personnalisés",
               "slug": "tshirts-personnalises"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/15a0dfedc706bdf400d8",
+              "@id": "/api/.well-known/genid/0e71580c0c26079ac08a",
               "cloudinaryId": "dites-le-avec-le-sourire-10.jpg",
               "name": "Badges et sacs",
               "slug": "badges-et-sacs"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/962a9e8ef06e918bf90b",
+              "@id": "/api/.well-known/genid/c63e64095117ba0441d0",
               "cloudinaryId": "dites-le-avec-le-sourire-9.png",
               "name": "Papeterie communication",
               "slug": "papeterie-communication"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/b8328edf33f0a29bec4d",
+              "@id": "/api/.well-known/genid/ce39c94b4c494dff60cc",
               "cloudinaryId": "dites-le-avec-le-sourire-8.png",
               "name": "Cartes de visites Impression",
               "slug": "cartes-de-visites-impression"
             },
             {
               "@type": "Attachment",
-              "@id": "/api/.well-known/genid/0b4aa63b3dfa0cc3c286",
+              "@id": "/api/.well-known/genid/ca5b72e435ccf5d4b3a6",
               "cloudinaryId": "dites-le-avec-le-sourire-7.jpg",
               "name": "Communication Print et Web",
               "slug": "communication-print-et-web"
@@ -604,6 +643,25 @@
           ],
           "createdAt": "2016-01-05T10:51:57+01:00",
           "cloudinaryId": "dites-le-avec-le-sourire-10.jpg"
+        }
+      },
+      {
+        "@id": "/api/post_list_items/24",
+        "@type": "PostListItem",
+        "post": {
+          "title": "Lancement de Ariane 5, un soleil se lève",
+          "slug": "lancement-de-ariane-5-un-soleil-se-leve",
+          "status": "publish",
+          "mainCategory": {
+            "@id": "/api/categories/blog",
+            "@type": "Category",
+            "name": "Blog",
+            "slug": "blog"
+          },
+          "description": "<div>Le lancement d’une fusée est un événement impressionnant. D’autant plus lorsque le l’on se trouve sur une colline à quelques kilomètres. Souvenir en vidéo !</div>",
+          "contentMarkdown": "<p>Le lancement d’une fusée est un événement <strong>impressionnant</strong>. D’autant plus\nlorsque le l’on se trouve sur une colline à quelques kilomètres.</p>\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/XHihX55wdUo?si=avdk7qTxzgnR02Oe\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\n<p><strong>Souvenir en vidéo !</strong></p>\n<div id=\"haha\"></div>\n<script>document.getElementById(\"haha\").innerHtml(\"<em>Haha l'italique!</em>\")</script>\n",
+          "attachments": [],
+          "createdAt": "2025-06-18T19:38:00+02:00"
         }
       }
     ]

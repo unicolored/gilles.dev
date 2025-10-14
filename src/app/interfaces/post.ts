@@ -18,11 +18,12 @@ export interface Post extends ApiItem {
   slug: string;
   description: string;
   content: string;
+  contentMarkdown: string;
   cloudinaryId?: string;
   mainCategory: Category;
   listItems: PostListItemRef[];
   createdAt: string;
-  attachments: Attachment[];
+  attachments: { member: Attachment[] };
 }
 
 export interface PostListItem extends ApiItem {
