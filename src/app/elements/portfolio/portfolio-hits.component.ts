@@ -47,6 +47,9 @@ import { PostListItem } from '../../interfaces/post';
                     style="object-fit: cover;"
                   />
                 </span>
+                @if (item.post.description) {
+                  <div class="prose" [innerHTML]="item.post.description"></div>
+                }
               </a>
             }
           }

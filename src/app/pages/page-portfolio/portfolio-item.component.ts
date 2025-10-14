@@ -7,6 +7,7 @@ import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
 import { ApiService } from '../../services/api.service';
 import { Attachment, Post } from '../../interfaces/post';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'gilles-nx-portfolio-item',
@@ -22,7 +23,6 @@ import { Attachment, Post } from '../../interfaces/post';
                 width="960"
                 height="500"
                 priority
-                placeholder
                 class="img-thumbnail"
                 sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
                 [alt]="post.title"
@@ -31,6 +31,9 @@ import { Attachment, Post } from '../../interfaces/post';
               />
             }
           </figure>
+          @if (post.description) {
+            <div class="prose" [innerHTML]="post.description"></div>
+          }
 
           <div class="p-8">
             <header class="mb-2 flex">
@@ -40,11 +43,14 @@ import { Attachment, Post } from '../../interfaces/post';
             </header>
 
             <main class="flex w-full">
-              @if (post.description) {
+              <!--@if (post.description) {
                 <div class="prose" [innerHTML]="post.description"></div>
               }
               @if (post.content) {
                 <div class="prose" [innerHTML]="post.content"></div>
+              }-->
+              @if (safeHtml(); as safeHtml) {
+                <div class="prose" [innerHTML]="safeHtml"></div>
               }
             </main>
           </div>
@@ -79,16 +85,30 @@ export class PortfolioItemComponent implements OnInit {
     }
     return null;
   });
+  sanitizer = inject(DomSanitizer);
 
   post = signal<Post | null>(null);
   postComputed = computed(() => {
     return this.post();
   });
+  safeHtml = computed<SafeHtml | null>(() => {
+    const markdown = this.post()?.contentMarkdown;
+    if (!markdown) {
+      return null;
+    }
+    return this.sanitizer.bypassSecurityTrustHtml(markdown);
+  });
   attachmentsComputed = computed<Attachment[] | undefined>(() => {
     const post = this.post();
     const featured = post?.cloudinaryId;
 
-    return post?.attachments.filter((a) => a.cloudinaryId !== featured);
+    const attachments = post?.attachments.member;
+
+    if (!attachments || attachments.length < 1) {
+      return;
+    }
+
+    return attachments.filter((a) => a.cloudinaryId !== featured);
   });
 
   public apiService = inject(ApiService);
