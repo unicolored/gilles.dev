@@ -29,27 +29,26 @@ import { PostListItem } from '../../interfaces/post';
           @for (item of items; track item.post.slug) {
             @if (item.post.cloudinaryId) {
               <a
-                class="card"
+                class="portfolio-item"
                 [href]="['/portfolio', 'item', item.post.slug]"
                 [routerLink]="['/portfolio', 'item', item.post.slug]"
               >
-                <span class="card-body">
-                  <img
-                    [ngSrc]="item.post.cloudinaryId"
-                    width="700"
-                    height="400"
-                    [priority]="priority()"
-                    placeholder
-                    class="img-thumbnail"
-                    sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
-                    [alt]="item.post.title"
-                    [title]="item.post.title"
-                    style="object-fit: cover;"
-                  />
-                </span>
-                @if (item.post.description) {
-                  <div class="prose" [innerHTML]="item.post.description"></div>
-                }
+                <figure>
+                  <span class="item-body">
+                    <img
+                      [ngSrc]="item.post.cloudinaryId"
+                      fill
+                      [priority]="priority()"
+                      placeholder
+                      sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
+                      [alt]="item.post.title"
+                      [title]="item.post.title"
+                    />
+                  </span>
+                  @if (item.post.description) {
+                    <figcaption class="prose" [innerHTML]="item.post.description"></figcaption>
+                  }
+                </figure>
               </a>
             }
           }
