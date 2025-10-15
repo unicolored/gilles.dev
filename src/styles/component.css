@@ -10,7 +10,3 @@
     @apply leading-relaxed;
   }
 }
-
-.img-thumbnail {
-  @apply bg-bkg/50 rounded-tr-4xl p-1 shadow;
-}
