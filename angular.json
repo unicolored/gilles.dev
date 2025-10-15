@@ -32,9 +32,6 @@
             "scripts": [],
             "server": "src/main.server.ts",
             "outputMode": "static",
-            "ssr": {
-              "entry": "src/server.ts"
-            },
             "allowedCommonJsDependencies": []
           },
           "configurations": {
