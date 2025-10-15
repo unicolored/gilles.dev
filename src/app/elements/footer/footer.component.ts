@@ -10,7 +10,7 @@ import { environment } from '../../../environments/environment';
   selector: 'gilles-nx-footer',
   template: `
     <footer class="footer not-prose">
-      <p class="mb-0 text-left font-serif text-xl">Gilles Hoarau.</p>
+      <p class="mb-0 text-left font-serif text-xl">Gilles Hoarau. Developer <br /><small>Aube, France</small></p>
       <p class="mt-0 text-left">
         <!--Check <a href="/cv">my resume</a>.<br />-->
         👋 <a href="mailto:hello@gilles.dev">hello&#64;gilles.dev</a>

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ApiService } from './services/api.service';
 import { HttpService } from 'ngx-services';
 import { blogResolver } from './pages/page-blog/blog.resolver';
+import { PageIdSlugEnum } from './app.global';
 
 export const appRoutes: Route[] = [
   {
@@ -16,12 +17,16 @@ export const appRoutes: Route[] = [
   //   loadComponent: () => import('./pages/page-about/about.component').then((m) => m.AboutComponent),
   // },
   {
-    path: 'cv',
+    path: PageIdSlugEnum.cv,
     loadComponent: () => import('./pages/page-xp/xp.component').then((m) => m.XpComponent),
   },
   {
-    path: 'skills',
+    path: PageIdSlugEnum.skills,
     loadComponent: () => import('./pages/page-xp/skills.component').then((m) => m.SkillsComponent),
+  },
+  {
+    path: PageIdSlugEnum.tools,
+    loadComponent: () => import('./pages/page-xp/tools.component').then((m) => m.ToolsComponent),
   },
   // {
   //   path: 'contact',
@@ -64,7 +69,7 @@ export const appRoutes: Route[] = [
   },
   {
     //data: { renderMode: RenderMode.Prerender },
-    path: 'portfolio',
+    path: PageIdSlugEnum.portfolio,
     pathMatch: 'full',
     loadComponent: () => import('./pages/page-portfolio/portfolio.component').then((m) => m.PortfolioComponent),
   },
