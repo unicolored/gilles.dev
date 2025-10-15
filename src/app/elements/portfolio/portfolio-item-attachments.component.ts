@@ -15,15 +15,13 @@ import { Attachment } from '../../interfaces/post';
           <div class="attachment my-1">
             <img
               [ngSrc]="attachment.cloudinaryId"
-              width="960"
-              height="500"
+              fill
               [priority]="i < 2"
               placeholder
               class="img-thumbnail"
               sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
               [alt]="attachment.name"
               [title]="attachment.name"
-              style="object-fit: cover;"
             />
           </div>
         }

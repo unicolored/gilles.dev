@@ -10,7 +10,7 @@ import { PostListItem } from '../../interfaces/post';
   template: `
     <article class="mb-6">
       @if (title() || subtitle()) {
-        <header class="prose max-w-none">
+        <header class="prose dark:prose-invert max-w-none">
           @if (title()) {
             <h2 class="mb-1 leading-snug font-bold">
               <span i18n [innerHTML]="title()"></span>
@@ -26,7 +26,7 @@ import { PostListItem } from '../../interfaces/post';
 
       <div class="portfolio-items">
         @if (itemsComputed(); as items) {
-          @for (item of items; track item.post.slug) {
+          @for (item of items; track item.post.slug; let i = $index) {
             @if (item.post.cloudinaryId) {
               <a
                 class="portfolio-item"
@@ -38,7 +38,7 @@ import { PostListItem } from '../../interfaces/post';
                     <img
                       [ngSrc]="item.post.cloudinaryId"
                       fill
-                      [priority]="priority()"
+                      [priority]="priority() && i < 4"
                       placeholder
                       sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
                       [alt]="item.post.title"
@@ -46,7 +46,7 @@ import { PostListItem } from '../../interfaces/post';
                     />
                   </span>
                   @if (item.post.description) {
-                    <figcaption class="prose" [innerHTML]="item.post.description"></figcaption>
+                    <figcaption class="prose dark:prose-invert" [innerHTML]="item.post.description"></figcaption>
                   }
                 </figure>
               </a>
