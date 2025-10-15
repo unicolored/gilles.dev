@@ -1,11 +1,12 @@
 import { GillesDevCorporation, GillesDevWebSite } from './schema';
-import { PageIdSlugEnum, PageIdSlugKeys } from '../app/app.global';
+import { PageIdSlugEnum } from '../app/app.global';
 import { WebPageMetas } from 'ngx-services';
 
 export const GillesDevMetas: { [k: string]: WebPageMetas } = {
   [PageIdSlugEnum.home]: {
     isHome: true,
-    title: `Freelance | Graphic Designer & Developer`,
+    //title: `Freelance | Graphic Designer & Developer`,
+    title: `Gilles. Developer | Aube, France`,
     description: `Meet Gilles, a maker of web apps, imagery, and 3D experiences. Discover his developer toolkit, creative media design skills, and more.`,
     canonical: `/`,
     schema: {
@@ -23,6 +24,46 @@ export const GillesDevMetas: { [k: string]: WebPageMetas } = {
       '@graph': [GillesDevCorporation, GillesDevWebSite],
     },
   },
+  [PageIdSlugEnum.cv]: {
+    isHome: false,
+    title: `Your next developer - Gilles Hoarau | Aube, France`,
+    description: `Learn more about Gilles Hoarau, a self-taught web developer and designer with over 15 years of experience. Discover his journey from writing a book on photo manipulation to developing AI-driven web apps, his work in diverse development and graphic design projects, and his hobbies.`,
+    canonical: `/${PageIdSlugEnum.cv}`,
+    schema: {
+      '@context': 'https://schema.org',
+      '@graph': [GillesDevCorporation, GillesDevWebSite],
+    },
+  },
+  [PageIdSlugEnum.skills]: {
+    isHome: false,
+    title: `Skills of a developer - Gilles Hoarau | Aube, France`,
+    description: `Learn more about Gilles Hoarau, a self-taught web developer and designer with over 15 years of experience. Discover his journey from writing a book on photo manipulation to developing AI-driven web apps, his work in diverse development and graphic design projects, and his hobbies.`,
+    canonical: `/${PageIdSlugEnum.cv}`,
+    schema: {
+      '@context': 'https://schema.org',
+      '@graph': [GillesDevCorporation, GillesDevWebSite],
+    },
+  },
+  [PageIdSlugEnum.tools]: {
+    isHome: false,
+    title: `Tools of a developer - Gilles Hoarau | Aube, France`,
+    description: `Learn more about Gilles Hoarau, a self-taught web developer and designer with over 15 years of experience. Discover his journey from writing a book on photo manipulation to developing AI-driven web apps, his work in diverse development and graphic design projects, and his hobbies.`,
+    canonical: `/${PageIdSlugEnum.cv}`,
+    schema: {
+      '@context': 'https://schema.org',
+      '@graph': [GillesDevCorporation, GillesDevWebSite],
+    },
+  },
+  [PageIdSlugEnum.portfolio]: {
+    isHome: false,
+    title: `Portfolio of a developer - Gilles Hoarau | Aube, France`,
+    description: `Discover the work of Gilles Hoarau, a self-taught web developer and designer with over 15 years of experience. Discover his journey from writing a book on photo manipulation to developing AI-driven web apps, his work in diverse development and graphic design projects, and his hobbies.`,
+    canonical: `/${PageIdSlugEnum.portfolio}`,
+    schema: {
+      '@context': 'https://schema.org',
+      '@graph': [GillesDevCorporation, GillesDevWebSite],
+    },
+  },
   [PageIdSlugEnum.contact]: {
     isHome: false,
     title: `Contact Gilles Hoarau ∼ Developer`,
@@ -34,8 +75,3 @@ export const GillesDevMetas: { [k: string]: WebPageMetas } = {
     },
   },
 };
-
-export const webPageMetasMap = new Map<PageIdSlugKeys, WebPageMetas>()
-  .set(PageIdSlugEnum.home, GillesDevMetas[PageIdSlugEnum.home])
-  .set(PageIdSlugEnum.about, GillesDevMetas[PageIdSlugEnum.about])
-  .set(PageIdSlugEnum.contact, GillesDevMetas[PageIdSlugEnum.contact]);

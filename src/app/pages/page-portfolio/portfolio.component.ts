@@ -23,8 +23,6 @@ import { lastValueFrom, forkJoin } from 'rxjs';
             <gilles-nx-portfolio-hits [title]="list.description" [items]="list.items" [priority]="i === 0">
             </gilles-nx-portfolio-hits>
           </section>
-        } @empty {
-          <p>No lists found.</p>
         }
       }
     </main>

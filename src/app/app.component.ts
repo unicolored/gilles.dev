@@ -6,9 +6,10 @@ import { ThreeCardComponent } from './elements/three-card/three-card.component';
 import { CloudinaryModule } from '@cloudinary/ng/dist';
 import { HeaderComponent } from './elements/header/header.component';
 import { FooterComponent } from './elements/footer/footer.component';
-import { HttpService, WEB_PAGE_METAS_MAP } from 'ngx-services';
-import { webPageMetasMap } from '../environments/metas';
+import { HttpService, WEB_PAGE_METAS_MAP, WebPageMetas } from 'ngx-services';
+import { GillesDevMetas } from '../environments/metas';
 import { ApiService } from './services/api.service';
+import { PageIdSlugEnum, PageIdSlugKeys } from './app.global';
 
 export type ModeEnum = 'light' | 'dark' | null;
 
@@ -19,7 +20,14 @@ export type ModeEnum = 'light' | 'dark' | null;
     ApiService,
     {
       provide: WEB_PAGE_METAS_MAP,
-      useValue: webPageMetasMap,
+      useValue: new Map<PageIdSlugKeys, WebPageMetas>()
+        .set(PageIdSlugEnum.home, GillesDevMetas[PageIdSlugEnum.home])
+        .set(PageIdSlugEnum.about, GillesDevMetas[PageIdSlugEnum.about])
+        .set(PageIdSlugEnum.cv, GillesDevMetas[PageIdSlugEnum.cv])
+        .set(PageIdSlugEnum.portfolio, GillesDevMetas[PageIdSlugEnum.portfolio])
+        .set(PageIdSlugEnum.skills, GillesDevMetas[PageIdSlugEnum.skills])
+        .set(PageIdSlugEnum.tools, GillesDevMetas[PageIdSlugEnum.tools])
+        .set(PageIdSlugEnum.contact, GillesDevMetas[PageIdSlugEnum.contact]),
     },
     { provide: PRECONNECT_CHECK_BLOCKLIST, useValue: 'https://www.gilles.dev' },
     provideImgixLoader('https://res.cloudinary.com/unicolored/cloud-coelis/prod/'),

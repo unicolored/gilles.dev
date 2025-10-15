@@ -8,17 +8,14 @@ import { CommonModule } from '@angular/common';
 @Component({
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './skills.component.html',
+  templateUrl: './tools.component.html',
 })
-export class SkillsComponent implements OnInit, PageInterface {
-  pageId = PageIdSlugEnum.skills;
-  public year: number = new Date().getFullYear();
+export class ToolsComponent implements OnInit, PageInterface {
+  pageId = PageIdSlugEnum.tools;
 
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
   ngOnInit(): void {
-    const metas = this.webPageMetasMap.has(this.pageId);
-    console.log('skills metas', metas);
     if (this.webPageMetasMap.has(this.pageId)) {
       this.webPageService.setMetas(this.webPageMetasMap.get(this.pageId), environment.endpoints?.['_self']);
     }

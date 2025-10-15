@@ -1,6 +1,9 @@
 export const PageIdSlugEnum = {
   home: 'home',
   about: 'about',
+  cv: 'developer',
+  skills: 'skills',
+  tools: 'tools',
   contact: 'contact',
   search: 'search',
   portfolio: 'portfolio',

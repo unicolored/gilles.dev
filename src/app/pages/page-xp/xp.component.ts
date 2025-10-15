@@ -11,11 +11,13 @@ import { CommonModule } from '@angular/common';
   templateUrl: './xp.component.html',
 })
 export class XpComponent implements OnInit, PageInterface {
-  pageId = PageIdSlugEnum.about;
+  pageId = PageIdSlugEnum.cv;
 
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
   ngOnInit(): void {
+    const metas = this.webPageMetasMap.has(this.pageId);
+    console.log('cv metas', metas);
     if (this.webPageMetasMap.has(this.pageId)) {
       this.webPageService.setMetas(this.webPageMetasMap.get(this.pageId), environment.endpoints?.['_self']);
     }

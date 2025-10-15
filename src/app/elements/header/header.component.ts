@@ -3,6 +3,7 @@ import { ModeEnum } from '../../app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { PageIdSlugEnum } from '../../app.global';
 
 @Component({
   standalone: true,
@@ -62,16 +63,20 @@ export class HeaderComponent {
       route: '/',
     },
     {
-      name: `Curriculum Vitae`,
-      route: '/cv',
+      name: `CV`,
+      route: '/' + PageIdSlugEnum.cv,
     },
     {
       name: `Skills`,
-      route: '/skills',
+      route: '/' + PageIdSlugEnum.skills,
+    },
+    {
+      name: `Tools`,
+      route: '/' + PageIdSlugEnum.tools,
     },
     {
       name: `Portfolio`,
-      route: '/portfolio',
+      route: '/' + PageIdSlugEnum.portfolio,
     },
     // {
     //   name: `Blog`,
