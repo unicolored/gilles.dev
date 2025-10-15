@@ -1,36 +1,44 @@
 .portfolio-items {
   @apply grid items-start gap-7 md:grid-cols-2 xl:grid-cols-3;
+}
 
-  a.portfolio-item {
+.portfolio-item {
+  & {
+    @apply flex h-full grow;
+    @apply block overflow-hidden rounded-tr-2xl border-2;
+    @apply p-3 shadow;
+    backdrop-filter: blur(3px);
+    @apply no-underline;
+  }
+
+  a& {
+    cursor: pointer;
+    @apply border-bkg hover:border-primary;
+    @apply dark:border-dark-bkg dark:hover:border-dark-primary;
+  }
+
+  figure {
     & {
-      cursor: pointer;
-      @apply flex h-full grow;
-      @apply block overflow-hidden rounded-tr-2xl;
-      @apply border-bkg hover:border-primary border-2;
-      @apply p-3 shadow;
-      backdrop-filter: blur(3px);
-      @apply no-underline;
+      margin: 0;
+      padding: 0;
     }
 
-    figure {
-      & {
+    .item-body {
+      @apply relative block h-80 md:h-64;
+
+      img {
+        object-fit: cover;
         margin: 0;
         padding: 0;
       }
 
-      .item-body {
-        @apply relative block h-64;
-
-        img {
-          object-fit: cover;
-          margin: 0;
-          padding: 0;
-        }
+      &.item-body-single {
+        @apply mb-3 h-full;
       }
+    }
 
-      figcaption {
-        @apply px-3;
-      }
+    figcaption {
+      @apply px-3;
     }
   }
 }
@@ -39,6 +47,12 @@
   @apply flex flex-col items-center justify-center text-center;
 
   .attachment {
-    @apply flex;
+    @apply relative flex h-[80vh] max-h-[90vh] w-full;
+
+    img {
+      object-fit: contain;
+      margin: 0;
+      padding: 0;
+    }
   }
 }

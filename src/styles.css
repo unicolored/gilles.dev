@@ -12,8 +12,8 @@ body {
   cursor: default;
 
   @apply font-sans;
-  @apply text-content bg-white;
-  @apply dark:bg-sky dark:text-dark-content;
+  @apply text-content dark:text-dark-content;
+  @apply dark:bg-sky bg-white;
 
   font-size: 1rem;
 }
@@ -49,6 +49,7 @@ h4 {
 
 p {
   margin-bottom: 1.4rem;
+  @apply dark:text-dark-content;
 }
 
 small {
