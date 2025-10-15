@@ -1,18 +1,5 @@
-@import 'tailwindcss';
-@import '../../../styles/theme.css';
-
-h2,
-h2 span {
-  @apply text-primary dark:text-dark-primary;
-}
-
-p,
-p span {
-  @apply text-content dark:text-dark-content;
-}
-
 .portfolio-items {
-  @apply grid grid-cols-2 items-baseline gap-3;
+  @apply grid items-baseline gap-3 md:grid-cols-2 xl:grid-cols-3;
 
   .portfolio-item {
     & {

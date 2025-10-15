@@ -30,7 +30,6 @@ import { WordpressSelfSinglePost } from 'ngx-services';
       </div>
     }
   `,
-  styleUrls: ['./portfolio.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioPostsComponent {
