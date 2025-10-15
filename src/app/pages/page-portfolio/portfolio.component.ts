@@ -3,7 +3,7 @@ import { PageIdSlugEnum, PortfolioListSlug } from '../../app.global';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { CommonModule, isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { CommonModule, isPlatformServer } from '@angular/common';
 import { SharedNgComponentsModule } from '../shared-ng-components.module';
 import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.component';
 import { PostList } from '../../interfaces/post';
@@ -14,7 +14,7 @@ import { lastValueFrom, forkJoin } from 'rxjs';
   standalone: true,
   imports: [CommonModule, RouterModule, SharedNgComponentsModule, PortfolioHitsComponent],
   template: `
-    <main class="page-prose portfolio--container prose lg:prose-xl max-w-none pt-2 pb-5">
+    <main class="page-prose portfolio--container prose dark:prose-invert lg:prose-xl max-w-none pt-2 pb-5">
       <h1>Portfolio</h1>
 
       @if (lists(); as lists) {
