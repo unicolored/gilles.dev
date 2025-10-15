@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   selector: 'gilles-nx-header',
   template: `
     <nav class="g-navbar">
-      <div class="items hidden md:flex">
+      <div class="items">
         @for (item of navItems; track item.name) {
           <a
             class="item"
@@ -27,7 +27,7 @@ import { CommonModule } from '@angular/common';
       <div class="actions"></div>
 
       <!-- Burger button for mobile -->
-      <button class="burger md:hidden" (click)="toggleMenu()">
+      <button class="burger" (click)="toggleMenu()">
         <span></span>
         <span></span>
         <span></span>

@@ -44,7 +44,7 @@ nav.g-navbar {
 
   /* Burger button styles */
   .burger {
-    @apply flex h-8 w-8 cursor-pointer flex-col items-center justify-center;
+    @apply flex h-8 w-8 cursor-pointer flex-col items-center justify-center md:hidden;
 
     span {
       @apply bg-primary dark:bg-dark-primary mb-1.5 block h-0.5 w-6;
