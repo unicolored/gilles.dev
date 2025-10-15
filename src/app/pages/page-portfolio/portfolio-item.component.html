@@ -1,0 +1,53 @@
+<main class="page-prose">
+  @if (postComputed(); as post) {
+    <article class="mb-6">
+      @if (post.cloudinaryId) {
+        <div class="portfolio-item">
+          <figure>
+            <span class="item-body item-body-single d-block">
+              <img
+                [ngSrc]="post.cloudinaryId"
+                width="960"
+                height="500"
+                priority
+                class="img-thumbnail"
+                sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
+                [alt]="post.title"
+                [title]="post.title"
+              />
+            </span>
+            @if (post.description) {
+              <figcaption [innerHTML]="post.description"></figcaption>
+            }
+          </figure>
+        </div>
+      }
+
+      <div class="prose dark:prose-invert prose-h1:text-3xl p-7">
+        <header class="mb-2 flex">
+          <h1>
+            <span i18n [innerHTML]="post.title"></span>
+          </h1>
+        </header>
+
+        <main class="flex w-full">
+          <!--@if (post.description) {
+                <div class="prose dark:prose-invert" [innerHTML]="post.description"></div>
+              }
+              @if (post.content) {
+                <div class="prose dark:prose-invert" [innerHTML]="post.content"></div>
+              }-->
+          @if (safeHtml(); as safeHtml) {
+            <div class="prose dark:prose-invert" [innerHTML]="safeHtml"></div>
+          }
+        </main>
+      </div>
+
+      @if (attachmentsComputed(); as attachments) {
+        <section>
+          <gilles-nx-portfolio-item-attachments [attachments]="attachments"></gilles-nx-portfolio-item-attachments>
+        </section>
+      }
+    </article>
+  }
+</main>

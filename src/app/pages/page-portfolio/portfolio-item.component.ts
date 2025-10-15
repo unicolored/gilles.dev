@@ -8,63 +8,12 @@ import { environment } from '../../../environments/environment';
 import { ApiService } from '../../services/api.service';
 import { Attachment, Post } from '../../interfaces/post';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { GillesDevCorporation, GillesDevWebSite } from '../../../environments/schema';
 
 @Component({
   selector: 'gilles-nx-portfolio-item',
   imports: [CommonModule, PortfolioItemAttachmentsComponent, NgOptimizedImage],
-  template: `
-    <main class="page-prose">
-      @if (postComputed(); as post) {
-        <article class="mb-6">
-          <figure class="flex w-full justify-around p-4 text-center">
-            @if (post.cloudinaryId) {
-              <img
-                [ngSrc]="post.cloudinaryId"
-                width="960"
-                height="500"
-                priority
-                class="img-thumbnail"
-                sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
-                [alt]="post.title"
-                [title]="post.title"
-                style="object-fit: cover;"
-              />
-            }
-          </figure>
-          @if (post.description) {
-            <div class="prose" [innerHTML]="post.description"></div>
-          }
-
-          <div class="p-8">
-            <header class="mb-2 flex">
-              <h1 class="mb-1 text-xl font-bold">
-                <span i18n [innerHTML]="post.title"></span>
-              </h1>
-            </header>
-
-            <main class="flex w-full">
-              <!--@if (post.description) {
-                <div class="prose" [innerHTML]="post.description"></div>
-              }
-              @if (post.content) {
-                <div class="prose" [innerHTML]="post.content"></div>
-              }-->
-              @if (safeHtml(); as safeHtml) {
-                <div class="prose" [innerHTML]="safeHtml"></div>
-              }
-            </main>
-          </div>
-
-          @if (attachmentsComputed(); as attachments) {
-            <section>
-              <gilles-nx-portfolio-item-attachments [attachments]="attachments"></gilles-nx-portfolio-item-attachments>
-            </section>
-          }
-        </article>
-      }
-    </main>
-  `,
-  styleUrls: [],
+  templateUrl: `portfolio-item.component.html`,
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioItemComponent implements OnInit {
@@ -114,10 +63,6 @@ export class PortfolioItemComponent implements OnInit {
   public apiService = inject(ApiService);
 
   ngOnInit() {
-    if (this.webPageMetasMap.has(this.pageId)) {
-      this.webPageService.setMetas(this.webPageMetasMap.get(this.pageId), environment.endpoints?.['_self']);
-    }
-
     const paramSlug = this.route.snapshot.paramMap.get('slug');
 
     if (paramSlug) {
@@ -128,9 +73,20 @@ export class PortfolioItemComponent implements OnInit {
       const slug = this.slug();
       if (slug) {
         this.apiService.getItem(slug).subscribe((res) => {
-          //this.items.set(res.results[0].hits as Hit<PortfolioHit>[]);
-          //console.log('⭐️the RES', res);
           this.post.set(res);
+
+          const postMetas = {
+            isHome: true,
+            //title: `Freelance | Graphic Designer & Developer`,
+            title: `${res.title} | Gilles. Developer`,
+            description: `${res.description}`,
+            canonical: `/`,
+            schema: {
+              '@context': 'https://schema.org',
+              '@graph': [GillesDevCorporation, GillesDevWebSite],
+            },
+          } as WebPageMetas;
+          this.webPageService.setMetas(postMetas, environment.endpoints?.['_self']);
         });
       }
     });
