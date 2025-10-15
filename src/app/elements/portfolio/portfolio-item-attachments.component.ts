@@ -30,7 +30,6 @@ import { Attachment } from '../../interfaces/post';
       </div>
     }
   `,
-  styleUrls: ['./portfolio.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioItemAttachmentsComponent {

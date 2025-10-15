@@ -57,7 +57,6 @@ import { PostListItem } from '../../interfaces/post';
       </div>
     </article>
   `,
-  styleUrls: ['./portfolio.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioHitsComponent {

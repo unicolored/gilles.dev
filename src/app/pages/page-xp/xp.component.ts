@@ -9,7 +9,6 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './xp.component.html',
-  styleUrls: ['./xp.component.css'],
 })
 export class XpComponent implements OnInit, PageInterface {
   pageId = PageIdSlugEnum.about;

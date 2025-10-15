@@ -1,0 +1,82 @@
+@import 'tailwindcss';
+
+nav.g-navbar {
+  @apply relative z-10 flex justify-between py-[18px];
+
+  .items {
+    @apply hidden items-center justify-between md:flex;
+
+    border-radius: 0.25rem;
+
+    a.item {
+      @apply text-primary dark:text-dark-primary uppercase;
+      display: flex;
+      cursor: pointer;
+      font-weight: 700;
+      margin: 0;
+      padding: 0.625rem 1.5rem;
+      border-radius: 0.15rem;
+      text-decoration: none;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &.active {
+        background: var(--color-accent);
+        color: var(--color-bkg);
+
+        &:hover {
+          background: var(--color-accent);
+          color: var(--color-bkg);
+        }
+      }
+
+      &:hover {
+        @apply text-accent dark:text-dark-accent;
+      }
+    }
+  }
+
+  .actions {
+    @apply content-center;
+  }
+
+  /* Burger button styles */
+  .burger {
+    @apply flex h-8 w-8 cursor-pointer flex-col items-center justify-center md:hidden;
+
+    span {
+      @apply bg-primary dark:bg-dark-primary mb-1.5 block h-0.5 w-6;
+
+      &:last-child {
+        @apply mb-0;
+      }
+    }
+  }
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+  @apply fixed inset-0 z-20 flex flex-col items-center justify-center overflow-auto;
+  @apply dark:bg-sky/95 bg-white/95;
+
+  .close-btn {
+    @apply absolute top-4 right-[5%] cursor-pointer text-6xl;
+    @apply text-primary dark:text-dark-primary;
+  }
+
+  a.mobile-item {
+    @apply text-primary dark:text-dark-primary block py-4 text-center text-xl font-bold uppercase;
+    text-decoration: none;
+    width: 100%;
+
+    &.active {
+      @apply text-accent dark:text-dark-accent;
+    }
+
+    &:hover {
+      @apply text-accent dark:text-dark-accent;
+    }
+  }
+}

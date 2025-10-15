@@ -1,19 +1,14 @@
-@import 'tailwindcss';
-
 footer.footer {
   & {
-    @apply grid w-full gap-6;
+    @apply grid w-full gap-1;
 
     grid-template-columns: 1fr;
-    grid-template-areas: 'social';
     color: var(--color-content);
     padding: 0 1rem;
     margin-bottom: 8rem;
 
     @include mixins.media-max('tablet-down') {
       grid-template-columns: 1fr;
-
-      grid-template-areas: 'social';
     }
   }
 
@@ -46,15 +41,12 @@ footer.footer {
   }
 
   ul li a {
-    @apply p-4;
-
-    &:hover {
-      color: var(--color-accent) !important;
-    }
+    @apply border-0 p-2 no-underline;
 
     &.footer-icon {
       @apply relative m-2 inline-block h-24 w-24;
       @apply fill-(--color-content) fill-current dark:fill-(--color-dark-content);
+      @apply hover:fill-accent;
     }
   }
 }

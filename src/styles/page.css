@@ -1,22 +1,9 @@
-@import 'tailwindcss';
-
 main.about--container {
   @apply grid;
-  grid-template-columns: 6fr 3fr;
-  grid-template-areas: 'presentation  sidebar';
 
-  @include mixins.media-min('tablet-down') {
-    grid-template-columns: 6fr 3fr;
-    grid-template-areas: 'presentation  sidebar';
-  }
-
-  @include mixins.media-max('tablet-down') {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    grid-template-areas:
-      'presentation'
-      'sidebar';
-  }
+  @apply grid-cols-[6fr_3fr];
+  @apply md:grid-cols-[6fr_3fr];
+  @apply lg:grid-cols-1 lg:grid-rows-[auto_1fr];
 
   .sidebar {
     display: grid;
@@ -29,7 +16,7 @@ main.about--container {
 
 section.sidebar {
   .card {
-    @apply relative mb-8 w-full;
+    @apply relative mb-8 w-full p-4;
     background: var(--color-bkg-a50);
     backdrop-filter: blur(5px);
 
@@ -49,4 +36,12 @@ section.sidebar {
       @apply m-0 pb-0 text-xs leading-relaxed;
     }
   }
+}
+
+.badge {
+  @apply rounded-full border-1 px-2 py-1 text-xs text-blue-500 uppercase;
+}
+
+.contact-btn {
+  @apply m-auto block w-full rounded-full bg-blue-500 p-4 text-center font-bold text-white no-underline hover:bg-blue-600;
 }

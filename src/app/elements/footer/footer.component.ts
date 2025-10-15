@@ -59,10 +59,6 @@ import { environment } from '../../../environments/environment';
       <!--&lt;!&ndash;  </button>&ndash;&gt;-->
     </footer>
   `,
-  styleUrls: [
-    //'./footer.component.css',
-    '../header-footer.css',
-  ],
 })
 export class FooterComponent {
   homepage = environment.endpoints._self;

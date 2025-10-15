@@ -9,7 +9,6 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './skills.component.html',
-  styleUrls: ['./xp.component.css'],
 })
 export class SkillsComponent implements OnInit, PageInterface {
   pageId = PageIdSlugEnum.about;

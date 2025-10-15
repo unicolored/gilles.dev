@@ -1,6 +1,12 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 @import './styles/theme.css';
+@import './styles/layout.css';
+@import './styles/header.css';
+@import './styles/footer.css';
+@import './styles/component.css';
+@import './styles/portfolio.css';
+@import './styles/page.css';
 
 body {
   cursor: default;
@@ -8,12 +14,11 @@ body {
   @apply font-sans;
   @apply text-content bg-white;
   @apply dark:bg-sky dark:text-dark-content;
+
   font-size: 1rem;
 }
 
-h1,
-h2,
-h3 {
+h1 {
   @apply font-serif;
   @apply text-primary;
   @apply dark:text-moonLight;
@@ -22,10 +27,16 @@ h3 {
 }
 
 h2 {
+  @apply font-serif;
+  font-weight: 900;
+  font-style: normal;
   @apply text-primary dark:text-dark-primary;
 }
 
 h3 {
+  @apply font-sans;
+  @apply text-primary dark:text-moonLight;
+  font-style: normal;
   font-weight: 700;
   margin-bottom: 1em;
 }
@@ -40,14 +51,6 @@ p {
   margin-bottom: 1.4rem;
 }
 
-p,
-p span,
-ul,
-ul li,
-ul ol {
-  @apply text-content dark:text-dark-content;
-}
-
 small {
   color: var(--color-content-secondary);
   @apply text-content-secondary;
@@ -58,191 +61,7 @@ a {
   text-decoration: underline;
 }
 
-a {
-  .ng-fa-icon {
-    margin: 0 0.2rem;
-  }
-}
-
 b,
 strong {
   @apply text-accent dark:text-dark-accent;
-}
-
-.grid {
-  & {
-    display: grid;
-    margin: 0 auto;
-    grid-template-columns: 10% 1fr 1fr 1fr 10%;
-
-    grid-template-rows: 2px 100px auto auto;
-    height: 100vh;
-    grid-template-areas:
-      'loader loader loader loader loader'
-      '. header header header .'
-      '. content content content .'
-      '. footer footer footer .';
-  }
-
-  .grid-child {
-    display: grid;
-  }
-}
-
-.grid-loader {
-  grid-column: 1;
-  grid-row: 1;
-  grid-area: loader;
-}
-
-.grid-header {
-  grid-column: -1;
-  grid-row: 2;
-  grid-area: header;
-  align-content: center;
-  align-items: stretch;
-}
-
-.grid-content {
-  & {
-    display: grid;
-    flex-grow: 1;
-    grid-column: -1;
-    grid-row: 2 / 5;
-    grid-area: content;
-
-    align-content: start;
-    align-items: stretch;
-
-    padding-bottom: 3rem;
-  }
-}
-
-.grid-footer {
-  grid-column: -1;
-  grid-area: footer;
-  @apply text-center;
-
-  align-content: center;
-  align-items: stretch;
-}
-
-.navbar {
-  @apply fixed;
-}
-
-nav.g-navbar {
-  @apply relative z-10 flex justify-between py-[18px];
-
-  .items {
-    @apply flex items-center justify-between;
-
-    border-radius: 0.25rem;
-
-    a.item {
-      @apply text-primary dark:text-dark-primary uppercase;
-      display: flex;
-      cursor: pointer;
-      font-weight: 700;
-      margin: 0;
-      padding: 0.625rem 1.5rem;
-      border-radius: 0.15rem;
-      text-decoration: none;
-
-      &:first-child {
-        margin-left: 0;
-      }
-
-      &.active {
-        background: var(--color-accent);
-        color: var(--color-bkg);
-
-        &:hover {
-          background: var(--color-accent);
-          color: var(--color-bkg);
-        }
-      }
-
-      &:hover {
-        @apply text-accent dark:text-dark-accent;
-      }
-    }
-  }
-
-  .actions {
-    @apply content-center;
-  }
-}
-
-footer.footer {
-  & {
-    @apply grid w-full gap-1;
-
-    grid-template-columns: 1fr;
-    grid-template-areas: 'social';
-    color: var(--color-content);
-    padding: 0 1rem;
-    margin-bottom: 8rem;
-
-    @include mixins.media-max('tablet-down') {
-      grid-template-columns: 1fr;
-
-      grid-template-areas: 'social';
-    }
-  }
-
-  a {
-    cursor: pointer;
-    border-bottom: 1px solid var(--color-bkg);
-
-    &:hover {
-      border-bottom: 1px solid var(--color-accent);
-      color: var(--color-accent);
-    }
-  }
-}
-
-.footer-grid-item {
-  @apply grid min-h-[2rem] w-full;
-}
-
-.footer-grid-item.footer-social {
-  @apply flex flex-col;
-  @apply place-items-center text-center;
-  background: transparent;
-
-  ul {
-    @apply m-0 flex p-0;
-  }
-
-  ul li {
-    @apply m-0 p-0;
-  }
-
-  ul li a {
-    @apply border-0 p-2 no-underline;
-
-    &.footer-icon {
-      @apply relative m-2 inline-block h-24 w-24;
-      @apply fill-(--color-content) fill-current dark:fill-(--color-dark-content);
-      @apply hover:fill-accent;
-    }
-  }
-}
-
-.mycard {
-  @apply relative mb-2 w-full p-4;
-  background: var(--color-bkg-a50);
-  backdrop-filter: blur(5px);
-  @apply flex items-end;
-}
-
-.mycard-body {
-  p {
-    @apply leading-relaxed;
-  }
-}
-
-.img-thumbnail {
-  @apply bg-bkg/50 rounded-tr-4xl p-1 shadow;
 }
