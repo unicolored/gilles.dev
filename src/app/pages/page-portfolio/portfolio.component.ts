@@ -3,7 +3,7 @@ import { PageIdSlugEnum, PortfolioListSlug } from '../../app.global';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { SharedNgComponentsModule } from '../shared-ng-components.module';
 import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.component';
 import { PostList } from '../../interfaces/post';
@@ -47,10 +47,13 @@ export class PortfolioComponent implements OnInit {
     }
 
     const portfolioSlugs = Object.values(PortfolioListSlug);
-    const listRequests = portfolioSlugs.map((slug) => this.apiService.getList(slug));
+    let listRequests;
+    if (isPlatformServer(this.platformId)) {
+      listRequests = portfolioSlugs.map((slug) => this.apiService.getList(slug));
+    } else {
+      listRequests = portfolioSlugs.map((slug) => this.apiService.getListApi(slug));
+    }
     const combined$ = forkJoin(listRequests);
-
-    console.log(this.platformId);
 
     // Fetch the data
     const lists = await lastValueFrom(combined$);
