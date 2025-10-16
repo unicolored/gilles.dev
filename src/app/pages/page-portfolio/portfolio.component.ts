@@ -14,12 +14,12 @@ import { lastValueFrom, forkJoin } from 'rxjs';
   standalone: true,
   imports: [CommonModule, RouterModule, SharedNgComponentsModule, PortfolioHitsComponent],
   template: `
-    <main class="page-prose portfolio--container prose dark:prose-invert lg:prose-xl max-w-none pt-2 pb-5">
+    <main class="portfolio--container prose dark:prose-invert lg:prose-xl max-w-none">
       <h1>Portfolio</h1>
 
       @if (lists(); as lists) {
         @for (list of lists; track list.slug; let i = $index) {
-          <section class="mt-6">
+          <section>
             <gilles-nx-portfolio-hits [title]="list.description" [items]="list.items" [priority]="i === 0">
             </gilles-nx-portfolio-hits>
           </section>
