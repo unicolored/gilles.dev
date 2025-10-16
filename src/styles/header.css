@@ -19,7 +19,7 @@ nav.g-navbar {
       text-decoration: none;
 
       &:first-child {
-        margin-left: 0;
+        @apply text-accent dark:text-dark-accent dark:hover:text-bkg ml-0 hover:text-white;
       }
 
       &.active {
