@@ -15,6 +15,12 @@
     cursor: pointer;
     @apply border-bkg hover:border-primary;
     @apply dark:border-dark-bkg dark:hover:border-dark-primary;
+
+    &:hover {
+      figure .item-body img {
+        @apply opacity-100;
+      }
+    }
   }
 
   figure {
@@ -27,13 +33,15 @@
       @apply relative block h-80 md:h-64;
 
       img {
-        object-fit: cover;
-        margin: 0;
-        padding: 0;
+        @apply bg-moonLight/10 m-0 object-contain p-0 opacity-90 shadow;
       }
 
       &.item-body-single {
-        @apply mb-3 h-full;
+        @apply mb-3 h-[70vh];
+
+        img {
+          @apply m-0 object-contain p-0 opacity-90 shadow;
+        }
       }
     }
 

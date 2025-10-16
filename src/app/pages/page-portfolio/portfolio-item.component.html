@@ -4,13 +4,11 @@
       @if (post.cloudinaryId) {
         <div class="portfolio-item">
           <figure>
-            <span class="item-body item-body-single d-block">
+            <span class="item-body item-body-single">
               <img
                 [ngSrc]="post.cloudinaryId"
-                width="960"
-                height="500"
+                fill
                 priority
-                class="img-thumbnail"
                 sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
                 [alt]="post.title"
                 [title]="post.title"

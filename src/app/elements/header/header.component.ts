@@ -12,7 +12,7 @@ import { PageIdSlugEnum } from '../../app.global';
   template: `
     <nav class="g-navbar">
       <div class="items">
-        @for (item of navItems; track item.name) {
+        @for (item of navItems; track item.name; let i = $index) {
           <a
             class="item"
             [routerLink]="item.route"
@@ -59,7 +59,7 @@ export class HeaderComponent {
 
   navItems = [
     {
-      name: `👋`,
+      name: `👋 Hello`,
       route: '/',
     },
     {
