@@ -38,7 +38,7 @@ import { PostListItem } from '../../interfaces/post';
                     <img
                       [ngSrc]="item.post.cloudinaryId"
                       fill
-                      [priority]="priority() && i < 4"
+                      [priority]="priority() && i <= 4"
                       placeholder
                       sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
                       [alt]="item.post.title"
@@ -46,7 +46,7 @@ import { PostListItem } from '../../interfaces/post';
                     />
                   </span>
                   @if (item.post.description) {
-                    <figcaption class="prose dark:prose-invert" [innerHTML]="item.post.description"></figcaption>
+                    <figcaption class="prose dark:prose-invert">{{ stripTags(item.post.description) }}</figcaption>
                   }
                 </figure>
               </a>
@@ -68,4 +68,9 @@ export class PortfolioHitsComponent {
   itemsComputed = computed(() => {
     return this.items();
   });
+
+  stripTags(text: string): string {
+    const doc = new DOMParser().parseFromString(text, 'text/html');
+    return doc.body.textContent || '';
+  }
 }
