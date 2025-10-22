@@ -25,7 +25,7 @@ export class HttpService {
       catchError((error) => {
         handleError(error);
 
-        const err = new Error(`Code: ${error.status}-INT`);
+        const err = new Error(`Code: ${error.status}-INT. ${error.error?.message}`);
 
         console.log('catchError err', endpoint);
         // if (...) {
