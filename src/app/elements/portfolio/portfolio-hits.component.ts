@@ -1,5 +1,5 @@
-import { Component, computed, input, ViewEncapsulation } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { Component, computed, inject, input, output, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
+import { CommonModule, isPlatformBrowser, NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { PostListItem } from '../../interfaces/post';
 
@@ -24,32 +24,57 @@ import { PostListItem } from '../../interfaces/post';
         </header>
       }
 
+      @if (selectedItem(); as selectedItem) {
+        SELECTED ITEM: {{ selectedItem }}
+      }
+
       <div class="portfolio-items">
         @if (itemsComputed(); as items) {
           @for (item of items; track item.post.slug; let i = $index) {
             @if (item.post.cloudinaryId) {
-              <a
-                class="portfolio-item"
-                [href]="['/portfolio', 'item', item.post.slug]"
-                [routerLink]="['/portfolio', 'item', item.post.slug]"
-              >
-                <figure>
-                  <span class="item-body">
-                    <img
-                      [ngSrc]="item.post.cloudinaryId"
-                      fill
-                      [priority]="priority() && i <= 4"
-                      placeholder
-                      sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
-                      [alt]="item.post.title"
-                      [title]="item.post.title"
-                    />
-                  </span>
-                  @if (item.post.description) {
-                    <figcaption class="prose dark:prose-invert">{{ stripTags(item.post.description) }}</figcaption>
-                  }
-                </figure>
-              </a>
+              @if (isRemoteActive()) {
+                <span class="portfolio-item" (click)="selectItem(item.post.slug)">
+                  <figure>
+                    <span class="item-body">
+                      <img
+                        [ngSrc]="item.post.cloudinaryId"
+                        fill
+                        [priority]="priority() && i <= 4"
+                        placeholder
+                        sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
+                        [alt]="item.post.title"
+                        [title]="item.post.title"
+                      />
+                    </span>
+                    @if (item.post.description) {
+                      <figcaption class="prose dark:prose-invert">{{ stripTags(item.post.description) }}</figcaption>
+                    }
+                  </figure>
+                </span>
+              } @else {
+                <a
+                  class="portfolio-item"
+                  [href]="['/portfolio', 'item', item.post.slug]"
+                  [routerLink]="['/portfolio', 'item', item.post.slug]"
+                >
+                  <figure>
+                    <span class="item-body">
+                      <img
+                        [ngSrc]="item.post.cloudinaryId"
+                        fill
+                        [priority]="priority() && i <= 4"
+                        placeholder
+                        sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
+                        [alt]="item.post.title"
+                        [title]="item.post.title"
+                      />
+                    </span>
+                    @if (item.post.description) {
+                      <figcaption class="prose dark:prose-invert">{{ stripTags(item.post.description) }}</figcaption>
+                    }
+                  </figure>
+                </a>
+              }
             }
           }
         }
@@ -62,6 +87,10 @@ export class PortfolioHitsComponent {
   title = input<string>();
   subtitle = input<string>();
   priority = input<boolean>(false);
+  platformId = inject(PLATFORM_ID);
+  selectedItem = input<string | null>();
+  isRemoteActive = input<boolean>();
+  itemSelected = output<string>();
 
   items = input<PostListItem[] | undefined>([]);
   //       url: `f_webp,q_auto,w_600,c_fill,ar_16:9/${publicId}.webp`,
@@ -70,7 +99,15 @@ export class PortfolioHitsComponent {
   });
 
   stripTags(text: string): string {
-    const doc = new DOMParser().parseFromString(text, 'text/html');
-    return doc.body.textContent || '';
+    if (isPlatformBrowser(this.platformId)) {
+      const doc = new DOMParser().parseFromString(text, 'text/html');
+      return doc.body.textContent || '';
+    } else {
+      return text.replace(/<[^>]*>/g, '').trim();
+    }
+  }
+
+  selectItem(itemId: string) {
+    this.itemSelected.emit(itemId);
   }
 }

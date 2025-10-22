@@ -5,11 +5,14 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Post, PostCollection, PostList } from '../interfaces/post';
 import { catchError, of, forkJoin, lastValueFrom, map } from 'rxjs';
 import { PortfolioListSlug } from '../app.global';
+import { HttpHeaders } from '@angular/common/http';
+import { SseClient, SseErrorEvent } from 'ngx-sse-client';
 
 @Injectable()
 export class ApiService {
   private http = inject(HttpService);
   private platformId = inject(PLATFORM_ID);
+  private sseClient = inject(SseClient);
 
   public getList(slug: string): Observable<Partial<PostList>> {
     const emptyList = { slug: slug, description: '', items: [] };
@@ -101,5 +104,63 @@ export class ApiService {
       console.error('Error fetching blog post slugs:', error);
       return [{ slug: 'default' }]; // Fallback to a default slug
     }
+  }
+
+  connectRemote(pin: number, action: string = 'connect', data?: string): Observable<unknown> {
+    const backendUrl = environment.endpoints.backend;
+    return this.http.post(`${backendUrl}/publish`, { pin, action, data });
+  }
+
+  public async sseEvent(endpoint: string) {
+    // If private/restricted: Generate JWT and set Bearer token (see below for generateJwt function)
+    const jwt = await this.generateJwt([environment.topic.remote]); // Or '*' for all topics
+    console.log(jwt);
+    const headers = new HttpHeaders();
+    headers.set('Authorization', `Bearer ${jwt}`);
+    console.log(headers);
+
+    const requestOptions = { withCredentials: true };
+    this.sseClient
+      .stream(endpoint, { keepAlive: false, reconnectionDelay: 1_000, responseType: 'event' }, requestOptions)
+      .subscribe((event) => {
+        console.log(event);
+        if (event.type === 'error') {
+          const errorEvent = event as SseErrorEvent;
+          console.error(errorEvent.error, errorEvent.message);
+        } else {
+          const messageEvent = event as MessageEvent;
+          console.info(`SSE request with type "${messageEvent.type}" and data "${messageEvent.data}"`);
+        }
+      });
+  }
+
+  // Optional: JWT generation for private subscriptions (HS256 using Web Crypto API)
+  private async generateJwt(subscribeTopics: string[]): Promise<string> {
+    const encoder = new TextEncoder();
+
+    const header = { alg: 'HS256', typ: 'JWT' };
+    const payload = {
+      mercure: { subscribe: subscribeTopics }, // e.g., ['https://example.com/books/1'] or ['*']
+    };
+
+    const encodedHeader = btoa(JSON.stringify(header)).replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
+    const encodedPayload = btoa(JSON.stringify(payload)).replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
+
+    const data = encoder.encode(`${encodedHeader}.${encodedPayload}`);
+    const key = await crypto.subtle.importKey(
+      'raw',
+      encoder.encode(environment.topic.token),
+      { name: 'HMAC', hash: 'SHA-256' },
+      false,
+      ['sign'],
+    );
+
+    const signature = await crypto.subtle.sign('HMAC', key, data);
+    const encodedSignature = btoa(String.fromCharCode(...new Uint8Array(signature)))
+      .replace(/=/g, '')
+      .replace(/\+/g, '-')
+      .replace(/\//g, '_');
+
+    return `${encodedHeader}.${encodedPayload}.${encodedSignature}`;
   }
 }

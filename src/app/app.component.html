@@ -20,6 +20,8 @@
     <div class="grid-child grid-content">
       @defer (on timer(5s); prefetch on timer(3s)) {
         <gilles-nx-three-card></gilles-nx-three-card>
+      } @error {
+        <!-- nothing to do -->
       }
       <router-outlet></router-outlet>
     </div>

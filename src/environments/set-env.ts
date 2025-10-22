@@ -18,7 +18,8 @@ const setEnv = () => {
   version: '${appVersion}',
   endpoints: {
     _self: 'https://www.gilles.dev/',
-    api: '${process.env['API_URL']}'
+    api: '${process.env['API_URL']}',
+    hub: '${process.env['HUB_URL']}'
   },
   unicoloredBaseUrl: 'https://unicolo.red',
   algolia: {
