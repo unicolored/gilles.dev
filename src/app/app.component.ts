@@ -10,6 +10,7 @@ import { HttpService, WEB_PAGE_METAS_MAP, WebPageMetas } from 'ngx-services';
 import { GillesDevMetas } from '../environments/metas';
 import { ApiService } from './services/api.service';
 import { PageIdSlugEnum, PageIdSlugKeys } from './app.global';
+import { PortfolioService } from './services/portfolio.service';
 
 export type ModeEnum = 'light' | 'dark' | null;
 
@@ -18,6 +19,7 @@ export type ModeEnum = 'light' | 'dark' | null;
   providers: [
     HttpService,
     ApiService,
+    PortfolioService,
     {
       provide: WEB_PAGE_METAS_MAP,
       useValue: new Map<PageIdSlugKeys, WebPageMetas>()

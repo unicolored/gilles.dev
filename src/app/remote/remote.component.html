@@ -1,0 +1,30 @@
+<div class="portfolio-items">
+  @if (items(); as items) {
+    @for (item of items; track item.slug; let i = $index) {
+      @if (item.cloudinaryId) {
+        <span (click)="selectSlug(item.slug)" class="h-46 w-full">
+          <figure class="m-0 flex h-full w-full flex-col items-center justify-center">
+            <span class="item-body relative flex h-full w-full grow items-center">
+              <!-- Adjust height as needed -->
+              <img
+                [ngSrc]="item.cloudinaryId"
+                fill
+                [priority]="i <= 4"
+                placeholder
+                sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
+                [alt]="item.title"
+                [title]="item.title"
+                class="object-contain"
+              />
+            </span>
+            <!--@if (item.description) {
+              <figcaption class="prose dark:prose-invert mb-4 p-4 text-center">
+                {{ portfolioService.stripTags(item.description) }}
+              </figcaption>
+            }-->
+          </figure>
+        </span>
+      }
+    }
+  }
+</div>

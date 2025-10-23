@@ -5,11 +5,14 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Post, PostCollection, PostList } from '../interfaces/post';
 import { catchError, of, forkJoin, lastValueFrom, map } from 'rxjs';
 import { PortfolioListSlug } from '../app.global';
+import { HttpHeaders } from '@angular/common/http';
+import { SseClient } from 'ngx-sse-client';
 
 @Injectable()
 export class ApiService {
   private http = inject(HttpService);
   private platformId = inject(PLATFORM_ID);
+  private sseClient = inject(SseClient);
 
   public getList(slug: string): Observable<Partial<PostList>> {
     const emptyList = { slug: slug, description: '', items: [] };
@@ -99,7 +102,24 @@ export class ApiService {
       return slugs;
     } catch (error) {
       console.error('Error fetching blog post slugs:', error);
-      return [{ slug: 'default' }]; // Fallback to a default slug
+      return [{ slug: 'default' }];
     }
+  }
+
+  connectRemote(pin: number, action: string = 'connect', slug?: string): Observable<unknown> {
+    const endpoint = `${environment.endpoints.backend}/publish`;
+    const headers = new HttpHeaders();
+    headers.set('Content-Type', 'application/json');
+    console.log(endpoint, pin, action, slug);
+    return this.http.post(endpoint, { pin, action, slug }, headers);
+  }
+
+  public sseEvent(endpoint: string) {
+    const requestOptions = { withCredentials: true };
+    return this.sseClient.stream(
+      endpoint,
+      { keepAlive: false, reconnectionDelay: 1_000, responseType: 'event' },
+      requestOptions,
+    );
   }
 }
