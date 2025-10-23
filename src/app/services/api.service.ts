@@ -106,11 +106,12 @@ export class ApiService {
     }
   }
 
-  connectRemote(pin: number, action: string = 'connect', data?: string): Observable<unknown> {
+  connectRemote(pin: number, action: string = 'connect', slug?: string): Observable<unknown> {
     const endpoint = `${environment.endpoints.backend}/publish`;
     const headers = new HttpHeaders();
     headers.set('Content-Type', 'application/json');
-    return this.http.post(endpoint, { pin, action, data }, headers);
+    console.log(endpoint, pin, action, slug);
+    return this.http.post(endpoint, { pin, action, slug }, headers);
   }
 
   public sseEvent(endpoint: string) {
