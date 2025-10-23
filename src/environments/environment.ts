@@ -7,10 +7,6 @@ export const environment = {
     //hub: 'http://localhost:9998/.well-known/mercure',
     hub: 'https://localhost:9999/.well-known/mercure',
   },
-  topic: {
-    token: '!ChangeThisMercureHubJWTSecretKey!',
-    remote: 'https://example.com/books/1',
-  },
   unicoloredBaseUrl: 'http://localhost:4125',
   algolia: {
     appId: 'SUXVC6B2YE',

@@ -19,6 +19,7 @@ const setEnv = () => {
   endpoints: {
     _self: 'https://www.gilles.dev/',
     api: '${process.env['API_URL']}',
+    backend: '${process.env['BACKEND_URL']}',
     hub: '${process.env['HUB_URL']}'
   },
   unicoloredBaseUrl: 'https://unicolo.red',

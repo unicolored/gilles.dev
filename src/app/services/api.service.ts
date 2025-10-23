@@ -102,7 +102,7 @@ export class ApiService {
       return slugs;
     } catch (error) {
       console.error('Error fetching blog post slugs:', error);
-      return [{ slug: 'default' }]; // Fallback to a default slug
+      return [{ slug: 'default' }];
     }
   }
 
@@ -115,48 +115,11 @@ export class ApiService {
   }
 
   public sseEvent(endpoint: string) {
-    // If private/restricted: Generate JWT and set Bearer token (see below for generateJwt function)
-    // const jwt = await this.generateJwt([environment.topic.remote]); // Or '*' for all topics
-    // console.log(jwt);
-    //const headers = new HttpHeaders();
-    //headers.set('Authorization', `Bearer ${jwt}`);
-    //console.log(headers);
-
     const requestOptions = { withCredentials: true };
     return this.sseClient.stream(
       endpoint,
       { keepAlive: false, reconnectionDelay: 1_000, responseType: 'event' },
       requestOptions,
     );
-  }
-
-  // Optional: JWT generation for private subscriptions (HS256 using Web Crypto API)
-  private async generateJwt(subscribeTopics: string[]): Promise<string> {
-    const encoder = new TextEncoder();
-
-    const header = { alg: 'HS256', typ: 'JWT' };
-    const payload = {
-      mercure: { subscribe: subscribeTopics }, // e.g., ['https://example.com/books/1'] or ['*']
-    };
-
-    const encodedHeader = btoa(JSON.stringify(header)).replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
-    const encodedPayload = btoa(JSON.stringify(payload)).replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
-
-    const data = encoder.encode(`${encodedHeader}.${encodedPayload}`);
-    const key = await crypto.subtle.importKey(
-      'raw',
-      encoder.encode(environment.topic.token),
-      { name: 'HMAC', hash: 'SHA-256' },
-      false,
-      ['sign'],
-    );
-
-    const signature = await crypto.subtle.sign('HMAC', key, data);
-    const encodedSignature = btoa(String.fromCharCode(...new Uint8Array(signature)))
-      .replace(/=/g, '')
-      .replace(/\+/g, '-')
-      .replace(/\//g, '_');
-
-    return `${encodedHeader}.${encodedPayload}.${encodedSignature}`;
   }
 }

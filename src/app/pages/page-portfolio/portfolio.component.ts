@@ -19,14 +19,6 @@ import { PortfolioService } from '../../services/portfolio.service';
   template: `
     <main class="portfolio--container prose dark:prose-invert lg:prose-xl max-w-none">
       <h1>Portfolio</h1>
-      {{ remotePin() }}
-      {{ isRemoteActive() }}
-      @if (!isRemoteActive()) {
-        @if (remoteUrl(); as url) {
-          {{ url }}
-          <qrcode [qrdata]="url" [width]="256" [errorCorrectionLevel]="'M'"> </qrcode>
-        }
-      }
 
       @if (lists(); as lists) {
         @for (list of lists; track list.slug; let i = $index) {
@@ -41,6 +33,22 @@ import { PortfolioService } from '../../services/portfolio.service';
             >
             </gilles-nx-portfolio-hits>
           </section>
+        }
+      }
+
+      <hr />
+      @if (!isRemoteActive()) {
+        @if (remoteUrl(); as url) {
+          <div class="m-12 flex flex-col items-center justify-center text-center">
+            <qrcode
+              [qrdata]="url"
+              [width]="256"
+              [errorCorrectionLevel]="'M'"
+              [colorDark]="'#274d74ff'"
+              [colorLight]="'#ffffff'"
+            ></qrcode>
+            {{ url }}
+          </div>
         }
       }
     </main>
