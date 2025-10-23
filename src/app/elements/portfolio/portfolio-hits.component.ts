@@ -1,5 +1,5 @@
 import { Component, computed, inject, input, output, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
-import { CommonModule, isPlatformBrowser, NgOptimizedImage } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { PostListItem } from '../../interfaces/post';
 import { PortfolioService } from '../../services/portfolio.service';
