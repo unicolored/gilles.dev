@@ -1,16 +1,17 @@
 import { Component, computed, inject, OnInit, PLATFORM_ID, signal, ViewEncapsulation } from '@angular/core';
-import { PageIdSlugEnum, PortfolioListSlug } from '../../app.global';
+import { PageIdSlugEnum } from '../../app.global';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { CommonModule, isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { SharedNgComponentsModule } from '../shared-ng-components.module';
 import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.component';
 import { PostList } from '../../interfaces/post';
 import { ApiService } from '../../services/api.service';
-import { lastValueFrom, forkJoin, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { QRCodeComponent } from 'angularx-qrcode';
-import { EventSourceService } from '../../event-source.service';
+import { SseErrorEvent } from 'ngx-sse-client';
+import { PortfolioService } from '../../services/portfolio.service';
 
 @Component({
   standalone: true,
@@ -50,12 +51,13 @@ import { EventSourceService } from '../../event-source.service';
 export class PortfolioComponent implements OnInit {
   pageId = PageIdSlugEnum.portfolio;
 
+  private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
   private apiService = inject(ApiService);
-  private sseService = inject(EventSourceService);
   private platformId = inject(PLATFORM_ID);
+  private readonly portfolioService = inject(PortfolioService);
 
   remoteUrl = signal<string | null>(null);
   remotePin = signal<number | null>(null); // Use number for pin
@@ -72,62 +74,36 @@ export class PortfolioComponent implements OnInit {
 
     const randomNum = Math.floor(Math.random() * 9000) + 1000; // 1000-9999
     const localPin = randomNum;
-    this.remoteUrl.set(`${environment.endpoints._self}/portfolio?remote=${localPin}`);
+    this.remoteUrl.set(`${environment.endpoints._self}/remote/${localPin}`);
 
-    const remotePinParam = this.route.snapshot.queryParamMap.get('remote');
-    const remotePin = remotePinParam ? parseInt(remotePinParam, 10) : null;
-    if (remotePin && !isNaN(remotePin)) {
-      this.remotePin.set(remotePin);
-      this.apiService.connectRemote(remotePin, 'connect').subscribe({
-        next: () => console.log('Remote connected'),
-        error: (err) => console.error('Connect error:', err),
-      });
-    } else {
-      //this.remotePin.set(localPin);  // Set local pin if no remote
-    }
     if (isPlatformBrowser(this.platformId)) {
-      this.subscribeToMercure();
+      this.subscribeToMercure(localPin);
     }
 
-    const portfolioSlugs = Object.values(PortfolioListSlug);
-    let listRequests;
-    if (isPlatformServer(this.platformId)) {
-      listRequests = portfolioSlugs.map((slug) => this.apiService.getList(slug));
-    } else {
-      listRequests = portfolioSlugs.map((slug) => this.apiService.getListApi(slug));
-    }
-    const combined$ = forkJoin(listRequests);
-
-    // Fetch the data
-    const lists = await lastValueFrom(combined$);
+    const lists = await this.portfolioService.getLists();
     if (lists) {
-      this.lists.set(lists.filter((l) => l.items?.length && l.items.length > 0));
+      this.lists.set(lists);
     }
   }
 
-  // async connectRemote(pin: string) {
-  //   (await this.apiService.connectRemote(pin)).subscribe();
-  // }
-
-  private subscribeToMercure() {
-    const pin = this.remotePin();
-    if (!pin) return;
-
+  private subscribeToMercure(pin: number) {
     const topic = `https://remote.com/portfolio/${pin}`;
+    console.log(`Subscribing to ${topic}`);
     const endpoint = `${environment.endpoints.hub}?topic=${encodeURIComponent(topic)}`;
-    this.sseSub = this.sseService.connectToServerSentEvents(endpoint, {}, ['message']).subscribe({
-      next: (event: unknown) => {
-        const ev = event as { data: string };
-        const data = JSON.parse(ev.data);
-        if (data.action === 'selectItem') {
-          this.selectedItem.set(data.data); // Update view
-          console.log('Received selection:', data.data);
-          // Add logic: scroll to item, highlight, etc.
-        }
-      },
-      error: (err) => console.error('SSE error:', err),
+    console.log('endpoint', endpoint);
+    this.sseSub = this.apiService.sseEvent(endpoint).subscribe((event) => {
+      console.log(event);
+      if (event.type === 'error') {
+        const errorEvent = event as SseErrorEvent;
+        console.error(errorEvent.error, errorEvent.message);
+      } else {
+        const messageEvent = event as MessageEvent;
+        console.info(`SSE request with type "${messageEvent.type}" and data "${messageEvent.data}"`);
+        this.router.navigate(['tv', pin]);
+      }
     });
   }
+
   onItemSelected(itemId: string) {
     const pin = this.remotePin();
     console.log('SELECTED', itemId);
@@ -141,7 +117,6 @@ export class PortfolioComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.sseService.close();
     if (this.sseSub) this.sseSub.unsubscribe();
   }
 }

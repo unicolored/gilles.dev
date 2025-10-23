@@ -2,6 +2,7 @@ import { Component, computed, inject, input, output, PLATFORM_ID, ViewEncapsulat
 import { CommonModule, isPlatformBrowser, NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { PostListItem } from '../../interfaces/post';
+import { PortfolioService } from '../../services/portfolio.service';
 
 @Component({
   selector: 'gilles-nx-portfolio-hits',
@@ -47,7 +48,9 @@ import { PostListItem } from '../../interfaces/post';
                       />
                     </span>
                     @if (item.post.description) {
-                      <figcaption class="prose dark:prose-invert">{{ stripTags(item.post.description) }}</figcaption>
+                      <figcaption class="prose dark:prose-invert">
+                        {{ portfolioService.stripTags(item.post.description) }}
+                      </figcaption>
                     }
                   </figure>
                 </span>
@@ -70,7 +73,9 @@ import { PostListItem } from '../../interfaces/post';
                       />
                     </span>
                     @if (item.post.description) {
-                      <figcaption class="prose dark:prose-invert">{{ stripTags(item.post.description) }}</figcaption>
+                      <figcaption class="prose dark:prose-invert">
+                        {{ portfolioService.stripTags(item.post.description) }}
+                      </figcaption>
                     }
                   </figure>
                 </a>
@@ -91,21 +96,13 @@ export class PortfolioHitsComponent {
   selectedItem = input<string | null>();
   isRemoteActive = input<boolean>();
   itemSelected = output<string>();
+  public readonly portfolioService = inject(PortfolioService);
 
   items = input<PostListItem[] | undefined>([]);
   //       url: `f_webp,q_auto,w_600,c_fill,ar_16:9/${publicId}.webp`,
   itemsComputed = computed(() => {
     return this.items();
   });
-
-  stripTags(text: string): string {
-    if (isPlatformBrowser(this.platformId)) {
-      const doc = new DOMParser().parseFromString(text, 'text/html');
-      return doc.body.textContent || '';
-    } else {
-      return text.replace(/<[^>]*>/g, '').trim();
-    }
-  }
 
   selectItem(itemId: string) {
     this.itemSelected.emit(itemId);

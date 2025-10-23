@@ -6,7 +6,7 @@ import { Post, PostCollection, PostList } from '../interfaces/post';
 import { catchError, of, forkJoin, lastValueFrom, map } from 'rxjs';
 import { PortfolioListSlug } from '../app.global';
 import { HttpHeaders } from '@angular/common/http';
-import { SseClient, SseErrorEvent } from 'ngx-sse-client';
+import { SseClient } from 'ngx-sse-client';
 
 @Injectable()
 export class ApiService {
@@ -107,31 +107,26 @@ export class ApiService {
   }
 
   connectRemote(pin: number, action: string = 'connect', data?: string): Observable<unknown> {
-    const backendUrl = environment.endpoints.backend;
-    return this.http.post(`${backendUrl}/publish`, { pin, action, data });
+    const endpoint = `${environment.endpoints.backend}/publish`;
+    const headers = new HttpHeaders();
+    headers.set('Content-Type', 'application/json');
+    return this.http.post(endpoint, { pin, action, data }, headers);
   }
 
-  public async sseEvent(endpoint: string) {
+  public sseEvent(endpoint: string) {
     // If private/restricted: Generate JWT and set Bearer token (see below for generateJwt function)
-    const jwt = await this.generateJwt([environment.topic.remote]); // Or '*' for all topics
-    console.log(jwt);
-    const headers = new HttpHeaders();
-    headers.set('Authorization', `Bearer ${jwt}`);
-    console.log(headers);
+    // const jwt = await this.generateJwt([environment.topic.remote]); // Or '*' for all topics
+    // console.log(jwt);
+    //const headers = new HttpHeaders();
+    //headers.set('Authorization', `Bearer ${jwt}`);
+    //console.log(headers);
 
     const requestOptions = { withCredentials: true };
-    this.sseClient
-      .stream(endpoint, { keepAlive: false, reconnectionDelay: 1_000, responseType: 'event' }, requestOptions)
-      .subscribe((event) => {
-        console.log(event);
-        if (event.type === 'error') {
-          const errorEvent = event as SseErrorEvent;
-          console.error(errorEvent.error, errorEvent.message);
-        } else {
-          const messageEvent = event as MessageEvent;
-          console.info(`SSE request with type "${messageEvent.type}" and data "${messageEvent.data}"`);
-        }
-      });
+    return this.sseClient.stream(
+      endpoint,
+      { keepAlive: false, reconnectionDelay: 1_000, responseType: 'event' },
+      requestOptions,
+    );
   }
 
   // Optional: JWT generation for private subscriptions (HS256 using Web Crypto API)

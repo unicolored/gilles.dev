@@ -1,0 +1,64 @@
+<main class="relative block">
+  <h1>TV</h1>
+  <div class="portfolio-tv relative">
+    <!-- Carousel wrapper with flex and transition -->
+    <div class="relative flex h-[70vh] flex-col gap-3">
+      @if (items(); as items) { @for (item of items.slice(0,4); track item.slug; let i = $index) { @if
+      (item.cloudinaryId) {
+      <!-- Each slide takes full width -->
+      <div class="absolute flex h-[70vh] w-full bg-white">
+        <a class="w-full" [href]="['/portfolio', 'item', item.slug]" [routerLink]="['/portfolio', 'item', item.slug]">
+          <figure class="m-0 flex h-full w-full flex-col items-center justify-center">
+            <span class="item-body relative flex h-full w-full grow items-center">
+              <!-- Adjust height as needed -->
+              <img
+                [ngSrc]="item.cloudinaryId"
+                fill
+                [priority]="i <= 4"
+                placeholder
+                sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
+                [alt]="item.title"
+                [title]="item.title"
+                class="object-contain"
+              />
+            </span>
+            @if (item.description) {
+            <figcaption class="prose dark:prose-invert mb-4 p-4 text-center">
+              {{ portfolioService.stripTags(item.description) }}
+            </figcaption>
+            }
+          </figure>
+        </a>
+      </div>
+      } } }
+    </div>
+
+    <div class="hidden">
+      <!-- Navigation buttons (optional, for manual control) -->
+      <button
+        class="absolute top-1/2 left-0 -translate-y-1/2 transform rounded-full bg-white/50 p-2 transition hover:bg-white/70 dark:bg-black/50 dark:hover:bg-black/70"
+        (click)="prev()"
+      >
+        ←
+      </button>
+      <button
+        class="absolute top-1/2 right-0 -translate-y-1/2 transform rounded-full bg-white/50 p-2 transition hover:bg-white/70 dark:bg-black/50 dark:hover:bg-black/70"
+        (click)="next()"
+      >
+        →
+      </button>
+    </div>
+
+    <!-- Indicators (optional dots for current slide) -->
+    <div class="absolute bottom-4 left-1/2 flex hidden -translate-x-1/2 transform space-x-2">
+      @if (items(); as items) { @for (item of items; track $index; let idx = $index) {
+      <span
+        class="h-3 w-3 cursor-pointer rounded-full transition"
+        [class.bg-gray-400]="currentIndex() !== idx"
+        [class.bg-blue-500]="currentIndex() === idx"
+        (click)="goToSlide(idx)"
+      ></span>
+      } }
+    </div>
+  </div>
+</main>

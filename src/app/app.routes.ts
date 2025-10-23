@@ -74,6 +74,16 @@ export const appRoutes: Route[] = [
     loadComponent: () => import('./pages/page-portfolio/portfolio.component').then((m) => m.PortfolioComponent),
   },
   {
+    path: 'remote/:pin',
+    pathMatch: 'full',
+    loadComponent: () => import('./remote/remote.component').then((m) => m.RemoteComponent),
+  },
+  {
+    path: 'tv/:pin',
+    pathMatch: 'full',
+    loadComponent: () => import('./tv/tv').then((m) => m.TvComponent),
+  },
+  {
     path: '**',
     loadComponent: () => import('./pages/not-found/not-found.component').then((m) => m.NotFoundComponent),
   },
