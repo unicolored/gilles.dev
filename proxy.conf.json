@@ -3,11 +3,5 @@
     "target": "http://localhost:4125",
     "secure": false,
     "changeOrigin": true
-  },
-  "/publish": {
-    "target": "https://localhost:9999",
-    "secure": false,
-    "changeOrigin": true,
-    "logLevel": "debug"
   }
 }
