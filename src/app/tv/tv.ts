@@ -65,6 +65,16 @@ export class TvComponent implements OnInit, OnDestroy {
       //this.remotePin.set(localPin);  // Set local pin if no remote
     }
 
+    const topic = `https://remote.com/portfolio/${this.remotePin()}`;
+    // console.log(topic);
+    // const endpoint = `https://myadmin.unicolo.red/.well-known/mercure?topic=${encodeURIComponent('https://remote.com/portfolio/4252')}`;
+    // const eventSource = new EventSource(endpoint);
+    //
+    // // The callback will be called every time an update is published
+    // eventSource.onmessage = function({ data }) {
+    //   console.log('🟡', data);
+    // };
+
     // Start auto-looping every 5 seconds (adjust as needed)
     this.autoSlideInterval = setInterval(() => {
       this.next();
@@ -75,22 +85,21 @@ export class TvComponent implements OnInit, OnDestroy {
     const topic = `https://remote.com/portfolio/${pin}`;
     console.log(`Subscribing to ${topic}`);
     const endpoint = `${environment.endpoints.hub}?topic=${encodeURIComponent(topic)}`;
+    //const endpoint2 = `https://myadmin.unicolo.red/.well-known/mercure?topic=${encodeURIComponent('https://remote.com/portfolio/4252')}`;
     console.log('endpoint', endpoint);
-    this.sseSub = this.apiService.sseEvent(endpoint).subscribe((event) => {
-      console.log(event);
-      if (event.type === 'error') {
-        const errorEvent = event as SseErrorEvent;
-        console.error(errorEvent.error, errorEvent.message);
-      } else {
+    this.sseSub = this.apiService.sseEvent(endpoint).subscribe({
+      next: (event) => {
+        console.log(event);
         const messageEvent = event as MessageEvent;
-        console.info(`SSE request with type "${messageEvent.type}" and data "${messageEvent.data}"`);
+        console.info(`SSE message: type="${messageEvent.type}", data="${messageEvent.data}"`);
         const data = JSON.parse(messageEvent.data) as { action: string; slug: string };
-        console.log(data.slug);
         if (data.slug) {
-          console.log('slug', data.slug);
-          this.slug.set(data.slug);
+          console.log('Received slug:', data.slug);
+          this.slug.set(data.slug); // Or selectedItem.set(data.slug)
         }
-      }
+      },
+      error: (err) => console.error('SSE error:', err),
+      complete: () => console.log('SSE complete'),
     });
   }
 
@@ -109,6 +118,9 @@ export class TvComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.autoSlideInterval) {
       clearInterval(this.autoSlideInterval);
+    }
+    if (this.sseSub) {
+      this.sseSub.unsubscribe();
     }
   }
 }

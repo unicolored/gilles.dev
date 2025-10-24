@@ -94,30 +94,33 @@ export class PortfolioComponent implements OnInit {
     }
   }
 
-  private subscribeToMercure(pin: number) {
+  private async subscribeToMercure(pin: number) {
     const topic = `https://remote.com/portfolio/${pin}`;
     console.log(`Subscribing to ${topic}`);
     const endpoint = `${environment.endpoints.hub}?topic=${encodeURIComponent(topic)}`;
     console.log('endpoint', endpoint);
-    this.sseSub = this.apiService.sseEvent(endpoint).subscribe((event) => {
+    const obs$ = await this.apiService.sseEvent(endpoint);
+    this.sseSub = obs$.subscribe((event) => {
       console.log(event);
-      if (event.type === 'error') {
-        const errorEvent = event as SseErrorEvent;
-        console.error(errorEvent.error, errorEvent.message);
-      } else {
-        const messageEvent = event as MessageEvent;
-        console.info(`SSE request with type "${messageEvent.type}" and data "${messageEvent.data}"`);
-        this.router.navigate(['tv', pin]);
-      }
+      // if (event.type === 'error') {
+      //   const errorEvent = event as SseErrorEvent;
+      //   console.error(errorEvent.error, errorEvent.message);
+      // } else {
+      //   const messageEvent = event as MessageEvent;
+      //   console.info(`SSE request with type "${messageEvent.type}" and data "${messageEvent.data}"`);
+      //   this.router.navigate(['tv', pin]);
+      // }
+      this.router.navigate(['tv', pin]);
     });
   }
 
-  onItemSelected(itemId: string) {
+  async onItemSelected(itemId: string) {
     const pin = this.remotePin();
     console.log('SELECTED', itemId);
     if (pin && this.isRemoteActive()) {
       // Only publish if remote (screen2)
-      this.apiService.connectRemote(pin, 'selectItem', itemId).subscribe({
+      const obs$ = await this.apiService.connectRemote(pin, 'selectItem', itemId);
+      obs$.subscribe({
         next: () => console.log('Published selection:', itemId),
         error: (err) => console.error('Publish error:', err),
       });

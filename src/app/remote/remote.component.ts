@@ -42,7 +42,8 @@ export class RemoteComponent implements OnInit {
     const remotePin = remotePinParam ? parseInt(remotePinParam, 10) : null;
     if (remotePin && !isNaN(remotePin)) {
       this.remotePin.set(remotePin);
-      this.apiService.connectRemote(remotePin, 'connect').subscribe({
+      const obs$ = await this.apiService.connectRemote(remotePin, 'connect');
+      obs$.subscribe({
         next: () => console.log('Remote connected'),
         error: (err) => console.error('Connect error:', err),
       });
@@ -51,11 +52,12 @@ export class RemoteComponent implements OnInit {
     }
   }
 
-  selectSlug(slug: string) {
+  async selectSlug(slug: string) {
     const pin = this.remotePin();
     console.log(pin);
     if (pin) {
-      this.apiService.connectRemote(pin, 'selectItem', slug).subscribe({
+      const obs$ = await this.apiService.connectRemote(pin, 'selectItem', slug);
+      obs$.subscribe({
         next: () => console.log('Item selected'),
         error: (err) => console.error('Connect error:', err),
       });
