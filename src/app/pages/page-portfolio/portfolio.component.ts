@@ -10,7 +10,6 @@ import { PostList } from '../../interfaces/post';
 import { ApiService } from '../../services/api.service';
 import { Subscription } from 'rxjs';
 import { QRCodeComponent } from 'angularx-qrcode';
-import { SseErrorEvent } from 'ngx-sse-client';
 import { PortfolioService } from '../../services/portfolio.service';
 
 @Component({
@@ -29,7 +28,6 @@ import { PortfolioService } from '../../services/portfolio.service';
               [priority]="i === 0"
               [isRemoteActive]="isRemoteActive()"
               [selectedItem]="selectedItem()"
-              (itemSelected)="onItemSelected($event)"
             >
             </gilles-nx-portfolio-hits>
           </section>
@@ -97,7 +95,7 @@ export class PortfolioComponent implements OnInit {
   private async subscribeToMercure(pin: number) {
     const topic = `https://remote.com/portfolio/${pin}`;
     console.log(`Subscribing to ${topic}`);
-    const endpoint = `${environment.endpoints.hub}?topic=${encodeURIComponent(topic)}`;
+    const endpoint = `${environment.endpoints.hub}/.well-known/mercure?topic=${encodeURIComponent(topic)}`;
     console.log('endpoint', endpoint);
     const obs$ = await this.apiService.sseEvent(endpoint);
     this.sseSub = obs$.subscribe((event) => {
@@ -114,18 +112,18 @@ export class PortfolioComponent implements OnInit {
     });
   }
 
-  async onItemSelected(itemId: string) {
-    const pin = this.remotePin();
-    console.log('SELECTED', itemId);
-    if (pin && this.isRemoteActive()) {
-      // Only publish if remote (screen2)
-      const obs$ = await this.apiService.connectRemote(pin, 'selectItem', itemId);
-      obs$.subscribe({
-        next: () => console.log('Published selection:', itemId),
-        error: (err) => console.error('Publish error:', err),
-      });
-    }
-  }
+  // async onItemSelected(itemId: string) {
+  //   const pin = this.remotePin();
+  //   console.log('SELECTED', itemId);
+  //   if (pin && this.isRemoteActive()) {
+  //     // Only publish if remote (screen2)
+  //     const obs$ = await this.apiService.connectRemote(pin, 'selectItem', itemId);
+  //     obs$.subscribe({
+  //       next: () => console.log('Published selection:', itemId),
+  //       error: (err) => console.error('Publish error:', err),
+  //     });
+  //   }
+  // }
 
   ngOnDestroy() {
     if (this.sseSub) this.sseSub.unsubscribe();

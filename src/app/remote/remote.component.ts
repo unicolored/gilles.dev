@@ -44,7 +44,7 @@ export class RemoteComponent implements OnInit {
       this.remotePin.set(remotePin);
       const obs$ = await this.apiService.connectRemote(remotePin, 'connect');
       obs$.subscribe({
-        next: () => console.log('Remote connected'),
+        next: (res) => console.log('Remote connected', res),
         error: (err) => console.error('Connect error:', err),
       });
     } else {
@@ -58,7 +58,7 @@ export class RemoteComponent implements OnInit {
     if (pin) {
       const obs$ = await this.apiService.connectRemote(pin, 'selectItem', slug);
       obs$.subscribe({
-        next: () => console.log('Item selected'),
+        next: (res) => console.log('Item selected', res),
         error: (err) => console.error('Connect error:', err),
       });
     }

@@ -23,9 +23,8 @@ const setEnv = () => {
     hub: '${process.env['HUB_URL']}'
   },
   topic: {
-    secret: '${process.env['HUB_SECRET']}',  // Replace with your actual MERCURE_SUBSCRIBER_JWT_KEY
+    secret: '${process.env['HUB_SECRET']}',
     jwt: '${process.env['HUB_JWT']}',
-    remote: 'https://remote.com/portfolio/',  // Note: I added a trailing slash for topic construction
   },
   unicoloredBaseUrl: 'https://unicolo.red',
   algolia: {

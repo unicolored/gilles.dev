@@ -3,9 +3,13 @@ export const environment = {
   endpoints: {
     _self: 'http://localhost:4242',
     api: 'https://myadmin.unicolo.red/api',
-    backend: 'https://localhost:9999',
-    //hub: 'http://localhost:9998/.well-known/mercure',
-    hub: 'https://localhost:9999/.well-known/mercure',
+    backend: 'https://myadmin.unicolo.red',
+    hub: 'https://localhost:9999',
+  },
+  topic: {
+    secret: '!ChangeThisMercureHubJWTSecretKey!',
+    jwt: 'eyJhbGciOiJIUzI1NiJ9.eyJtZXJjdXJlIjp7InB1Ymxpc2giOlsiKiJdfX0.PXwpfIGng6KObfZlcOXvcnWCJOWTFLtswGI5DZuWSK4',
+    remote: 'https://remote.com/portfolio/', // Note: I added a trailing slash for topic construction
   },
   unicoloredBaseUrl: 'http://localhost:4125',
   algolia: {

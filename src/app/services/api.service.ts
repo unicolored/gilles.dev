@@ -5,12 +5,13 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Post, PostCollection, PostList } from '../interfaces/post';
 import { catchError, of, forkJoin, lastValueFrom, map } from 'rxjs';
 import { PortfolioListSlug } from '../app.global';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { SseClient } from 'ngx-sse-client';
 
 @Injectable()
 export class ApiService {
   private http = inject(HttpService);
+  private httpClient = inject(HttpClient);
   private platformId = inject(PLATFORM_ID);
   private sseClient = inject(SseClient);
 
@@ -107,83 +108,57 @@ export class ApiService {
   }
 
   async connectRemote(pin: number, action: string = 'connect', slug?: string): Promise<Observable<unknown>> {
-    const token = await this.generateSubscriberJwt(); // Generate JWT
-    const endpoint = `${environment.endpoints.backend}/publish`;
-    const headers = new HttpHeaders();
-    headers.set('Authorization', `Bearer ${token}`);
-    headers.set('Content-Type', 'application/json');
-    console.log(endpoint, pin, action, slug);
-    return this.http.post(endpoint, { pin, action, slug }, headers);
+    const token = environment.topic.jwt;
+    const endpoint = `${environment.endpoints.hub}/.well-known/mercure`;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: `Bearer ${token}`, // Replace with your actual authorization token
+    });
+
+    const body = new HttpParams()
+      .set('topic', `https://remote.com/portfolio/${pin}`)
+      .set('data', `{"pin": ${pin},"action": "${action}","slug": "${slug}"}`);
+
+    return this.httpClient.post(endpoint, body.toString(), { headers, responseType: 'text', withCredentials: true });
   }
 
   public sseEvent(endpoint: string) {
     const token = environment.topic.jwt; // Generate JWT
-    endpoint = `${endpoint}&authorization=${token}`;
-    //endpoint = `${endpoint}`;
+    endpoint = `${endpoint}`;
     console.log(endpoint);
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      Accept: 'text/event-stream',
+    });
+
     return new Observable((observer) => {
-      const eventSource = new EventSource(endpoint, { withCredentials: true });
-
-      eventSource.onmessage = (event: MessageEvent) => {
-        console.log('⭐️ yeah message');
-        observer.next(event);
-      };
-
-      eventSource.onerror = (error: Event) => {
-        observer.error(error);
-      };
-
-      eventSource.onopen = () => {
-        console.log('SSE connection opened');
-      };
+      console.log('SSE connection opened');
+      const subscription = this.sseClient
+        .stream(endpoint, { keepAlive: false, responseType: 'event' }, { headers, withCredentials: true })
+        .subscribe({
+          next: (e: unknown) => {
+            const event = e as MessageEvent;
+            if (event.type === 'error') {
+              observer.error(event);
+            } else {
+              console.log('⭐️ yeah message');
+              observer.next(event);
+            }
+          },
+          error: (error) => {
+            observer.error(error);
+          },
+          complete: () => {
+            observer.complete();
+          },
+        });
 
       return () => {
-        eventSource.close();
+        subscription.unsubscribe();
         console.log('SSE connection closed');
       };
     });
-  }
-
-  // Helper: URL-safe Base64 encoding (without padding)
-  private base64url(source: Uint8Array): string {
-    let encoded = btoa(String.fromCharCode(...source));
-    encoded = encoded.replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
-    return encoded;
-  }
-
-  // Generate subscriber JWT using HS256 and Web Crypto API (async)
-  private async generateSubscriberJwt(): Promise<string> {
-    // const secret = environment.topic.secret;  // Your shared subscriber key
-    // const header = { alg: 'HS256', typ: 'JWT' };
-    // const payload = { mercure: { publish: ['*'], subscribe: ['*'] } };  // Or ['https://remote.com/portfolio/*'] for specific topics
-    //
-    // const encodedHeader = this.base64url(new TextEncoder().encode(JSON.stringify(header)));
-    // const encodedPayload = this.base64url(new TextEncoder().encode(JSON.stringify(payload)));
-    //
-    // // HMAC-SHA256 signature
-    // const encoder = new TextEncoder();
-    // const keyData = encoder.encode(secret);
-    // const message = `${encodedHeader}.${encodedPayload}`;
-    // const data = encoder.encode(message);
-    //
-    // const key = await crypto.subtle.importKey(
-    //   'raw',
-    //   keyData,
-    //   { name: 'HMAC', hash: 'SHA-256' },
-    //   false,
-    //   ['sign']
-    // );
-    //
-    // const signature = await crypto.subtle.sign('HMAC', key, data);
-    // const encodedSignature = this.base64url(new Uint8Array(signature));
-    //
-    // const jwt = `${encodedHeader}.${encodedPayload}.${encodedSignature}`;
-    console.log('jwt env', environment.topic.jwt);
-    return environment.topic.jwt;
-  }
-
-  private getSubscriberJwt(): Observable<string> {
-    const endpoint = `${environment.endpoints.backend}/mercure-jwt`; // Matches your Symfony route
-    return this.http.get<{ jwt: string }>(endpoint).pipe(map((response) => response.jwt));
   }
 }

@@ -84,7 +84,7 @@ export class TvComponent implements OnInit, OnDestroy {
   private subscribeToMercure(pin: number) {
     const topic = `https://remote.com/portfolio/${pin}`;
     console.log(`Subscribing to ${topic}`);
-    const endpoint = `${environment.endpoints.hub}?topic=${encodeURIComponent(topic)}`;
+    const endpoint = `${environment.endpoints.hub}/.well-known/mercure?topic=${encodeURIComponent(topic)}`;
     //const endpoint2 = `https://myadmin.unicolo.red/.well-known/mercure?topic=${encodeURIComponent('https://remote.com/portfolio/4252')}`;
     console.log('endpoint', endpoint);
     this.sseSub = this.apiService.sseEvent(endpoint).subscribe({
