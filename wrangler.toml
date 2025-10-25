@@ -10,7 +10,7 @@ routes = [
 
 [assets]
 directory = "dist/app/browser"
-not_found_handling = "404-page"
+not_found_handling = "single-page-application"
 
 [build]
 command = "sh script/cibuild.sh"

@@ -3,5 +3,10 @@
     "target": "http://localhost:4125",
     "secure": false,
     "changeOrigin": true
+  },
+  "/subscribe": {
+    "target": "https://myadmin.unicolo.red/.well-known/mercure?topic=https://remote.com/portfolio/4252",
+    "secure": true,
+    "changeOrigin": true
   }
 }

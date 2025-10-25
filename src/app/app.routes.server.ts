@@ -40,6 +40,14 @@ export const serverRoutes: ServerRoute[] = [
     },
   },
   {
+    path: 'remote/:pin',
+    renderMode: RenderMode.Client,
+  },
+  {
+    path: 'tv/:pin',
+    renderMode: RenderMode.Client,
+  },
+  {
     path: '**',
     renderMode: RenderMode.Prerender,
   },

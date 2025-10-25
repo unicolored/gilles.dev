@@ -17,10 +17,14 @@ const setEnv = () => {
   maintenance: false,
   version: '${appVersion}',
   endpoints: {
-    _self: 'https://www.gilles.dev/',
+    _self: 'https://gilles.dev',
     api: '${process.env['API_URL']}',
     backend: '${process.env['BACKEND_URL']}',
     hub: '${process.env['HUB_URL']}'
+  },
+  topic: {
+    secret: '${process.env['HUB_SECRET']}',
+    jwt: '${process.env['HUB_JWT']}',
   },
   unicoloredBaseUrl: 'https://unicolo.red',
   algolia: {

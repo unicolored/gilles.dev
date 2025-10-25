@@ -5,12 +5,13 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Post, PostCollection, PostList } from '../interfaces/post';
 import { catchError, of, forkJoin, lastValueFrom, map } from 'rxjs';
 import { PortfolioListSlug } from '../app.global';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { SseClient } from 'ngx-sse-client';
 
 @Injectable()
 export class ApiService {
   private http = inject(HttpService);
+  private httpClient = inject(HttpClient);
   private platformId = inject(PLATFORM_ID);
   private sseClient = inject(SseClient);
 
@@ -106,20 +107,58 @@ export class ApiService {
     }
   }
 
-  connectRemote(pin: number, action: string = 'connect', slug?: string): Observable<unknown> {
-    const endpoint = `${environment.endpoints.backend}/publish`;
-    const headers = new HttpHeaders();
-    headers.set('Content-Type', 'application/json');
-    console.log(endpoint, pin, action, slug);
-    return this.http.post(endpoint, { pin, action, slug }, headers);
+  async connectRemote(pin: number, action: string = 'connect', slug?: string): Promise<Observable<unknown>> {
+    const token = environment.topic.jwt;
+    const endpoint = `${environment.endpoints.hub}/.well-known/mercure`;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: `Bearer ${token}`, // Replace with your actual authorization token
+    });
+
+    const body = new HttpParams()
+      .set('topic', `https://remote.com/portfolio/${pin}`)
+      .set('data', `{"pin": ${pin},"action": "${action}","slug": "${slug}"}`);
+
+    return this.httpClient.post(endpoint, body.toString(), { headers, responseType: 'text', withCredentials: true });
   }
 
   public sseEvent(endpoint: string) {
-    const requestOptions = { withCredentials: true };
-    return this.sseClient.stream(
-      endpoint,
-      { keepAlive: false, reconnectionDelay: 1_000, responseType: 'event' },
-      requestOptions,
-    );
+    const token = environment.topic.jwt; // Generate JWT
+    endpoint = `${endpoint}`;
+    console.log(endpoint);
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      Accept: 'text/event-stream',
+    });
+
+    return new Observable((observer) => {
+      console.log('SSE connection opened');
+      const subscription = this.sseClient
+        .stream(endpoint, { keepAlive: false, responseType: 'event' }, { headers, withCredentials: true })
+        .subscribe({
+          next: (e: unknown) => {
+            const event = e as MessageEvent;
+            if (event.type === 'error') {
+              observer.error(event);
+            } else {
+              console.log('⭐️ yeah message');
+              observer.next(event);
+            }
+          },
+          error: (error) => {
+            observer.error(error);
+          },
+          complete: () => {
+            observer.complete();
+          },
+        });
+
+      return () => {
+        subscription.unsubscribe();
+        console.log('SSE connection closed');
+      };
+    });
   }
 }

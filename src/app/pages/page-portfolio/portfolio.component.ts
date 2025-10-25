@@ -6,11 +6,10 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { SharedNgComponentsModule } from '../shared-ng-components.module';
 import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.component';
-import { PostList } from '../../interfaces/post';
+import { Post, PostList } from '../../interfaces/post';
 import { ApiService } from '../../services/api.service';
 import { Subscription } from 'rxjs';
 import { QRCodeComponent } from 'angularx-qrcode';
-import { SseErrorEvent } from 'ngx-sse-client';
 import { PortfolioService } from '../../services/portfolio.service';
 
 @Component({
@@ -20,36 +19,40 @@ import { PortfolioService } from '../../services/portfolio.service';
     <main class="portfolio--container prose dark:prose-invert lg:prose-xl max-w-none">
       <h1>Portfolio</h1>
 
-      @if (lists(); as lists) {
-        @for (list of lists; track list.slug; let i = $index) {
-          <section>
-            <gilles-nx-portfolio-hits
-              [title]="list.description"
-              [items]="list.items"
-              [priority]="i === 0"
-              [isRemoteActive]="isRemoteActive()"
-              [selectedItem]="selectedItem()"
-              (itemSelected)="onItemSelected($event)"
-            >
-            </gilles-nx-portfolio-hits>
-          </section>
+      @defer (when listsAreReady()) {
+        @if (lists(); as lists) {
+          @for (list of lists; track list.slug; let i = $index) {
+            <section>
+              <gilles-nx-portfolio-hits
+                [title]="list.description"
+                [items]="list.items"
+                [priority]="i === 0"
+                [isRemoteActive]="isRemoteActive()"
+                [selectedItem]="selectedItem()"
+              >
+              </gilles-nx-portfolio-hits>
+            </section>
+          }
         }
+      } @placeholder (minimum 1s) {
+        <section>
+          <gilles-nx-portfolio-hits [title]="listsHolder.description" [items]="listsHolder.items">
+          </gilles-nx-portfolio-hits>
+        </section>
       }
 
       <hr />
-      @if (!isRemoteActive()) {
-        @if (remoteUrl(); as url) {
-          <div class="m-12 flex flex-col items-center justify-center text-center">
-            <qrcode
-              [qrdata]="url"
-              [width]="256"
-              [errorCorrectionLevel]="'M'"
-              [colorDark]="'#274d74ff'"
-              [colorLight]="'#ffffff'"
-            ></qrcode>
-            {{ url }}
-          </div>
-        }
+      @if (remoteUrl(); as url) {
+        <div class="m-12 flex flex-col items-center justify-center text-center">
+          <qrcode
+            [qrdata]="url"
+            [width]="256"
+            [errorCorrectionLevel]="'M'"
+            [colorDark]="'#274d74ff'"
+            [colorLight]="'#ffffff'"
+          ></qrcode>
+          {{ url }}
+        </div>
       }
     </main>
   `,
@@ -74,6 +77,56 @@ export class PortfolioComponent implements OnInit {
   private sseSub: Subscription | null = null;
 
   lists = signal<Partial<PostList>[]>([]);
+  listsAreReady = signal<boolean>(false);
+  listsHolder: Partial<PostList<Partial<Post>>> = {
+    name: 'name?',
+    slug: 'slüg',
+    description: 'loading...',
+    items: [
+      {
+        post: {
+          title: '',
+          description: '...',
+          cloudinaryId: '',
+        },
+      },
+      {
+        post: {
+          title: '',
+          description: '...',
+          cloudinaryId: '',
+        },
+      },
+      {
+        post: {
+          title: '',
+          description: '...',
+          cloudinaryId: '',
+        },
+      },
+      {
+        post: {
+          title: '',
+          description: '...',
+          cloudinaryId: '',
+        },
+      },
+      {
+        post: {
+          title: '',
+          description: '...',
+          cloudinaryId: '',
+        },
+      },
+      {
+        post: {
+          title: '',
+          description: '...',
+          cloudinaryId: '',
+        },
+      },
+    ],
+  };
 
   async ngOnInit() {
     if (this.webPageMetasMap.has(this.pageId)) {
@@ -91,38 +144,42 @@ export class PortfolioComponent implements OnInit {
     const lists = await this.portfolioService.getLists();
     if (lists) {
       this.lists.set(lists);
+      this.listsAreReady.set(true);
     }
   }
 
-  private subscribeToMercure(pin: number) {
+  private async subscribeToMercure(pin: number) {
     const topic = `https://remote.com/portfolio/${pin}`;
     console.log(`Subscribing to ${topic}`);
-    const endpoint = `${environment.endpoints.hub}?topic=${encodeURIComponent(topic)}`;
+    const endpoint = `${environment.endpoints.hub}/.well-known/mercure?topic=${encodeURIComponent(topic)}`;
     console.log('endpoint', endpoint);
-    this.sseSub = this.apiService.sseEvent(endpoint).subscribe((event) => {
+    const obs$ = await this.apiService.sseEvent(endpoint);
+    this.sseSub = obs$.subscribe((event) => {
       console.log(event);
-      if (event.type === 'error') {
-        const errorEvent = event as SseErrorEvent;
-        console.error(errorEvent.error, errorEvent.message);
-      } else {
-        const messageEvent = event as MessageEvent;
-        console.info(`SSE request with type "${messageEvent.type}" and data "${messageEvent.data}"`);
-        this.router.navigate(['tv', pin]);
-      }
+      // if (event.type === 'error') {
+      //   const errorEvent = event as SseErrorEvent;
+      //   console.error(errorEvent.error, errorEvent.message);
+      // } else {
+      //   const messageEvent = event as MessageEvent;
+      //   console.info(`SSE request with type "${messageEvent.type}" and data "${messageEvent.data}"`);
+      //   this.router.navigate(['tv', pin]);
+      // }
+      this.router.navigate(['tv', pin]);
     });
   }
 
-  onItemSelected(itemId: string) {
-    const pin = this.remotePin();
-    console.log('SELECTED', itemId);
-    if (pin && this.isRemoteActive()) {
-      // Only publish if remote (screen2)
-      this.apiService.connectRemote(pin, 'selectItem', itemId).subscribe({
-        next: () => console.log('Published selection:', itemId),
-        error: (err) => console.error('Publish error:', err),
-      });
-    }
-  }
+  // async onItemSelected(itemId: string) {
+  //   const pin = this.remotePin();
+  //   console.log('SELECTED', itemId);
+  //   if (pin && this.isRemoteActive()) {
+  //     // Only publish if remote (screen2)
+  //     const obs$ = await this.apiService.connectRemote(pin, 'selectItem', itemId);
+  //     obs$.subscribe({
+  //       next: () => console.log('Published selection:', itemId),
+  //       error: (err) => console.error('Publish error:', err),
+  //     });
+  //   }
+  // }
 
   ngOnDestroy() {
     if (this.sseSub) this.sseSub.unsubscribe();
