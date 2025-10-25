@@ -3,7 +3,6 @@ import { Post, PostList } from '../interfaces/post';
 import { PortfolioService } from '../services/portfolio.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
-import { SseErrorEvent } from 'ngx-sse-client';
 import { environment } from '../../environments/environment';
 import { ApiService } from '../services/api.service';
 import { Subscription } from 'rxjs';
@@ -65,7 +64,7 @@ export class TvComponent implements OnInit, OnDestroy {
       //this.remotePin.set(localPin);  // Set local pin if no remote
     }
 
-    const topic = `https://remote.com/portfolio/${this.remotePin()}`;
+    //const topic = `https://remote.com/portfolio/${this.remotePin()}`;
     // console.log(topic);
     // const endpoint = `https://myadmin.unicolo.red/.well-known/mercure?topic=${encodeURIComponent('https://remote.com/portfolio/4252')}`;
     // const eventSource = new EventSource(endpoint);

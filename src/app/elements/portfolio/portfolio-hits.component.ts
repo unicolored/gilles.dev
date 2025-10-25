@@ -1,7 +1,7 @@
 import { Component, computed, inject, input, output, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { PostListItem } from '../../interfaces/post';
+import { Post, PostListItem } from '../../interfaces/post';
 import { PortfolioService } from '../../services/portfolio.service';
 
 @Component({
@@ -23,10 +23,6 @@ import { PortfolioService } from '../../services/portfolio.service';
             </p>
           }
         </header>
-      }
-
-      @if (selectedItem(); as selectedItem) {
-        SELECTED ITEM: {{ selectedItem }}
       }
 
       <div class="portfolio-items">
@@ -59,6 +55,7 @@ import { PortfolioService } from '../../services/portfolio.service';
                   class="portfolio-item"
                   [href]="['/portfolio', 'item', item.post.slug]"
                   [routerLink]="['/portfolio', 'item', item.post.slug]"
+                  animate.enter="enter-animation"
                 >
                   <figure>
                     <span class="item-body">
@@ -80,6 +77,19 @@ import { PortfolioService } from '../../services/portfolio.service';
                   </figure>
                 </a>
               }
+            } @else {
+              <span class="portfolio-item">
+                <figure>
+                  <span class="item-body">
+                    {{ item.post.title }}
+                  </span>
+                  @if (item.post.description) {
+                    <figcaption class="prose dark:prose-invert">
+                      {{ portfolioService.stripTags(item.post.description) }}
+                    </figcaption>
+                  }
+                </figure>
+              </span>
             }
           }
         }
@@ -98,13 +108,15 @@ export class PortfolioHitsComponent {
   itemSelected = output<string>();
   public readonly portfolioService = inject(PortfolioService);
 
-  items = input<PostListItem[] | undefined>([]);
+  items = input<PostListItem[] | PostListItem<Partial<Post>>[] | undefined>([]);
   //       url: `f_webp,q_auto,w_600,c_fill,ar_16:9/${publicId}.webp`,
   itemsComputed = computed(() => {
     return this.items();
   });
 
-  selectItem(itemId: string) {
-    this.itemSelected.emit(itemId);
+  selectItem(itemId?: string) {
+    if (itemId) {
+      this.itemSelected.emit(itemId);
+    }
   }
 }

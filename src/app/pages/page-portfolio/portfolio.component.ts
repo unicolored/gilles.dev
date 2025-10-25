@@ -6,7 +6,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { SharedNgComponentsModule } from '../shared-ng-components.module';
 import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.component';
-import { PostList } from '../../interfaces/post';
+import { Post, PostList } from '../../interfaces/post';
 import { ApiService } from '../../services/api.service';
 import { Subscription } from 'rxjs';
 import { QRCodeComponent } from 'angularx-qrcode';
@@ -19,35 +19,40 @@ import { PortfolioService } from '../../services/portfolio.service';
     <main class="portfolio--container prose dark:prose-invert lg:prose-xl max-w-none">
       <h1>Portfolio</h1>
 
-      @if (lists(); as lists) {
-        @for (list of lists; track list.slug; let i = $index) {
-          <section>
-            <gilles-nx-portfolio-hits
-              [title]="list.description"
-              [items]="list.items"
-              [priority]="i === 0"
-              [isRemoteActive]="isRemoteActive()"
-              [selectedItem]="selectedItem()"
-            >
-            </gilles-nx-portfolio-hits>
-          </section>
+      @defer (when listsAreReady()) {
+        @if (lists(); as lists) {
+          @for (list of lists; track list.slug; let i = $index) {
+            <section>
+              <gilles-nx-portfolio-hits
+                [title]="list.description"
+                [items]="list.items"
+                [priority]="i === 0"
+                [isRemoteActive]="isRemoteActive()"
+                [selectedItem]="selectedItem()"
+              >
+              </gilles-nx-portfolio-hits>
+            </section>
+          }
         }
+      } @placeholder (minimum 1s) {
+        <section>
+          <gilles-nx-portfolio-hits [title]="listsHolder.description" [items]="listsHolder.items">
+          </gilles-nx-portfolio-hits>
+        </section>
       }
 
       <hr />
-      @if (!isRemoteActive()) {
-        @if (remoteUrl(); as url) {
-          <div class="m-12 flex flex-col items-center justify-center text-center">
-            <qrcode
-              [qrdata]="url"
-              [width]="256"
-              [errorCorrectionLevel]="'M'"
-              [colorDark]="'#274d74ff'"
-              [colorLight]="'#ffffff'"
-            ></qrcode>
-            {{ url }}
-          </div>
-        }
+      @if (remoteUrl(); as url) {
+        <div class="m-12 flex flex-col items-center justify-center text-center">
+          <qrcode
+            [qrdata]="url"
+            [width]="256"
+            [errorCorrectionLevel]="'M'"
+            [colorDark]="'#274d74ff'"
+            [colorLight]="'#ffffff'"
+          ></qrcode>
+          {{ url }}
+        </div>
       }
     </main>
   `,
@@ -72,6 +77,56 @@ export class PortfolioComponent implements OnInit {
   private sseSub: Subscription | null = null;
 
   lists = signal<Partial<PostList>[]>([]);
+  listsAreReady = signal<boolean>(false);
+  listsHolder: Partial<PostList<Partial<Post>>> = {
+    name: 'name?',
+    slug: 'slüg',
+    description: 'loading...',
+    items: [
+      {
+        post: {
+          title: '',
+          description: '...',
+          cloudinaryId: '',
+        },
+      },
+      {
+        post: {
+          title: '',
+          description: '...',
+          cloudinaryId: '',
+        },
+      },
+      {
+        post: {
+          title: '',
+          description: '...',
+          cloudinaryId: '',
+        },
+      },
+      {
+        post: {
+          title: '',
+          description: '...',
+          cloudinaryId: '',
+        },
+      },
+      {
+        post: {
+          title: '',
+          description: '...',
+          cloudinaryId: '',
+        },
+      },
+      {
+        post: {
+          title: '',
+          description: '...',
+          cloudinaryId: '',
+        },
+      },
+    ],
+  };
 
   async ngOnInit() {
     if (this.webPageMetasMap.has(this.pageId)) {
@@ -89,6 +144,7 @@ export class PortfolioComponent implements OnInit {
     const lists = await this.portfolioService.getLists();
     if (lists) {
       this.lists.set(lists);
+      this.listsAreReady.set(true);
     }
   }
 

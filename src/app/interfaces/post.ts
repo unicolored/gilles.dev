@@ -12,7 +12,7 @@ export interface Attachment extends ApiItem {
   slug: string;
 }
 
-export interface Post extends ApiItem {
+export interface Post extends Partial<ApiItem> {
   title: string;
   status: string;
   slug: string;
@@ -26,8 +26,8 @@ export interface Post extends ApiItem {
   attachments: { member: Attachment[] };
 }
 
-export interface PostListItem extends ApiItem {
-  post: Post;
+export interface PostListItem<T = Post> extends Partial<ApiItem> {
+  post: T;
 }
 
 export interface PostListItemRef extends ApiItem {
@@ -39,12 +39,12 @@ export interface PostListItemRef extends ApiItem {
   };
 }
 
-export interface PostList extends ApiItem {
+export interface PostList<T = Post> extends ApiItem {
   '@context': string;
   name: string;
   slug: string;
   description: string;
-  items: PostListItem[];
+  items: PostListItem<T>[];
 }
 
 export interface PostCollectionView extends ApiItem {
