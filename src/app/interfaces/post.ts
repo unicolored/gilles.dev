@@ -9,6 +9,8 @@ export interface MeiliPost {
   slug: string;
   cloudinaryId: string;
   description: string;
+  type: string;
+  status: 'draft' | 'pending' | 'publish';
 }
 
 export type MeiliAttachment = MeiliPost;
