@@ -7379,6 +7379,7 @@ __metadata:
     karma-coverage: "npm:~2.2.0"
     karma-jasmine: "npm:~5.1.0"
     karma-jasmine-html-reporter: "npm:~2.1.0"
+    meilisearch: "npm:^0.53.0"
     ng-packagr: "npm:^20.3.0"
     ngx-sse-client: "npm:^20.0.1"
     postcss: "npm:^8.5.6"
@@ -8916,6 +8917,13 @@ __metadata:
   version: 1.1.0
   resolution: "media-typer@npm:1.1.0"
   checksum: 10c0/7b4baa40b25964bb90e2121ee489ec38642127e48d0cc2b6baa442688d3fde6262bfdca86d6bbf6ba708784afcac168c06840c71facac70e390f5f759ac121b9
+  languageName: node
+  linkType: hard
+
+"meilisearch@npm:^0.53.0":
+  version: 0.53.0
+  resolution: "meilisearch@npm:0.53.0"
+  checksum: 10c0/43b008ee424bce0995d5e07ed187f4225513fdbd03a027f62143dc4f8eb9024a93c40e79d3a3fbc8d3a144cf45584f00a7de00a8f64ff5a377aaba41b77d6713
   languageName: node
   linkType: hard
 
