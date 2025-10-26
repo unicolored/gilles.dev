@@ -20,13 +20,18 @@ const setEnv = () => {
     _self: 'https://gilles.dev',
     api: '${process.env['API_URL']}',
     backend: '${process.env['BACKEND_URL']}',
-    hub: '${process.env['HUB_URL']}'
+    hub: '${process.env['HUB_URL']}',
+    meilisearch: '${process.env['MEILISEARCH_URL']}',
   },
   topic: {
     secret: '${process.env['HUB_SECRET']}',
     jwt: '${process.env['HUB_JWT']}',
   },
   unicoloredBaseUrl: 'https://unicolo.red',
+  meilisearch: {
+    indice_prefix: 'myadmin_prod_',
+    search_key: '${process.env['MEILISEARCH_SEARCH_KEY']}'
+  },
   algolia: {
     appId: '${process.env['ALGOLIA_APPID']}',
     apiKey: '${process.env['ALGOLIA_APIKEY']}',

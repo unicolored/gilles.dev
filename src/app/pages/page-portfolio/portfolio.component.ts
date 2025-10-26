@@ -11,6 +11,7 @@ import { ApiService } from '../../services/api.service';
 import { Subscription } from 'rxjs';
 import { QRCodeComponent } from 'angularx-qrcode';
 import { PortfolioService } from '../../services/portfolio.service';
+import { Store } from '../../store';
 
 @Component({
   standalone: true,
@@ -34,6 +35,8 @@ import { PortfolioService } from '../../services/portfolio.service';
             </section>
           }
         }
+      } @loading (after 500ms; minimum 1s) {
+        Loading..
       } @placeholder (minimum 1s) {
         <section>
           <gilles-nx-portfolio-hits [title]="listsHolder.description" [items]="listsHolder.items">
@@ -69,6 +72,7 @@ export class PortfolioComponent implements OnInit {
   private apiService = inject(ApiService);
   private platformId = inject(PLATFORM_ID);
   private readonly portfolioService = inject(PortfolioService);
+  private readonly store = inject(Store);
 
   remoteUrl = signal<string | null>(null);
   remotePin = signal<number | null>(null); // Use number for pin
@@ -141,11 +145,11 @@ export class PortfolioComponent implements OnInit {
       this.subscribeToMercure(localPin);
     }
 
-    const lists = await this.portfolioService.getLists();
-    if (lists) {
+    //const lists = await this.portfolioService.getLists();
+    this.store.getPortfolioService().subscribe((lists) => {
       this.lists.set(lists);
       this.listsAreReady.set(true);
-    }
+    });
   }
 
   private async subscribeToMercure(pin: number) {

@@ -28,6 +28,10 @@ export const appRoutes: Route[] = [
     path: PageIdSlugEnum.tools,
     loadComponent: () => import('./pages/page-xp/tools.component').then((m) => m.ToolsComponent),
   },
+  {
+    path: 'search',
+    loadComponent: () => import('./search/search').then((m) => m.Search),
+  },
   // {
   //   path: 'contact',
   //   loadComponent: () => import('./pages/page-contact/contact.component').then((m) => m.ContactComponent),

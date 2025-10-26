@@ -1,5 +1,18 @@
 import { ApiItem } from './common';
 
+export interface MeiliPost {
+  content: string;
+  objectID: string;
+  published_at: number;
+  title: string;
+  // TODO: add the properties below
+  slug: string;
+  cloudinaryId: string;
+  description: string;
+}
+
+export type MeiliAttachment = MeiliPost;
+
 export interface Category extends ApiItem {
   name: string;
   description: string;

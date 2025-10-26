@@ -40,6 +40,10 @@ nav.g-navbar {
 
   .actions {
     @apply content-center;
+
+    .search-link {
+      @apply block w-7;
+    }
   }
 
   /* Burger button styles */

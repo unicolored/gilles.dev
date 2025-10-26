@@ -1,0 +1,33 @@
+<div class="search-page">
+  <app-search-input (search)="performSearch($event)" (inputChange)="onInputChange($event)"></app-search-input>
+
+  <!-- Your search results go here -->
+  <div class="search-results" *ngIf="searchResults.length">
+    <div class="portfolio-items">
+      @for (hit of searchResults; track hit.objectID; let i = $index) {
+      <span class="portfolio-item" (click)="selectItem(hit.slug)">
+        <figure>
+          <span class="item-body">
+            @if (hit.cloudinaryId) {
+            <img
+              [ngSrc]="hit.cloudinaryId"
+              fill
+              [priority]="i <= 4"
+              placeholder
+              sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
+              [alt]="hit.title"
+              [title]="hit.title"
+            />
+            }
+          </span>
+          @if (hit.title || hit.description) {
+          <figcaption class="prose dark:prose-invert">
+            {{hit.title}} - {{ portfolioService.stripTags(hit.description) }}
+          </figcaption>
+          }
+        </figure>
+      </span>
+      }
+    </div>
+  </div>
+</div>
