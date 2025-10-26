@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-search-input',
   imports: [FormsModule],
   templateUrl: `search-input.html`,
-  styleUrl: `search-input.css`,
+  encapsulation: ViewEncapsulation.None,
 })
 export class SearchInput {
   searchQuery: string = '';
@@ -17,6 +17,7 @@ export class SearchInput {
   }
 
   onSearch() {
+    console.log('onSearch query', this.searchQuery);
     if (this.searchQuery.trim()) {
       this.search.emit(this.searchQuery.trim());
     }

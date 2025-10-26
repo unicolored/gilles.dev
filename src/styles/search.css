@@ -8,21 +8,22 @@
 .search-input {
   flex: 1;
   padding: 10px;
-  border: 1px solid #ccc;
+  @apply border-dark-bkg dark:border-bkg border;
+  backdrop-filter: blur(3px);
   border-radius: 4px;
   font-size: 16px;
 }
 
 .search-input:focus {
   outline: none;
-  border-color: #007bff;
+  @apply border-accent dark:border-dark-accent;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
 }
 
 .search-button {
   padding: 10px 20px;
-  background-color: #007bff;
   color: white;
+  @apply bg-accent bg-dark-accent;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -30,6 +31,6 @@
 }
 
 .search-button:disabled {
-  background-color: #cccccc;
+  @apply bg-moon;
   cursor: not-allowed;
 }
