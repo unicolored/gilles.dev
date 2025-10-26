@@ -13,6 +13,9 @@ export class MeilisearchService {
     const prefix = environment.meilisearch.indice_prefix;
 
     return client.multiSearch({
+      federation: {
+        limit: 20,
+      },
       queries: [
         { indexUid: `${prefix}posts`, q: q },
         { indexUid: `${prefix}attachments`, q: q },
