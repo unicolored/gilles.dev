@@ -76,7 +76,7 @@ export class Search {
 
   onInputChange(query: string) {
     // Handle input changes (e.g., for live search or suggestions)
-    console.log('Input changed:', query);
+    //console.log('Input changed:', query);
   }
 
   selectItem(slug?: string) {

@@ -4,7 +4,7 @@
   <!-- Your search results go here -->
   <div class="search-results">
     <div class="portfolio-items">
-      @if (searchResults(); as searchResults) { @for (hit of searchResults; track hit.objectID; let i = $index) {
+      @defer (when searchResults()) { @for (hit of searchResults(); track hit.objectID; let i = $index) {
       <span class="portfolio-item" (click)="selectItem(hit.slug)">
         <figure>
           <span class="item-body">
@@ -27,7 +27,9 @@
           }
         </figure>
       </span>
-      } }
+      } } @loading(minimum 200ms) {
+      <div>Searching...</div>
+      }
     </div>
   </div>
 </div>
