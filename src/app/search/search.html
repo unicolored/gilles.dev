@@ -2,9 +2,9 @@
   <app-search-input (search)="performSearch($event)" (inputChange)="onInputChange($event)"></app-search-input>
 
   <!-- Your search results go here -->
-  <div class="search-results" *ngIf="searchResults.length">
+  <div class="search-results">
     <div class="portfolio-items">
-      @for (hit of searchResults; track hit.objectID; let i = $index) {
+      @if (searchResults(); as searchResults) { @for (hit of searchResults; track hit.objectID; let i = $index) {
       <span class="portfolio-item" (click)="selectItem(hit.slug)">
         <figure>
           <span class="item-body">
@@ -20,14 +20,14 @@
             />
             }
           </span>
-          @if (hit.title || hit.description) {
+          {{hit.type}} {{hit.status}} @if (hit.title || hit.description) {
           <figcaption class="prose dark:prose-invert">
             {{hit.title}} - {{ portfolioService.stripTags(hit.description) }}
           </figcaption>
           }
         </figure>
       </span>
-      }
+      } }
     </div>
   </div>
 </div>
