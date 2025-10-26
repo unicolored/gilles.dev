@@ -17,7 +17,7 @@ export class MeilisearchService {
         limit: 20,
       },
       queries: [
-        { indexUid: `${prefix}posts`, q: q },
+        { indexUid: `${prefix}posts`, q: q, filter: ['status = publish'] },
         { indexUid: `${prefix}attachments`, q: q },
       ],
     });
