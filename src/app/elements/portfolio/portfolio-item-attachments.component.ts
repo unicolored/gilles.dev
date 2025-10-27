@@ -14,7 +14,7 @@ import { Attachment } from '../../interfaces/post';
         @for (attachment of attachments; track attachment['@id']; let i = $index) {
           <div class="attachment my-1">
             <img
-              [ngSrc]="attachment.cloudinaryId"
+              [ngSrc]="'cloud-coelis/prod/' + attachment.cloudinaryId"
               fill
               [priority]="i < 2"
               placeholder

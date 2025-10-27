@@ -36,7 +36,7 @@ export type ModeEnum = 'light' | 'dark' | null;
         .set(PageIdSlugEnum.contact, GillesDevMetas[PageIdSlugEnum.contact]),
     },
     { provide: PRECONNECT_CHECK_BLOCKLIST, useValue: 'https://www.gilles.dev' },
-    provideImgixLoader('https://res.cloudinary.com/unicolored/cloud-coelis/prod/'),
+    provideImgixLoader('https://res.cloudinary.com/unicolored/'),
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',

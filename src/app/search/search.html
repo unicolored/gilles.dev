@@ -5,8 +5,15 @@
   <!-- Your search results go here -->
   <div class="search-results">
     <div class="portfolio-items">
-      @defer (when searchResults()) { @for (hit of searchResults(); track hit.objectID; let i = $index) {
-      <span class="portfolio-item" (click)="selectItem(hit.slug)">
+      @defer (when searchResultsFormatted()) { @for (hit of searchResultsFormatted(); track hit.objectID; let i =
+      $index) {
+      <a
+        (click)="selectItem(hit.slug)"
+        class="portfolio-item"
+        [href]="['/portfolio', 'item', hit.slug]"
+        [routerLink]="['/portfolio', 'item', hit.slug]"
+        animate.enter="enter-animation"
+      >
         <figure>
           <span class="item-body">
             @if (hit.cloudinaryId) {
@@ -17,17 +24,17 @@
               placeholder
               sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
               [alt]="hit.title"
-              [title]="hit.title"
+              [title]="hit.title + ' / ' + hit.type + ' / ' + hit.status"
             />
             }
           </span>
-          {{hit.type}} {{hit.status}} @if (hit.title || hit.description) {
-          <figcaption class="prose dark:prose-invert">
-            {{hit.title}} - {{ portfolioService.stripTags(hit.description) }}
+          @if (hit.title || hit.description) {
+          <figcaption class="prose dark:prose-invert mt-2">
+            {{hit.title}} @if (hit.description) { - {{ portfolioService.stripTags(hit.description) }} }
           </figcaption>
           }
         </figure>
-      </span>
+      </a>
       } } @loading(minimum 200ms) {
       <div>Searching...</div>
       }

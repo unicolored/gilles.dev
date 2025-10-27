@@ -34,7 +34,7 @@ import { PortfolioService } from '../../services/portfolio.service';
                   <figure>
                     <span class="item-body">
                       <img
-                        [ngSrc]="item.post.cloudinaryId"
+                        [ngSrc]="'cloud-coelis/prod/' + item.post.cloudinaryId"
                         fill
                         [priority]="priority() && i <= 4"
                         placeholder
@@ -60,7 +60,7 @@ import { PortfolioService } from '../../services/portfolio.service';
                   <figure>
                     <span class="item-body">
                       <img
-                        [ngSrc]="item.post.cloudinaryId"
+                        [ngSrc]="'cloud-coelis/prod/' + item.post.cloudinaryId"
                         fill
                         [priority]="priority() && i <= 4"
                         placeholder
