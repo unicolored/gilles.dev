@@ -50,10 +50,14 @@
         </main>
       </div>
 
-      @if (attachmentsComputed(); as attachments) {
-        <section>
-          <gilles-nx-portfolio-item-attachments [attachments]="attachments"></gilles-nx-portfolio-item-attachments>
-        </section>
+      @defer (on viewport) {
+        @if (attachmentsComputed(); as attachments) {
+          <section>
+            <gilles-nx-portfolio-item-attachments [attachments]="attachments"></gilles-nx-portfolio-item-attachments>
+          </section>
+        }
+      } @placeholder (minimum 500ms) {
+        <section>...</section>
       }
     </article>
   }

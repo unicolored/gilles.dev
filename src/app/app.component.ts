@@ -11,6 +11,8 @@ import { GillesDevMetas } from '../environments/metas';
 import { ApiService } from './services/api.service';
 import { PageIdSlugEnum, PageIdSlugKeys } from './app.global';
 import { PortfolioService } from './services/portfolio.service';
+import { Store } from './store';
+import { MeilisearchService } from './services/meilisearch.service';
 
 export type ModeEnum = 'light' | 'dark' | null;
 
@@ -19,7 +21,9 @@ export type ModeEnum = 'light' | 'dark' | null;
   providers: [
     HttpService,
     ApiService,
+    Store,
     PortfolioService,
+    MeilisearchService,
     {
       provide: WEB_PAGE_METAS_MAP,
       useValue: new Map<PageIdSlugKeys, WebPageMetas>()

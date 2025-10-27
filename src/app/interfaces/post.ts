@@ -1,5 +1,20 @@
 import { ApiItem } from './common';
 
+export interface MeiliPost {
+  content: string;
+  objectID: string;
+  published_at: number;
+  title: string;
+  name: string;
+  slug: string;
+  cloudinaryId: string;
+  description: string;
+  type: string;
+  status: 'draft' | 'pending' | 'publish';
+}
+
+export type MeiliAttachment = MeiliPost;
+
 export interface Category extends ApiItem {
   name: string;
   description: string;

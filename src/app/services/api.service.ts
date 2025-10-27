@@ -3,12 +3,12 @@ import { HttpService } from 'ngx-services';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { Post, PostCollection, PostList } from '../interfaces/post';
-import { catchError, of, forkJoin, lastValueFrom, map } from 'rxjs';
+import { catchError, of, forkJoin, lastValueFrom, map, shareReplay } from 'rxjs';
 import { PortfolioListSlug } from '../app.global';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { SseClient } from 'ngx-sse-client';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ApiService {
   private http = inject(HttpService);
   private httpClient = inject(HttpClient);
@@ -18,14 +18,16 @@ export class ApiService {
   public getList(slug: string): Observable<Partial<PostList>> {
     const emptyList = { slug: slug, description: '', items: [] };
     // Load static data during prerendering
-    return this.http
-      .get<Partial<PostList>[]>('/assets/portfolio-data.json')
-      .pipe(map((lists) => lists.find((list) => list.slug === slug) || emptyList));
+    return this.http.get<Partial<PostList>[]>('/assets/portfolio-data.json').pipe(
+      shareReplay(1),
+      map((lists) => lists.find((list) => list.slug === slug) || emptyList),
+    );
   }
 
   public getListApi(slug: string): Observable<Partial<PostList>> {
     const endpoint = environment.endpoints.api;
     return this.http.get<PostList>(`${endpoint}/post_lists/${slug}`).pipe(
+      shareReplay(1),
       catchError((error) => {
         //console.error(`Error fetching list for slug ${slug}:`, error);
         console.error(`Error fetching list for slug ${slug}`, error);

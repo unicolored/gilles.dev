@@ -1,15 +1,16 @@
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { forkJoin, lastValueFrom } from 'rxjs';
+import { forkJoin, lastValueFrom, Observable } from 'rxjs';
 import { PortfolioListSlug } from '../app.global';
 import { ApiService } from './api.service';
+import { PostList } from '../interfaces/post';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class PortfolioService {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly apiService = inject(ApiService);
 
-  async getLists() {
+  getListsObs(): Observable<Partial<PostList>[]> {
     const portfolioSlugs = Object.values(PortfolioListSlug);
     let listRequests;
     if (isPlatformServer(this.platformId)) {
@@ -17,7 +18,11 @@ export class PortfolioService {
     } else {
       listRequests = portfolioSlugs.map((slug) => this.apiService.getListApi(slug));
     }
-    const combined$ = forkJoin(listRequests);
+    return forkJoin(listRequests);
+  }
+
+  async getLists() {
+    const combined$ = this.getListsObs();
 
     // Fetch the data
     const lists = await lastValueFrom(combined$);

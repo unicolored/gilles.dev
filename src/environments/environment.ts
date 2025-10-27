@@ -5,6 +5,7 @@ export const environment = {
     api: 'https://myadmin.unicolo.red/api',
     backend: 'https://myadmin.unicolo.red',
     hub: 'https://localhost:9999',
+    meilisearch: 'http://127.0.0.1:32771/',
   },
   topic: {
     secret: '!ChangeThisMercureHubJWTSecretKey!',
@@ -12,6 +13,10 @@ export const environment = {
     remote: 'https://remote.com/portfolio/', // Note: I added a trailing slash for topic construction
   },
   unicoloredBaseUrl: 'http://localhost:4125',
+  meilisearch: {
+    indice_prefix: 'myadmin_dev_',
+    search_key: '!ChangeMe!',
+  },
   algolia: {
     appId: 'SUXVC6B2YE',
     apiKey: 'c6b499da6c9903652a2b4cc7a281d7b9',
