@@ -1,14 +1,15 @@
-import { Component, inject, signal } from '@angular/core';
+import { AfterViewInit, Component, computed, inject, signal, viewChild } from '@angular/core';
 import { SearchInput } from '../search-input/search-input';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { MeilisearchService } from '../services/meilisearch.service';
 import { Hits } from 'meilisearch';
 import { MeiliAttachment, MeiliPost } from '../interfaces/post';
 import { PortfolioService } from '../services/portfolio.service';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-search',
-  imports: [CommonModule, SearchInput, NgOptimizedImage],
+  imports: [CommonModule, SearchInput, NgOptimizedImage, RouterModule],
   templateUrl: `search.html`,
   styles: `
     .search-page {
@@ -20,16 +21,53 @@ import { PortfolioService } from '../services/portfolio.service';
     }
   `,
 })
-export class Search {
+export class Search implements AfterViewInit {
   searchResults = signal<Hits<MeiliPost | MeiliAttachment>>([]);
+  searchResultsFormatted = computed(() => {
+    const results = this.searchResults();
+
+    return results.map((r) => {
+      console.log(r.cloudinaryId);
+      r.cloudinaryId = 'cloud-coelis/prod/' + r.cloudinaryId;
+      if (r.cloudinaryId.includes('Videos/')) {
+        r.cloudinaryId = 'video/upload/' + r.cloudinaryId.replace('mp4', 'jpg');
+      }
+
+      return r;
+    });
+  });
   isLoading = signal<boolean>(false);
   error = signal<string | null>(null);
   private meilisearchService = inject(MeilisearchService);
   portfolioService = inject(PortfolioService);
+  private activatedRoute = inject(ActivatedRoute);
+  private router = inject(Router);
+  searchInput = viewChild.required<SearchInput>(SearchInput);
+
+  ngAfterViewInit() {
+    this.activatedRoute.queryParams.subscribe((params) => {
+      const query = params['query'];
+      if (query) {
+        this.searchInput().searchQuery = query;
+        this.doSearch(query);
+      } else {
+        this.searchInput().searchQuery = '';
+        this.searchResults.set([]);
+      }
+    });
+  }
 
   performSearch(query: string) {
+    this.router.navigate([], {
+      relativeTo: this.activatedRoute,
+      queryParams: { query },
+      queryParamsHandling: 'merge',
+    });
+  }
+
+  private doSearch(query: string) {
     this.searchResults.set([]);
-    console.log('performSearch query', query);
+    console.log('doSearch query', query);
     if (!query.trim()) return;
 
     this.isLoading.set(true);
