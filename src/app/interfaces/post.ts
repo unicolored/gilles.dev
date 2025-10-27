@@ -5,7 +5,7 @@ export interface MeiliPost {
   objectID: string;
   published_at: number;
   title: string;
-  // TODO: add the properties below
+  name: string;
   slug: string;
   cloudinaryId: string;
   description: string;
