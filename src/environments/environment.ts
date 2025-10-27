@@ -5,7 +5,7 @@ export const environment = {
     api: 'https://myadmin.unicolo.red/api',
     backend: 'https://myadmin.unicolo.red',
     hub: 'https://localhost:9999',
-    meilisearch: 'https://meilisearch.unicolo.red',
+    meilisearch: 'http://127.0.0.1:32771/',
   },
   topic: {
     secret: '!ChangeThisMercureHubJWTSecretKey!',
@@ -15,7 +15,7 @@ export const environment = {
   unicoloredBaseUrl: 'http://localhost:4125',
   meilisearch: {
     indice_prefix: 'myadmin_dev_',
-    search_key: 'a26bbc7143fda5790a80193258f0280dffd1de8f5b1bc65df0de9dd030e2abe8',
+    search_key: '!ChangeMe!',
   },
   algolia: {
     appId: 'SUXVC6B2YE',
