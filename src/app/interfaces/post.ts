@@ -13,7 +13,9 @@ export interface MeiliPost {
   status: 'draft' | 'pending' | 'publish';
 }
 
-export type MeiliAttachment = MeiliPost;
+export interface MeiliAttachment extends MeiliPost {
+  mimeType: string;
+}
 
 export interface Category extends ApiItem {
   name: string;
