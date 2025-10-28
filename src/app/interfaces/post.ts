@@ -44,7 +44,7 @@ export interface Post extends Partial<ApiItem> {
   listItems: PostListItemRef[];
   createdAt: string;
   attachments: {
-    member: Attachment[]
+    member: Attachment[];
   };
 }
 
