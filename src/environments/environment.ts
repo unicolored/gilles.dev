@@ -2,8 +2,8 @@ export const environment = {
   maintenance: false,
   endpoints: {
     _self: 'http://localhost:4242',
-    api: 'https://myadmin.unicolo.red/api',
-    backend: 'https://myadmin.unicolo.red',
+    api: 'https://localhost:9999/api',
+    backend: 'https://localhost:9999',
     hub: 'https://localhost:9999',
     meilisearch: 'http://127.0.0.1:32771/',
   },
