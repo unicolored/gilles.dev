@@ -31,6 +31,10 @@ export class RemoteComponent implements OnInit {
     }
     return items;
   });
+  firstSlug = computed<string>(() => {
+    const items = this.items();
+    return items[0].slug;
+  });
 
   async ngOnInit() {
     const lists = await this.portfolioService.getLists();
@@ -44,7 +48,10 @@ export class RemoteComponent implements OnInit {
       this.remotePin.set(remotePin);
       const obs$ = await this.apiService.connectRemote(remotePin, 'connect');
       obs$.subscribe({
-        next: (res) => console.log('Remote connected', res),
+        next: (res) => {
+          console.log('Remote connected', res);
+          this.selectSlug(this.firstSlug());
+        },
         error: (err) => console.error('Connect error:', err),
       });
     } else {

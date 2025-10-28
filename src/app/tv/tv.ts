@@ -1,15 +1,17 @@
 import { Component, computed, inject, OnInit, OnDestroy, signal, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
-import { Post, PostList } from '../interfaces/post';
+import { Attachment, Post, PostList } from '../interfaces/post';
 import { PortfolioService } from '../services/portfolio.service';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
 import { environment } from '../../environments/environment';
 import { ApiService } from '../services/api.service';
 import { Subscription } from 'rxjs';
+import { Store } from '../store';
+import { QRCodeComponent } from 'angularx-qrcode';
 
 @Component({
   selector: 'app-tv-component',
-  imports: [RouterLink, NgOptimizedImage],
+  imports: [RouterLink, NgOptimizedImage, QRCodeComponent],
   templateUrl: `tv.html`,
   encapsulation: ViewEncapsulation.None,
 })
@@ -36,48 +38,78 @@ export class TvComponent implements OnInit, OnDestroy {
     }
     return items;
   });
-  currentIndex = signal(0);
-  private autoSlideInterval!: NodeJS.Timeout;
-  public readonly portfolioService = inject(PortfolioService);
-  private readonly apiService = inject(ApiService);
-  private platformId = inject(PLATFORM_ID);
-  private sseSub: Subscription | null = null;
+  currentItems = computed<Post[]>(() => {
+    const items = this.items();
+    const currentIndex = this.currentIndex();
+    const slug = this.slug();
 
-  async ngOnInit(): Promise<void> {
-    const lists = await this.portfolioService.getLists();
-    if (lists) {
-      this.lists.set(lists);
+    if (items.length === 0) {
+      return [];
     }
 
-    const remotePinParam = this.route.snapshot.paramMap.get('pin');
-    const remotePin = remotePinParam ? parseInt(remotePinParam, 10) : null;
-    if (remotePin && !isNaN(remotePin)) {
-      this.remotePin.set(remotePin);
-      // this.apiService.connectRemote(remotePin, 'connect').subscribe({
-      //   next: () => console.log('Remote connected'),
-      //   error: (err) => console.error('Connect error:', err),
-      // });
+    if (slug) {
+      return items.filter((i) => i.slug === slug);
+    }
+
+    return [items[currentIndex]];
+  });
+  itemAttachments = signal<Attachment[]>([]);
+  attachments = computed(() => {
+    const items = this.currentItems();
+    return items[0].attachments;
+  });
+  currentAttachments = computed<Attachment[]>(() => {
+    const attachments = this.attachments();
+    if (attachments.length === 0) {
+      return [];
+    }
+    const currentAttachmentIndex = this.currentAttachmentIndex();
+    return [attachments[currentAttachmentIndex]];
+  });
+  currentIndex = signal(0);
+  currentAttachmentIndex = signal(0);
+  private autoSlideInterval!: NodeJS.Timeout;
+  private autoAttachmentInterval!: NodeJS.Timeout;
+  public readonly portfolioService = inject(PortfolioService);
+  private readonly apiService = inject(ApiService);
+  private readonly store = inject(Store);
+  private readonly router = inject(Router);
+  private platformId = inject(PLATFORM_ID);
+  private sseSub: Subscription | null = null;
+  remoteUrl = signal<string | null>(null);
+
+  async ngOnInit(): Promise<void> {
+    const slugParam = this.route.snapshot.paramMap.get('slug');
+    const slugUrl = slugParam ?? null;
+    this.slug.set(slugUrl);
+
+    // const remotePinParam = this.route.snapshot.paramMap.get('pin');
+    // const remotePin = remotePinParam ? parseInt(remotePinParam, 10) : null;
+    this.remoteUrl.set(this.store.getRemoteUrl());
+    if (this.store.getRemotePin()) {
+      this.remotePin.set(this.store.getRemotePin());
       if (isPlatformBrowser(this.platformId)) {
-        this.subscribeToMercure(remotePin);
+        console.log('Subscribe to remote', this.store.getRemotePin());
+        this.subscribeToMercure(this.store.getRemotePin());
       }
     } else {
       //this.remotePin.set(localPin);  // Set local pin if no remote
     }
 
-    //const topic = `https://remote.com/portfolio/${this.remotePin()}`;
-    // console.log(topic);
-    // const endpoint = `https://myadmin.unicolo.red/.well-known/mercure?topic=${encodeURIComponent('https://remote.com/portfolio/4252')}`;
-    // const eventSource = new EventSource(endpoint);
-    //
-    // // The callback will be called every time an update is published
-    // eventSource.onmessage = function({ data }) {
-    //   console.log('🟡', data);
-    // };
+    this.store.getPortfolioService().subscribe((lists) => {
+      this.lists.set(lists);
+    });
 
     // Start auto-looping every 5 seconds (adjust as needed)
-    this.autoSlideInterval = setInterval(() => {
-      this.next();
-    }, 5000);
+    if (!slugUrl) {
+      this.autoSlideInterval = setInterval(() => {
+        this.next();
+      }, 7000);
+    } else {
+      this.autoAttachmentInterval = setInterval(() => {
+        this.nextAttachment();
+      }, 5000);
+    }
   }
 
   private subscribeToMercure(pin: number) {
@@ -94,7 +126,9 @@ export class TvComponent implements OnInit, OnDestroy {
         const data = JSON.parse(messageEvent.data) as { action: string; slug: string };
         if (data.slug) {
           console.log('Received slug:', data.slug);
-          this.slug.set(data.slug); // Or selectedItem.set(data.slug)
+          //this.slug.set(data.slug);
+          this.router.navigate(['/tv', data.slug]);
+          this.slug.set(data.slug);
         }
       },
       error: (err) => console.error('SSE error:', err),
@@ -106,17 +140,24 @@ export class TvComponent implements OnInit, OnDestroy {
     this.currentIndex.update((i) => (i + 1) % this.items().length);
   }
 
-  prev() {
-    this.currentIndex.update((i) => (i - 1 + this.items().length) % this.items().length);
+  nextAttachment() {
+    this.currentAttachmentIndex.update((i) => (i + 1) % this.attachments().length);
   }
 
-  goToSlide(index: number) {
-    this.currentIndex.set(index);
-  }
+  // prev() {
+  //   this.currentIndex.update((i) => (i - 1 + this.items().length) % this.items().length);
+  // }
+  //
+  // goToSlide(index: number) {
+  //   this.currentIndex.set(index);
+  // }
 
   ngOnDestroy() {
     if (this.autoSlideInterval) {
       clearInterval(this.autoSlideInterval);
+    }
+    if (this.autoAttachmentInterval) {
+      clearInterval(this.autoAttachmentInterval);
     }
     if (this.sseSub) {
       this.sseSub.unsubscribe();

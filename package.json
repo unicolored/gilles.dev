@@ -1,6 +1,6 @@
 {
   "name": "gilles.dev",
-  "version": "0.25.0",
+  "version": "0.26.0",
   "type": "module",
   "scripts": {
     "generate-portfolio-data": "ts-node -P script/tsconfig.script.json script/generate-portfolio-data.ts",
@@ -30,6 +30,7 @@
     "@angular/platform-browser-dynamic": "^20.3.3",
     "@angular/platform-server": "^20.3.3",
     "@angular/router": "^20.3.3",
+    "@angular/service-worker": "^20.3.3",
     "@angular/ssr": "^20.3.3",
     "@tailwindcss/postcss": "^4.1.13",
     "@tailwindcss/typography": "^0.5.16",

@@ -2,7 +2,7 @@ import { Component, computed, inject, OnInit, PLATFORM_ID, signal, ViewEncapsula
 import { PageIdSlugEnum } from '../../app.global';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { SharedNgComponentsModule } from '../shared-ng-components.module';
 import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.component';
@@ -10,7 +10,6 @@ import { Post, PostList } from '../../interfaces/post';
 import { ApiService } from '../../services/api.service';
 import { Subscription } from 'rxjs';
 import { QRCodeComponent } from 'angularx-qrcode';
-import { PortfolioService } from '../../services/portfolio.service';
 import { Store } from '../../store';
 
 @Component({
@@ -18,7 +17,20 @@ import { Store } from '../../store';
   imports: [CommonModule, RouterModule, SharedNgComponentsModule, PortfolioHitsComponent, QRCodeComponent],
   template: `
     <main class="portfolio--container prose dark:prose-invert lg:prose-xl max-w-none">
-      <h1>Portfolio</h1>
+      <h1 class="flex gap-3">
+        <svg
+          [routerLink]="['/tv']"
+          class="hover:fill-accent dark:hover:fill-dark-accent fill-dark-bkg dark:fill-bkg inline-block w-7 cursor-pointer"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 640 640"
+        >
+          <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+          <path
+            d="M96 160L96 400L544 400L544 160L96 160zM32 160C32 124.7 60.7 96 96 96L544 96C579.3 96 608 124.7 608 160L608 400C608 435.3 579.3 464 544 464L96 464C60.7 464 32 435.3 32 400L32 160zM192 512L448 512C465.7 512 480 526.3 480 544C480 561.7 465.7 576 448 576L192 576C174.3 576 160 561.7 160 544C160 526.3 174.3 512 192 512z"
+          />
+        </svg>
+        Portfolio
+      </h1>
 
       @defer (when listsAreReady()) {
         @if (lists(); as lists) {
@@ -66,12 +78,10 @@ export class PortfolioComponent implements OnInit {
   pageId = PageIdSlugEnum.portfolio;
 
   private readonly router = inject(Router);
-  private readonly route = inject(ActivatedRoute);
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
   private apiService = inject(ApiService);
   private platformId = inject(PLATFORM_ID);
-  private readonly portfolioService = inject(PortfolioService);
   private readonly store = inject(Store);
 
   remoteUrl = signal<string | null>(null);
@@ -137,15 +147,12 @@ export class PortfolioComponent implements OnInit {
       this.webPageService.setMetas(this.webPageMetasMap.get(this.pageId), environment.endpoints?.['_self']);
     }
 
-    const randomNum = Math.floor(Math.random() * 9000) + 1000; // 1000-9999
-    const localPin = randomNum;
-    this.remoteUrl.set(`${environment.endpoints._self}/remote/${localPin}`);
+    this.remoteUrl.set(this.store.getRemoteUrl());
 
     if (isPlatformBrowser(this.platformId)) {
-      this.subscribeToMercure(localPin);
+      this.subscribeToMercure(this.store.getRemotePin());
     }
 
-    //const lists = await this.portfolioService.getLists();
     this.store.getPortfolioService().subscribe((lists) => {
       this.lists.set(lists);
       this.listsAreReady.set(true);
@@ -156,34 +163,11 @@ export class PortfolioComponent implements OnInit {
     const topic = `https://remote.com/portfolio/${pin}`;
     console.log(`Subscribing to ${topic}`);
     const endpoint = `${environment.endpoints.hub}/.well-known/mercure?topic=${encodeURIComponent(topic)}`;
-    console.log('endpoint', endpoint);
-    const obs$ = await this.apiService.sseEvent(endpoint);
-    this.sseSub = obs$.subscribe((event) => {
-      console.log(event);
-      // if (event.type === 'error') {
-      //   const errorEvent = event as SseErrorEvent;
-      //   console.error(errorEvent.error, errorEvent.message);
-      // } else {
-      //   const messageEvent = event as MessageEvent;
-      //   console.info(`SSE request with type "${messageEvent.type}" and data "${messageEvent.data}"`);
-      //   this.router.navigate(['tv', pin]);
-      // }
+    const obs$ = this.apiService.sseEvent(endpoint);
+    this.sseSub = obs$.subscribe(() => {
       this.router.navigate(['tv', pin]);
     });
   }
-
-  // async onItemSelected(itemId: string) {
-  //   const pin = this.remotePin();
-  //   console.log('SELECTED', itemId);
-  //   if (pin && this.isRemoteActive()) {
-  //     // Only publish if remote (screen2)
-  //     const obs$ = await this.apiService.connectRemote(pin, 'selectItem', itemId);
-  //     obs$.subscribe({
-  //       next: () => console.log('Published selection:', itemId),
-  //       error: (err) => console.error('Publish error:', err),
-  //     });
-  //   }
-  // }
 
   ngOnDestroy() {
     if (this.sseSub) this.sseSub.unsubscribe();
