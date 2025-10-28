@@ -22,4 +22,14 @@ export class MeilisearchService {
       ],
     });
   }
+
+  findSlug(slug: string) {
+    const prefix = environment.meilisearch.indice_prefix;
+
+    return client.multiSearch({
+      queries: [
+        { indexUid: `${prefix}posts`, q: slug, filter: ['status = publish'] },
+      ],
+    });
+  }
 }
