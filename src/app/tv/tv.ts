@@ -6,10 +6,12 @@ import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
 import { environment } from '../../environments/environment';
 import { ApiService } from '../services/api.service';
 import { Subscription } from 'rxjs';
+import { Store } from '../store';
+import { QRCodeComponent } from 'angularx-qrcode';
 
 @Component({
   selector: 'app-tv-component',
-  imports: [RouterLink, NgOptimizedImage],
+  imports: [RouterLink, NgOptimizedImage, QRCodeComponent],
   templateUrl: `tv.html`,
   encapsulation: ViewEncapsulation.None,
 })
@@ -36,48 +38,52 @@ export class TvComponent implements OnInit, OnDestroy {
     }
     return items;
   });
+  currentItems = computed<Post[]>(() => {
+    const items = this.items();
+    const currentIndex = this.currentIndex();
+    const slug = this.slug();
+
+    if (items.length === 0) {
+      return [];
+    }
+
+    if (slug) {
+      return items.filter((i) => i.slug === slug);
+    }
+
+    return [items[currentIndex]];
+  });
   currentIndex = signal(0);
   private autoSlideInterval!: NodeJS.Timeout;
   public readonly portfolioService = inject(PortfolioService);
   private readonly apiService = inject(ApiService);
+  private readonly store = inject(Store);
   private platformId = inject(PLATFORM_ID);
   private sseSub: Subscription | null = null;
+  remoteUrl = signal<string | null>(null);
 
   async ngOnInit(): Promise<void> {
-    const lists = await this.portfolioService.getLists();
-    if (lists) {
+    this.store.getPortfolioService().subscribe((lists) => {
       this.lists.set(lists);
-    }
+    });
 
-    const remotePinParam = this.route.snapshot.paramMap.get('pin');
-    const remotePin = remotePinParam ? parseInt(remotePinParam, 10) : null;
-    if (remotePin && !isNaN(remotePin)) {
-      this.remotePin.set(remotePin);
-      // this.apiService.connectRemote(remotePin, 'connect').subscribe({
-      //   next: () => console.log('Remote connected'),
-      //   error: (err) => console.error('Connect error:', err),
-      // });
+    // const remotePinParam = this.route.snapshot.paramMap.get('pin');
+    // const remotePin = remotePinParam ? parseInt(remotePinParam, 10) : null;
+    this.remoteUrl.set(this.store.getRemoteUrl());
+    if (this.store.getRemotePin()) {
+      this.remotePin.set(this.store.getRemotePin());
       if (isPlatformBrowser(this.platformId)) {
-        this.subscribeToMercure(remotePin);
+        console.log('Subscribe to remote', this.store.getRemotePin());
+        this.subscribeToMercure(this.store.getRemotePin());
       }
     } else {
       //this.remotePin.set(localPin);  // Set local pin if no remote
     }
 
-    //const topic = `https://remote.com/portfolio/${this.remotePin()}`;
-    // console.log(topic);
-    // const endpoint = `https://myadmin.unicolo.red/.well-known/mercure?topic=${encodeURIComponent('https://remote.com/portfolio/4252')}`;
-    // const eventSource = new EventSource(endpoint);
-    //
-    // // The callback will be called every time an update is published
-    // eventSource.onmessage = function({ data }) {
-    //   console.log('🟡', data);
-    // };
-
     // Start auto-looping every 5 seconds (adjust as needed)
     this.autoSlideInterval = setInterval(() => {
       this.next();
-    }, 5000);
+    }, 7000);
   }
 
   private subscribeToMercure(pin: number) {

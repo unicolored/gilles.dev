@@ -88,6 +88,11 @@ export const appRoutes: Route[] = [
     loadComponent: () => import('./tv/tv').then((m) => m.TvComponent),
   },
   {
+    path: 'tv',
+    pathMatch: 'full',
+    loadComponent: () => import('./tv/tv').then((m) => m.TvComponent),
+  },
+  {
     path: '**',
     loadComponent: () => import('./pages/not-found/not-found.component').then((m) => m.NotFoundComponent),
   },

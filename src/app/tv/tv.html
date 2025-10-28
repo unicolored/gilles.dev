@@ -2,7 +2,7 @@
   <div class="portfolio-tv relative">
     <!-- Carousel wrapper with flex and transition -->
     <div class="relative flex h-[82vh] flex-col">
-      @if (items(); as items) { @for (item of items.slice(0,1); track item.slug; let i = $index) { @if
+      @if (currentItems(); as items) { @for (item of items.slice(0,1); track item.slug; let i = $index) { @if
       (item.cloudinaryId) {
       <!-- Each slide takes full width -->
       <div class="bg-bkg dark:bg-dark-bkg absolute flex h-[84vh] w-full">
@@ -13,10 +13,16 @@
           [routerLink]="['/portfolio', 'item', item.slug]"
         >
           <figure class="m-0 flex h-full w-full flex-col items-center justify-center">
+            @if (item.attachments.length > 1) {
+            <span
+              class="bg-primary text-dark-primary absolute right-3 bottom-3 z-20 flex h-7 w-7 items-center justify-center rounded-4xl"
+              >{{item.attachments.length}}</span
+            >
+            }
             <span class="item-body relative flex h-full w-full grow items-center">
               <!-- Adjust height as needed -->
               <img
-                [ngSrc]="item.cloudinaryId"
+                [ngSrc]="'cloud-coelis/prod/'+item.cloudinaryId"
                 fill
                 [priority]="i <= 4"
                 placeholder
@@ -65,4 +71,18 @@
       } }
     </div>
   </div>
+
+  <hr />
+  @if (remoteUrl(); as url) {
+  <div class="m-12 flex flex-col items-center justify-center text-center">
+    <qrcode
+      [qrdata]="url"
+      [width]="256"
+      [errorCorrectionLevel]="'M'"
+      [colorDark]="'#274d74ff'"
+      [colorLight]="'#ffffff'"
+    ></qrcode>
+    {{ url }}
+  </div>
+  }
 </main>
