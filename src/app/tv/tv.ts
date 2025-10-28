@@ -130,6 +130,8 @@ export class TvComponent implements OnInit, OnDestroy {
           //this.slug.set(data.slug);
           this.router.navigate(['/tv', data.slug]);
           this.slug.set(data.slug);
+          clearInterval(this.autoSlideInterval);
+          clearInterval(this.autoAttachmentInterval);
         }
       },
       error: (err) => console.error('SSE error:', err),
