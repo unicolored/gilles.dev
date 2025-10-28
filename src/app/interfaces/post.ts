@@ -7,9 +7,11 @@ export interface MeiliPost {
   title: string;
   name: string;
   slug: string;
+  markdown: string;
   cloudinaryId: string;
   description: string;
   type: string;
+  attachments: string[];
   status: 'draft' | 'pending' | 'publish';
 }
 
@@ -41,7 +43,9 @@ export interface Post extends Partial<ApiItem> {
   mainCategory: Category;
   listItems: PostListItemRef[];
   createdAt: string;
-  attachments: Attachment[];
+  attachments: {
+    member: Attachment[]
+  };
 }
 
 export interface PostListItem<T = Post> extends Partial<ApiItem> {
