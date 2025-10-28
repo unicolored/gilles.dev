@@ -2,8 +2,7 @@
   <div class="portfolio-tv relative">
     <!-- Carousel wrapper with flex and transition -->
     <div class="relative flex h-[82vh] flex-col">
-      @if (currentItems(); as items) { @for (item of items.slice(0,1); track item.slug; let i = $index) { @if
-      (item.cloudinaryId) {
+      @if (currentItems(); as item) { @if (item && item.cloudinaryId) {
       <!-- Each slide takes full width -->
       <div class="tv-wrapper">
         <a
@@ -20,20 +19,21 @@
             >
             }
             <span class="item-body relative flex h-full w-full grow items-center">
-              @if (currentAttachments(); as attachments) { @for (attachment of attachments.slice(0,1); track
-              attachment.cloudinaryId; let i = $index) {
+              @if (currentAttachments(); as attachments) { @if (attachments.length > 0) { @for (attachment of
+              attachments.slice(0,1); track attachment["@id"]; let j = $index) { @if (attachment &&
+              attachment.cloudinaryId) {
               <img
                 animate.enter="enter-animation-attachment"
                 [ngSrc]="'cloud-coelis/prod/'+attachment.cloudinaryId"
                 fill
-                [priority]="i <= 4"
+                [priority]="j <= 4"
                 placeholder
                 sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
                 [alt]="item.title"
                 [title]="item.title"
                 class="object-contain"
               />
-              }}
+              }}}}
             </span>
             @if (item.description) {
             <figcaption class="prose dark:prose-invert mb-8 p-4 text-center">
@@ -43,7 +43,7 @@
           </figure>
         </a>
       </div>
-      } } }
+      } }
     </div>
   </div>
 

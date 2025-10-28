@@ -27,7 +27,7 @@ import { PortfolioService } from '../../services/portfolio.service';
 
       <div class="portfolio-items">
         @if (itemsComputed(); as items) {
-          @for (item of items; track item.post.slug; let i = $index) {
+          @for (item of items; track item.post['@id']; let i = $index) {
             @if (item.post.cloudinaryId) {
               @if (isRemoteActive()) {
                 <span class="portfolio-item" (click)="selectItem(item.post.slug)">
