@@ -25,6 +25,7 @@ export interface Category extends ApiItem {
 
 export interface Attachment extends ApiItem {
   cloudinaryId: string;
+  title: string;
   name: string;
   slug: string;
 }
