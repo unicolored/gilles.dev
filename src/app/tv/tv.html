@@ -5,7 +5,7 @@
       @if (currentItems(); as items) { @for (item of items.slice(0,1); track item.slug; let i = $index) { @if
       (item.cloudinaryId) {
       <!-- Each slide takes full width -->
-      <div class="bg-bkg dark:bg-dark-bkg absolute flex h-[84vh] w-full">
+      <div class="tv-wrapper">
         <a
           animate.enter="enter-animation"
           class="w-full"
@@ -20,9 +20,11 @@
             >
             }
             <span class="item-body relative flex h-full w-full grow items-center">
-              <!-- Adjust height as needed -->
+              @if (currentAttachments(); as attachments) { @for (attachment of attachments.slice(0,1); track
+              attachment.cloudinaryId; let i = $index) {
               <img
-                [ngSrc]="'cloud-coelis/prod/'+item.cloudinaryId"
+                animate.enter="enter-animation-attachment"
+                [ngSrc]="'cloud-coelis/prod/'+attachment.cloudinaryId"
                 fill
                 [priority]="i <= 4"
                 placeholder
@@ -31,6 +33,7 @@
                 [title]="item.title"
                 class="object-contain"
               />
+              }}
             </span>
             @if (item.description) {
             <figcaption class="prose dark:prose-invert mb-8 p-4 text-center">
@@ -42,37 +45,8 @@
       </div>
       } } }
     </div>
-
-    <div class="hidden">
-      <!-- Navigation buttons (optional, for manual control) -->
-      <button
-        class="absolute top-1/2 left-0 -translate-y-1/2 transform rounded-full bg-white/50 p-2 transition hover:bg-white/70 dark:bg-black/50 dark:hover:bg-black/70"
-        (click)="prev()"
-      >
-        ←
-      </button>
-      <button
-        class="absolute top-1/2 right-0 -translate-y-1/2 transform rounded-full bg-white/50 p-2 transition hover:bg-white/70 dark:bg-black/50 dark:hover:bg-black/70"
-        (click)="next()"
-      >
-        →
-      </button>
-    </div>
-
-    <!-- Indicators (optional dots for current slide) -->
-    <div class="absolute bottom-4 left-1/2 flex hidden -translate-x-1/2 transform space-x-2">
-      @if (items(); as items) { @for (item of items; track $index; let idx = $index) {
-      <span
-        class="h-3 w-3 cursor-pointer rounded-full transition"
-        [class.bg-gray-400]="currentIndex() !== idx"
-        [class.bg-blue-500]="currentIndex() === idx"
-        (click)="goToSlide(idx)"
-      ></span>
-      } }
-    </div>
   </div>
 
-  <hr />
   @if (remoteUrl(); as url) {
   <div class="m-12 flex flex-col items-center justify-center text-center">
     <qrcode

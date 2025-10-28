@@ -1,7 +1,7 @@
 import { Component, computed, inject, OnInit, OnDestroy, signal, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
-import { Post, PostList } from '../interfaces/post';
+import { Attachment, Post, PostList } from '../interfaces/post';
 import { PortfolioService } from '../services/portfolio.service';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
 import { environment } from '../../environments/environment';
 import { ApiService } from '../services/api.service';
@@ -53,19 +53,35 @@ export class TvComponent implements OnInit, OnDestroy {
 
     return [items[currentIndex]];
   });
+  itemAttachments = signal<Attachment[]>([]);
+  attachments = computed(() => {
+    const items = this.currentItems();
+    return items[0].attachments;
+  });
+  currentAttachments = computed<Attachment[]>(() => {
+    const attachments = this.attachments();
+    if (attachments.length === 0) {
+      return [];
+    }
+    const currentAttachmentIndex = this.currentAttachmentIndex();
+    return [attachments[currentAttachmentIndex]];
+  });
   currentIndex = signal(0);
+  currentAttachmentIndex = signal(0);
   private autoSlideInterval!: NodeJS.Timeout;
+  private autoAttachmentInterval!: NodeJS.Timeout;
   public readonly portfolioService = inject(PortfolioService);
   private readonly apiService = inject(ApiService);
   private readonly store = inject(Store);
+  private readonly router = inject(Router);
   private platformId = inject(PLATFORM_ID);
   private sseSub: Subscription | null = null;
   remoteUrl = signal<string | null>(null);
 
   async ngOnInit(): Promise<void> {
-    this.store.getPortfolioService().subscribe((lists) => {
-      this.lists.set(lists);
-    });
+    const slugParam = this.route.snapshot.paramMap.get('slug');
+    const slugUrl = slugParam ?? null;
+    this.slug.set(slugUrl);
 
     // const remotePinParam = this.route.snapshot.paramMap.get('pin');
     // const remotePin = remotePinParam ? parseInt(remotePinParam, 10) : null;
@@ -80,10 +96,20 @@ export class TvComponent implements OnInit, OnDestroy {
       //this.remotePin.set(localPin);  // Set local pin if no remote
     }
 
+    this.store.getPortfolioService().subscribe((lists) => {
+      this.lists.set(lists);
+    });
+
     // Start auto-looping every 5 seconds (adjust as needed)
-    this.autoSlideInterval = setInterval(() => {
-      this.next();
-    }, 7000);
+    if (!slugUrl) {
+      this.autoSlideInterval = setInterval(() => {
+        this.next();
+      }, 7000);
+    } else {
+      this.autoAttachmentInterval = setInterval(() => {
+        this.nextAttachment();
+      }, 5000);
+    }
   }
 
   private subscribeToMercure(pin: number) {
@@ -100,7 +126,9 @@ export class TvComponent implements OnInit, OnDestroy {
         const data = JSON.parse(messageEvent.data) as { action: string; slug: string };
         if (data.slug) {
           console.log('Received slug:', data.slug);
-          this.slug.set(data.slug); // Or selectedItem.set(data.slug)
+          //this.slug.set(data.slug);
+          this.router.navigate(['/tv', data.slug]);
+          this.slug.set(data.slug);
         }
       },
       error: (err) => console.error('SSE error:', err),
@@ -112,17 +140,24 @@ export class TvComponent implements OnInit, OnDestroy {
     this.currentIndex.update((i) => (i + 1) % this.items().length);
   }
 
-  prev() {
-    this.currentIndex.update((i) => (i - 1 + this.items().length) % this.items().length);
+  nextAttachment() {
+    this.currentAttachmentIndex.update((i) => (i + 1) % this.attachments().length);
   }
 
-  goToSlide(index: number) {
-    this.currentIndex.set(index);
-  }
+  // prev() {
+  //   this.currentIndex.update((i) => (i - 1 + this.items().length) % this.items().length);
+  // }
+  //
+  // goToSlide(index: number) {
+  //   this.currentIndex.set(index);
+  // }
 
   ngOnDestroy() {
     if (this.autoSlideInterval) {
       clearInterval(this.autoSlideInterval);
+    }
+    if (this.autoAttachmentInterval) {
+      clearInterval(this.autoAttachmentInterval);
     }
     if (this.sseSub) {
       this.sseSub.unsubscribe();

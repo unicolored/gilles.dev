@@ -8,6 +8,8 @@
 @import './styles/portfolio.css';
 @import './styles/page.css';
 @import './styles/search.css';
+@import './styles/tv.css';
+@import './styles/animation.css';
 
 body {
   cursor: default;
@@ -66,20 +68,4 @@ a {
 b,
 strong {
   @apply text-accent dark:text-dark-accent;
-}
-
-.enter-animation {
-  animation: slide-fade 5s;
-}
-
-@keyframes slide-fade {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
