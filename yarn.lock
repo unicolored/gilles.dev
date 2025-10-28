@@ -853,6 +853,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@angular/service-worker@npm:^20.3.3":
+  version: 20.3.7
+  resolution: "@angular/service-worker@npm:20.3.7"
+  dependencies:
+    tslib: "npm:^2.3.0"
+  peerDependencies:
+    "@angular/core": 20.3.7
+    rxjs: ^6.5.3 || ^7.4.0
+  bin:
+    ngsw-config: ngsw-config.js
+  checksum: 10c0/d2873c4d8a09979427a80ad92dbc3abb61352e15becd6584197718e3d59af464c1258ff7eb35a0bdbb2d0f791dd20f717c9e16bed8d62d90c8804b21842964c7
+  languageName: node
+  linkType: hard
+
 "@angular/ssr@npm:^20.3.3":
   version: 20.3.3
   resolution: "@angular/ssr@npm:20.3.3"
@@ -7356,6 +7370,7 @@ __metadata:
     "@angular/platform-browser-dynamic": "npm:^20.3.3"
     "@angular/platform-server": "npm:^20.3.3"
     "@angular/router": "npm:^20.3.3"
+    "@angular/service-worker": "npm:^20.3.3"
     "@angular/ssr": "npm:^20.3.3"
     "@cloudinary/ng": "npm:^2.1.2"
     "@cloudinary/url-gen": "npm:^1.21.0"
