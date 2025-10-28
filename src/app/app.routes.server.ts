@@ -44,8 +44,12 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Client,
   },
   {
-    path: 'tv/:pin',
-    renderMode: RenderMode.Client,
+    path: 'tv/:slug',
+    renderMode: RenderMode.Prerender,
+    getPrerenderParams: async () => {
+      const apiService = inject(ApiService);
+      return await apiService.loadPortfolioItemSlugs();
+    },
   },
   {
     path: '**',

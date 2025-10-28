@@ -83,7 +83,7 @@ export const appRoutes: Route[] = [
     loadComponent: () => import('./remote/remote.component').then((m) => m.RemoteComponent),
   },
   {
-    path: 'tv/:pin',
+    path: 'tv/:slug',
     pathMatch: 'full',
     loadComponent: () => import('./tv/tv').then((m) => m.TvComponent),
   },
