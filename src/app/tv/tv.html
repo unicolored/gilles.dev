@@ -12,10 +12,10 @@
           [routerLink]="['/portfolio', 'item', item.slug]"
         >
           <figure class="m-0 flex h-full w-full flex-col items-center justify-center">
-            @if (item.attachments.length > 1) {
+            @if (item.attachments.member.length > 1) {
             <span
               class="bg-primary text-dark-primary absolute right-3 bottom-3 z-20 flex h-7 w-7 items-center justify-center rounded-4xl"
-              >{{item.attachments.length}}</span
+              >{{item.attachments.member.length}}</span
             >
             }
             <span class="item-body relative flex h-full w-full grow items-center">
