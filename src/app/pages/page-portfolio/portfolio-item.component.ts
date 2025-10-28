@@ -52,12 +52,13 @@ export class PortfolioItemComponent implements OnInit {
     const featured = post?.cloudinaryId;
 
     const attachments = post?.attachments;
+    console.log(attachments);
 
-    if (!attachments || attachments.length < 1) {
+    if (!attachments || attachments.member.length < 1) {
       return;
     }
 
-    return attachments.filter((a) => a.cloudinaryId !== featured);
+    return attachments.member.filter((a) => a.cloudinaryId !== featured);
   });
 
   public apiService = inject(ApiService);
