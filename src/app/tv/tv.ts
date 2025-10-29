@@ -38,25 +38,25 @@ export class TvComponent implements OnInit, OnDestroy {
     }
     return items;
   });
-  currentItems = computed<Post[]>(() => {
+  currentItems = computed<Post | null>(() => {
     const items = this.items();
     const currentIndex = this.currentIndex();
     const slug = this.slug();
 
     if (items.length === 0) {
-      return [];
+      return null;
     }
 
     if (slug) {
-      return items.filter((i) => i.slug === slug);
+      return items.filter((i) => i.slug === slug)[0];
     }
 
-    return [items[currentIndex]];
+    return items[currentIndex];
   });
   itemAttachments = signal<Attachment[]>([]);
-  attachments = computed(() => {
-    const items = this.currentItems();
-    return items[0].attachments;
+  attachments = computed<Attachment[]>(() => {
+    const item = this.currentItems();
+    return item?.attachments ?? [];
   });
   currentAttachments = computed<Attachment[]>(() => {
     const attachments = this.attachments();
@@ -108,7 +108,7 @@ export class TvComponent implements OnInit, OnDestroy {
     } else {
       this.autoAttachmentInterval = setInterval(() => {
         this.nextAttachment();
-      }, 5000);
+      }, 12000);
     }
   }
 

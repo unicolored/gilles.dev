@@ -34,7 +34,7 @@ import { Store } from '../../store';
 
       @defer (when listsAreReady()) {
         @if (lists(); as lists) {
-          @for (list of lists; track list.slug; let i = $index) {
+          @for (list of lists; track list['@id']; let i = $index) {
             <section>
               <gilles-nx-portfolio-hits
                 [title]="list.description"

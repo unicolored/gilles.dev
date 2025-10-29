@@ -7,9 +7,11 @@ export interface MeiliPost {
   title: string;
   name: string;
   slug: string;
+  markdown: string;
   cloudinaryId: string;
   description: string;
   type: string;
+  attachments: string[];
   status: 'draft' | 'pending' | 'publish';
 }
 
@@ -24,6 +26,7 @@ export interface Category extends ApiItem {
 }
 
 export interface Attachment extends ApiItem {
+  '@id': string;
   cloudinaryId: string;
   title: string;
   name: string;

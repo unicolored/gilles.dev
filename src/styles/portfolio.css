@@ -1,5 +1,5 @@
 .portfolio-items {
-  @apply grid items-start gap-7 md:grid-cols-2 xl:grid-cols-3;
+  @apply 6xl:grid-cols-3 grid items-start gap-7 md:grid-cols-2;
 }
 
 .portfolio-item {

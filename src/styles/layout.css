@@ -2,7 +2,7 @@
   & {
     display: grid;
     margin: 0 auto;
-    @apply grid-cols-[1%_1fr_1fr_1fr_1%] sm:grid-cols-[12px_1fr_1fr_1fr_12px] lg:grid-cols-[10%_1fr_1fr_1fr_10%];
+    @apply grid-cols-[1%_1fr_1fr_1fr_1%] sm:grid-cols-[12px_1fr_1fr_1fr_12px] lg:grid-cols-[10%_1fr_1fr_1fr_10%] xl:grid-cols-[3%_1fr_1fr_1fr_3%];
 
     grid-template-rows: 2px 100px auto auto;
     height: 100vh;
