@@ -64,7 +64,8 @@ export class TvComponent implements OnInit, OnDestroy {
       return [];
     }
     const currentAttachmentIndex = this.currentAttachmentIndex();
-    return [attachments[currentAttachmentIndex]];
+    const currentAttachment = attachments[currentAttachmentIndex] ?? attachments[0];
+    return [currentAttachment];
   });
   currentIndex = signal(0);
   currentAttachmentIndex = signal(0);
