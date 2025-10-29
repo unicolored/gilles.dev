@@ -56,7 +56,6 @@ export class TvComponent implements OnInit, OnDestroy {
   itemAttachments = signal<Attachment[]>([]);
   attachments = computed<Attachment[]>(() => {
     const item = this.currentItems();
-    console.log(item);
     return item?.attachments ?? [];
   });
   currentAttachments = computed<Attachment[]>(() => {
@@ -64,7 +63,6 @@ export class TvComponent implements OnInit, OnDestroy {
     if (attachments.length === 0) {
       return [];
     }
-    console.log(attachments);
     const currentAttachmentIndex = this.currentAttachmentIndex();
     return [attachments[currentAttachmentIndex]];
   });
@@ -131,8 +129,6 @@ export class TvComponent implements OnInit, OnDestroy {
           //this.slug.set(data.slug);
           this.router.navigate(['/tv', data.slug]);
           this.slug.set(data.slug);
-          clearInterval(this.autoSlideInterval);
-          clearInterval(this.autoAttachmentInterval);
         }
       },
       error: (err) => console.error('SSE error:', err),
