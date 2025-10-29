@@ -54,9 +54,10 @@ export class TvComponent implements OnInit, OnDestroy {
     return items[currentIndex];
   });
   itemAttachments = signal<Attachment[]>([]);
-  attachments = computed(() => {
+  attachments = computed<Attachment[]>(() => {
     const item = this.currentItems();
-    return item?.attachments.member ?? [];
+    console.log(item);
+    return item?.attachments ?? [];
   });
   currentAttachments = computed<Attachment[]>(() => {
     const attachments = this.attachments();
