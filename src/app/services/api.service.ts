@@ -38,7 +38,9 @@ export class ApiService {
 
   public getItem(slug: string): Observable<Post> {
     const endpoint = environment.endpoints.api;
-    return this.http.get<Post>(`${endpoint}/posts/${slug}`);
+    const headers = new HttpHeaders();
+    headers.set('Accept', 'application/json');
+    return this.httpClient.get<Post>(`${endpoint}/posts/${slug}`, { headers });
   }
 
   public async loadPortfolioItemSlugs(): Promise<Record<string, string>[]> {
