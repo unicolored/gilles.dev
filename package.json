@@ -11,7 +11,7 @@
     "set-env": "ts-node src/environments/set-env.ts",
     "deploy": "ngh --dir=dist/gilles.dev/browser",
     "ng": "ng",
-    "dev": "ng serve --hmr false --host 0.0.0.0 --port 4242",
+    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 ng serve --hmr false --host 0.0.0.0 --port 4242 --ssl",
     "prebuild": "yarn set-env && ng build ngx-services && yarn generate-portfolio-data",
     "build": "ng build --configuration production --base-href \"/\"",
     "watch": "ng build --watch --configuration development",
