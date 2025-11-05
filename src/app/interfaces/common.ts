@@ -3,6 +3,19 @@ export interface ApiItem {
   '@type': string;
 }
 
+export interface PostMainCategory extends ApiItem {
+  name: string;
+  slug: string;
+  "@context"?: string;
+}
+
+export interface PostAttachment extends ApiItem {
+  cloudinaryId: string;
+  name: string;
+  slug: string;
+  "@context"?: string;
+}
+
 export interface Slug {
   slug: string;
 }
