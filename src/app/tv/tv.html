@@ -37,7 +37,7 @@
             </span>
             @if (item.description) {
             <figcaption class="prose dark:prose-invert mb-8 p-4 text-center">
-              {{ portfolioService.stripTags(item.description) }}
+              {{ apiService.stripTags(item.description) }}
             </figcaption>
             }
           </figure>

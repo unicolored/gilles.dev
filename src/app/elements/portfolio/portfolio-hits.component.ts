@@ -1,8 +1,8 @@
 import { Component, computed, inject, input, output, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { PortfolioService } from '../../services/portfolio.service';
 import { PostListItem } from '../../interfaces/api-postList';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'gilles-nx-portfolio-hits',
@@ -45,7 +45,7 @@ import { PostListItem } from '../../interfaces/api-postList';
                     </span>
                     @if (item.post.description) {
                       <figcaption class="prose dark:prose-invert">
-                        {{ portfolioService.stripTags(item.post.description) }}
+                        {{ apiService.stripTags(item.post.description) }}
                       </figcaption>
                     }
                   </figure>
@@ -71,7 +71,7 @@ import { PostListItem } from '../../interfaces/api-postList';
                     </span>
                     @if (item.post.description) {
                       <figcaption class="prose dark:prose-invert">
-                        {{ portfolioService.stripTags(item.post.description) }}
+                        {{ apiService.stripTags(item.post.description) }}
                       </figcaption>
                     }
                   </figure>
@@ -85,7 +85,7 @@ import { PostListItem } from '../../interfaces/api-postList';
                   </span>
                   @if (item.post.description) {
                     <figcaption class="prose dark:prose-invert">
-                      {{ portfolioService.stripTags(item.post.description) }}
+                      {{ apiService.stripTags(item.post.description) }}
                     </figcaption>
                   }
                 </figure>
@@ -99,6 +99,7 @@ import { PostListItem } from '../../interfaces/api-postList';
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioHitsComponent {
+  public apiService = inject(ApiService);
   title = input<string>();
   subtitle = input<string>();
   priority = input<boolean>(false);
@@ -106,7 +107,6 @@ export class PortfolioHitsComponent {
   selectedItem = input<string | null>();
   isRemoteActive = input<boolean>();
   itemSelected = output<string>();
-  public readonly portfolioService = inject(PortfolioService);
 
   items = input<PostListItem[] | undefined>([]);
   //       url: `f_webp,q_auto,w_600,c_fill,ar_16:9/${publicId}.webp`,

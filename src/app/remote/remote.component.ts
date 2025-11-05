@@ -1,9 +1,9 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
-import { PortfolioService } from '../services/portfolio.service';
 import { NgOptimizedImage } from '@angular/common';
 import { PostList, PostListItemPost } from '../interfaces/api-postList';
+import { Store } from '../store';
 
 @Component({
   selector: 'app-remote',
@@ -15,7 +15,7 @@ export class RemoteComponent implements OnInit {
   remotePin = signal<number | null>(null); // Use number for pin
   isRemoteActive = computed<boolean>(() => !!this.remotePin());
   private readonly apiService = inject(ApiService);
-  public readonly portfolioService = inject(PortfolioService);
+  private readonly store = inject(Store);
   lists = signal<Partial<PostList>[]>([]);
   items = computed<PostListItemPost[]>(() => {
     const lists = this.lists();
@@ -42,18 +42,9 @@ export class RemoteComponent implements OnInit {
     if (remotePin && !isNaN(remotePin)) {
       this.remotePin.set(remotePin);
 
-      const lists = await this.portfolioService.getLists();
-      if (lists) {
+      this.store.getPostListItemPostArray().subscribe(async (lists) => {
         this.lists.set(lists);
-        this.selectSlug(this.firstSlug());
-      }
-
-      const obs$ = await this.apiService.connectRemote(remotePin, 'connect');
-      obs$.subscribe({
-        next: (res) => {
-          console.log('Remote connected', res);
-        },
-        error: (err) => console.error('Connect error:', err),
+        await this.selectSlug(this.firstSlug());
       });
     }
   }
