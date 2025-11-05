@@ -6,10 +6,11 @@ import { Hits } from 'meilisearch';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MeiliAttachment, MeiliPost } from '../interfaces/meili-post';
 import { ApiService } from '../services/api.service';
+import { Three404Component } from '../elements/three-404/three-404.component';
 
 @Component({
   selector: 'app-search',
-  imports: [CommonModule, SearchInput, NgOptimizedImage, RouterModule],
+  imports: [CommonModule, SearchInput, NgOptimizedImage, RouterModule, Three404Component],
   templateUrl: `search.html`,
   styles: `
     .search-page {
@@ -43,6 +44,7 @@ export class Search implements AfterViewInit {
   private router = inject(Router);
   searchInput = viewChild.required<SearchInput>(SearchInput);
   public apiService = inject(ApiService);
+  public noResultsFound = signal<boolean | null>(null);
 
   ngAfterViewInit() {
     this.activatedRoute.queryParams.subscribe((params) => {
@@ -53,6 +55,7 @@ export class Search implements AfterViewInit {
       } else {
         this.searchInput().searchQuery = '';
         this.searchResults.set([]);
+        this.noResultsFound.set(null);
       }
     });
   }
@@ -67,8 +70,10 @@ export class Search implements AfterViewInit {
 
   private doSearch(query: string) {
     this.searchResults.set([]);
-    console.log('doSearch query', query);
-    if (!query.trim()) return;
+    if (!query.trim()) {
+      this.noResultsFound.set(null);
+      return;
+    }
 
     this.isLoading.set(true);
     this.error.set(null);
@@ -101,6 +106,11 @@ export class Search implements AfterViewInit {
         if (filtered) {
           console.log('set...');
           this.searchResults.set(filtered);
+          if (filtered.length === 0) {
+            this.noResultsFound.set(true);
+          } else {
+            this.noResultsFound.set(false);
+          }
         }
       })
       .catch((error) => {

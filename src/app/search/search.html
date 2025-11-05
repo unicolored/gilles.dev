@@ -4,9 +4,18 @@
 
   <!-- Your search results go here -->
   <div class="search-results">
+    @defer (when searchResultsFormatted()) { @if (searchResultsFormatted(); as searchResults) { @if (noResultsFound()
+    === true) {
+    <div class="flex flex-col items-center justify-center">
+      No results @defer (on timer(5s); prefetch on timer(3s)) {
+      <gilles-nx-three-404></gilles-nx-three-404>
+      } @error {
+      <!-- nothing to do -->
+      }
+    </div>
+    } @else {
     <div class="portfolio-items">
-      @defer (when searchResultsFormatted()) { @for (hit of searchResultsFormatted(); track hit.objectID; let i =
-      $index) {
+      @for (hit of searchResults; track hit.objectID; let i = $index) {
       <a
         (click)="selectItem(hit.slug)"
         class="portfolio-item"
@@ -35,9 +44,10 @@
           }
         </figure>
       </a>
-      } } @loading(minimum 200ms) {
-      <div>Searching...</div>
       }
     </div>
+    } } } @loading(minimum 200ms) {
+    <div>Searching...</div>
+    }
   </div>
 </div>

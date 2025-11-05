@@ -6,6 +6,7 @@
     (keyup.enter)="onSearch()"
     placeholder="Search..."
     class="search-input"
+    #searchInput
   />
   <button (click)="onSearch()" [disabled]="!searchQuery" class="search-button">Search</button>
 </div>
