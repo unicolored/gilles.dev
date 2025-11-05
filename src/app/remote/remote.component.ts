@@ -37,25 +37,24 @@ export class RemoteComponent implements OnInit {
   });
 
   async ngOnInit() {
-    const lists = await this.portfolioService.getLists();
-    if (lists) {
-      this.lists.set(lists);
-    }
-
     const remotePinParam = this.route.snapshot.paramMap.get('pin');
     const remotePin = remotePinParam ? parseInt(remotePinParam, 10) : null;
     if (remotePin && !isNaN(remotePin)) {
       this.remotePin.set(remotePin);
+
+      const lists = await this.portfolioService.getLists();
+      if (lists) {
+        this.lists.set(lists);
+        this.selectSlug(this.firstSlug());
+      }
+
       const obs$ = await this.apiService.connectRemote(remotePin, 'connect');
       obs$.subscribe({
         next: (res) => {
           console.log('Remote connected', res);
-          this.selectSlug(this.firstSlug());
         },
         error: (err) => console.error('Connect error:', err),
       });
-    } else {
-      //this.remotePin.set(localPin);  // Set local pin if no remote
     }
   }
 
