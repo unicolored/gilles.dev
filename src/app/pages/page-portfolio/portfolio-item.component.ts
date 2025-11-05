@@ -8,7 +8,6 @@ import { environment } from '../../../environments/environment';
 import { ApiService } from '../../services/api.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { GillesDevCorporation, GillesDevWebSite } from '../../../environments/schema';
-import { map } from 'rxjs';
 import { Post } from '../../interfaces/api-post';
 import { PostAttachment } from '../../interfaces/common';
 
