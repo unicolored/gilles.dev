@@ -19,9 +19,9 @@
             >
             }
             <span class="item-body relative flex h-full w-full grow items-center">
-              @if (currentAttachments(); as attachments) { @if (attachments.length > 0 && attachments.slice(0,1)) { @for
-              (attachment of attachments.slice(0,1); track attachment["@id"]; let j = $index) { @if (attachment &&
-              attachment.cloudinaryId) {
+              @if (currentAttachments(); as attachments) { @if (attachments && attachments.length > 0 &&
+              attachments.slice(0,1)) { @for (attachment of attachments.slice(0,1); track attachment["@id"]; let j =
+              $index) { @if (attachment && attachment.cloudinaryId) {
               <img
                 animate.enter="enter-animation-attachment"
                 [ngSrc]="'cloud-coelis/prod/'+attachment.cloudinaryId"

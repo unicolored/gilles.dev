@@ -43,7 +43,7 @@ export class TvComponent implements OnInit, OnDestroy {
     const currentIndex = this.currentIndex();
     const slug = this.slug();
 
-    if (items.length === 0) {
+    if (items && items.length === 0) {
       return null;
     }
 
@@ -60,7 +60,7 @@ export class TvComponent implements OnInit, OnDestroy {
   });
   currentAttachments = computed<PostAttachment[]>(() => {
     const attachments = this.attachments();
-    if (attachments.length === 0) {
+    if (attachments && attachments.length === 0) {
       return [];
     }
     const currentAttachmentIndex = this.currentAttachmentIndex();

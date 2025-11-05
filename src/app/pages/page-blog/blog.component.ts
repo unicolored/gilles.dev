@@ -39,7 +39,7 @@ import { PostCollection } from '../../interfaces/api-blogPost';
                   {{ post.createdAt | date: 'medium' }}
                 </p>
               }
-              @if (post.listItems.member.length > 0) {
+              @if (post.listItems.member && post.listItems.member.length > 0) {
                 <div class="mt-2">
                   <p class="text-sm font-medium text-gray-700">Appears in:</p>
                   <ul class="list-inside list-disc text-sm text-gray-500">
