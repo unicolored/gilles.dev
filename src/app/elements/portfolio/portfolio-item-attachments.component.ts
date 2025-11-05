@@ -2,7 +2,7 @@ import { Component, inject, input, ViewEncapsulation } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { AppService } from '../../app.service';
 import { WordpressService } from 'ngx-services';
-import { Attachment } from '../../interfaces/post';
+import { PostAttachment } from '../../interfaces/common';
 
 @Component({
   selector: 'gilles-nx-portfolio-item-attachments',
@@ -31,7 +31,7 @@ import { Attachment } from '../../interfaces/post';
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioItemAttachmentsComponent {
-  attachments = input<Attachment[]>([]);
+  attachments = input<PostAttachment[]>([]);
 
   private appService = inject(AppService);
 }

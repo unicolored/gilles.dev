@@ -1,7 +1,8 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, signal, OnInit } from '@angular/core'; // Add OnInit
-import { Post, PostCollection } from '../../interfaces/post';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { Post } from '../../interfaces/api-post';
+import { PostCollection } from '../../interfaces/api-blogPost';
 
 @Component({
   standalone: true,
@@ -38,11 +39,11 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
                   {{ post.createdAt | date: 'medium' }}
                 </p>
               }
-              @if (post.listItems.length > 0) {
+              @if (post.listItems.member.length > 0) {
                 <div class="mt-2">
                   <p class="text-sm font-medium text-gray-700">Appears in:</p>
                   <ul class="list-inside list-disc text-sm text-gray-500">
-                    @for (item of post.listItems; track item['@id']) {
+                    @for (item of post.listItems.member; track item['@id']) {
                       <li>{{ item.postList.name }} ({{ item.postList.slug }})</li>
                     }
                   </ul>

@@ -1,8 +1,8 @@
 import { Component, computed, inject, input, output, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { Post, PostListItem } from '../../interfaces/post';
 import { PortfolioService } from '../../services/portfolio.service';
+import { PostListItem } from '../../interfaces/api-postList';
 
 @Component({
   selector: 'gilles-nx-portfolio-hits',
@@ -27,7 +27,7 @@ import { PortfolioService } from '../../services/portfolio.service';
 
       <div class="portfolio-items">
         @if (itemsComputed(); as items) {
-          @for (item of items; track item.post['@id']; let i = $index) {
+          @for (item of items; track item.post.slug; let i = $index) {
             @if (item.post.cloudinaryId) {
               @if (isRemoteActive()) {
                 <span class="portfolio-item" (click)="selectItem(item.post.slug)">
@@ -108,7 +108,7 @@ export class PortfolioHitsComponent {
   itemSelected = output<string>();
   public readonly portfolioService = inject(PortfolioService);
 
-  items = input<PostListItem[] | PostListItem<Partial<Post>>[] | undefined>([]);
+  items = input<PostListItem[] | undefined>([]);
   //       url: `f_webp,q_auto,w_600,c_fill,ar_16:9/${publicId}.webp`,
   itemsComputed = computed(() => {
     return this.items();

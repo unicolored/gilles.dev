@@ -6,11 +6,11 @@ import { Router, RouterModule } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { SharedNgComponentsModule } from '../shared-ng-components.module';
 import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.component';
-import { Post, PostList } from '../../interfaces/post';
 import { ApiService } from '../../services/api.service';
 import { Subscription } from 'rxjs';
 import { QRCodeComponent } from 'angularx-qrcode';
 import { Store } from '../../store';
+import { PostList, PostListItem } from '../../interfaces/api-postList';
 
 @Component({
   standalone: true,
@@ -92,57 +92,11 @@ export class PortfolioComponent implements OnInit {
 
   lists = signal<Partial<PostList>[]>([]);
   listsAreReady = signal<boolean>(false);
-  listsHolder: Partial<PostList<Partial<Post>>> = {
-    name: 'name?',
-    slug: 'slüg',
-    description: 'loading...',
-    items: [
-      {
-        post: {
-          title: '',
-          description: '...',
-          cloudinaryId: '',
-        },
-      },
-      {
-        post: {
-          title: '',
-          description: '...',
-          cloudinaryId: '',
-        },
-      },
-      {
-        post: {
-          title: '',
-          description: '...',
-          cloudinaryId: '',
-        },
-      },
-      {
-        post: {
-          title: '',
-          description: '...',
-          cloudinaryId: '',
-        },
-      },
-      {
-        post: {
-          title: '',
-          description: '...',
-          cloudinaryId: '',
-        },
-      },
-      {
-        post: {
-          title: '',
-          description: '...',
-          cloudinaryId: '',
-        },
-      },
-    ],
-  };
+  listsHolder!: Partial<PostList>;
 
   async ngOnInit() {
+    this.listsHolder = this.generatePlaceholderLists();
+
     if (this.webPageMetasMap.has(this.pageId)) {
       this.webPageService.setMetas(this.webPageMetasMap.get(this.pageId), environment.endpoints?.['_self']);
     }
@@ -171,5 +125,30 @@ export class PortfolioComponent implements OnInit {
 
   ngOnDestroy() {
     if (this.sseSub) this.sseSub.unsubscribe();
+  }
+
+  private generatePlaceholderLists(): Partial<PostList> {
+    const item: PostListItem = {
+      '@id': '',
+      '@type': '',
+      post: {
+        title: '',
+        slug: '',
+        status: '',
+        createdAt: '',
+      },
+    };
+
+    const items: PostListItem[] = [];
+    for (let i = 1; i <= 6; i++) {
+      items.push(item);
+    }
+
+    return {
+      name: 'name?',
+      slug: 'slüg',
+      description: 'loading...',
+      items,
+    };
   }
 }

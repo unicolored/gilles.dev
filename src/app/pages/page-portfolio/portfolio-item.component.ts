@@ -6,9 +6,11 @@ import { PageIdSlugEnum } from '../../app.global';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
 import { ApiService } from '../../services/api.service';
-import { Attachment, Post } from '../../interfaces/post';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { GillesDevCorporation, GillesDevWebSite } from '../../../environments/schema';
+import { map } from 'rxjs';
+import { Post } from '../../interfaces/api-post';
+import { PostAttachment } from '../../interfaces/common';
 
 @Component({
   selector: 'gilles-nx-portfolio-item',
@@ -47,18 +49,20 @@ export class PortfolioItemComponent implements OnInit {
     }
     return this.sanitizer.bypassSecurityTrustHtml(markdown);
   });
-  attachmentsComputed = computed<Attachment[] | undefined>(() => {
+  attachmentsComputed = computed<PostAttachment[] | undefined>(() => {
     const post = this.post();
     const featured = post?.cloudinaryId;
 
     const attachments = post?.attachments;
     console.log(attachments);
 
-    if (!attachments || attachments.length < 1) {
+    if (!attachments || attachments.member.length < 1) {
       return;
     }
 
-    return attachments.filter((a) => a.cloudinaryId !== featured);
+    console.log(attachments);
+
+    return attachments.member.filter((a) => a.cloudinaryId !== featured);
   });
 
   public apiService = inject(ApiService);

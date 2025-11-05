@@ -1,5 +1,5 @@
-import { Post } from "./api-post";
-import { ApiItem } from "./common";
+import { Post } from './api-post';
+import { ApiItem } from './common';
 
 export interface PostCollectionView extends ApiItem {
   first?: string;
@@ -13,4 +13,3 @@ export interface PostCollection extends ApiItem {
   member: Post[];
   view: PostCollectionView;
 }
-

@@ -3,7 +3,7 @@ import { inject } from '@angular/core';
 import { TransferState, makeStateKey } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { ApiService } from '../../services/api.service';
-import { PostCollection } from '../../interfaces/post';
+import { PostCollection } from '../../interfaces/api-blogPost';
 
 export const blogResolver: ResolveFn<Partial<PostCollection>> = (route) => {
   const apiService = inject(ApiService);

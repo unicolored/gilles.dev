@@ -1,50 +1,42 @@
 import { PostList } from './api-postList';
-import { ApiItem, PostAttachment, PostMainCategory } from './common';
+import { ApiItem, BasePost, PostAttachment } from './common';
 
-export interface Post {
-  title: string;
-  slug: string;
-  status: string;
-  mainCategory: PostMainCategory;
+export interface Post extends BasePost {
   listItems: ListItems;
-  description: string;
   attachments: PostAttachments;
-  createdAt: Date;
-  cloudinaryId: string;
 }
 
 interface PostAttachments extends ApiItem {
-  "@context": string;
+  '@context': string;
   totalItems: number;
   member: PostAttachment[];
   search: Search;
 }
 
 interface Search {
-  "@type": string;
+  '@type': string;
   template: string;
   variableRepresentation: string;
   mapping: Mapping[];
 }
 
 interface Mapping {
-  "@type": string;
+  '@type': string;
   variable: string;
   property: string;
   required: boolean;
 }
 
 interface ListItems extends ApiItem {
-  "@context": string;
+  '@context': string;
   totalItems: number;
   member: ListItem[];
   search: Search;
 }
 
 //export type SlimPostList = Omit<PostList, "description" | "items">;
-export type SlimPostList = ApiItem & Pick<PostList, "@context" | "name" | "slug">;
+export type SlimPostList = ApiItem & Pick<PostList, '@context' | 'name' | 'slug'>;
 
 interface ListItem extends ApiItem {
   postList: SlimPostList;
 }
-

@@ -16,4 +16,3 @@ export interface MeiliPost {
 export interface MeiliAttachment extends MeiliPost {
   mimeType: string;
 }
-

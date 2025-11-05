@@ -1,27 +1,17 @@
-import { ApiItem, PostAttachment, PostMainCategory } from './common';
+import { ApiItem, BasePost, PostAttachment } from './common';
 
 export interface PostList extends ApiItem {
-  "@context": string;
+  '@context': string;
   name: string;
   slug: string;
   description: string;
-  items: Item[];
+  items: PostListItem[];
 }
 
-interface Item extends ApiItem {
+export interface PostListItem extends ApiItem {
   post: PostListItemPost;
 }
 
-export interface PostListItemPost {
-  title: string;
-  slug: string;
-  status: string;
-  mainCategory: PostMainCategory;
-  description: string;
-  attachments: PostAttachment[];
-  createdAt: Date;
-  cloudinaryId: string;
-  contentMarkdown?: string;
+export interface PostListItemPost extends BasePost {
+  attachments?: PostAttachment[] | null;
 }
-
-
