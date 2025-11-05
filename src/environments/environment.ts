@@ -1,7 +1,7 @@
 export const environment = {
   maintenance: false,
   endpoints: {
-    _self: 'http://localhost:4242',
+    _self: 'https://localhost:4242',
     api: 'https://localhost:9999/api',
     backend: 'https://localhost:9999',
     hub: 'https://localhost:9999',

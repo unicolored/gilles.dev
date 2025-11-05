@@ -3,7 +3,7 @@ import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { forkJoin, lastValueFrom, Observable } from 'rxjs';
 import { PortfolioListSlug } from '../app.global';
 import { ApiService } from './api.service';
-import { PostList } from '../interfaces/post';
+import { PostList } from '../interfaces/api-postList';
 
 @Injectable({ providedIn: 'root' })
 export class PortfolioService {

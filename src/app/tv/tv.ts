@@ -1,5 +1,4 @@
 import { Component, computed, inject, OnInit, OnDestroy, signal, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
-import { Attachment, Post, PostList } from '../interfaces/post';
 import { PortfolioService } from '../services/portfolio.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
@@ -8,6 +7,8 @@ import { ApiService } from '../services/api.service';
 import { Subscription } from 'rxjs';
 import { Store } from '../store';
 import { QRCodeComponent } from 'angularx-qrcode';
+import { PostList, PostListItemPost } from '../interfaces/api-postList';
+import { PostAttachment } from '../interfaces/common';
 
 @Component({
   selector: 'app-tv-component',
@@ -20,10 +21,10 @@ export class TvComponent implements OnInit, OnDestroy {
   remotePin = signal<number | null>(null); // Use number for pin
   lists = signal<Partial<PostList>[]>([]);
   slug = signal<string | null>(null);
-  items = computed<Post[]>(() => {
+  items = computed<PostListItemPost[]>(() => {
     const lists = this.lists();
     const slug = this.slug();
-    const items: Post[] = [];
+    const items: PostListItemPost[] = [];
     if (lists) {
       lists.forEach((l) => {
         if (l.items) {
@@ -38,7 +39,7 @@ export class TvComponent implements OnInit, OnDestroy {
     }
     return items;
   });
-  currentItems = computed<Post | null>(() => {
+  currentItems = computed<PostListItemPost | null>(() => {
     const items = this.items();
     const currentIndex = this.currentIndex();
     const slug = this.slug();
@@ -53,12 +54,12 @@ export class TvComponent implements OnInit, OnDestroy {
 
     return items[currentIndex];
   });
-  itemAttachments = signal<Attachment[]>([]);
-  attachments = computed<Attachment[]>(() => {
+  itemAttachments = signal<PostAttachment[]>([]);
+  attachments = computed<PostAttachment[]>(() => {
     const item = this.currentItems();
     return item?.attachments ?? [];
   });
-  currentAttachments = computed<Attachment[]>(() => {
+  currentAttachments = computed<PostAttachment[]>(() => {
     const attachments = this.attachments();
     if (attachments.length === 0) {
       return [];

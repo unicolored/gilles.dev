@@ -2,7 +2,7 @@ import { Component, inject, input, ViewEncapsulation } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { AppService } from '../../app.service';
 import { WordpressService } from 'ngx-services';
-import { Attachment } from '../../interfaces/post';
+import { PostAttachment } from '../../interfaces/common';
 
 @Component({
   selector: 'gilles-nx-portfolio-item-attachments',
@@ -11,7 +11,7 @@ import { Attachment } from '../../interfaces/post';
   template: `
     @if (attachments(); as attachments) {
       <div class="portfolio-attachments">
-        @for (attachment of attachments; track attachment['@id']; let i = $index) {
+        @for (attachment of attachments; track attachment.slug; let i = $index) {
           <div class="attachment my-1">
             <img
               [ngSrc]="'cloud-coelis/prod/' + attachment.cloudinaryId"
@@ -31,7 +31,7 @@ import { Attachment } from '../../interfaces/post';
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioItemAttachmentsComponent {
-  attachments = input<Attachment[]>([]);
+  attachments = input<PostAttachment[]>([]);
 
   private appService = inject(AppService);
 }

@@ -1,6 +1,6 @@
 <div class="portfolio-items">
   @if (items(); as items) {
-    @for (item of items; track item['@id']; let i = $index) {
+    @for (item of items; track item.slug; let i = $index) {
       @if (item.cloudinaryId) {
         <span (click)="selectSlug(item.slug)" class="h-46 w-full">
           <figure class="m-0 flex h-full w-full flex-col items-center justify-center">

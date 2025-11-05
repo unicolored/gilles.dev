@@ -3,9 +3,9 @@ import { SearchInput } from '../search-input/search-input';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { MeilisearchService } from '../services/meilisearch.service';
 import { Hits } from 'meilisearch';
-import { MeiliAttachment, MeiliPost } from '../interfaces/post';
 import { PortfolioService } from '../services/portfolio.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { MeiliAttachment, MeiliPost } from '../interfaces/meili-post';
 
 @Component({
   selector: 'app-search',

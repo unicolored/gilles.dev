@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 import { PortfolioService } from './services/portfolio.service';
-import { Post } from './interfaces/post';
 import { environment } from '../environments/environment';
+import { PostListItemPost } from './interfaces/api-postList';
 
 // Define the data type (replace with your actual data structure)
 export interface YourDataType {
@@ -17,13 +17,13 @@ export interface YourDataType {
   providedIn: 'root', // Singleton service, persists cache app-wide
 })
 export class Store {
-  private cachedData$?: Observable<Partial<Post>[]>; // Cache holder
+  private cachedData$?: Observable<Partial<PostListItemPost>[]>; // Cache holder
   private http = inject(HttpClient);
   private portfolioService = inject(PortfolioService);
   private remotePin!: number;
   private remoteUrl!: string;
 
-  getPortfolioService(): Observable<Partial<Post>[]> {
+  getPortfolioService(): Observable<Partial<PostListItemPost>[]> {
     // Return cached data if it exists, avoiding new HTTP request
     if (!this.cachedData$) {
       this.cachedData$ = this.portfolioService.getListsObs().pipe(
@@ -48,9 +48,9 @@ export class Store {
     return this.remotePin;
   }
 
-  // setRemotePin(pin: number): void {
-  //   this.remotePin = pin;
-  // }
+  setRemotePin(pin: number): void {
+    this.remotePin = pin;
+  }
 
   getRemoteUrl() {
     if (this.remoteUrl) {

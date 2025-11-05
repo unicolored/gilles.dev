@@ -1,9 +1,9 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
-import { PostList, Post } from '../interfaces/post';
 import { PortfolioService } from '../services/portfolio.service';
 import { NgOptimizedImage } from '@angular/common';
+import { PostList, PostListItemPost } from '../interfaces/api-postList';
 
 @Component({
   selector: 'app-remote',
@@ -17,9 +17,9 @@ export class RemoteComponent implements OnInit {
   private readonly apiService = inject(ApiService);
   public readonly portfolioService = inject(PortfolioService);
   lists = signal<Partial<PostList>[]>([]);
-  items = computed<Post[]>(() => {
+  items = computed<PostListItemPost[]>(() => {
     const lists = this.lists();
-    const items: Post[] = [];
+    const items: PostListItemPost[] = [];
     if (lists) {
       lists.forEach((l) => {
         if (l.items) {

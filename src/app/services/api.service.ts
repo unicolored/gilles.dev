@@ -2,11 +2,13 @@ import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { HttpService } from 'ngx-services';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
-import { Post, PostCollection, PostList } from '../interfaces/post';
 import { catchError, of, forkJoin, lastValueFrom, map, shareReplay } from 'rxjs';
 import { PortfolioListSlug } from '../app.global';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { SseClient } from 'ngx-sse-client';
+import { PostList } from '../interfaces/api-postList';
+import { Post } from '../interfaces/api-post';
+import { PostCollection } from '../interfaces/api-blogPost';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -38,7 +40,9 @@ export class ApiService {
 
   public getItem(slug: string): Observable<Post> {
     const endpoint = environment.endpoints.api;
-    return this.http.get<Post>(`${endpoint}/posts/${slug}`);
+    const headers = new HttpHeaders();
+    headers.set('Accept', 'application/json');
+    return this.httpClient.get<Post>(`${endpoint}/posts/${slug}`, { headers });
   }
 
   public async loadPortfolioItemSlugs(): Promise<Record<string, string>[]> {
