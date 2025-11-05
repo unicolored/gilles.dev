@@ -17,10 +17,10 @@
     <div class="portfolio-items">
       @for (hit of searchResults; track hit.objectID; let i = $index) {
       <a
-        (click)="selectItem(hit.slug)"
+        (click)="selectItem(hit.slug, hit.postSlug)"
         class="portfolio-item"
-        [href]="['/portfolio', 'item', hit.slug]"
-        [routerLink]="['/portfolio', 'item', hit.slug]"
+        [href]="['/portfolio', 'item', hit.postSlug ?? hit.slug]"
+        [routerLink]="['/portfolio', 'item', hit.postSlug ?? hit.slug]"
         animate.enter="enter-animation"
       >
         <figure>
@@ -37,9 +37,9 @@
             />
             }
           </span>
-          @if (hit.title || hit.description) {
+          @if (hit.title || hit.description || hit.postTitle) {
           <figcaption class="prose dark:prose-invert mt-2">
-            {{hit.title}} @if (hit.description) { - {{ apiService.stripTags(hit.description) }} }
+            {{hit.postTitle || hit.title}} @if (hit.description) { - {{ apiService.stripTags(hit.description) }} }
           </figcaption>
           }
         </figure>

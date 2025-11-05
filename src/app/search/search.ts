@@ -28,7 +28,6 @@ export class Search implements AfterViewInit {
     const results = this.searchResults();
 
     return results.map((r) => {
-      console.log(r.cloudinaryId);
       r.cloudinaryId = 'cloud-coelis/prod/' + r.cloudinaryId;
       if (r.cloudinaryId.includes('Videos/')) {
         r.cloudinaryId = 'video/upload/' + r.cloudinaryId.replace('mp4', 'jpg');
@@ -82,7 +81,6 @@ export class Search implements AfterViewInit {
       .search(query)
       .then((response) => {
         // Assuming response.results is an array of search results
-        //const hits = response.results[0]?.hits as Hits<MeiliPost | MeiliAttachment>;
         const hits = response.hits as Hits<MeiliPost | MeiliAttachment>;
 
         const cloudinaryPostIds = hits
@@ -90,9 +88,7 @@ export class Search implements AfterViewInit {
             return h.type === 'post' ? h.cloudinaryId : null;
           })
           .filter((h) => h);
-        console.log(cloudinaryPostIds);
 
-        //const filtered = hits.filter(h => h.type === 'post' && !cloudinaryPostIds.includes(h.cloudinaryId));
         const filtered: Hits<MeiliPost | MeiliAttachment> = [];
         hits.forEach((h) => {
           if (h.type === 'post') {
@@ -102,9 +98,7 @@ export class Search implements AfterViewInit {
           }
         });
 
-        console.log(filtered);
         if (filtered) {
-          console.log('set...');
           this.searchResults.set(filtered);
           if (filtered.length === 0) {
             this.noResultsFound.set(true);
@@ -127,9 +121,9 @@ export class Search implements AfterViewInit {
   //   console.log('Input changed:', query);
   // }
 
-  selectItem(slug?: string) {
+  selectItem(slug?: string, postSlug?: string) {
     if (slug) {
-      console.log('TODO: selectItem', slug);
+      console.log('TODO: selectItem', slug, postSlug);
     }
   }
 }
