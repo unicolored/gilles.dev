@@ -10,6 +10,8 @@ export interface MeiliPost {
   description: string;
   type: string;
   attachments: string[];
+  postTitle?: string;
+  postSlug?: string;
   status: 'draft' | 'pending' | 'publish';
 }
 

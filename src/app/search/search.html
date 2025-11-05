@@ -4,14 +4,23 @@
 
   <!-- Your search results go here -->
   <div class="search-results">
+    @defer (when searchResultsFormatted()) { @if (searchResultsFormatted(); as searchResults) { @if (noResultsFound()
+    === true) {
+    <div class="flex flex-col items-center justify-center">
+      No results @defer (on timer(5s); prefetch on timer(3s)) {
+      <gilles-nx-three-404></gilles-nx-three-404>
+      } @error {
+      <!-- nothing to do -->
+      }
+    </div>
+    } @else {
     <div class="portfolio-items">
-      @defer (when searchResultsFormatted()) { @for (hit of searchResultsFormatted(); track hit.objectID; let i =
-      $index) {
+      @for (hit of searchResults; track hit.objectID; let i = $index) {
       <a
-        (click)="selectItem(hit.slug)"
+        (click)="selectItem(hit.slug, hit.postSlug)"
         class="portfolio-item"
-        [href]="['/portfolio', 'item', hit.slug]"
-        [routerLink]="['/portfolio', 'item', hit.slug]"
+        [href]="['/portfolio', 'item', hit.postSlug ?? hit.slug]"
+        [routerLink]="['/portfolio', 'item', hit.postSlug ?? hit.slug]"
         animate.enter="enter-animation"
       >
         <figure>
@@ -28,16 +37,17 @@
             />
             }
           </span>
-          @if (hit.title || hit.description) {
+          @if (hit.title || hit.description || hit.postTitle) {
           <figcaption class="prose dark:prose-invert mt-2">
-            {{hit.title}} @if (hit.description) { - {{ apiService.stripTags(hit.description) }} }
+            {{hit.postTitle || hit.title}} @if (hit.description) { - {{ apiService.stripTags(hit.description) }} }
           </figcaption>
           }
         </figure>
       </a>
-      } } @loading(minimum 200ms) {
-      <div>Searching...</div>
       }
     </div>
+    } } } @loading(minimum 200ms) {
+    <div>Searching...</div>
+    }
   </div>
 </div>

@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Output,
+  viewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -7,20 +15,22 @@ import { FormsModule } from '@angular/forms';
   templateUrl: `search-input.html`,
   encapsulation: ViewEncapsulation.None,
 })
-export class SearchInput {
+export class SearchInput implements AfterContentInit {
   searchQuery: string = '';
+  searchInput = viewChild.required<ElementRef<HTMLInputElement>>('searchInput');
   @Output() search = new EventEmitter<string>();
   @Output() inputChange = new EventEmitter<string>();
+
+  ngAfterContentInit(): void {
+    this.searchInput().nativeElement.focus();
+  }
 
   onSearchInput() {
     this.inputChange.emit(this.searchQuery);
   }
 
   onSearch() {
-    console.log('onSearch query', this.searchQuery);
-    if (this.searchQuery.trim()) {
-      this.search.emit(this.searchQuery.trim());
-    }
+    this.search.emit(this.searchQuery.trim());
   }
 
   clearSearch() {
