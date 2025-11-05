@@ -107,7 +107,7 @@ export class PortfolioComponent implements OnInit {
       this.subscribeToMercure(this.store.getRemotePin());
     }
 
-    this.store.getPortfolioService().subscribe((lists) => {
+    this.store.getPostListItemPostArray().subscribe((lists) => {
       this.lists.set(lists);
       this.listsAreReady.set(true);
     });

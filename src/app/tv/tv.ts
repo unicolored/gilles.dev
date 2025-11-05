@@ -1,5 +1,4 @@
 import { Component, computed, inject, OnInit, OnDestroy, signal, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
-import { PortfolioService } from '../services/portfolio.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
 import { environment } from '../../environments/environment';
@@ -44,7 +43,7 @@ export class TvComponent implements OnInit, OnDestroy {
     const currentIndex = this.currentIndex();
     const slug = this.slug();
 
-    if (items.length === 0) {
+    if (items && items.length === 0) {
       return null;
     }
 
@@ -61,7 +60,7 @@ export class TvComponent implements OnInit, OnDestroy {
   });
   currentAttachments = computed<PostAttachment[]>(() => {
     const attachments = this.attachments();
-    if (attachments.length === 0) {
+    if (attachments && attachments.length === 0) {
       return [];
     }
     const currentAttachmentIndex = this.currentAttachmentIndex();
@@ -72,8 +71,7 @@ export class TvComponent implements OnInit, OnDestroy {
   currentAttachmentIndex = signal(0);
   private autoSlideInterval!: NodeJS.Timeout;
   private autoAttachmentInterval!: NodeJS.Timeout;
-  public readonly portfolioService = inject(PortfolioService);
-  private readonly apiService = inject(ApiService);
+  public readonly apiService = inject(ApiService);
   private readonly store = inject(Store);
   private readonly router = inject(Router);
   private platformId = inject(PLATFORM_ID);
@@ -96,7 +94,7 @@ export class TvComponent implements OnInit, OnDestroy {
       }
     }
 
-    this.store.getPortfolioService().subscribe((lists) => {
+    this.store.getPostListItemPostArray().subscribe((lists) => {
       this.lists.set(lists);
     });
 

@@ -30,7 +30,7 @@
           </span>
           @if (hit.title || hit.description) {
           <figcaption class="prose dark:prose-invert mt-2">
-            {{hit.title}} @if (hit.description) { - {{ portfolioService.stripTags(hit.description) }} }
+            {{hit.title}} @if (hit.description) { - {{ apiService.stripTags(hit.description) }} }
           </figcaption>
           }
         </figure>

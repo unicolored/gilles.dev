@@ -1,5 +1,4 @@
-import { inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 import { PortfolioService } from './services/portfolio.service';
@@ -18,12 +17,15 @@ export interface YourDataType {
 })
 export class Store {
   private cachedData$?: Observable<Partial<PostListItemPost>[]>; // Cache holder
-  private http = inject(HttpClient);
-  private portfolioService = inject(PortfolioService);
+  private portfolioService!: PortfolioService;
   private remotePin!: number;
   private remoteUrl!: string;
 
-  getPortfolioService(): Observable<Partial<PostListItemPost>[]> {
+  constructor() {
+    this.portfolioService = new PortfolioService();
+  }
+
+  getPostListItemPostArray(): Observable<Partial<PostListItemPost>[]> {
     // Return cached data if it exists, avoiding new HTTP request
     if (!this.cachedData$) {
       this.cachedData$ = this.portfolioService.getListsObs().pipe(

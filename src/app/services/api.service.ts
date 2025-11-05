@@ -9,6 +9,7 @@ import { SseClient } from 'ngx-sse-client';
 import { PostList } from '../interfaces/api-postList';
 import { Post } from '../interfaces/api-post';
 import { PostCollection } from '../interfaces/api-blogPost';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -166,5 +167,14 @@ export class ApiService {
         console.log('SSE connection closed');
       };
     });
+  }
+
+  stripTags(text: string): string {
+    if (isPlatformBrowser(this.platformId)) {
+      const doc = new DOMParser().parseFromString(text, 'text/html');
+      return doc.body.textContent || '';
+    } else {
+      return text.replace(/<[^>]*>/g, '').trim();
+    }
   }
 }

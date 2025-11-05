@@ -3,9 +3,9 @@ import { SearchInput } from '../search-input/search-input';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { MeilisearchService } from '../services/meilisearch.service';
 import { Hits } from 'meilisearch';
-import { PortfolioService } from '../services/portfolio.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MeiliAttachment, MeiliPost } from '../interfaces/meili-post';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-search',
@@ -39,10 +39,10 @@ export class Search implements AfterViewInit {
   isLoading = signal<boolean>(false);
   error = signal<string | null>(null);
   private meilisearchService = inject(MeilisearchService);
-  portfolioService = inject(PortfolioService);
   private activatedRoute = inject(ActivatedRoute);
   private router = inject(Router);
   searchInput = viewChild.required<SearchInput>(SearchInput);
+  public apiService = inject(ApiService);
 
   ngAfterViewInit() {
     this.activatedRoute.queryParams.subscribe((params) => {
