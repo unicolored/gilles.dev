@@ -79,14 +79,14 @@ export class TvComponent implements OnInit, OnDestroy {
   private platformId = inject(PLATFORM_ID);
   private sseSub: Subscription | null = null;
   remoteUrl = signal<string | null>(null);
+  private readonly slideDuration: number = 7000;
+  private readonly slideAttachmentDuration: number = 10000;
 
   async ngOnInit(): Promise<void> {
     const slugParam = this.route.snapshot.paramMap.get('slug');
     const slugUrl = slugParam ?? null;
     this.slug.set(slugUrl);
 
-    // const remotePinParam = this.route.snapshot.paramMap.get('pin');
-    // const remotePin = remotePinParam ? parseInt(remotePinParam, 10) : null;
     this.remoteUrl.set(this.store.getRemoteUrl());
     if (this.store.getRemotePin()) {
       this.remotePin.set(this.store.getRemotePin());
@@ -94,23 +94,17 @@ export class TvComponent implements OnInit, OnDestroy {
         console.log('Subscribe to remote', this.store.getRemotePin());
         this.subscribeToMercure(this.store.getRemotePin());
       }
-    } else {
-      //this.remotePin.set(localPin);  // Set local pin if no remote
     }
 
     this.store.getPortfolioService().subscribe((lists) => {
       this.lists.set(lists);
     });
 
-    // Start auto-looping every 5 seconds (adjust as needed)
+    // Start auto-looping
     if (!slugUrl) {
-      this.autoSlideInterval = setInterval(() => {
-        this.next();
-      }, 7000);
+      this.restartSlideInterval();
     } else {
-      this.autoAttachmentInterval = setInterval(() => {
-        this.nextAttachment();
-      }, 12000);
+      this.restartAttachmentSlideInterval();
     }
   }
 
@@ -118,7 +112,6 @@ export class TvComponent implements OnInit, OnDestroy {
     const topic = `https://remote.com/portfolio/${pin}`;
     console.log(`Subscribing to ${topic}`);
     const endpoint = `${environment.endpoints.hub}/.well-known/mercure?topic=${encodeURIComponent(topic)}`;
-    //const endpoint2 = `https://myadmin.unicolo.red/.well-known/mercure?topic=${encodeURIComponent('https://remote.com/portfolio/4252')}`;
     console.log('endpoint', endpoint);
     this.sseSub = this.apiService.sseEvent(endpoint).subscribe({
       next: (event) => {
@@ -128,9 +121,9 @@ export class TvComponent implements OnInit, OnDestroy {
         const data = JSON.parse(messageEvent.data) as { action: string; slug: string };
         if (data.slug) {
           console.log('Received slug:', data.slug);
-          //this.slug.set(data.slug);
           this.router.navigate(['/tv', data.slug]);
           this.slug.set(data.slug);
+          this.restartAttachmentSlideInterval();
         }
       },
       error: (err) => console.error('SSE error:', err),
@@ -146,23 +139,39 @@ export class TvComponent implements OnInit, OnDestroy {
     this.currentAttachmentIndex.update((i) => (i + 1) % this.attachments().length);
   }
 
-  // prev() {
-  //   this.currentIndex.update((i) => (i - 1 + this.items().length) % this.items().length);
-  // }
-  //
-  // goToSlide(index: number) {
-  //   this.currentIndex.set(index);
-  // }
-
   ngOnDestroy() {
     if (this.autoSlideInterval) {
-      clearInterval(this.autoSlideInterval);
+      this.resetSlideInterval();
     }
     if (this.autoAttachmentInterval) {
-      clearInterval(this.autoAttachmentInterval);
+      this.resetAttachmentSlideInterval();
     }
     if (this.sseSub) {
       this.sseSub.unsubscribe();
     }
+  }
+
+  resetSlideInterval() {
+    clearInterval(this.autoSlideInterval);
+  }
+
+  restartSlideInterval() {
+    this.resetSlideInterval();
+    this.autoSlideInterval = setInterval(() => {
+      this.next();
+    }, this.slideDuration);
+    this.currentIndex.set(0);
+  }
+
+  resetAttachmentSlideInterval() {
+    clearInterval(this.autoAttachmentInterval);
+  }
+
+  restartAttachmentSlideInterval() {
+    this.resetAttachmentSlideInterval();
+    this.autoAttachmentInterval = setInterval(() => {
+      this.nextAttachment();
+    }, this.slideAttachmentDuration);
+    this.currentAttachmentIndex.set(0);
   }
 }
