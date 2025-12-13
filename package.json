@@ -1,6 +1,6 @@
 {
   "name": "gilles.dev",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "type": "module",
   "scripts": {
     "generate-portfolio-data": "ts-node -P script/tsconfig.script.json script/generate-portfolio-data.ts",
@@ -76,5 +76,5 @@
     "typescript": "~5.8.3",
     "typescript-eslint": "8.34.1"
   },
-  "packageManager": "yarn@4.10.3"
+  "packageManager": "yarn@4.12.0"
 }
