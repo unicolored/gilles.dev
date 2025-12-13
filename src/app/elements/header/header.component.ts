@@ -26,7 +26,7 @@ import { PageIdSlugEnum } from '../../app.global';
       </div>
 
       <div class="actions">
-        <button class="search-link hidden" [routerLink]="['search']">
+        <button class="search-link" [routerLink]="['search']">
           <svg
             class="hover:fill-accent dark:hover:fill-dark-accent fill-dark-bkg dark:fill-bkg cursor-pointer"
             xmlns="http://www.w3.org/2000/svg"
