@@ -87,10 +87,10 @@ export class HeaderComponent {
       name: `Tools`,
       route: '/' + PageIdSlugEnum.tools,
     },
-    {
-      name: `Portfolio`,
-      route: '/' + PageIdSlugEnum.portfolio,
-    },
+    // {
+    //   name: `Portfolio`,
+    //   route: '/' + PageIdSlugEnum.portfolio,
+    // },
     // {
     //   name: `Blog`,
     //   route: '/blog',
