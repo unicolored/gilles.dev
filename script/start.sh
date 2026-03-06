@@ -15,6 +15,10 @@ if [ $? != 0 ]; then
   tmux new-session -d -s $session -n $window_name
   tmux send-keys -t $session:$window_name "nvim ." C-m
 
+  server_name="opencode"
+  tmux new-window -n $server_name
+  tmux send-keys -t $session:$server_name 'opencode' C-m
+
   server_name="Server"
   tmux new-window -n $server_name
   tmux send-keys -t $session:$server_name 'yarn dev' C-m
