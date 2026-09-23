@@ -1,18 +1,13 @@
-import { APP_BASE_HREF } from '@angular/common';
-import { isMainModule } from '@angular/ssr/node';
+import { AngularNodeAppEngine, isMainModule, writeResponseToNodeResponse } from '@angular/ssr/node';
 import express from 'express';
-import { dirname, join, resolve } from 'node:path';
+import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import bootstrap from './main.server';
-import { AngularAppEngine } from '@angular/ssr';
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
-const indexHtml = join(serverDistFolder, 'index.server.html');
 
 const app = express();
-// const commonEngine = new CommonEngine({ allowedHosts: ['localhost', '*.gilles.dev'] });
-const commonEngine = new AngularAppEngine({ allowedHosts: ['localhost', '*.gilles.dev'] });
+const commonEngine = new AngularNodeAppEngine({ allowedHosts: ['localhost'] });
 
 /**
  * Example Express Rest API endpoints can be defined here.
@@ -41,18 +36,16 @@ app.get(
  * Handle all other requests by rendering the Angular application.
  */
 app.get('**', (req, res, next) => {
-  const { protocol, originalUrl, baseUrl, headers } = req;
-
   commonEngine
-    .render({
-      bootstrap,
-      documentFilePath: indexHtml,
-      url: `${protocol}://${headers.host}${originalUrl}`,
-      publicPath: browserDistFolder,
-      providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
+    .handle(req)
+    .then((response) => {
+      if (response) {
+        writeResponseToNodeResponse(response, res);
+      } else {
+        next(); // Pass control to the next middleware
+      }
     })
-    .then((html) => res.send(html))
-    .catch((err) => next(err));
+    .catch(next);
 });
 
 /**
