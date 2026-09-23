@@ -154,7 +154,7 @@ importers:
         specifier: ^8.26.0
         version: 8.26.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@5.9.3)
 
-  .angular/cache/angular-cli-tmp-packages-rlWDBU:
+  .angular/cache/angular-cli-tmp-packages-AdGObI:
     dependencies:
       '@angular/cli':
         specifier: ^22.1.8
