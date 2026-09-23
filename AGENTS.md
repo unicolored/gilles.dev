@@ -46,7 +46,7 @@ Built with Angular 19, SSR, Tailwind CSS 4, Algolia search, Three.js, Cloudinary
 ## Key Architecture Decisions
 
 ### 1. Zoneless Change Detection
-Uses `provideExperimentalZonelessChangeDetection()` — no zone.js. Signals + `effect()` for reactivity.
+Uses `provideZonelessChangeDetection()` — no zone.js. Signals + `effect()` for reactivity.
 
 ### 2. SSR + SSG
 - `prerender: true` in angular.json — pre-renders routes at build time
