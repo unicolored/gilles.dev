@@ -1,6 +1,6 @@
 import { Component, effect, inject, InjectionToken, OnInit, PLATFORM_ID, Renderer2, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CommonModule, isPlatformBrowser, PRECONNECT_CHECK_BLOCKLIST, provideImgixLoader } from '@angular/common';
+import { isPlatformBrowser, PRECONNECT_CHECK_BLOCKLIST, provideImgixLoader } from '@angular/common';
 import { environment } from '../environments/environment';
 import { ThreeCardComponent } from './elements/three-card/three-card.component';
 import { CloudinaryModule } from '@cloudinary/ng/dist';
@@ -16,7 +16,7 @@ const FONT_AWESOME_ICON_DEFINITION_LIST = new InjectionToken<IconDefinition[]>('
 export type ModeEnum = 'light' | 'dark' | null;
 
 @Component({
-  imports: [CommonModule, RouterModule, ThreeCardComponent, CloudinaryModule, HeaderComponent, FooterComponent],
+  imports: [RouterModule, ThreeCardComponent, CloudinaryModule, HeaderComponent, FooterComponent],
   providers: [
     HttpService,
     {

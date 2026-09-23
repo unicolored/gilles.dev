@@ -3,7 +3,7 @@ import { PageInterface } from '../page.interface';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
 import { PageIdSlugEnum } from '../../app.global';
-import { CommonModule } from '@angular/common';
+
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faArrowUpRightFromSquare as fasArrowUpRightFromSquare,
@@ -14,7 +14,7 @@ import {
 
 @Component({
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [FontAwesomeModule],
   template: `
     <main class="page-prose">
       <section class="main contact">
@@ -30,22 +30,24 @@ import {
         </div>
         <div class="pt-2 pb-5 content">
           <!--<div class="myPhone">
-            <a href="tel:+33663078396">
-              <fa-icon [icon]="['fas', 'mobile-screen-button']" [fixedWidth]="true"></fa-icon>
-              +33 6 63 07 83 96
-            </a>
-          </div>-->
-          <div class="myEmail" #emailElement (click)="copyEmailToClipboard()">
-            <a>
-              <fa-icon [icon]="['fas', 'envelope']" [fixedWidth]="true"></fa-icon>
-              <span>{{ this.myEmail }}</span>
-            </a>
-            <span *ngIf="copySuccess" class="copy-success-tooltip" [class.show]="copySuccess" i18n>Copied!</span>
-          </div>
+          <a href="tel:+33663078396">
+            <fa-icon [icon]="['fas', 'mobile-screen-button']" [fixedWidth]="true"></fa-icon>
+            +33 6 63 07 83 96
+          </a>
+        </div>-->
+        <div class="myEmail" #emailElement (click)="copyEmailToClipboard()">
+          <a>
+            <fa-icon [icon]="['fas', 'envelope']" [fixedWidth]="true"></fa-icon>
+            <span>{{ this.myEmail }}</span>
+          </a>
+          @if (copySuccess) {
+            <span class="copy-success-tooltip" [class.show]="copySuccess" i18n>Copied!</span>
+          }
         </div>
-      </section>
+      </div>
+    </section>
     </main>
-  `,
+    `,
   styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit, PageInterface {

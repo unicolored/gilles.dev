@@ -1,5 +1,5 @@
 import { Component, computed, effect, inject, input, signal, ViewEncapsulation } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { PortfolioHit } from '../../services/search.interface';
 import { lastValueFrom } from 'rxjs';
 import { AppService } from '../../app.service';
@@ -7,7 +7,7 @@ import { WordpressSelfSinglePostMedia, WordpressService } from 'ngx-services';
 
 @Component({
   selector: 'gilles-nx-portfolio-item-attachments',
-  imports: [CommonModule],
+  imports: [],
   providers: [AppService, WordpressService],
   template: `
     @defer (on timer(100ms); prefetch on idle) {

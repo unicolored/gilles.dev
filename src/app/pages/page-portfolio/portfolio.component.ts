@@ -5,13 +5,13 @@ import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
 import { Hit } from 'instantsearch.js/es/types/results';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+
 import { SharedNgComponentsModule } from '../shared-ng-components.module';
 import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.component';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, RouterModule, SharedNgComponentsModule, PortfolioHitsComponent],
+  imports: [RouterModule, SharedNgComponentsModule, PortfolioHitsComponent],
   template: `
     <main class="page-prose">
       <div class="hero pt-8 pb-4">

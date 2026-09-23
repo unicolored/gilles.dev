@@ -1,5 +1,5 @@
 import { Component, computed, input, ViewEncapsulation } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 import { PortfolioHit } from '../../services/search.interface';
 import { extractText } from '../../app.helpers';
 import { RouterLink } from '@angular/router';
@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'gilles-nx-portfolio-hits',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage, RouterLink],
+  imports: [NgOptimizedImage, RouterLink],
   template: `
     @if (title() || subtitle()) {
       <article class="prose mb-6">
@@ -19,28 +19,29 @@ import { RouterLink } from '@angular/router';
         @if (subtitle()) {
           <p class="uppercase">
             <span i18n>{{ subtitle() }}</span>
-          </p>
-        }
-      </article>
-    }
-
-    @defer (on viewport; prefetch on timer(1s)) {
+            </p>
+          }
+        </article>
+      }
+    
+      @defer (on viewport; prefetch on timer(1s)) {
       <div class="portfolio-items">
         @for (item of itemsComputed(); track item.objectID) {
           <div class="portfolio-item" [routerLink]="['portfolio', 'item', item.objectID]">
-            <img
-              *ngIf="item.images.thumbnail?.url"
-              [ngSrc]="item.images.thumbnail.url"
-              fill
-              priority
-              class="img-thumbnail"
-              [alt]="item.post_title"
-              [title]="item.post_title"
-            />
+            @if (item.images.thumbnail?.url) {
+              <img
+                [ngSrc]="item.images.thumbnail.url"
+                fill
+                priority
+                class="img-thumbnail"
+                [alt]="item.post_title"
+                [title]="item.post_title"
+                />
+            }
           </div>
         }
       </div>
-    } @placeholder (minimum 1s) {
+      } @placeholder (minimum 1s) {
       <div class="portfolio-items">
         @for (i of [1, 2, 3, 4, 5, 6]; track i) {
           <div class="portfolio-item placeholder">
@@ -49,7 +50,7 @@ import { RouterLink } from '@angular/router';
           </div>
         }
       </div>
-    } @error {
+      } @error {
       <div class="portfolio-items">
         @for (i of [1, 2, 3, 4, 5, 6]; track i) {
           <div class="portfolio-item placeholder">
@@ -59,7 +60,7 @@ import { RouterLink } from '@angular/router';
         }
       </div>
     }
-  `,
+    `,
   styleUrls: ['./portfolio.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })

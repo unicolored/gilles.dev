@@ -1,5 +1,5 @@
-import { Inject, Injectable } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable, DOCUMENT } from '@angular/core';
+
 import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Graph } from 'schema-dts';

@@ -5,7 +5,7 @@ import { PageIdSlugEnum } from '../../app.global';
 import { environment } from '../../../environments/environment';
 import { Hit } from 'instantsearch.js/es/types/results';
 import { PortfolioHit, SearchIndexes } from '../../services/search.interface';
-import { CommonModule } from '@angular/common';
+
 import { SharedNgComponentsModule } from '../shared-ng-components.module';
 import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.component';
 import { InstantSearchService } from '../../services/instantsearch.service';
@@ -13,7 +13,7 @@ import { connectConfigure, connectHits } from 'instantsearch.js/es/connectors';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, SharedNgComponentsModule, PortfolioHitsComponent],
+  imports: [SharedNgComponentsModule, PortfolioHitsComponent],
   template: `
     <main class="page-prose">
       <div class="hero pt-8 pb-4">

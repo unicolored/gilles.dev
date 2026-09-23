@@ -1,5 +1,5 @@
 import { Component, computed, inject, signal, ViewEncapsulation, OnInit } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 import { PortfolioHit } from '../../services/search.interface';
 import { ActivatedRoute } from '@angular/router';
 import { PortfolioItemAttachmentsComponent } from '../../elements/portfolio/portfolio-item-attachments.component';
@@ -12,43 +12,45 @@ import { extractText } from '../../app.helpers';
 
 @Component({
   selector: 'gilles-nx-portfolio-item',
-  imports: [CommonModule, PortfolioItemAttachmentsComponent, NgOptimizedImage],
+  imports: [PortfolioItemAttachmentsComponent, NgOptimizedImage],
   template: `
     <main class="page-prose">
       <article class="mb-6">
         @for (item of items(); track item.objectID) {
           <figure class="p-4">
             @if (item.images.full) {
-              <img
-                *ngIf="item.images.full?.url"
-                [ngSrc]="item.images.full.url"
-                priority
-                width="600"
-                height="300"
-                class="img-thumbnail m-auto"
-                [alt]="item.post_title"
-                [title]="item.post_title"
-              />
+              @if (item.images.full?.url) {
+                <img
+                  [ngSrc]="item.images.full.url"
+                  priority
+                  width="600"
+                  height="300"
+                  class="img-thumbnail m-auto"
+                  [alt]="item.post_title"
+                  [title]="item.post_title"
+                  />
+              }
             } @else if (item.images.thumbnail) {
-              <img
-                *ngIf="item.images.thumbnail?.url"
-                [ngSrc]="item.images.thumbnail.url"
-                priority
-                width="600"
-                height="300"
-                class="img-thumbnail m-auto"
-                [alt]="item.post_title"
-                [title]="item.post_title"
-              />
+              @if (item.images.thumbnail?.url) {
+                <img
+                  [ngSrc]="item.images.thumbnail.url"
+                  priority
+                  width="600"
+                  height="300"
+                  class="img-thumbnail m-auto"
+                  [alt]="item.post_title"
+                  [title]="item.post_title"
+                  />
+              }
             }
           </figure>
-
+    
           <header class="flex justify-center mb-2">
             <h1 class="font-bold text-xl mb-1">
               <span i18n [innerHTML]="item.post_title"></span>
             </h1>
           </header>
-
+    
           <div class="flex justify-between">
             @if (item.taxonomies.post_tag) {
               <div class="uppercase">{{ item.taxonomies.post_tag.join(', ') }}</div>
@@ -57,27 +59,27 @@ import { extractText } from '../../app.helpers';
               <div class="text-center uppercase">{{ item.taxonomies.category.join(' | ') }}</div>
             }
           </div>
-
+    
           <main class="flex p-4 w-full ">
             @if (item.content) {
               <!--            <p class="uppercase">-->
               <!--              <span i18n>{{ subtitle() }}</span>-->
-              <!--            </p>-->
-              <div class="prose" [innerHTML]="item.content"></div>
-            }
-          </main>
-        }
-
-        <section>
-          <gilles-nx-portfolio-item-attachments
-            [items]="itemsComputed()"
-            [itemId]="itemId()"
-            [objectId]="objectId()"
-          ></gilles-nx-portfolio-item-attachments>
-        </section>
-      </article>
+            <!--            </p>-->
+            <div class="prose" [innerHTML]="item.content"></div>
+          }
+        </main>
+      }
+    
+      <section>
+        <gilles-nx-portfolio-item-attachments
+          [items]="itemsComputed()"
+          [itemId]="itemId()"
+          [objectId]="objectId()"
+        ></gilles-nx-portfolio-item-attachments>
+      </section>
+    </article>
     </main>
-  `,
+    `,
   styleUrls: [],
   encapsulation: ViewEncapsulation.None,
 })
