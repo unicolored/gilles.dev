@@ -1,0 +1,13 @@
+#! /bin/bash
+#MISE description="Format the code"
+#MISE alias="f"
+
+echo "Will write changes on your files. Use 'mise run test' for a dry-run."
+read -p "Continue? [y/N]: " ans && [[ $ans == "y" ]] || exit 1
+
+php-cs-fixer fix
+composer rector
+prettier -w *.yml
+#twig-cs-fixer fix ./templates
+
+

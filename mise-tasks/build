@@ -1,0 +1,50 @@
+#! /bin/bash
+#MISE description="Build image"
+#MISE alias="b"
+
+set -euo pipefail
+
+DEPLOY_ENV=${1:-}
+
+if [ -z "$DEPLOY_ENV" ]; then
+  read -p "Environment?" DEPLOY_ENV;
+fi
+
+
+case $DEPLOY_ENV in
+  "local")
+    DOCKER_OVERRIDE=compose.override.yaml
+    ;;
+
+  "preprod")
+    DOCKER_OVERRIDE=compose.preprod.yaml
+    ;;
+
+  "prod")
+    DOCKER_OVERRIDE=compose.prod.yaml
+
+    echo "Will build for PRODUCTION via ${DOCKER_OVERRIDE}"
+    read -p "Are you sure? [y/N]: " ans && [[ $ans == "y" ]] || exit 1
+    ;;
+
+  *)
+    echo "No valid env provided. Exit"
+    exit;
+    ;;
+esac
+
+docker compose down
+docker rmi ${REGISTRY}/${DEPLOY_ENV}/x119:latest || true
+
+cp .env.prod .env.tmp
+sops decrypt --output .env.secrets.tmp .env.secrets.prod
+
+# If the php settings are modified, one should rebuild the image
+BUILD_ENV="${DEPLOY_ENV}" docker compose --env-file ./.compose.env \
+    -f compose.yaml -f $DOCKER_OVERRIDE \
+    build php --no-cache --pull --push
+
+rm .env.tmp || true
+rm .env.secrets.tmp || true
+
+

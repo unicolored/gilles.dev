@@ -1,0 +1,11 @@
+#! /bin/bash
+#MISE description="Launch the server on prod"
+#MISE alias="uprod"
+
+BUILD_ENV=prod docker compose -f compose.yaml -f compose.prod.yaml \
+    --env-file ./.compose.env \
+    up --detach --wait --wait-timeout 20 --remove-orphans
+
+# rm .env.tmp || true
+# rm .env.secrets.tmp || true
+

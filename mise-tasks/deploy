@@ -1,0 +1,85 @@
+#! /bin/bash
+#MISE description="Deploy on server"
+#MISE alias="d"
+
+set -eu
+
+DEPLOY_ENV=$1
+
+if [ -z "$DEPLOY_ENV" ]; then
+  read -p "Environment?" DEPLOY_ENV;
+fi
+
+case $DEPLOY_ENV in
+  "preprod")
+    SERVER_ID="lwt4"
+    SERVER_PATH="/var/www/vhosts/x119"
+    #SERVER_SCRIPTS_PATH="/var/www/scripts/x119"
+    SERVER_SCRIPTS_PATH="/var/www/vhosts/x119/scripts"
+    ENV_FILE=.env.preprod
+    ;;
+
+  "prod")
+    SERVER_ID="lwprod4"
+    SERVER_PATH="/var/www/vhosts/x119"
+    #SERVER_SCRIPTS_PATH="/var/www/scripts/x119"
+    SERVER_SCRIPTS_PATH="/var/www/vhosts/x119/scripts"
+    ENV_FILE=.env.prod
+
+    echo "Will deploy to PRODUCTION ${SERVER_ID}:${SERVER_PATH}"
+    read -p "Are you sure? [y/N]: " ans && [[ $ans == "y" ]] || exit 1
+    ;;
+
+  *)
+    echo "No valid env provided. Exit"
+    exit;
+    ;;
+esac
+
+php vendor/bin/php-cs-fixer check
+#php vendor/bin/phpstan analyse .
+
+deploy() {
+    local dest="$SERVER_ID:$SERVER_PATH"
+    rsync -rtvz --no-perms --no-owner --no-group --delete "$@" "$dest" || true
+}
+deployScripts() {
+    local dest="$SERVER_ID:$SERVER_SCRIPTS_PATH"
+    rsync -rtvz --no-perms --no-owner --no-group --delete "$@" "$dest" || true
+}
+
+echo "👉 Upload starts to $DEPLOY_ENV:"
+
+deployScripts ./scripts/*.php
+
+# Env
+deploy ./.env
+deploy "./.env.${DEPLOY_ENV}"
+ssh $SERVER_ID "cd ${SERVER_PATH} && mv .env.${DEPLOY_ENV} .env.local && chmod 770 .env.local"
+sops decrypt .env.secrets.${DEPLOY_ENV} > .env.decrypt.secrets.${DEPLOY_ENV}
+deploy "./.env.decrypt.secrets.${DEPLOY_ENV}"
+ssh $SERVER_ID "cd ${SERVER_PATH} && mv .env.decrypt.secrets.${DEPLOY_ENV} .env.local.secrets && chmod 770 .env.local.secrets"
+
+# Files
+deploy ./composer.json
+deploy ./composer.lock
+deploy ./docker/composer.phar
+# Directories
+deploy ./_AxConfig
+deploy ./_AxCore
+deploy ./_AxLib
+deploy ./_AxMy
+deploy ./ajax
+deploy ./api
+deploy ./img
+deploy ./src
+deploy ./tests
+deploy ./vendor
+deploy ./*.php
+deploy ./*.js
+deploy ./*.md
+deploy ./*.xml
+
+#ssh $SERVER_ID "cd $SERVER_PATH && mkdir -p $SERVER_PATH/var/log"
+#ssh $SERVER_ID "cd $SERVER_PATH && php bin/console c:c"
+

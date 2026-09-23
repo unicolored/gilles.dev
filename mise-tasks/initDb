@@ -1,0 +1,15 @@
+#! /bin/bash
+#MISE description="Initialize the local database"
+#MISE alias="db"
+
+source "docker/mysql/.env.mysql"
+
+# User 'dev' with password 'pass' is created
+# by the script "init-user.sql" when the service database is created
+mysql -u dev -ppass -e "CREATE DATABASE ${DB}"
+mysql -u dev -ppass -e "CREATE USER '${USER}'@'%' IDENTIFIED BY '${PASSWORD}'"
+mysql -u dev -ppass -e "GRANT ALL PRIVILEGES ON ${DB}.* TO ${USER}@'%'"
+mysql -u dev -ppass -e "FLUSH PRIVILEGES"
+mysql -u dev -ppass -D "${DB}" < "${DUMP_FILE}"
+
+

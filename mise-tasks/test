@@ -1,0 +1,17 @@
+#! /bin/bash
+#MISE description="Run tests"
+#MISE alias="t"
+
+set -e
+
+composer csfixer
+#composer phpstan # désactivé car trop de bugs
+composer rector --dry-run # utile pour vérifier la syntaxe
+
+composer validate --no-check-all --strict --no-check-publish --no-check-version
+
+find . \( -path "./vendor" -o -path "./volumes" -o -path "./var" \) -prune -o -name "*.php" -exec php -l {} +
+
+# php ./vendor/bin/phpunit ./tests --stop-on-failure
+
+echo "✅ Tests completed"

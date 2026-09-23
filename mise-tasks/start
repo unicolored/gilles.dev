@@ -1,0 +1,35 @@
+#! /bin/bash
+#MISE description="Start tmux windows"
+#MISE alias="s"
+
+# https://tmuxcheatsheet.com/
+
+session=$(jq -r '.name | sub("dsin"; "☎️") ' composer.json)
+
+tmux has-session -t $session 2>/dev/null
+
+if [ $? != 0 ]; then
+  #tmux new-session -d -s $session -n $window_name
+
+  # Start new session with a name
+
+  window_name="editor"
+  tmux new-session -d -s $session -n $window_name
+  tmux send-keys -t $session:$window_name "nvim" C-m
+
+  name="up"
+  tmux new-window -n $name
+  tmux send-keys -t $session:$name 'mise run up'
+
+  server_name="ld"
+  tmux new-window -n $server_name
+  tmux send-keys -t $session:$server_name 'lazydocker' C-m
+
+  server_name="lq"
+  tmux new-window -n $server_name
+  tmux send-keys -t $session:$server_name 'lazysql mysql://x119_dev:password@localhost:3306/x119_dev' C-m
+
+  tmux select-window -t $session:$window_name
+fi
+
+tmux attach-session -t $session

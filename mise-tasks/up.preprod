@@ -1,0 +1,37 @@
+#! /bin/bash
+#MISE description="Launch the server on preprod"
+#MISE alias="upreprod"
+
+set -euo pipefail
+
+# Environment variables expected from GitLab CI: BUILD_ENV
+ENCRYPTED_ENV_FILE=".env.secrets.${BUILD_ENV}"
+DECRYPTED_ENV_FILE=".env.local.secrets"
+COMPOSE_FILE="compose.${BUILD_ENV}.yaml"
+
+echo "==> Decrypting SOPS secrets..."
+sops --decrypt "${ENCRYPTED_ENV_FILE}" > "${DECRYPTED_ENV_FILE}"
+
+# Set strict file permissions so only the owner can read
+chmod 600 "${DECRYPTED_ENV_FILE}"
+
+# Cleanup sensitive unencrypted file even if the script fails or exits
+cleanup() {
+  echo "==> Cleaning up decrypted secrets..."
+  rm -f "${DECRYPTED_ENV_FILE}"
+}
+trap cleanup EXIT
+
+echo "==> Deploying app container..."
+BUILD_ENV=${BUILD_ENV} docker compose -f compose.yaml -f compose.${BUILD_ENV}.yaml \
+    --env-file ./.compose.env \
+    up --detach --wait --pull always --force-recreate --remove-orphans
+
+echo "==> Waiting for container to pass healthcheck..."
+until [ "$(docker inspect --format='{{.State.Health.Status}}' $APP 2>/dev/null)" == "healthy" ]; do
+    sleep 2
+    echo -n "."
+done
+
+echo ""
+echo "==> Deployment complete."

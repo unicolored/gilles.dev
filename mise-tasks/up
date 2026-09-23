@@ -1,0 +1,21 @@
+#! /bin/bash
+#MISE description="Launch the server on prod"
+#MISE alias="u"
+
+set -euo pipefail
+
+check_docker() {
+  if ! docker info > /dev/null 2>&1; then
+    echo "⚠️ Error: Docker Engine is not running!"
+    echo "👉 Tip: Start Docker Desktop or run 'sudo systemctl start docker'"
+    exit 1
+  fi
+}
+
+# Call before executing docker compose commands
+check_docker
+
+BUILD_ENV=local docker compose --env-file ./.compose.env \
+    up --detach --wait --remove-orphans --build
+
+
