@@ -99,7 +99,7 @@ export class InstantSearchService {
       // indexPosts.filters = 'post_id:7453';
     } else if (facetFilters) {
       // indexPosts.facetFilters = facetFilters;
-      indexPosts.facetFilters = facetFilters;
+      // indexPosts.filters = facetFilters;
     }
 
     return await searchClient.searchForHits({

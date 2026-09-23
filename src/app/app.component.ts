@@ -5,7 +5,6 @@ import { environment } from '../environments/environment';
 import { ThreeCardComponent } from './elements/three-card/three-card.component';
 import { CloudinaryModule } from '@cloudinary/ng/dist';
 import { faGithubAlt, faXTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faChevronsLeft, faChevronsRight, faXmarkLarge } from '@fortawesome/sharp-duotone-solid-svg-icons';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './elements/header/header.component';
@@ -28,7 +27,7 @@ export type ModeEnum = 'light' | 'dark' | null;
     provideImgixLoader('https://res.cloudinary.com/unicolored'),
     {
       provide: FONT_AWESOME_ICON_DEFINITION_LIST,
-      useValue: [faXmarkLarge, faChevronsLeft, faChevronsRight, faGithubAlt, faXTwitter],
+      useValue: [faGithubAlt, faXTwitter],
     },
   ],
   selector: 'app-root',
