@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -41,6 +41,7 @@ import { environment } from '../../../environments/environment';
       <!--&lt;!&ndash;  </button>&ndash;&gt;-->
     </footer>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {

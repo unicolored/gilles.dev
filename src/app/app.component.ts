@@ -1,4 +1,4 @@
-import { Component, effect, inject, InjectionToken, OnInit, PLATFORM_ID, Renderer2, signal } from '@angular/core';
+import { Component, effect, inject, InjectionToken, OnInit, PLATFORM_ID, Renderer2, signal, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { isPlatformBrowser, PRECONNECT_CHECK_BLOCKLIST, provideImgixLoader } from '@angular/common';
 import { environment } from '../environments/environment';
@@ -32,6 +32,7 @@ export type ModeEnum = 'light' | 'dark' | null;
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {

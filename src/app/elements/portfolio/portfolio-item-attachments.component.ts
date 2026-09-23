@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, input, signal, ViewEncapsulation } from '@angular/core';
+import { Component, computed, effect, inject, input, signal, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 
 import { PortfolioHit } from '../../services/search.interface';
 import { lastValueFrom } from 'rxjs';
@@ -27,6 +27,7 @@ import { WordpressSelfSinglePostMedia, WordpressService } from 'ngx-services';
     }
   `,
   styleUrls: ['./portfolio.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioItemAttachmentsComponent {

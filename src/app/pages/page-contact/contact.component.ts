@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { PageInterface } from '../page.interface';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
@@ -48,6 +48,7 @@ import {
     </section>
     </main>
     `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit, PageInterface {

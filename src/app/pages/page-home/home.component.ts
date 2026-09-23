@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { PageInterface } from '../page.interface';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { PageIdSlugEnum } from '../../app.global';
@@ -60,6 +60,7 @@ import { connectConfigure, connectHits } from 'instantsearch.js/es/connectors';
       </section>
     </main>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: [],
 })
 export class HomeComponent implements OnInit, PageInterface {

@@ -1,4 +1,4 @@
-import { Component, inject, Input, WritableSignal } from '@angular/core';
+import { Component, inject, Input, WritableSignal, ChangeDetectionStrategy } from '@angular/core';
 import { ModeEnum } from '../../app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
@@ -27,6 +27,7 @@ import { Router, RouterModule } from '@angular/router';
       <div class="actions"></div>
     </nav>
     `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {

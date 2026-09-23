@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, OnInit, signal, ViewEncapsulation } from '@angular/core';
+import { Component, computed, inject, input, OnInit, signal, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { PortfolioHit } from '../../services/search.interface';
 import { PageIdSlugEnum } from '../../app.global';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
@@ -38,6 +38,7 @@ import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.
     </main>
   `,
   styleUrls: [],
+  changeDetection: ChangeDetectionStrategy.Eager,
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioComponent implements OnInit {

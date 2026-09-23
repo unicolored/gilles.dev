@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, inject, OnDestroy, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, OnDestroy, OnInit, PLATFORM_ID, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import * as THREE from 'three';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -54,6 +54,7 @@ function onWindowResize() {
   standalone: true,
   selector: 'gilles-nx-three-card',
   template: ` <div class="canvas" #canvas></div> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./three-card.component.scss'],
 })
 export class ThreeCardComponent implements AfterViewInit, OnInit, OnDestroy {

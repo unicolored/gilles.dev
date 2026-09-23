@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 
 
 @Component({
@@ -6,6 +6,7 @@ import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular
   standalone: true,
   imports: [],
   templateUrl: './image.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './image.component.scss',
 })
 export class ImageComponent implements AfterViewInit {

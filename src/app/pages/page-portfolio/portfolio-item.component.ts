@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, computed, inject, signal, ViewEncapsulation, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { PortfolioHit } from '../../services/search.interface';
 import { ActivatedRoute } from '@angular/router';
@@ -81,6 +81,7 @@ import { extractText } from '../../app.helpers';
     </main>
     `,
   styleUrls: [],
+  changeDetection: ChangeDetectionStrategy.Eager,
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioItemComponent implements OnInit {

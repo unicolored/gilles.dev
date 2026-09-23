@@ -1,4 +1,4 @@
-import { Component, computed, input, ViewEncapsulation } from '@angular/core';
+import { Component, computed, input, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { PortfolioHit } from '../../services/search.interface';
 import { extractText } from '../../app.helpers';
@@ -62,6 +62,7 @@ import { RouterLink } from '@angular/router';
     }
     `,
   styleUrls: ['./portfolio.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioHitsComponent {
