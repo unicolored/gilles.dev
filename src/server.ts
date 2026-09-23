@@ -1,16 +1,18 @@
 import { APP_BASE_HREF } from '@angular/common';
-import { CommonEngine, isMainModule } from '@angular/ssr/node';
+import { isMainModule } from '@angular/ssr/node';
 import express from 'express';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import bootstrap from './main.server';
+import { AngularAppEngine } from '@angular/ssr';
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
 const indexHtml = join(serverDistFolder, 'index.server.html');
 
 const app = express();
-const commonEngine = new CommonEngine({ allowedHosts: ['localhost', '*.gilles.dev'] });
+// const commonEngine = new CommonEngine({ allowedHosts: ['localhost', '*.gilles.dev'] });
+const commonEngine = new AngularAppEngine({ allowedHosts: ['localhost', '*.gilles.dev'] });
 
 /**
  * Example Express Rest API endpoints can be defined here.
