@@ -48,13 +48,13 @@ export const appRoutes: Route[] = [
   //   providers: [ApiService, HttpService],
   //   loadComponent: () => import('./pages/page-blog/blog.component').then((m) => m.BlogComponent),
   // },
-  {
-    path: 'blog',
-    pathMatch: 'full',
-    resolve: { blogData: blogResolver }, // Prefetch data here
-    providers: [ApiService, HttpService],
-    loadComponent: () => import('./pages/page-blog/blog.component').then((m) => m.BlogComponent),
-  },
+  // {
+  //   path: 'blog',
+  //   pathMatch: 'full',
+  //   resolve: { blogData: blogResolver }, // Prefetch data here
+  //   providers: [ApiService, HttpService],
+  //   loadComponent: () => import('./pages/page-blog/blog.component').then((m) => m.BlogComponent),
+  // },
   {
     path: 'projects',
     pathMatch: 'full',
