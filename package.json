@@ -22,6 +22,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "^20.3.31",
     "@angular/common": "^20.3.31",
     "@angular/compiler": "^20.3.31",
     "@angular/core": "^20.3.31",
