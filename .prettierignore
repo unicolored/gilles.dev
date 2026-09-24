@@ -15,5 +15,7 @@ _dist
 /.github
 /node_modules
 
+*.encrypted.ts
+
 /.nx/workspace-data
 /libs/shared-strapi/src
