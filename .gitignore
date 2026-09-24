@@ -1,6 +1,8 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 pnpm-lock.yaml
 
+pnpm-lock.yaml
+
 .env.prod
 environment.production.ts
 
