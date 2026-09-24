@@ -19,13 +19,21 @@ if [ $? != 0 ]; then
   tmux new-window -n $server_name
   tmux send-keys -t $session:$server_name 'opencode' C-m
 
+  server_name="pi"
+  tmux new-window -n $server_name
+  tmux send-keys -t $session:$server_name 'pi' C-m
+
   server_name="Server"
   tmux new-window -n $server_name
-  tmux send-keys -t $session:$server_name 'yarn dev' C-m
+  tmux send-keys -t $session:$server_name 'pnpm run dev' C-m
 
   git_window="Git"
   tmux new-window -n $git_window
   tmux send-keys -t $session:$git_window "lazygit" C-m
+
+  git_window="workmux"
+  tmux new-window -n $git_window
+  tmux send-keys -t $session:$git_window "wm sidebar && wm dashboard" C-m
 
   tmux select-window -t $session:$window_name
 fi
