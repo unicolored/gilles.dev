@@ -1,4 +1,14 @@
-import { Component, computed, inject, OnInit, OnDestroy, signal, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  OnInit,
+  OnDestroy,
+  signal,
+  PLATFORM_ID,
+  ViewEncapsulation,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
 import { environment } from '../../environments/environment';
@@ -13,6 +23,7 @@ import { PostAttachment } from '../interfaces/common';
   selector: 'app-tv-component',
   imports: [RouterLink, NgOptimizedImage, QRCodeComponent],
   templateUrl: `tv.html`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   encapsulation: ViewEncapsulation.None,
 })
 export class TvComponent implements OnInit, OnDestroy {

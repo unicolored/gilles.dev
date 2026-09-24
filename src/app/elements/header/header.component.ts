@@ -1,4 +1,4 @@
-import { Component, Input, signal, WritableSignal } from '@angular/core';
+import { Component, Input, signal, WritableSignal, ChangeDetectionStrategy } from '@angular/core';
 import { ModeEnum } from '../../app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -9,6 +9,7 @@ import { PageIdSlugEnum } from '../../app.global';
   standalone: true,
   imports: [RouterModule, FormsModule, ReactiveFormsModule],
   selector: 'gilles-nx-header',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <nav class="g-navbar">
       <div class="items">

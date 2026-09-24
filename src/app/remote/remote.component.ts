@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { NgOptimizedImage } from '@angular/common';
@@ -8,6 +8,7 @@ import { Store } from '../store';
 @Component({
   selector: 'app-remote',
   imports: [NgOptimizedImage],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: `remote.component.html`,
 })
 export class RemoteComponent implements OnInit {

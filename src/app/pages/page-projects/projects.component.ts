@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { HttpService, JekyllPost, UnicoloredService } from 'ngx-services';
 import { tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
@@ -30,6 +30,7 @@ import { NgOptimizedImage } from '@angular/common';
   `,
   styles: ``,
   providers: [HttpService, UnicoloredService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NgOptimizedImage],
 })
 export class ProjectsComponent implements OnInit {

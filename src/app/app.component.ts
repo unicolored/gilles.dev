@@ -1,4 +1,13 @@
-import { Component, effect, inject, OnInit, PLATFORM_ID, Renderer2, signal } from '@angular/core';
+import {
+  Component,
+  effect,
+  inject,
+  OnInit,
+  PLATFORM_ID,
+  Renderer2,
+  signal,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { isPlatformBrowser, PRECONNECT_CHECK_BLOCKLIST, provideImgixLoader } from '@angular/common';
 import { environment } from '../environments/environment';
@@ -37,6 +46,7 @@ export type ModeEnum = 'light' | 'dark' | null;
     provideImgixLoader('https://res.cloudinary.com/unicolored/'),
   ],
   selector: 'app-root',
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {

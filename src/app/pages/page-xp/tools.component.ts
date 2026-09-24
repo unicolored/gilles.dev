@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { PageInterface } from '../page.interface';
 import { PageIdSlugEnum } from '../../app.global';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
@@ -7,6 +7,7 @@ import { environment } from '../../../environments/environment';
 @Component({
   standalone: true,
   imports: [],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './tools.component.html',
 })
 export class ToolsComponent implements OnInit, PageInterface {

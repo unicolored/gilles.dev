@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, computed, inject, signal, viewChild } from '@angular/core';
+import { AfterViewInit, Component, computed, inject, signal, viewChild, ChangeDetectionStrategy } from '@angular/core';
 import { SearchInput } from '../search-input/search-input';
 import { NgOptimizedImage } from '@angular/common';
 import { MeilisearchService } from '../services/meilisearch.service';
@@ -12,6 +12,7 @@ import { Three404Component } from '../elements/three-404/three-404.component';
   selector: 'app-search',
   imports: [SearchInput, NgOptimizedImage, RouterModule, Three404Component],
   templateUrl: `search.html`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: `
     .search-page {
       padding: 20px;

@@ -1,4 +1,13 @@
-import { Component, computed, inject, input, output, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  input,
+  output,
+  PLATFORM_ID,
+  ViewEncapsulation,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { PostListItem } from '../../interfaces/api-postList';
@@ -96,6 +105,7 @@ import { ApiService } from '../../services/api.service';
       </div>
     </article>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioHitsComponent {

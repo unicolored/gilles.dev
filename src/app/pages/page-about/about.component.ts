@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { PageInterface } from '../page.interface';
 import { CloudinaryImage } from '@cloudinary/url-gen';
 import { fill } from '@cloudinary/url-gen/actions/resize';
@@ -11,6 +11,7 @@ import { CloudinaryModule } from '@cloudinary/ng/dist';
 @Component({
   standalone: true,
   imports: [CloudinaryModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './about.component.html',
 })
 export class AboutComponent implements OnInit, PageInterface {
