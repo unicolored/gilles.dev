@@ -1,9 +1,18 @@
-import { Component, computed, inject, OnInit, PLATFORM_ID, signal, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  OnInit,
+  PLATFORM_ID,
+  signal,
+  ViewEncapsulation,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { PageIdSlugEnum } from '../../app.global';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
 import { Router, RouterModule } from '@angular/router';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import { SharedNgComponentsModule } from '../shared-ng-components.module';
 import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.component';
 import { ApiService } from '../../services/api.service';
@@ -14,7 +23,7 @@ import { PostList, PostListItem } from '../../interfaces/api-postList';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, RouterModule, SharedNgComponentsModule, PortfolioHitsComponent, QRCodeComponent],
+  imports: [RouterModule, SharedNgComponentsModule, PortfolioHitsComponent, QRCodeComponent],
   template: `
     <main class="portfolio--container prose dark:prose-invert lg:prose-xl max-w-none">
       <h1 class="flex gap-3">
@@ -72,6 +81,7 @@ import { PostList, PostListItem } from '../../interfaces/api-postList';
     </main>
   `,
   styleUrls: [],
+  changeDetection: ChangeDetectionStrategy.Eager,
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioComponent implements OnInit {

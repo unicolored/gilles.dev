@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../../../environments/environment';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
+  imports: [RouterModule, FormsModule, ReactiveFormsModule],
   selector: 'gilles-nx-footer',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <footer class="footer not-prose">
       <p class="mb-0 text-left font-serif text-xl">Gilles Hoarau. Developer <br /><small>Aube, France</small></p>

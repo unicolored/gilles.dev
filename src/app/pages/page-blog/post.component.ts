@@ -1,5 +1,5 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { Component, signal, effect } from '@angular/core';
+import { Component, signal, effect, ChangeDetectionStrategy } from '@angular/core';
 import { ApiService } from '../../services/api.service'; // Adjust path as needed
 import { ActivatedRoute } from '@angular/router';
 import { Post } from '../../interfaces/api-post';
@@ -48,6 +48,7 @@ import { Post } from '../../interfaces/api-post';
       }
     </main>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: ``,
 })
 export class BlogPostComponent {

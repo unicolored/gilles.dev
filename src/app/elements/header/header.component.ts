@@ -1,14 +1,15 @@
-import { Component, Input, signal, WritableSignal } from '@angular/core';
+import { Component, Input, signal, WritableSignal, ChangeDetectionStrategy } from '@angular/core';
 import { ModeEnum } from '../../app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+
 import { PageIdSlugEnum } from '../../app.global';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
+  imports: [RouterModule, FormsModule, ReactiveFormsModule],
   selector: 'gilles-nx-header',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <nav class="g-navbar">
       <div class="items">

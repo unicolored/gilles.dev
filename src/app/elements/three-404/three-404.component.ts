@@ -1,4 +1,14 @@
-import { AfterViewInit, Component, ElementRef, inject, OnDestroy, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  inject,
+  OnDestroy,
+  OnInit,
+  PLATFORM_ID,
+  ViewChild,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import * as THREE from 'three';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -54,6 +64,7 @@ function onWindowResize() {
   standalone: true,
   selector: 'gilles-nx-three-404',
   template: ` <div class="canvas" #canvas></div> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./three-404.component.css'],
 })
 export class Three404Component implements AfterViewInit, OnInit, OnDestroy {

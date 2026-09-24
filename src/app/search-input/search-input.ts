@@ -6,6 +6,7 @@ import {
   Output,
   viewChild,
   ViewEncapsulation,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -13,6 +14,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-search-input',
   imports: [FormsModule],
   templateUrl: `search-input.html`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   encapsulation: ViewEncapsulation.None,
 })
 export class SearchInput implements AfterContentInit {

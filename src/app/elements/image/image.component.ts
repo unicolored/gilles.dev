@@ -1,11 +1,11 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'gilles-nx-image',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './image.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './image.component.css',
 })
 export class ImageComponent implements AfterViewInit {

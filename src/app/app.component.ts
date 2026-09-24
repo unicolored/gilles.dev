@@ -1,6 +1,15 @@
-import { Component, effect, inject, OnInit, PLATFORM_ID, Renderer2, signal } from '@angular/core';
+import {
+  Component,
+  effect,
+  inject,
+  OnInit,
+  PLATFORM_ID,
+  Renderer2,
+  signal,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CommonModule, isPlatformBrowser, PRECONNECT_CHECK_BLOCKLIST, provideImgixLoader } from '@angular/common';
+import { isPlatformBrowser, PRECONNECT_CHECK_BLOCKLIST, provideImgixLoader } from '@angular/common';
 import { environment } from '../environments/environment';
 import { ThreeCardComponent } from './elements/three-card/three-card.component';
 import { CloudinaryModule } from '@cloudinary/ng/dist';
@@ -16,7 +25,7 @@ import { MeilisearchService } from './services/meilisearch.service';
 export type ModeEnum = 'light' | 'dark' | null;
 
 @Component({
-  imports: [CommonModule, RouterModule, ThreeCardComponent, CloudinaryModule, HeaderComponent, FooterComponent],
+  imports: [RouterModule, ThreeCardComponent, CloudinaryModule, HeaderComponent, FooterComponent],
   providers: [
     HttpService,
     ApiService,
@@ -37,6 +46,7 @@ export type ModeEnum = 'light' | 'dark' | null;
     provideImgixLoader('https://res.cloudinary.com/unicolored/'),
   ],
   selector: 'app-root',
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {

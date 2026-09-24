@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { PageInterface } from '../page.interface';
 import { environment } from '../../../environments/environment';
@@ -20,6 +20,7 @@ import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
       </section>
     </main>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: [],
 })
 export class NotFoundComponent implements OnInit, PageInterface {

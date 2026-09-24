@@ -1,5 +1,5 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { Component, signal, OnInit } from '@angular/core'; // Add OnInit
+import { Component, signal, OnInit, ChangeDetectionStrategy } from '@angular/core'; // Add OnInit
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Post } from '../../interfaces/api-post';
 import { PostCollection } from '../../interfaces/api-blogPost';
@@ -77,6 +77,7 @@ import { PostCollection } from '../../interfaces/api-blogPost';
       }
     </main>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: ``,
 })
 export class BlogComponent implements OnInit {

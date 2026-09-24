@@ -1,5 +1,14 @@
-import { Component, computed, inject, input, output, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import {
+  Component,
+  computed,
+  inject,
+  input,
+  output,
+  PLATFORM_ID,
+  ViewEncapsulation,
+  ChangeDetectionStrategy,
+} from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { PostListItem } from '../../interfaces/api-postList';
 import { ApiService } from '../../services/api.service';
@@ -7,7 +16,7 @@ import { ApiService } from '../../services/api.service';
 @Component({
   selector: 'gilles-nx-portfolio-hits',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage, RouterLink],
+  imports: [NgOptimizedImage, RouterLink],
   template: `
     <article class="mb-6">
       @if (title() || subtitle()) {
@@ -96,6 +105,7 @@ import { ApiService } from '../../services/api.service';
       </div>
     </article>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioHitsComponent {
