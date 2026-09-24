@@ -7,8 +7,6 @@
     "eslint": "eslint src && eslint projects",
     "check": "npx prettier --check ./src ./projects",
     "format": "npx prettier -w ./src ./projects",
-    "deploy": "ngh --dir=dist/gilles.dev/browser",
-    "ng": "ng",
     "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 ng serve --hmr false --host 0.0.0.0 --port 4242 --ssl",
     "set-env": "ts-node src/environments/set-env.ts",
     "generate-portfolio-data": "ts-node -P script/tsconfig.script.json script/generate-portfolio-data.ts",
