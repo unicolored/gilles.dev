@@ -36,18 +36,18 @@ export const appRoutes: Route[] = [
   //   path: 'contact',
   //   loadComponent: () => import('./pages/page-contact/contact.component').then((m) => m.ContactComponent),
   // },
-  {
-    path: 'blog/post/:slug',
-    pathMatch: 'full',
-    loadComponent: () => import('./pages/page-blog/post.component').then((m) => m.BlogPostComponent),
-  },
-  {
-    path: 'blog/page/:page',
-    pathMatch: 'full',
-    resolve: { blogData: blogResolver }, // Prefetch data here
-    providers: [ApiService, HttpService],
-    loadComponent: () => import('./pages/page-blog/blog.component').then((m) => m.BlogComponent),
-  },
+  // {
+  //   path: 'blog/post/:slug',
+  //   pathMatch: 'full',
+  //   loadComponent: () => import('./pages/page-blog/post.component').then((m) => m.BlogPostComponent),
+  // },
+  // {
+  //   path: 'blog/page/:page',
+  //   pathMatch: 'full',
+  //   resolve: { blogData: blogResolver }, // Prefetch data here
+  //   providers: [ApiService, HttpService],
+  //   loadComponent: () => import('./pages/page-blog/blog.component').then((m) => m.BlogComponent),
+  // },
   {
     path: 'blog',
     pathMatch: 'full',
@@ -60,33 +60,33 @@ export const appRoutes: Route[] = [
     pathMatch: 'full',
     loadComponent: () => import('./pages/page-projects/projects.component').then((m) => m.ProjectsComponent),
   },
-  {
-    path: 'portfolio/category/:category',
-    pathMatch: 'full',
-    loadComponent: () => import('./pages/page-portfolio/portfolio.component').then((m) => m.PortfolioComponent),
-  },
-  {
-    path: 'portfolio/item/:slug',
-    pathMatch: 'full',
-    loadComponent: () =>
-      import('./pages/page-portfolio/portfolio-item.component').then((m) => m.PortfolioItemComponent),
-  },
+  // {
+  //   path: 'portfolio/category/:category',
+  //   pathMatch: 'full',
+  //   loadComponent: () => import('./pages/page-portfolio/portfolio.component').then((m) => m.PortfolioComponent),
+  // },
+  // {
+  //   path: 'portfolio/item/:slug',
+  //   pathMatch: 'full',
+  //   loadComponent: () =>
+  //     import('./pages/page-portfolio/portfolio-item.component').then((m) => m.PortfolioItemComponent),
+  // },
   {
     //data: { renderMode: RenderMode.Prerender },
     path: PageIdSlugEnum.portfolio,
     pathMatch: 'full',
     loadComponent: () => import('./pages/page-portfolio/portfolio.component').then((m) => m.PortfolioComponent),
   },
-  {
-    path: 'remote/:pin',
-    pathMatch: 'full',
-    loadComponent: () => import('./remote/remote.component').then((m) => m.RemoteComponent),
-  },
-  {
-    path: 'tv/:slug',
-    pathMatch: 'full',
-    loadComponent: () => import('./tv/tv').then((m) => m.TvComponent),
-  },
+  // {
+  //   path: 'remote/:pin',
+  //   pathMatch: 'full',
+  //   loadComponent: () => import('./remote/remote.component').then((m) => m.RemoteComponent),
+  // },
+  // {
+  //   path: 'tv/:slug',
+  //   pathMatch: 'full',
+  //   loadComponent: () => import('./tv/tv').then((m) => m.TvComponent),
+  // },
   {
     path: 'tv',
     pathMatch: 'full',
