@@ -22,7 +22,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "^20.3.31",
+    "@angular/cli": "^20.3.37",
     "@angular/common": "^20.3.31",
     "@angular/compiler": "^20.3.31",
     "@angular/core": "^20.3.31",
@@ -74,7 +74,7 @@
     "prettier": "^3.9.9",
     "prettier-plugin-tailwindcss": "^0.6.14",
     "ts-node": "^10.9.2",
-    "typescript": "~5.8.3",
+    "typescript": "^5.9.3",
     "typescript-eslint": "8.34.1"
   }
 }
