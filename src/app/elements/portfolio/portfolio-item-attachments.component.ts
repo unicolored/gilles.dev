@@ -1,12 +1,12 @@
 import { Component, inject, input, ViewEncapsulation } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 import { AppService } from '../../app.service';
 import { WordpressService } from 'ngx-services';
 import { PostAttachment } from '../../interfaces/common';
 
 @Component({
   selector: 'gilles-nx-portfolio-item-attachments',
-  imports: [CommonModule, NgOptimizedImage],
+  imports: [NgOptimizedImage],
   providers: [AppService, WordpressService],
   template: `
     @if (attachments(); as attachments) {

@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, computed, inject, signal, viewChild } from '@angular/core';
 import { SearchInput } from '../search-input/search-input';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 import { MeilisearchService } from '../services/meilisearch.service';
 import { Hits } from 'meilisearch';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -10,7 +10,7 @@ import { Three404Component } from '../elements/three-404/three-404.component';
 
 @Component({
   selector: 'app-search',
-  imports: [CommonModule, SearchInput, NgOptimizedImage, RouterModule, Three404Component],
+  imports: [SearchInput, NgOptimizedImage, RouterModule, Three404Component],
   templateUrl: `search.html`,
   styles: `
     .search-page {

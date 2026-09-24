@@ -1,5 +1,5 @@
 import { Component, computed, inject, signal, ViewEncapsulation, OnInit } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { PortfolioItemAttachmentsComponent } from '../../elements/portfolio/portfolio-item-attachments.component';
 import { PageIdSlugEnum } from '../../app.global';
@@ -13,7 +13,7 @@ import { PostAttachment } from '../../interfaces/common';
 
 @Component({
   selector: 'gilles-nx-portfolio-item',
-  imports: [CommonModule, PortfolioItemAttachmentsComponent, NgOptimizedImage],
+  imports: [PortfolioItemAttachmentsComponent, NgOptimizedImage],
   templateUrl: `portfolio-item.component.html`,
   encapsulation: ViewEncapsulation.None,
 })

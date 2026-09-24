@@ -3,11 +3,10 @@ import { PageInterface } from '../page.interface';
 import { PageIdSlugEnum } from '../../app.global';
 import { WEB_PAGE_METAS_MAP, WebPageMetas, WebPageService } from 'ngx-services';
 import { environment } from '../../../environments/environment';
-import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './skills.component.html',
 })
 export class SkillsComponent implements OnInit, PageInterface {

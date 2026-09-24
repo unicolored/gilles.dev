@@ -7,7 +7,7 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "types": []
   },
   "exclude": ["**/*.spec.ts"]

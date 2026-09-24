@@ -1,10 +1,9 @@
 import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'gilles-nx-image',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './image.component.html',
   styleUrl: './image.component.css',
 })
