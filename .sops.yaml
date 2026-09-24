@@ -1,0 +1,4 @@
+---
+creation_rules:
+  - path_regex: environment.production.ts$
+    age: age14pgelyz9q3nulvnmaq88wp0rqt45ac9txnpqyhachk4mmfdvvp3seaun76
