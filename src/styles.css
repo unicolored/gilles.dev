@@ -1,0 +1,71 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@import './styles/theme.css';
+@import './styles/layout.css';
+@import './styles/header.css';
+@import './styles/footer.css';
+@import './styles/component.css';
+@import './styles/portfolio.css';
+@import './styles/page.css';
+@import './styles/search.css';
+@import './styles/tv.css';
+@import './styles/animation.css';
+
+body {
+  cursor: default;
+
+  @apply font-sans;
+  @apply text-content dark:text-dark-content;
+  @apply dark:bg-sky bg-white;
+
+  font-size: 1rem;
+}
+
+h1 {
+  @apply font-serif;
+  @apply text-primary;
+  @apply dark:text-moonLight;
+  font-weight: 900;
+  font-style: normal;
+}
+
+h2 {
+  @apply font-serif;
+  font-weight: 900;
+  font-style: normal;
+  @apply text-primary dark:text-dark-primary;
+}
+
+h3 {
+  @apply font-sans;
+  @apply text-primary dark:text-moonLight;
+  font-style: normal;
+  font-weight: 700;
+  margin-bottom: 1em;
+}
+
+h4 {
+  @apply font-sans;
+  font-style: normal;
+  font-weight: 400;
+}
+
+p {
+  margin-bottom: 1.4rem;
+  @apply dark:text-dark-content;
+}
+
+small {
+  color: var(--color-content-secondary);
+  @apply text-content-secondary;
+  @apply dark:text-dark-content-secondary;
+}
+
+a {
+  text-decoration: underline;
+}
+
+b,
+strong {
+  @apply text-accent dark:text-dark-accent;
+}

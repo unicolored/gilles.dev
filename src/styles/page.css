@@ -1,0 +1,15 @@
+main.about--container {
+  @apply grid;
+
+  @apply grid-cols-[6fr_3fr];
+  @apply md:grid-cols-[6fr_3fr];
+  @apply lg:grid-cols-1 lg:grid-rows-[auto_1fr];
+}
+
+.badge {
+  @apply rounded-full border-1 px-2 py-1 text-xs text-blue-500 uppercase;
+}
+
+.contact-btn {
+  @apply m-auto block w-full rounded-full bg-blue-500 p-4 text-center font-bold text-white no-underline hover:bg-blue-600;
+}

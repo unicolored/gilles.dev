@@ -16,7 +16,7 @@ import { CloudinaryModule } from '@cloudinary/ng/dist';
   styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent implements OnInit, PageInterface {
-  pageId = PageIdSlugEnum.about;
+  pageId = PageIdSlugEnum.home;
   // myImage =  new CloudinaryImage('photo500_2024_067133a99d', {cloudName: 'unicolored'}).resize(fill().width(100).height(150));
   myPhoto = new CloudinaryImage('photo500_2024_067133a99d', { cloudName: 'unicolored' }).resize(
     fill().width(233).height(233),

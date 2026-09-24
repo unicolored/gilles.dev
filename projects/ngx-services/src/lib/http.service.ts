@@ -11,7 +11,7 @@ const handleError = (e: unknown) => {
   } else {
     // The backend returned an unsuccessful response code.
     // The response body may contain clues as to what went wrong.
-    console.error(`🚨 Backend returned code ${error.status}, body was: `, error.error);
+    console.error(`🚨 Backend returned code ${error.status}`);
   }
 };
 
@@ -25,9 +25,9 @@ export class HttpService {
       catchError((error) => {
         handleError(error);
 
-        const err = new Error(`Code: ${error.status}-INT`);
+        const err = new Error(`Code: ${error.status}-INT. ${error.error?.message}`);
 
-        console.log('catchError err');
+        console.log('catchError err', endpoint);
         // if (...) {
         //   this.error$.next(err);
         // }

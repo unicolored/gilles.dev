@@ -1,0 +1,4 @@
+.tv-wrapper {
+  @apply absolute flex h-[84vh] w-full border-b;
+  backdrop-filter: blur(3px);
+}

@@ -1,8 +1,10 @@
-import { Component, computed, input, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, computed, input, ViewEncapsulation, ChangeDetectionStrategy, inject, PLATFORM_ID, output } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { PortfolioHit } from '../../services/search.interface';
 import { extractText } from '../../app.helpers';
 import { RouterLink } from '@angular/router';
+import { PostListItem } from '../../interfaces/api-postList';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'gilles-nx-portfolio-hits',
@@ -23,7 +25,7 @@ import { RouterLink } from '@angular/router';
           }
         </article>
       }
-    
+
       @defer (on viewport; prefetch on timer(1s)) {
       <div class="portfolio-items">
         @for (item of itemsComputed(); track item.objectID) {
@@ -66,51 +68,24 @@ import { RouterLink } from '@angular/router';
   encapsulation: ViewEncapsulation.None,
 })
 export class PortfolioHitsComponent {
+  public apiService = inject(ApiService);
   title = input<string>();
-  name = computed(() => {
-    const name = this.title();
-    return name ? name.toLocaleLowerCase().replace(/ /g, '-') : Math.random().toString(36);
-  });
   subtitle = input<string>();
+  priority = input<boolean>(false);
+  platformId = inject(PLATFORM_ID);
+  selectedItem = input<string | null>();
+  isRemoteActive = input<boolean>();
+  itemSelected = output<string>();
 
-  itemId = input<string | null>(null);
+  items = input<PostListItem[] | undefined>([]);
+  //       url: `f_webp,q_auto,w_600,c_fill,ar_16:9/${publicId}.webp`,
+  itemsComputed = computed(() => {
+    return this.items();
+  });
 
-  items = input<PortfolioHit[]>([]);
-  itemsComputed = computed(() =>
-    this.items().map((item) => {
-      const currentUrl = item.images.thumbnail?.url;
-
-      if (!currentUrl) {
-        item.images.thumbnail = {
-          url: 'missing.jpg',
-          width: 430,
-          height: 215,
-        };
-      } else {
-        // const url = 'https://www.gilleshoarau.com/da/wp-content/uploads/2014/07/logo-velinea-200x200.png';
-
-        const publicId = extractText(currentUrl);
-
-        if (!publicId) {
-          item.images.thumbnail = {
-            url: 'missing.jpg',
-            width: 430,
-            height: 215,
-          };
-        } else {
-          item.images.thumbnail = {
-            // url: `f_webp,q_auto,w_430,h_242,c_fill,ar_16:9/${publicId}.webp`,
-            url: `f_webp,q_auto,w_600,c_fill,ar_16:9/${publicId}.webp`,
-            width: 2,
-            height: 1,
-          };
-          item.images.full = {
-            // url: `f_webp,q_auto,w_430,h_242,c_fill,ar_16:9/${publicId}.webp`,
-            url: `q_auto:best,w_1280,c_fit,ar_16:9/${publicId}.jpg`,
-          };
-        }
-      }
-      return item;
-    }),
-  );
+  selectItem(itemId?: string) {
+    if (itemId) {
+      this.itemSelected.emit(itemId);
+    }
+  }
 }

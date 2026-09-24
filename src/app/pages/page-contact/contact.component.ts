@@ -16,19 +16,19 @@ import {
   standalone: true,
   imports: [FontAwesomeModule],
   template: `
-    <main class="page-prose">
+    <main class="page-prose prose lg:prose-lg">
       <section class="main contact">
         <div class="hero-title pt-2 pb-5">
           <h1>
-            <span i18n>Call me</span>
-            ☎️
+            <fa-icon [icon]="['fasds', 'phone-rotary']" [fixedWidth]="true"></fa-icon>
+            &nbsp; <span i18n>Call me</span>
           </h1>
           <p class="mb-10" i18n>
             Whether you have a creative&nbsp;venture or an everyday&nbsp;challenge, I&nbsp;would be happy
-            to&nbsp;discuss 😇
+            to&nbsp;discuss <fa-icon [icon]="['fasds', 'comment-smile']" [fixedWidth]="true" size="2x"></fa-icon>
           </p>
         </div>
-        <div class="pt-2 pb-5 content">
+        <div class="content pt-2 pb-5">
           <!--<div class="myPhone">
           <a href="tel:+33663078396">
             <fa-icon [icon]="['fas', 'mobile-screen-button']" [fixedWidth]="true"></fa-icon>
@@ -60,11 +60,12 @@ export class ContactComponent implements OnInit, PageInterface {
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
 
-  library = inject(FaIconLibrary);
+  // library = inject(FaIconLibrary);
+  // protected readonly faPhoneRotary = faPhoneRotary;
 
   ngOnInit(): void {
     // Add multiple icons to the library
-    this.library.addIcons(fasCalendar, fasMobileScreenButton, fasArrowUpRightFromSquare, fasEnvelope);
+    // this.library.addIcons(fasCalendar, fasMobileScreenButton, fasArrowUpRightFromSquare, fasEnvelope);
 
     if (this.webPageMetasMap.has(this.pageId)) {
       this.webPageService.setMetas(this.webPageMetasMap.get(this.pageId), environment.endpoints?.['_self']);

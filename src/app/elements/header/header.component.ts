@@ -1,8 +1,8 @@
-import { Component, inject, Input, WritableSignal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, Input, WritableSignal, ChangeDetectionStrategy, signal } from '@angular/core';
 import { ModeEnum } from '../../app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-
+import { PageIdSlugEnum } from '../../app.global';
 
 @Component({
   standalone: true,
@@ -23,7 +23,7 @@ import { Router, RouterModule } from '@angular/router';
           </a>
         }
       </div>
-    
+
       <div class="actions"></div>
     </nav>
     `,
@@ -32,20 +32,42 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class HeaderComponent {
   @Input() mode!: WritableSignal<ModeEnum>;
-  private router = inject(Router);
 
   navItems = [
     {
-      name: $localize`Hello!`,
+      name: `👋 Hello`,
       route: '/',
     },
     {
-      name: $localize`About`,
-      route: '/about',
+      name: `CV`,
+      route: '/' + PageIdSlugEnum.cv,
     },
     {
-      name: $localize`Contact`,
-      route: '/contact',
+      name: `Skills`,
+      route: '/' + PageIdSlugEnum.skills,
     },
+    {
+      name: `Tools`,
+      route: '/' + PageIdSlugEnum.tools,
+    },
+    {
+      name: `Portfolio`,
+      route: '/' + PageIdSlugEnum.portfolio,
+    },
+    // {
+    //   name: `Blog`,
+    //   route: '/blog',
+    // },
+    // {
+    //   name: `Contact`,
+    //   route: '/contact',
+    // },
   ];
+  //
+  // Assuming navItems is already defined, e.g., as a signal or array
+  isMenuOpen = signal(false);
+
+  toggleMenu(): void {
+    this.isMenuOpen.set(!this.isMenuOpen());
+  }
 }

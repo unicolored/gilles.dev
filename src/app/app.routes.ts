@@ -1,25 +1,64 @@
 import { Route, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ApiService } from './services/api.service';
+import { HttpService } from 'ngx-services';
+import { blogResolver } from './pages/page-blog/blog.resolver';
+import { PageIdSlugEnum } from './app.global';
 
 export const appRoutes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    loadComponent: () => import('./pages/page-home/home.component').then((m) => m.HomeComponent),
-  },
-  {
-    path: 'about',
+    //loadComponent: () => import('./pages/page-home/home.component').then((m) => m.HomeComponent),
     loadComponent: () => import('./pages/page-about/about.component').then((m) => m.AboutComponent),
   },
+  // {
+  //   path: 'about',
+  //   loadComponent: () => import('./pages/page-about/about.component').then((m) => m.AboutComponent),
+  // },
   {
-    path: 'contact',
-    loadComponent: () => import('./pages/page-contact/contact.component').then((m) => m.ContactComponent),
+    path: PageIdSlugEnum.cv,
+    loadComponent: () => import('./pages/page-xp/xp.component').then((m) => m.XpComponent),
   },
   {
-    path: 'portfolio',
+    path: PageIdSlugEnum.skills,
+    loadComponent: () => import('./pages/page-xp/skills.component').then((m) => m.SkillsComponent),
+  },
+  {
+    path: PageIdSlugEnum.tools,
+    loadComponent: () => import('./pages/page-xp/tools.component').then((m) => m.ToolsComponent),
+  },
+  {
+    path: 'search',
+    loadComponent: () => import('./search/search').then((m) => m.Search),
+  },
+  // {
+  //   path: 'contact',
+  //   loadComponent: () => import('./pages/page-contact/contact.component').then((m) => m.ContactComponent),
+  // },
+  {
+    path: 'blog/post/:slug',
     pathMatch: 'full',
-    loadComponent: () => import('./pages/page-portfolio/portfolio.component').then((m) => m.PortfolioComponent),
+    loadComponent: () => import('./pages/page-blog/post.component').then((m) => m.BlogPostComponent),
+  },
+  {
+    path: 'blog/page/:page',
+    pathMatch: 'full',
+    resolve: { blogData: blogResolver }, // Prefetch data here
+    providers: [ApiService, HttpService],
+    loadComponent: () => import('./pages/page-blog/blog.component').then((m) => m.BlogComponent),
+  },
+  {
+    path: 'blog',
+    pathMatch: 'full',
+    resolve: { blogData: blogResolver }, // Prefetch data here
+    providers: [ApiService, HttpService],
+    loadComponent: () => import('./pages/page-blog/blog.component').then((m) => m.BlogComponent),
+  },
+  {
+    path: 'projects',
+    pathMatch: 'full',
+    loadComponent: () => import('./pages/page-projects/projects.component').then((m) => m.ProjectsComponent),
   },
   {
     path: 'portfolio/category/:category',
@@ -27,12 +66,32 @@ export const appRoutes: Route[] = [
     loadComponent: () => import('./pages/page-portfolio/portfolio.component').then((m) => m.PortfolioComponent),
   },
   {
-    path: 'portfolio/item/:objectId',
+    path: 'portfolio/item/:slug',
     pathMatch: 'full',
     loadComponent: () =>
       import('./pages/page-portfolio/portfolio-item.component').then((m) => m.PortfolioItemComponent),
   },
-  { path: '**', component: NotFoundComponent },
+  {
+    //data: { renderMode: RenderMode.Prerender },
+    path: PageIdSlugEnum.portfolio,
+    pathMatch: 'full',
+    loadComponent: () => import('./pages/page-portfolio/portfolio.component').then((m) => m.PortfolioComponent),
+  },
+  {
+    path: 'remote/:pin',
+    pathMatch: 'full',
+    loadComponent: () => import('./remote/remote.component').then((m) => m.RemoteComponent),
+  },
+  {
+    path: 'tv/:slug',
+    pathMatch: 'full',
+    loadComponent: () => import('./tv/tv').then((m) => m.TvComponent),
+  },
+  {
+    path: 'tv',
+    pathMatch: 'full',
+    loadComponent: () => import('./tv/tv').then((m) => m.TvComponent),
+  },
   {
     path: '**',
     loadComponent: () => import('./pages/not-found/not-found.component').then((m) => m.NotFoundComponent),

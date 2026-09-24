@@ -1,0 +1,66 @@
+<main class="page-prose">
+  @if (postComputed(); as post) {
+    <article class="mb-6">
+      <!--<iframe
+        src="https://player.cloudinary.com/embed/?public_id=Videos%2FPWA_Video&cloud_name=unicolored&player[seekThumbnails]=false&player[posterOptions][transformation][startOffset]=15"
+        width="640"
+        height="360"
+        style="height: auto; width: 100%; aspect-ratio: 640 / 360"
+        allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+        allowfullscreen
+        frameborder="0"
+      ></iframe>-->
+      @if (post.cloudinaryId) {
+        <div class="portfolio-item">
+          <figure>
+            <span class="item-body item-body-single">
+              <img
+                [ngSrc]="'cloud-coelis/prod/' + post.cloudinaryId"
+                fill
+                priority
+                sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw, 100vw"
+                [alt]="post.title"
+                [title]="post.title"
+              />
+            </span>
+            @if (post.description) {
+              <figcaption [innerHTML]="post.description"></figcaption>
+            }
+          </figure>
+        </div>
+      }
+
+      <div class="prose dark:prose-invert prose-h1:text-3xl p-7">
+        <header class="mb-2 flex">
+          <h1>
+            <span i18n [innerHTML]="post.title"></span>
+          </h1>
+        </header>
+
+        <main class="flex w-full">
+          <!--@if (post.description) {
+                <div class="prose dark:prose-invert" [innerHTML]="post.description"></div>
+              }
+              @if (post.content) {
+                <div class="prose dark:prose-invert" [innerHTML]="post.content"></div>
+              }-->
+          @if (safeHtml(); as safeHtml) {
+            <div class="prose dark:prose-invert" [innerHTML]="safeHtml"></div>
+          }
+        </main>
+      </div>
+
+      @defer (on viewport) {
+        @if (attachmentsComputed(); as attachments) {
+          <section>
+            <gilles-nx-portfolio-item-attachments [attachments]="attachments"></gilles-nx-portfolio-item-attachments>
+          </section>
+        }
+      } @placeholder (minimum 500ms) {
+        <section>...</section>
+      } @error {
+        <p>Failed to load attachments.</p>
+      }
+    </article>
+  }
+</main>

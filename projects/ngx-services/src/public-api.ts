@@ -1,3 +1,6 @@
+export * from './lib/jekyll.interface';
+
+export * from './lib/unicolored.service';
 export * from './lib/wordpress.service';
 export * from './lib/web-page.service';
 export * from './lib/http.service';

@@ -1,11 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { catchError, first, Observable, shareReplay } from 'rxjs';
-import { WordpressPublicRequestParams, WordpressSelfRequestParams } from 'shared-wordpress';
 import { HttpErrorResponse } from '@angular/common/http';
 import { WordpressSelfSinglePostMedia } from './wordpress.self.media.interface';
 import { WordpressSelfSinglePost } from './wordpress.self.interface';
 import { WordpressPublicPosts, WordpressPublicSinglePost } from './wordpress.interface';
+import { WordpressPublicRequestParams, WordpressSelfRequestParams } from './wordpress.shared';
 
 @Injectable()
 export class WordpressService {

@@ -1,0 +1,66 @@
+.portfolio-items {
+  @apply 6xl:grid-cols-3 grid items-start gap-7 md:grid-cols-2;
+}
+
+.portfolio-item {
+  & {
+    @apply flex h-full grow;
+    @apply block overflow-hidden rounded-tr-2xl border-2;
+    @apply p-3 shadow;
+    backdrop-filter: blur(3px);
+    @apply no-underline;
+  }
+
+  a& {
+    cursor: pointer;
+    @apply border-bkg hover:border-primary;
+    @apply dark:border-dark-bkg dark:hover:border-dark-primary;
+
+    &:hover {
+      figure .item-body img {
+        @apply opacity-100;
+      }
+    }
+  }
+
+  figure {
+    & {
+      margin: 0;
+      padding: 0;
+    }
+
+    .item-body {
+      @apply relative block h-80 md:h-64;
+
+      img {
+        @apply bg-moonLight/10 m-0 object-contain p-0 opacity-90 shadow;
+      }
+
+      &.item-body-single {
+        @apply mb-3 h-[70vh];
+
+        img {
+          @apply m-0 object-contain p-0 opacity-90 shadow;
+        }
+      }
+    }
+
+    figcaption {
+      @apply px-3;
+    }
+  }
+}
+
+.portfolio-attachments {
+  @apply flex flex-col items-center justify-center text-center;
+
+  .attachment {
+    @apply relative flex h-[80vh] max-h-[90vh] w-full;
+
+    img {
+      object-fit: contain;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}

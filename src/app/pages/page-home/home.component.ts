@@ -8,8 +8,6 @@ import { PortfolioHit, SearchIndexes } from '../../services/search.interface';
 
 import { SharedNgComponentsModule } from '../shared-ng-components.module';
 import { PortfolioHitsComponent } from '../../elements/portfolio/portfolio-hits.component';
-import { InstantSearchService } from '../../services/instantsearch.service';
-import { connectConfigure, connectHits } from 'instantsearch.js/es/connectors';
 
 @Component({
   standalone: true,
@@ -17,17 +15,15 @@ import { connectConfigure, connectHits } from 'instantsearch.js/es/connectors';
   template: `
     <main class="page-prose">
       <div class="hero pt-8 pb-4">
-        <div class="hero-content text-left w-full">
+        <div class="hero-content w-full text-left">
           <section class="w-full">
             <header class="not-prose text-center">
-              <h1 class="font-bold text-5xl leading-snug">Gilles HOARAU</h1>
-              <h2 class="font-bold font-mono text-xl leading-snug text-accent" i18n>
-                Graphic Designer &amp;&nbsp;Web&nbsp;Developer
-              </h2>
+              <h1 class="text-5xl leading-snug font-bold">Gilles HOARAU</h1>
+              <h2 class="text-accent font-mono text-xl leading-snug font-bold" i18n>Creative Full-Stack Developer</h2>
             </header>
 
             <article class="hidden">
-              <h3 class="font-bold leading-snug">
+              <h3 class="leading-snug font-bold">
                 <span i18n>I've been working on creative projects for many many years 🙏</span>
               </h3>
               <p>
@@ -40,24 +36,6 @@ import { connectConfigure, connectHits } from 'instantsearch.js/es/connectors';
           </section>
         </div>
       </div>
-
-      <section class="mt-6">
-        <gilles-nx-portfolio-hits
-          title="Visual Identity |&nbsp;UX&nbsp;Design"
-          subtitle="Photoshop, Illustrator, Figma, Blender&nbsp;3D"
-          [items]="portfolioDesignHits()"
-        >
-        </gilles-nx-portfolio-hits>
-      </section>
-
-      <section class="mt-12">
-        <gilles-nx-portfolio-hits
-          title="Full-stack Development |&nbsp;Devops"
-          subtitle="Angular, Symfony, Woocommerce, Ansible, Docker, Kubernetes"
-          [items]="portfolioDevHits()"
-        >
-        </gilles-nx-portfolio-hits>
-      </section>
     </main>
   `,
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -66,80 +44,12 @@ import { connectConfigure, connectHits } from 'instantsearch.js/es/connectors';
 export class HomeComponent implements OnInit, PageInterface {
   pageId = PageIdSlugEnum.home;
 
-  portfolioDesignHits = signal<Hit<PortfolioHit>[]>([]);
-  portfolioDevHits = signal<Hit<PortfolioHit>[]>([]);
-
   private readonly webPageService = inject(WebPageService);
   private webPageMetasMap = inject<Map<string, WebPageMetas>>(WEB_PAGE_METAS_MAP);
-  public searchService = inject(InstantSearchService);
 
   ngOnInit() {
     if (this.webPageMetasMap.has(this.pageId)) {
       this.webPageService.setMetas(this.webPageMetasMap.get(this.pageId), environment.endpoints?.['_self']);
     }
-
-    const searchDesignInstance = this.searchService.createInstance(SearchIndexes.posts);
-
-    const renderConfigure = (renderOptions: unknown, isFirstRender: boolean) => {
-      // const {
-      //   refine,
-      //   widgetParams,
-      // } = renderOptions;
-
-      if (isFirstRender) {
-        // Do some initial rendering and bind events
-      }
-
-      // Render the widget
-    };
-
-    searchDesignInstance
-      .addWidgets([
-        connectConfigure(renderConfigure)({
-          searchParameters: {
-            hitsPerPage: 6,
-            facetsRefinements: {
-              'taxonomies.category': ['design'],
-            },
-          },
-        }),
-        connectHits(({ hits }) => {
-          this.portfolioDesignHits.set(hits as Hit<PortfolioHit>[]);
-        })({}),
-      ])
-      .start();
-  }
-
-  ngAfterViewInit(): void {
-    const searchDevInstance = this.searchService.createInstance(SearchIndexes.posts);
-
-    const renderConfigure = (renderOptions: unknown, isFirstRender: boolean) => {
-      // const {
-      //   refine,
-      //   widgetParams,
-      // } = renderOptions;
-
-      if (isFirstRender) {
-        // Do some initial rendering and bind events
-      }
-
-      // Render the widget
-    };
-
-    searchDevInstance
-      .addWidgets([
-        connectConfigure(renderConfigure)({
-          searchParameters: {
-            hitsPerPage: 6,
-            facetsRefinements: {
-              'taxonomies.category': ['dev'],
-            },
-          },
-        }),
-        connectHits(({ hits }) => {
-          this.portfolioDevHits.set(hits as Hit<PortfolioHit>[]);
-        })({}),
-      ])
-      .start();
   }
 }

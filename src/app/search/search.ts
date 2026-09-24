@@ -1,0 +1,129 @@
+import { AfterViewInit, Component, computed, inject, signal, viewChild } from '@angular/core';
+import { SearchInput } from '../search-input/search-input';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { MeilisearchService } from '../services/meilisearch.service';
+import { Hits } from 'meilisearch';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { MeiliAttachment, MeiliPost } from '../interfaces/meili-post';
+import { ApiService } from '../services/api.service';
+import { Three404Component } from '../elements/three-404/three-404.component';
+
+@Component({
+  selector: 'app-search',
+  imports: [CommonModule, SearchInput, NgOptimizedImage, RouterModule, Three404Component],
+  templateUrl: `search.html`,
+  styles: `
+    .search-page {
+      padding: 20px;
+    }
+
+    .search-results {
+      margin-top: 20px;
+    }
+  `,
+})
+export class Search implements AfterViewInit {
+  searchResults = signal<Hits<MeiliPost | MeiliAttachment>>([]);
+  searchResultsFormatted = computed(() => {
+    const results = this.searchResults();
+
+    return results.map((r) => {
+      r.cloudinaryId = 'cloud-coelis/prod/' + r.cloudinaryId;
+      if (r.cloudinaryId.includes('Videos/')) {
+        r.cloudinaryId = 'video/upload/' + r.cloudinaryId.replace('mp4', 'jpg');
+      }
+
+      return r;
+    });
+  });
+  isLoading = signal<boolean>(false);
+  error = signal<string | null>(null);
+  private meilisearchService = inject(MeilisearchService);
+  private activatedRoute = inject(ActivatedRoute);
+  private router = inject(Router);
+  searchInput = viewChild.required<SearchInput>(SearchInput);
+  public apiService = inject(ApiService);
+  public noResultsFound = signal<boolean | null>(null);
+
+  ngAfterViewInit() {
+    this.activatedRoute.queryParams.subscribe((params) => {
+      const query = params['query'];
+      if (query) {
+        this.searchInput().searchQuery = query;
+        this.doSearch(query);
+      } else {
+        this.searchInput().searchQuery = '';
+        this.searchResults.set([]);
+        this.noResultsFound.set(null);
+      }
+    });
+  }
+
+  performSearch(query: string) {
+    this.router.navigate([], {
+      relativeTo: this.activatedRoute,
+      queryParams: { query },
+      queryParamsHandling: 'merge',
+    });
+  }
+
+  private doSearch(query: string) {
+    this.searchResults.set([]);
+    if (!query.trim()) {
+      this.noResultsFound.set(null);
+      return;
+    }
+
+    this.isLoading.set(true);
+    this.error.set(null);
+
+    this.meilisearchService
+      .search(query)
+      .then((response) => {
+        // Assuming response.results is an array of search results
+        const hits = response.hits as Hits<MeiliPost | MeiliAttachment>;
+
+        const cloudinaryPostIds = hits
+          .map((h) => {
+            return h.type === 'post' ? h.cloudinaryId : null;
+          })
+          .filter((h) => h);
+
+        const filtered: Hits<MeiliPost | MeiliAttachment> = [];
+        hits.forEach((h) => {
+          if (h.type === 'post') {
+            filtered.push(h);
+          } else if (!cloudinaryPostIds.includes(h.cloudinaryId)) {
+            filtered.push(h);
+          }
+        });
+
+        if (filtered) {
+          this.searchResults.set(filtered);
+          if (filtered.length === 0) {
+            this.noResultsFound.set(true);
+          } else {
+            this.noResultsFound.set(false);
+          }
+        }
+      })
+      .catch((error) => {
+        this.error.set('An error occurred while searching. Please try again.');
+        console.error('Search error:', error);
+      })
+      .finally(() => {
+        this.isLoading.set(false);
+      });
+  }
+
+  // onInputChange(query: string) {
+  //   // Handle input changes (e.g., for live search or suggestions)
+  //   console.log('Input changed:', query);
+  // }
+
+  selectItem(slug?: string, postSlug?: string) {
+    if (slug) {
+      console.log('TODO: selectItem', slug, postSlug);
+    }
+  }
+}

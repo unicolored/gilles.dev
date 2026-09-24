@@ -1,0 +1,52 @@
+import * as fs from 'fs';
+import * as dotenv from 'dotenv';
+import * as p from '../../package.json' with { type: 'json' };
+import colors from 'colors/safe.js';
+
+const setEnv = () => {
+  const writeFile = fs.writeFile;
+  // Configure Angular `environment.ts` file path
+  const targetPath = './src/environments/environment.production.ts';
+  // Load node modules
+  const appVersion = p.version;
+  dotenv.config({
+    path: 'src/environments/.env.prod',
+  });
+  // `environment.ts` file structure
+  const envConfigFile = `export const environment = {
+  maintenance: false,
+  version: '${appVersion}',
+  endpoints: {
+    _self: 'https://gilles.dev',
+    api: '${process.env['API_URL']}',
+    backend: '${process.env['BACKEND_URL']}',
+    hub: '${process.env['HUB_URL']}',
+    meilisearch: '${process.env['MEILISEARCH_URL']}',
+  },
+  topic: {
+    secret: '${process.env['HUB_SECRET']}',
+    jwt: '${process.env['HUB_JWT']}',
+  },
+  unicoloredBaseUrl: 'https://unicolo.red',
+  meilisearch: {
+    indice_prefix: 'myadmin_prod_',
+    search_key: '${process.env['MEILISEARCH_SEARCH_KEY']}'
+  },
+  algolia: {
+    appId: '${process.env['ALGOLIA_APPID']}',
+    apiKey: '${process.env['ALGOLIA_APIKEY']}',
+  },
+};
+`;
+  console.log(colors.magenta('The file `environment.ts` will be written with the following content: \n'));
+  writeFile(targetPath, envConfigFile, (err: unknown) => {
+    if (err) {
+      console.error(err);
+      throw err;
+    } else {
+      console.log(colors.magenta(`Angular environment.ts file generated correctly at ${targetPath} \n`));
+    }
+  });
+};
+
+setEnv();

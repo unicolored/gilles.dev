@@ -1,0 +1,951 @@
+[
+  {
+    "@context": "/api/contexts/PostList",
+    "@id": "/api/post_lists/gilles-dev-portfolio",
+    "@type": "PostList",
+    "name": "Gilles.dev - Portfolio",
+    "slug": "gilles-dev-portfolio",
+    "description": "From development to production",
+    "items": [
+      {
+        "@id": "/api/post_list_items/29",
+        "@type": "PostListItem",
+        "post": {
+          "title": "M&D France",
+          "slug": "m-d-france",
+          "status": "publish",
+          "mainCategory": {
+            "@id": "/api/categories/portfolio",
+            "@type": "Category",
+            "name": "Portfolio",
+            "slug": "portfolio"
+          },
+          "description": "<div>Built &amp; deployed a complete ecommerce solution, with a custom Symfony backend and its API. Support +4500 orders per week.</div>",
+          "attachments": [
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/1461c5707c74b00a93c5",
+              "cloudinaryId": "md-group.png",
+              "name": "md-group",
+              "slug": "md-group"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/f0c8b4df0bce38220b8d",
+              "cloudinaryId": "site-web-meat-doria.png",
+              "name": "site-web-meat-doria",
+              "slug": "site-web-meat-doria"
+            }
+          ],
+          "createdAt": "2024-10-18T15:46:00+00:00",
+          "cloudinaryId": "md-group.png"
+        },
+        "position": 1
+      },
+      {
+        "@id": "/api/post_list_items/30",
+        "@type": "PostListItem",
+        "post": {
+          "title": "Champagne Bernard Robert",
+          "slug": "champagne-bernard-robert",
+          "status": "publish",
+          "mainCategory": {
+            "@id": "/api/categories/portfolio",
+            "@type": "Category",
+            "name": "Portfolio",
+            "slug": "portfolio"
+          },
+          "description": "<div>Integrated the design and developped the backend for this online shop of Champagne. Built on top of a Woocommerce website.&nbsp;</div>",
+          "attachments": [
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/66f26b37c32ac424708c",
+              "cloudinaryId": "site-web-champagne-bernard-robert.jpg",
+              "name": "Boutique Champagne Bernard Robert",
+              "slug": "boutique-champagne-bernard-robert"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/bfcc15bf939ea84d630d",
+              "cloudinaryId": "site-ecommerce-voigny.jpg",
+              "name": "La boutique Champagne Bernard Robert",
+              "slug": "la-boutique-champagne-bernard-robert"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/53b174c5a07f51b24b9a",
+              "cloudinaryId": "site-ecommerce-responsive-mobile.jpg",
+              "name": "La boutique Champagne Bernard Robert 1",
+              "slug": "la-boutique-champagne-bernard-robert-1"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/0eacf963bfa25d32da6a",
+              "cloudinaryId": "site-ecommerce-panier-paiement.jpg",
+              "name": "La boutique Champagne Bernard Robert 2",
+              "slug": "la-boutique-champagne-bernard-robert-2"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/7d3cd1fb4e2d2f0c8cde",
+              "cloudinaryId": "site-ecommerce-champagne-bernard-robert.jpg",
+              "name": "La boutique Champagne Bernard Robert 3",
+              "slug": "la-boutique-champagne-bernard-robert-3"
+            }
+          ],
+          "createdAt": "2015-09-04T10:39:00+00:00",
+          "cloudinaryId": "site-ecommerce-champagne-bernard-robert.jpg"
+        },
+        "position": 2
+      },
+      {
+        "@id": "/api/post_list_items/28",
+        "@type": "PostListItem",
+        "post": {
+          "title": "Chesspop.live",
+          "slug": "chesspop-live",
+          "status": "publish",
+          "mainCategory": {
+            "@id": "/api/categories/portfolio",
+            "@type": "Category",
+            "name": "Portfolio",
+            "slug": "portfolio"
+          },
+          "description": "<div>Built on top of my open-source <a href=\"https://www.npmjs.com/package/chessfield\">Chessfield library</a>: an app to watch live games from Lichess in real-time 3D.</div>",
+          "contentMarkdown": "<p>ChessPop is designed to display live chess games in a spectator interactive 3D mode. Take a snack, enjoy!</p>\n<p><img src=\"https://raw.githubusercontent.com/unicolored/chesspop.live/refs/heads/main/public/images/in-action.gif\" alt=\"Chess Pop 3D in action\" /></p>\n<p>I hope it will help online players like me to keep a real perception and analysis of the chess games. Chessfield is connected to live stream data (like lichess.org/tv).</p>\n<p>Behind ChessPop, there is the open-source library chessfield.</p>\n",
+          "attachments": [
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/b7cd66f289339df13985",
+              "cloudinaryId": "project-chesspop-68eeb694d441c863930101.jpg",
+              "slug": "project-chesspop-68eeb694d441c863930101-jpg"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/9b291e79a7970e522aa9",
+              "cloudinaryId": "chessfield-68eebd8ad9ec5821427611.jpg",
+              "name": "Chessfield preview",
+              "slug": "chessfield-preview"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/46a89cfac98717c673ac",
+              "cloudinaryId": "in-action-690109885607c078480619.gif",
+              "name": "In action",
+              "slug": "in-action"
+            }
+          ],
+          "createdAt": "2025-03-17T10:12:00+00:00",
+          "cloudinaryId": "project-chesspop-68eeb694d441c863930101.jpg"
+        },
+        "position": 3
+      },
+      {
+        "@id": "/api/post_list_items/32",
+        "@type": "PostListItem",
+        "post": {
+          "title": "Regina caeli",
+          "slug": "regina-caeli",
+          "status": "publish",
+          "mainCategory": {
+            "@id": "/api/categories/portfolio",
+            "@type": "Category",
+            "name": "Portfolio",
+            "slug": "portfolio"
+          },
+          "description": "<div>A website optimized for performance &amp; SEO: static built made with Angular. Hosted on Cloudflare.</div>",
+          "attachments": [
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/27f0326d8e2545c5ffe9",
+              "cloudinaryId": "regina-caeli.png",
+              "name": "regina-caeli",
+              "slug": "regina-caeli"
+            }
+          ],
+          "createdAt": "2024-10-18T16:15:00+00:00",
+          "cloudinaryId": "regina-caeli.png"
+        },
+        "position": 4
+      },
+      {
+        "@id": "/api/post_list_items/33",
+        "@type": "PostListItem",
+        "post": {
+          "title": "La compagnie du Loup bleu",
+          "slug": "la-compagnie-du-loup-bleu",
+          "status": "publish",
+          "mainCategory": {
+            "@id": "/api/categories/portfolio",
+            "@type": "Category",
+            "name": "Portfolio",
+            "slug": "portfolio"
+          },
+          "description": "<div>A customized WordPress website for this theater association from Troyes, designed to communicate about their plays. Active since 2013.</div>",
+          "attachments": [
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/da9496de4c8075a660be",
+              "cloudinaryId": "compagnie-du-loup-bleu.png",
+              "name": "compagnie-du-loup-bleu",
+              "slug": "compagnie-du-loup-bleu"
+            }
+          ],
+          "createdAt": "2024-10-18T16:19:00+00:00",
+          "cloudinaryId": "compagnie-du-loup-bleu.png"
+        },
+        "position": 5
+      },
+      {
+        "@id": "/api/post_list_items/35",
+        "@type": "PostListItem",
+        "post": {
+          "title": "On The Move",
+          "slug": "on-the-move",
+          "status": "publish",
+          "mainCategory": {
+            "@id": "/api/categories/portfolio",
+            "@type": "Category",
+            "name": "Portfolio",
+            "slug": "portfolio"
+          },
+          "description": "<div>Full UX-Design application prototyping on Figma, of an app for a transportation app powered by AI.</div>",
+          "contentMarkdown": "<p>Full UX design and prototyping of an AI-powered transportation app interface, built in Figma. This project involved creating interactive wireframes, optimizing user experience for seamless navigation, and integrating AI features for personalized recommendations, resulting in a testable prototype that could potentially reduce travel times by 20%.</p>\n",
+          "attachments": [
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/cb5e3861c2150e0f1eab",
+              "cloudinaryId": "onthemove-figma.png",
+              "name": "onthemove-figma",
+              "slug": "onthemove-figma"
+            }
+          ],
+          "createdAt": "2022-07-12T07:24:00+00:00",
+          "cloudinaryId": "onthemove-figma.png"
+        },
+        "position": 6
+      },
+      {
+        "@id": "/api/post_list_items/65",
+        "@type": "PostListItem",
+        "post": {
+          "title": "Peugeot 2008 3D",
+          "slug": "peugeot-2008-3d",
+          "status": "publish",
+          "description": "<div>Widget 3D ThreeJS pour la Peugeot 2008</div>",
+          "attachments": [
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/dc0c911ea6b1eb858c75",
+              "cloudinaryId": "capture-d-ecran-2025-10-29-a-02-02-42-6901685c2a8a3146843303.png",
+              "name": "ThreeJS, Widget JS",
+              "slug": "threejs-widget-js"
+            }
+          ],
+          "createdAt": "2025-10-28T22:20:00+00:00",
+          "cloudinaryId": "capture-d-ecran-2025-10-29-a-02-02-42-6901685c2a8a3146843303.png"
+        },
+        "position": 6
+      },
+      {
+        "@id": "/api/post_list_items/53",
+        "@type": "PostListItem",
+        "post": {
+          "title": "Initial.term",
+          "slug": "initial-term",
+          "status": "publish",
+          "description": "<div>Initial Term - Shell for webmasters. Open-source</div>",
+          "attachments": [
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/5f3c6569998fa5bf0afa",
+              "cloudinaryId": "initial-fabulous-terminal-for-webmaster.jpg",
+              "name": "Initial, Fabulous Terminal for Webmaster",
+              "slug": "initial-fabulous-terminal-for-webmaster"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/25d677ff2a1f53d2eb9c",
+              "cloudinaryId": "capture-d-ecran-2025-10-28-a-23-02-11-69013e0b8dce3784428641.png",
+              "name": "Lit Component, Javascript, NPM, Shell",
+              "slug": "lit-component-javascript-npm-shell"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/1460e0cb3456441f9969",
+              "cloudinaryId": "capture-d-ecran-2025-10-28-a-22-35-20-69013e6058977687073852.png",
+              "slug": "capture-d-ecran-2025-10-28-a-22-35-20-69013e6058977687073852-png"
+            }
+          ],
+          "createdAt": "2025-10-15T17:21:00+00:00",
+          "cloudinaryId": "capture-d-ecran-2025-10-28-a-23-02-11-69013e0b8dce3784428641.png"
+        },
+        "position": 7
+      },
+      {
+        "@id": "/api/post_list_items/57",
+        "@type": "PostListItem",
+        "post": {
+          "title": "Jekyll plugin - Meilisearch",
+          "slug": "jekyll-plugin-meilisearch",
+          "status": "publish",
+          "description": "<div>Plugin for Jekyll to push content in Meilisearch. Ruby Gem.</div>",
+          "attachments": [
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/9cc83086b0b8c7a2c240",
+              "cloudinaryId": "capture-d-ecran-2025-10-28-a-22-58-37-690140433ec4d286210172.png",
+              "name": "Ruby, GEM, Meilisearch, Jekyll",
+              "slug": "ruby-gem-meilisearch-jekyll"
+            }
+          ],
+          "createdAt": "2025-10-15T17:22:00+00:00",
+          "cloudinaryId": "capture-d-ecran-2025-10-28-a-22-58-37-690140433ec4d286210172.png"
+        },
+        "position": 8
+      },
+      {
+        "@id": "/api/post_list_items/34",
+        "@type": "PostListItem",
+        "post": {
+          "title": "Bibliothèque Saint Laurent",
+          "slug": "bibliotheque-saint-laurent",
+          "status": "publish",
+          "mainCategory": {
+            "@id": "/api/categories/portfolio",
+            "@type": "Category",
+            "name": "Portfolio",
+            "slug": "portfolio"
+          },
+          "description": "<div>&nbsp;An app allowing ~300 members to search and borrow +900 books. Built with Symfony, Bootstrap and Algolia.</div>",
+          "attachments": [
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/e8aca3765881002a0e37",
+              "cloudinaryId": "bibliotheque-saint-laurent.png",
+              "name": "bibliotheque-saint-laurent",
+              "slug": "bibliotheque-saint-laurent"
+            }
+          ],
+          "createdAt": "2024-10-18T16:25:00+00:00",
+          "cloudinaryId": "bibliotheque-saint-laurent.png"
+        },
+        "position": 9
+      },
+      {
+        "@id": "/api/post_list_items/50",
+        "@type": "PostListItem",
+        "post": {
+          "title": "Scan et Retouches d’images",
+          "slug": "scan-et-retouches-d-images",
+          "status": "publish",
+          "mainCategory": {
+            "@id": "/api/categories/blog",
+            "@type": "Category",
+            "name": "Blog",
+            "slug": "blog"
+          },
+          "description": "<div>Authored Scan &amp; Image Retouching (Micro Application), a technical guide on digital imaging, selling over 20,000 copies.&nbsp;</div>",
+          "attachments": [
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/04dc079ce020120c0598",
+              "cloudinaryId": "microapp_details.jpg",
+              "name": "Rédaction d’un Ouvrage pédagogique pour MicroApp",
+              "slug": "redaction-d-un-ouvrage-pedagogique-pour-microapp"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/ee1ff69e24d2416f353b",
+              "cloudinaryId": "scan-et-retouche-d-images-microapp.jpg",
+              "name": "Rédaction d’un Ouvrage pédagogique pour MicroApp 1",
+              "slug": "redaction-d-un-ouvrage-pedagogique-pour-microapp-1"
+            }
+          ],
+          "createdAt": "2002-09-03T23:13:00+00:00",
+          "cloudinaryId": "microapp_details.jpg"
+        },
+        "position": 10
+      },
+      {
+        "@id": "/api/post_list_items/56",
+        "@type": "PostListItem",
+        "post": {
+          "title": "Centre Hospitalier Troyes",
+          "slug": "centre-hospitalier-troyes",
+          "status": "publish",
+          "description": "<div>Craft the logo and the posters for the 50th anniversary of the hospital in Troyes.</div>",
+          "attachments": [
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/7f56f0b58331b578c83d",
+              "cloudinaryId": "logo-centre-hospitalier-troyes.png",
+              "name": "Centre Hospitalier de Troyes 1",
+              "slug": "centre-hospitalier-de-troyes-1"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/f609279dfd549bde646d",
+              "cloudinaryId": "centre-hospitalier-de-troyes.jpg",
+              "name": "Centre Hospitalier de Troyes",
+              "slug": "centre-hospitalier-de-troyes"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/6c59efcb0c839a380da2",
+              "cloudinaryId": "projet_centre_hospitalier_bis_64884125b.jpg",
+              "name": "projet_centre_hospitalier_bis",
+              "slug": "projet-centre-hospitalier-bis"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/8ed40a906b0f4043dc58",
+              "cloudinaryId": "logo_centrehospitalier.jpg",
+              "name": "logo_centrehospitalier",
+              "slug": "logo-centrehospitalier"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/ed905de4c5628d106cb1",
+              "cloudinaryId": "centre-hospitalier-de-troyes-exposition-mockup.jpg",
+              "name": "Centre Hospitalier de Troyes en exposition",
+              "slug": "centre-hospitalier-de-troyes-en-exposition"
+            }
+          ],
+          "createdAt": "2025-10-15T23:53:00+00:00",
+          "cloudinaryId": "logo-centre-hospitalier-troyes.png"
+        },
+        "position": 12
+      },
+      {
+        "@id": "/api/post_list_items/36",
+        "@type": "PostListItem",
+        "post": {
+          "title": "Je peux bien faire cela pour vous",
+          "slug": "je-peux-bien-faire-cela-pour-vous",
+          "status": "publish",
+          "mainCategory": {
+            "@id": "/api/categories/portfolio",
+            "@type": "Category",
+            "name": "Portfolio",
+            "slug": "portfolio"
+          },
+          "description": "<p>Mise à jour de ma charte graphique pour une nouvelle année étoilée.</p>",
+          "contentMarkdown": "",
+          "attachments": [
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/f8f84b572e52293cf0d0",
+              "cloudinaryId": "tasses-motivation-cafe.jpg",
+              "name": "Tasses Mug personnalisés",
+              "slug": "tasses-mug-personnalises"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/f5bf52b8965994e46499",
+              "cloudinaryId": "couleurs-typographies.png",
+              "name": "Couleurs et Typographies",
+              "slug": "couleurs-et-typographies"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/983225f42ccaf8c67351",
+              "cloudinaryId": "tshirts-gilles.jpg",
+              "name": "T-Shirts Personnalisés",
+              "slug": "t-shirts-personnalises"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/c7e319691767c6d0dce7",
+              "cloudinaryId": "affichage-public.jpg",
+              "name": "Affichage Public",
+              "slug": "affichage-public"
+            }
+          ],
+          "createdAt": "2016-01-14T04:21:16+00:00",
+          "cloudinaryId": "tshirts-gilles.jpg"
+        },
+        "position": 13
+      },
+      {
+        "@id": "/api/post_list_items/37",
+        "@type": "PostListItem",
+        "post": {
+          "title": "Strips 3ème Oeil",
+          "slug": "strips-3eme-oeil",
+          "status": "publish",
+          "mainCategory": {
+            "@id": "/api/categories/blog",
+            "@type": "Category",
+            "name": "Blog",
+            "slug": "blog"
+          },
+          "description": "<p>Publications mensuelles pour le guide de sorties Troisième Oeil.</p>",
+          "contentMarkdown": "",
+          "attachments": [
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/f9d2719ce239aea9ed3f",
+              "cloudinaryId": "bdtroisiemeoeilavril-richard3.jpg",
+              "name": "Richard Bout-en-train",
+              "slug": "richard-bout-en-train"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/c616642a24cc1e8d48d4",
+              "cloudinaryId": "bdtroisiemeoeiljanviermail.jpg",
+              "name": "Histoire courte",
+              "slug": "histoire-courte"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/92c276c5816cb8a56c42",
+              "cloudinaryId": "bdtroisiemeoeilfevriermail2.jpg",
+              "name": "Au même moment, au bureau d’Edison…",
+              "slug": "au-meme-moment-au-bureau-d-edison"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/f33fe7787f7d3e3a7b2c",
+              "cloudinaryId": "bd3oeil-marsmail.jpg",
+              "name": "Des citations, une colle",
+              "slug": "des-citations-une-colle"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/b0fcace8204716688754",
+              "cloudinaryId": "bd-juin-darwin72dpi.jpg",
+              "name": "Révolution de la théorie",
+              "slug": "revolution-de-la-theorie"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/d124bc6c2d730e17da93",
+              "cloudinaryId": "bd-juin-freud72dpi.jpg",
+              "name": "Rencontre avec toi-même",
+              "slug": "rencontre-avec-toi-meme"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/ed49a6adce9229e2c74a",
+              "cloudinaryId": "bd-juillet-ambroise72dpi.jpg",
+              "name": "Fan de footosophie",
+              "slug": "fan-de-footosophie"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/51826bb62886549123db",
+              "cloudinaryId": "bdtroisiemeoeiloctobre72dpi.jpg",
+              "name": "L’invention dernière du siècle dernier",
+              "slug": "l-invention-derniere-du-siecle-dernier"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/105d9562e2e3c8e32b55",
+              "cloudinaryId": "bdtroisiemeoeilnovembre72dpi.jpg",
+              "name": "C’était mieux encore avant",
+              "slug": "c-etait-mieux-encore-avant"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/970e94861270f40ae0bf",
+              "cloudinaryId": "bd-novembre-pasteur-berthelot72dpi.jpg",
+              "name": "Le chercheur recherché",
+              "slug": "le-chercheur-recherche"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/dc4ae763b40ab3914d17",
+              "cloudinaryId": "bd-mars-desmoulins-louissvi72-bis.jpg",
+              "name": "Quand son peuple rêve, lui n’en peut plus",
+              "slug": "quand-son-peuple-reve-lui-n-en-peut-plus"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/a47b43f355ee7ddb5e04",
+              "cloudinaryId": "mars14-honore-de-balzac-et-camille-claudel.jpg",
+              "name": "A vos Arts ! Prêts ? Sortez !",
+              "slug": "a-vos-arts-prets-sortez"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/bb806f789373287758c0",
+              "cloudinaryId": "mai-delafontaine-pearson.jpg",
+              "name": "Quand les idées fourmillent…",
+              "slug": "quand-les-idees-fourmillent"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/eaff33220ea5bebd250e",
+              "cloudinaryId": "bd-aoutsept-marielouis2015.jpg",
+              "name": "Le courage de dent",
+              "slug": "le-courage-de-dent"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/255975d55cc8900fcf31",
+              "cloudinaryId": "bd-janvier-lautrec-72dpi.jpg",
+              "name": "Consommer sans modération",
+              "slug": "consommer-sans-moderation"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/3228e35db9d695e14746",
+              "cloudinaryId": "bd-juillet-edward2015.jpg",
+              "name": "Prendre son mal en bon patient",
+              "slug": "prendre-son-mal-en-bon-patient"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/10ffe26f0aba3b29a4bd",
+              "cloudinaryId": "avril-julesverne-albertcamus.jpg",
+              "name": "Il était à la Une fois",
+              "slug": "il-etait-a-la-une-fois"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/64e0a547d0a76ba6e001",
+              "cloudinaryId": "bd_troisiemeoeil_avril-marie2.jpg",
+              "name": "Merci ! Quand même !!",
+              "slug": "merci-quand-meme"
+            }
+          ],
+          "createdAt": "2015-12-26T02:17:34+00:00",
+          "cloudinaryId": "bd-mars-desmoulins-louissvi72-bis.jpg"
+        },
+        "position": 14
+      },
+      {
+        "@id": "/api/post_list_items/40",
+        "@type": "PostListItem",
+        "post": {
+          "title": "Studio Grappe, Champagne et Vin",
+          "slug": "studio-grappe-champagne-et-vin",
+          "status": "publish",
+          "mainCategory": {
+            "@id": "/api/categories/portfolio",
+            "@type": "Category",
+            "name": "Portfolio",
+            "slug": "portfolio"
+          },
+          "description": "<p>Modélisation en 3D de bouteilles Vin et Champagne.</p>",
+          "contentMarkdown": "",
+          "attachments": [
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/7104a9c0529929d79a0d",
+              "cloudinaryId": "studio-grappe-champagne-et-vin-4.jpg",
+              "name": "Studio Grappe – Champagne et Vin 3",
+              "slug": "studio-grappe-champagne-et-vin-3"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/a51687761e51c2849be9",
+              "cloudinaryId": "studio-grappe-champagne-et-vin-3.jpg",
+              "name": "Studio Grappe – Champagne et Vin 2",
+              "slug": "studio-grappe-champagne-et-vin-2"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/51e7159e6ef7484002f1",
+              "cloudinaryId": "studio-grappe-champagne-et-vin-2.jpg",
+              "name": "Studio Grappe – Champagne et Vin 1",
+              "slug": "studio-grappe-champagne-et-vin-1"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/5ae0235a1cd6915432bc",
+              "cloudinaryId": "studio-grappe-champagne-et-vin.jpg",
+              "name": "Studio Grappe – Champagne et Vin",
+              "slug": "studio-grappe-champagne-et-vin"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/92c59e48311e2181b94a",
+              "cloudinaryId": "studio-grappe-4.jpg",
+              "name": "Etiquettes bouteilles Champagne",
+              "slug": "etiquettes-bouteilles-champagne"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/97a8aae739f76a33f56c",
+              "cloudinaryId": "studio-grappe-3.jpg",
+              "name": "Bouteilles Couleurs 3D",
+              "slug": "bouteilles-couleurs-3d"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/e8331065a9292d11e335",
+              "cloudinaryId": "studio-grappe-2.jpg",
+              "name": "Bouteilles Champagne 3D",
+              "slug": "bouteilles-champagne-3d"
+            }
+          ],
+          "createdAt": "2015-07-05T14:13:26+00:00",
+          "cloudinaryId": "studio-grappe-champagne-et-vin-3.jpg"
+        },
+        "position": 15
+      },
+      {
+        "@id": "/api/post_list_items/55",
+        "@type": "PostListItem",
+        "post": {
+          "title": "Champignol-lez-Mondeville OK",
+          "slug": "champignol-lez-mondeville-ok",
+          "status": "publish",
+          "mainCategory": {
+            "@id": "/api/categories/portfolio",
+            "@type": "Category",
+            "name": "Portfolio",
+            "slug": "portfolio"
+          },
+          "description": "<div>Création du logo pour la mairie de Champignol-lez-Mondeville.</div>",
+          "attachments": [
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/24305ceb64d04db85c4b",
+              "cloudinaryId": "logo-champignol-lez-mondeville_7556f783a.png",
+              "name": "logo-champignol-lez-mondeville",
+              "slug": "logo-champignol-lez-mondeville"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/20cea242ff6ced0f6387",
+              "cloudinaryId": "logo-champignol-lez-mondeville_7450f45c4.png",
+              "name": "Champignol-lez-Mondeville",
+              "slug": "champignol-lez-mondeville"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/c16d97f5cb81887474b1",
+              "cloudinaryId": "mairie-de-champignol-lez-mondeville-2.jpg",
+              "name": "Mairie de Champignol-lez-Mondeville",
+              "slug": "mairie-de-champignol-lez-mondeville"
+            }
+          ],
+          "createdAt": "2015-01-28T11:03:00+00:00",
+          "cloudinaryId": "logo-champignol-lez-mondeville_7450f45c4.png"
+        },
+        "position": 16
+      },
+      {
+        "@id": "/api/post_list_items/64",
+        "@type": "PostListItem",
+        "post": {
+          "title": "Voeux - Conseil Général de l'Aube",
+          "slug": "voeux-conseil-general-de-l-aube",
+          "status": "publish",
+          "description": "<div>Carte de voeux du Conseil Général de l'Aube</div>",
+          "attachments": [
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/195b6d89ba16b8aaadcc",
+              "cloudinaryId": "projet_conseil_regional_aube.jpg",
+              "name": "projet_conseil_regional_aube",
+              "slug": "projet-conseil-regional-aube"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/2a716afed9479ab65da9",
+              "cloudinaryId": "projet_conseil_regional_aube_bis_6507a69b4.jpg",
+              "name": "projet_conseil_regional_aube_bis",
+              "slug": "projet-conseil-regional-aube-bis"
+            }
+          ],
+          "createdAt": "2025-10-28T22:29:00+00:00",
+          "cloudinaryId": "projet_conseil_regional_aube_bis_6507a69b4.jpg"
+        },
+        "position": 17
+      },
+      {
+        "@id": "/api/post_list_items/49",
+        "@type": "PostListItem",
+        "post": {
+          "title": "Expo. Photos Couleurs Naturelles",
+          "slug": "expo-photos-couleurs-naturelles",
+          "status": "publish",
+          "mainCategory": {
+            "@id": "/api/categories/photographie",
+            "@type": "Category",
+            "name": "Photographie",
+            "slug": "photographie"
+          },
+          "description": "<div>Photographies sur le thème Nature, faune et flore. Exposition at Le Bougnat des Pouilles, Troyes.</div>",
+          "attachments": [
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/9ed48cd0d982b325c29c",
+              "cloudinaryId": "121418-012098.jpg",
+              "name": "Couleurs Naturelles",
+              "slug": "couleurs-naturelles"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/f60709b04a53cb3cc772",
+              "cloudinaryId": "121336-083733.jpg",
+              "name": "Couleurs Naturelles 1",
+              "slug": "couleurs-naturelles-1"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/6dd3ed1f5523fe1bed28",
+              "cloudinaryId": "121314-015856.jpg",
+              "name": "Couleurs Naturelles 2",
+              "slug": "couleurs-naturelles-2"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/e7428efff7bbcb08c5ba",
+              "cloudinaryId": "121213-006442.jpg",
+              "name": "Couleurs Naturelles 3",
+              "slug": "couleurs-naturelles-3"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/78f045b84e2eab681dda",
+              "cloudinaryId": "121121-056989.jpg",
+              "name": "Couleurs Naturelles 4",
+              "slug": "couleurs-naturelles-4"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/685935285e7d7071ea09",
+              "cloudinaryId": "121101-010130.jpg",
+              "name": "Couleurs Naturelles 5",
+              "slug": "couleurs-naturelles-5"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/821eeb9d19ef39d5e576",
+              "cloudinaryId": "120746-026757.jpg",
+              "name": "Couleurs Naturelles 6",
+              "slug": "couleurs-naturelles-6"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/96a9d2e8f7e5acc8438d",
+              "cloudinaryId": "120502-089039.jpg",
+              "name": "Couleurs Naturelles 7",
+              "slug": "couleurs-naturelles-7"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/1393f92d95eec028db39",
+              "cloudinaryId": "120139-087590.jpg",
+              "name": "Couleurs Naturelles 8",
+              "slug": "couleurs-naturelles-8"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/6bba58b02759ad66d7e1",
+              "cloudinaryId": "120125-007934.jpg",
+              "name": "Couleurs Naturelles 9",
+              "slug": "couleurs-naturelles-9"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/b061bf347b66098939e2",
+              "cloudinaryId": "120035-030629.jpg",
+              "name": "Couleurs Naturelles 10",
+              "slug": "couleurs-naturelles-10"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/be7f9a15e71407ea577e",
+              "cloudinaryId": "115624-014130.jpg",
+              "name": "Couleurs Naturelles 11",
+              "slug": "couleurs-naturelles-11"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/70a221e27308182e9993",
+              "cloudinaryId": "115444-038510.jpg",
+              "name": "Couleurs Naturelles 12",
+              "slug": "couleurs-naturelles-12"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/abe42175527b81debbac",
+              "cloudinaryId": "115053-049330.jpg",
+              "name": "Couleurs Naturelles 13",
+              "slug": "couleurs-naturelles-13"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/a8fa6cad1dba085c8a2c",
+              "cloudinaryId": "114926-043507.jpg",
+              "name": "Couleurs Naturelles 14",
+              "slug": "couleurs-naturelles-14"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/cac16c32cfe8e5aa867c",
+              "cloudinaryId": "114840-076091.jpg",
+              "name": "Couleurs Naturelles 15",
+              "slug": "couleurs-naturelles-15"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/fe5ca78baa515a37db6c",
+              "cloudinaryId": "114802-054485.jpg",
+              "name": "Couleurs Naturelles 16",
+              "slug": "couleurs-naturelles-16"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/5e787211d8d658837ac8",
+              "cloudinaryId": "114640-008054.jpg",
+              "name": "Couleurs Naturelles 17",
+              "slug": "couleurs-naturelles-17"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/ef04cf2761af2c63787b",
+              "cloudinaryId": "114552-091041.jpg",
+              "name": "Couleurs Naturelles 18",
+              "slug": "couleurs-naturelles-18"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/aa2520e4f56e5134bf4d",
+              "cloudinaryId": "021452-042607.jpg",
+              "name": "Couleurs Naturelles 19",
+              "slug": "couleurs-naturelles-19"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/1224eb4ea18a37650844",
+              "cloudinaryId": "014915-028476.jpg",
+              "name": "Couleurs Naturelles 20",
+              "slug": "couleurs-naturelles-20"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/02da4e3ef0c3c83f113f",
+              "cloudinaryId": "014841-074754.jpg",
+              "name": "Couleurs Naturelles 21",
+              "slug": "couleurs-naturelles-21"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/92ecac88600f83b725f7",
+              "cloudinaryId": "014712-039610.jpg",
+              "name": "Couleurs Naturelles 22",
+              "slug": "couleurs-naturelles-22"
+            },
+            {
+              "@type": "Attachment",
+              "@id": "/api/.well-known/genid/229c76f6450c2e8705d8",
+              "cloudinaryId": "014420-004155.jpg",
+              "name": "Couleurs Naturelles 23",
+              "slug": "couleurs-naturelles-23"
+            }
+          ],
+          "createdAt": "2005-10-04T22:37:00+00:00",
+          "cloudinaryId": "couleursnaturelles.jpg"
+        },
+        "position": 18
+      }
+    ]
+  }
+]

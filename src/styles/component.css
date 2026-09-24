@@ -1,0 +1,12 @@
+.mycard {
+  @apply relative mb-2 w-full p-4;
+  background: var(--color-bkg-a50);
+  backdrop-filter: blur(5px);
+  @apply flex items-end;
+}
+
+.mycard-body {
+  p {
+    @apply leading-relaxed;
+  }
+}

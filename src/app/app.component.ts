@@ -9,9 +9,12 @@ import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './elements/header/header.component';
 import { FooterComponent } from './elements/footer/footer.component';
-import { HttpService, WEB_PAGE_METAS_MAP } from 'ngx-services';
-
-const FONT_AWESOME_ICON_DEFINITION_LIST = new InjectionToken<IconDefinition[]>('');
+import { HttpService, WEB_PAGE_METAS_MAP, WebPageMetas } from 'ngx-services';
+import { GillesDevMetas } from '../environments/metas';
+import { ApiService } from './services/api.service';
+import { PageIdSlugEnum, PageIdSlugKeys } from './app.global';
+import { Store } from './store';
+import { MeilisearchService } from './services/meilisearch.service';
 
 export type ModeEnum = 'light' | 'dark' | null;
 
@@ -19,6 +22,9 @@ export type ModeEnum = 'light' | 'dark' | null;
   imports: [RouterModule, ThreeCardComponent, CloudinaryModule, HeaderComponent, FooterComponent],
   providers: [
     HttpService,
+    ApiService,
+    Store,
+    MeilisearchService,
     {
       provide: WEB_PAGE_METAS_MAP,
       useValue: environment.webPageMetasMap,
@@ -29,6 +35,8 @@ export type ModeEnum = 'light' | 'dark' | null;
       provide: FONT_AWESOME_ICON_DEFINITION_LIST,
       useValue: [faGithubAlt, faXTwitter],
     },
+    { provide: PRECONNECT_CHECK_BLOCKLIST, useValue: 'https://www.gilles.dev' },
+    provideImgixLoader('https://res.cloudinary.com/unicolored/'),
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -38,13 +46,9 @@ export type ModeEnum = 'light' | 'dark' | null;
 export class AppComponent implements OnInit {
   mode = signal<ModeEnum>(null);
   loading = false;
-  private readonly fontAwesomeIconDefinitionList: IconDefinition[] = inject(FONT_AWESOME_ICON_DEFINITION_LIST);
-  library = inject(FaIconLibrary);
   platformID = inject(PLATFORM_ID);
 
   constructor(private renderer: Renderer2) {
-    this.library.addIcons(...this.fontAwesomeIconDefinitionList);
-
     effect(() => {
       this.setHtmlClass(this.mode());
     });
