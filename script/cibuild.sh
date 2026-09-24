@@ -2,6 +2,8 @@
 
 set -e
 
-yarn prebuild
+pnpm prebuild
 
-yarn build
+#pnpm run generate-portfolio-data
+
+pnpm build
